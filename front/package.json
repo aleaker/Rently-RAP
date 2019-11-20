@@ -1,0 +1,24 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "react-youtube": "^7.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleaker/Rently-RAP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleaker/Rently-RAP/issues"
+  },
+  "homepage": "https://github.com/aleaker/Rently-RAP#readme"
+}

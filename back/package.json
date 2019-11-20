@@ -1,0 +1,27 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "rently-back",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.7.12",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleaker/Rently-RAP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleaker/Rently-RAP/issues"
+  },
+  "homepage": "https://github.com/aleaker/Rently-RAP#readme"
+}

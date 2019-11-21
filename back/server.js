@@ -10,8 +10,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-
-
 // db.sync(/*{force:true}*/).then(() =>
   app.listen(3000, function() {
     console.log("Example app listening on port 3000!");

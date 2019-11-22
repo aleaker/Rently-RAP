@@ -3,7 +3,7 @@ const { Schema } = require(mongoose);
 const bcrypt = require("bcrypt-nodejs");
 import { validateEmail } from "./company";
 
-const SalesPerson = new Schema({
+const Salesperson = new Schema({
   Email: {
     type: String,
     unique: true,
@@ -30,12 +30,12 @@ const SalesPerson = new Schema({
   CommissionScheme: { type: Schema.Types.ObjectId, ref: "Commission" }
 });
 
-SalesPerson.methods.encryptPassword = password => {
+Salesperson.methods.encryptPassword = password => {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 };
 
-SalesPerson.methods.comparePassword = function(password) {
+Salesperson.methods.comparePassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = mongoose.model("SalesPerson", SalesPerson);
+module.exports = mongoose.model("Salesperson", Salesperson);

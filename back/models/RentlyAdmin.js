@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 const bcrypt = require("bcrypt-nodejs");
 
 const RentlyAdmin = new Schema({
-  username: { type: String, required: true },
-  password: { type: String, required: true }
+  Username: { type: String, required: true },
+  Password: { type: String, required: true }
 });
 
 RentlyAdmin.methods.encryptPassword = password => {

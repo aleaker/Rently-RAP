@@ -1,7 +1,7 @@
-const mongoose = require(mongoose);
-const { Schema } = require(mongoose);
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-export const validateEmail = function(email) {
+const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
 };
@@ -15,7 +15,6 @@ const Company = new Schema({
   MainContact: {
     FirstName: { type: String, required: true },
     LastName: { type: String },
-    required: true,
     IdType: { type: String, required: true },
     IdNum: { type: String, required: true },
     Email: {
@@ -24,7 +23,7 @@ const Company = new Schema({
       trim: true,
       lowercase: true,
       unique: true,
-      required: "Email address is required",
+      required: true,
       validate: [validateEmail, "Please fill a valid email address"],
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,

@@ -1,9 +1,13 @@
-const mongoose = require(mongoose);
-const { Schema } = require(mongoose);
-import { validateEmail } from "./Company";
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
+const validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
 
 const Booking = new Schema({
-  BookingId: { type: Number, required: true /*viene de la api*/ },
+  BookingId: { type: Number, required: true },
   CarRental: { type: Schema.Types.ObjectId, ref: "CarRental" },
   CustomerData: {
     FirstName: { type: String, required: true },
@@ -13,7 +17,7 @@ const Booking = new Schema({
       type: String,
       trim: true,
       lowercase: true,
-      required: "Email address is required",
+      required: true,
       validate: [validateEmail, "Please fill a valid email address"],
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,

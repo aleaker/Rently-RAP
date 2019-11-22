@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt-nodejs");
 import { validateEmail } from "./company";
 
 const SalesPerson = new Schema({
-  email: {
+  Email: {
     type: String,
     unique: true,
     trim: true,
@@ -16,18 +16,18 @@ const SalesPerson = new Schema({
       "Please fill a valid email address"
     ]
   },
-  password: { type: String, required: true, default: "salesperson" },
-  firstName: { type: String },
-  lastName: { type: String },
-  company: { type: Schema.Types.ObjectId, ref: "Company" },
-  telephone: { type: String, required: true },
-  photo: {
+  Password: { type: String, required: true, default: "salesperson" },
+  FirstName: { type: String, required: true },
+  LastName: { type: String, required: true },
+  Company: { type: Schema.Types.ObjectId, ref: "Company" },
+  Telephone: { type: String, required: true },
+  Photo: {
     type: String,
     default:
       "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png"
   },
-  notes: { type: String, required: false },
-  commissionScheme: { type: Schema.Types.ObjectId, ref: "Commission" }
+  Notes: { type: String },
+  CommissionScheme: { type: Schema.Types.ObjectId, ref: "Commission" }
 });
 
 SalesPerson.methods.encryptPassword = password => {

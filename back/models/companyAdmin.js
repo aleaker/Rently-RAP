@@ -1,5 +1,5 @@
-const mongoose = require(mongoose);
-const { Schema } = require(mongoose);
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 const bcrypt = require("bcrypt-nodejs");
 import { validateEmail } from "./company";
 

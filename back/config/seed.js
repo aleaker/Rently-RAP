@@ -202,27 +202,27 @@ var data = [
     model: "CompanyAdmin",
     documents: [
       {
-        Email: "hanoi@hanoi",
+        Email: "hanoi@hanoi.com",
         Password: "admin",
         Company: "HanoiInc"
       },
       {
-        Email: "joaco@joaco",
+        Email: "joaco@joaco.com",
         Password: "admin",
         Company: "JoacoInc"
       },
       {
-        Email: "alejo@alejo",
+        Email: "alejo@alejo.com",
         Password: "admin",
         Company: "AlejoInc"
       },
       {
-        Email: "lian@lian",
+        Email: "lian@lian.com",
         Password: "admin",
         Company: "LianInc"
       },
       {
-        Email: "juanma@juanma",
+        Email: "juanma@juanma.com",
         Password: "admin",
         Company: "JuanmaInc"
       }
@@ -232,7 +232,7 @@ var data = [
     model: "Salesperson",
     document: [
       {
-        Email: "hanoi@hanoi",
+        Email: "hanoi@hanoi.com",
         Password: "salesperson",
         FistName: "Hanoi",
         LastName: "Hanoi LastName",
@@ -244,7 +244,7 @@ var data = [
         CommissionScheme: "6"
       },
       {
-        Email: "lian@lian",
+        Email: "lian@lian.com",
         Password: "salesperson",
         FistName: "Lian",
         LastName: "Lian LastName",
@@ -256,11 +256,11 @@ var data = [
         CommissionScheme: "6"
       },
       {
-        Email: "hanoi@hanoi",
+        Email: "joaco@joaco.com",
         Password: "salesperson",
-        FistName: "Hanoi",
-        LastName: "Hanoi LastName",
-        Company: "HanoiInc",
+        FistName: "Joaco",
+        LastName: "Joaco LastName",
+        Company: "JoacoInc",
         Telephone: "61059032",
         Photo:
           "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png",

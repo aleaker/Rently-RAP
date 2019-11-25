@@ -268,5 +268,116 @@ var data = [
         }
       }
     ]
+  },
+  {
+    model: "Booking",
+    documents: [
+      {
+        BookingId: 1,
+        CarRental: "Pepe Rental",
+
+        CustomerData: {
+          FirstName: "Alfredo",
+          LastName: "Gomez",
+          Telephone: 45520844,
+          Email: "pipi@hotmail.com"
+        },
+        FromDate: 11 - 01 - 2020,
+        ToDate: 13 - 01 - 2020,
+        Pickup: "Oficina Central",
+        Dropoff: "Oficina Central",
+        Price: "$3500"
+      },
+      {
+        BookingId: 2,
+        CarRental: "Pepe Rental",
+        CustomerData: {
+          FirstName: "Roberto",
+          LastName: "Maldi",
+          Telephone: 1134555467,
+          Email: "robertomaldi@hotmail.com"
+        },
+        FromDate: 15 - 01 - 2020,
+        ToDate: 20 - 01 - 2020,
+        Pickup: "Oficina Central",
+        Dropoff: "Oficina Central",
+        Price: "$7500"
+      },
+      {
+        BookingId: 3,
+        CarRental: "Miriam Rent a Car",
+        CustomerData: {
+          FirstName: "Melisa",
+          LastName: "Farh",
+          Telephone: 1155447890,
+          Email: "melisakpatotal@hotmail.com"
+        },
+        FromDate: 4 - 01 - 2020,
+        ToDate: 13 - 01 - 2020,
+        Pickup: "Oficina Central",
+        Dropoff: "Oficina Central",
+        Price: "$8500"
+      },
+      {
+        BookingId: 4,
+        CarRental: "Alfred Agency",
+        CustomerData: {
+          FirstName: "Linda",
+          LastName: "Lera",
+          Telephone: 433466755,
+          Email: "lile@hotmail.com"
+        },
+        FromDate: 25 - 04 - 2020,
+        ToDate: 28 - 04 - 2020,
+        Pickup: "Oficina Central",
+        Dropoff: "Oficina Central",
+        Price: "$1500"
+      },
+      {
+        BookingId: 5,
+        CarRental: "Alfred Agency",
+        CustomerData: {
+          FirstName: "Silvia",
+          LastName: "Veraz",
+          Telephone: 1135564887,
+          Email: "selvee@hotmail.com"
+        },
+        FromDate: 21 - 01 - 2020,
+        ToDate: 12 - 01 - 2020,
+        Pickup: "Oficina Central",
+        Dropoff: "Oficina Central",
+        Price: "$5500"
+      },
+      {
+        BookingId: 6,
+        CarRental: "Han Oy Rental",
+        CustomerData: {
+          FirstName: "Santiago",
+          LastName: "Diaz",
+          Telephone: 1132223431,
+          Email: "pipi@hotmail.com"
+        },
+        FromDate: 13 - 01 - 2020,
+        ToDate: 14 - 01 - 2020,
+        Pickup: "Oficina Central",
+        Dropoff: "Oficina Central",
+        Price: "$2500"
+      },
+      {
+        BookingId: 7,
+        CarRental: "Han Oy Rental",
+        CustomerData: {
+          FirstName: "Lolo",
+          LastName: "Mega",
+          Telephone: 1164435798,
+          Email: "lolom@hotmail.com"
+        },
+        FromDate: 15 - 01 - 2020,
+        ToDate: 30 - 01 - 2020,
+        Pickup: "Oficina Central",
+        Dropoff: "Oficina Central",
+        Price: "$11500"
+      }
+    ]
   }
 ];

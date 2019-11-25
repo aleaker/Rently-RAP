@@ -197,5 +197,70 @@ var data = [
         }
       }
     ]
+  },
+
+  {
+    Name: "Pepe Rental",
+    Logo: "https://www.stickpng.com/assets/images/5a2ae85adb68181c8f184d6f.png",
+    Url: "", //viene de la api
+    User: "", //viene de la api
+    Password: "", //viene de la api
+    MainContact: {
+      FirstName: "Pepe",
+      LastName: "Casagrande",
+      Email: "peperent@hotmail.com"
+    }
+  },
+  {
+    Name: "Pepe Rental",
+    Logo:
+      "https://media.staticontent.com/media/pictures/4dbee6c4-b9b7-4300-9330-db685c4400c2.png",
+    Url: "", //viene de la api
+    User: "", //viene de la api
+    Password: "", //viene de la api
+    MainContact: {
+      FirstName: "Guido",
+      LastName: "Brown",
+      Email: "guidobrown@despegar.com"
+    }
+  },
+  {
+    Name: "Miriam Rent a Car",
+    Logo:
+      "http://edicion.ypf.com/serviclub/Catalogo/Lists/ImagenesBeneficios/street_rent_a_car-ypf-beneficio-serviclub.jpg",
+    Url: "", //viene de la api
+    User: "", //viene de la api
+    Password: "", //viene de la api
+    MainContact: {
+      FirstName: "Miriam",
+      LastName: "Muller",
+      Email: "miriamrentacar@gmail.com"
+    }
+  },
+  {
+    Name: "Han Oy Rental",
+    Logo:
+      "https://d12z4gz8sifrx.cloudfront.net/assets/media//madrid-portada-landing-rent-a-car-low-cost-pepecar.jpg",
+    Url: "", //viene de la api
+    User: "", //viene de la api
+    Password: "", //viene de la api
+    MainContact: {
+      FirstName: "Han",
+      LastName: "Oy",
+      Email: "hanoy@hotmail.com"
+    }
+  },
+  {
+    Name: "Alfred Agency",
+    Logo:
+      "https://media.glassdoor.com/sqll/2485315/carone-supermercados-squarelogo-1553125336866.png",
+    Url: "", //viene de la api
+    User: "", //viene de la api
+    Password: "", //viene de la api
+    MainContact: {
+      FirstName: "Alfred",
+      LastName: "Pury",
+      Email: "joaquinlarralde@hotmail.com"
+    }
   }
 ];

@@ -20,7 +20,7 @@ const CompanyAdmin = new Schema({
       "Please fill a valid email address"
     ]
   },
-  password: { type: String, required: true, default: "admin" },
+  Password: { type: String, required: true, default: "admin" },
   Company: { type: Schema.Types.ObjectId, ref: "Company" }
 });
 

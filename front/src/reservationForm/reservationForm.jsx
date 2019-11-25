@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import {connect} from 'react-redux'
 import axios from 'axios'
-
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 class Reservation extends React.Component {
   constructor(props) {
@@ -134,7 +135,12 @@ class Reservation extends React.Component {
         <div>
 
         </div>
-          {this.state.cars.map(car=> <img src={(car.Car.Model.ImagePath)}/>)}
+          {this.state.cars.map(car=> 
+          <Card>
+            <Col md={4}>
+          <img src={(car.Car.Model.ImagePath)} style={{width:'100%'}} key={Math.random()}/>
+          </Col>
+          </Card>)}
         </div>
     );
   }

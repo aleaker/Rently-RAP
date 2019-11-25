@@ -27,23 +27,23 @@ var data = [
     model: "RentlyAdmin",
     documents: [
       {
-        Username: "Hanoi",
+        Email: "hanoi@hanoi.com",
         Password: "MongoHanoi"
       },
       {
-        Username: "Lian",
+        Email: "lian@lian.com",
         Password: "MongoLian"
       },
       {
-        Username: "Alejo",
+        Email: "alejo@alejo.com",
         Password: "MongoAlejo"
       },
       {
-        Username: "Juanma",
+        Email: "juanma@juanma.com",
         Password: "MongoJuanma"
       },
       {
-        Username: "Joaco",
+        Email: "joaco@joaco.com",
         Password: "MongoJoaco"
       }
     ]
@@ -198,8 +198,100 @@ var data = [
       }
     ]
   },
-
   {
+    model: "CompanyAdmin",
+    documents: [
+      {
+        Email: "hanoi@hanoi.com",
+        Password: "admin",
+        Company: "HanoiInc"
+      },
+      {
+        Email: "joaco@joaco.com",
+        Password: "admin",
+        Company: "JoacoInc"
+      },
+      {
+        Email: "alejo@alejo.com",
+        Password: "admin",
+        Company: "AlejoInc"
+      },
+      {
+        Email: "lian@lian.com",
+        Password: "admin",
+        Company: "LianInc"
+      },
+      {
+        Email: "juanma@juanma.com",
+        Password: "admin",
+        Company: "JuanmaInc"
+      }
+    ]
+  },
+  {
+    model: "Salesperson",
+    document: [
+      {
+        Email: "hanoi@hanoi.com",
+        Password: "salesperson",
+        FistName: "Hanoi",
+        LastName: "Hanoi LastName",
+        Company: "HanoiInc",
+        Telephone: "61059032",
+        Photo:
+          "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png",
+        Notes: "Notas SOBRE el vendedor o DEL vendedor?",
+        CommissionScheme: "6"
+      },
+      {
+        Email: "lian@lian.com",
+        Password: "salesperson",
+        FistName: "Lian",
+        LastName: "Lian LastName",
+        Company: "LianInc",
+        Telephone: "61059032",
+        Photo:
+          "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png",
+        Notes: "Notas SOBRE el vendedor o DEL vendedor?",
+        CommissionScheme: "6"
+      },
+      {
+        Email: "joaco@joaco.com",
+        Password: "salesperson",
+        FistName: "Joaco",
+        LastName: "Joaco LastName",
+        Company: "JoacoInc",
+        Telephone: "61059032",
+        Photo:
+          "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png",
+        Notes: "Notas SOBRE el vendedor o DEL vendedor?",
+        CommissionScheme: "6"
+      },
+      {
+        Email: "alejo@alejo",
+        Password: "salesperson",
+        FistName: "Alejo",
+        LastName: "Alejo LastName",
+        Company: "AlejoInc",
+        Telephone: "61059032",
+        Photo:
+          "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png",
+        Notes: "Notas SOBRE el vendedor o DEL vendedor?",
+        CommissionScheme: "6"
+      },
+      {
+        Email: "juanma@juanma",
+        Password: "salesperson",
+        FistName: "Juanma",
+        LastName: "Juanma LastName",
+        Company: "JuanmaInc",
+        Telephone: "61059032",
+        Photo:
+          "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png",
+        Notes: "Notas SOBRE el vendedor o DEL vendedor?",
+        CommissionScheme: "6"
+      }
+    ],
     model: "CarRental",
     documents: [
       {

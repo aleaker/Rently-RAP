@@ -4,8 +4,9 @@ const request = require('request');
  
 const {AUTH_URL, GRANT_TYPE, CLIENT_ID, CLIENT_SECRET} = process.env
 
-router.get('/get', cors(), (req, res)=>{
-
+router.post('/get', (req, resp)=>{
+  console.log(req.body)
+  let s = req.body
 
     return new Promise(resolve=>{request.post(AUTH_URL,{form:{
         grant_type: GRANT_TYPE,
@@ -24,8 +25,8 @@ router.get('/get', cors(), (req, res)=>{
 })}).then(auth_body=>JSON.parse(auth_body)['access_token'])
 .then(access_token=> {
     const options =  {
-        uri: 'https://demo.rently.com.ar/api/places',
-        method: 'POST',
+        uri: `https://demo.rently.com.ar/api/search?searchModel.from=${s.From}&searchModel.to=${s.To}&searchModel.fromPlace=${s.FromPlace}&searchModel.toPlace=${s.ToPlace}&searchModel.promotion&searchModel.ilimitedKm=${s.IllimitedKm}&searchModel.onlyFullAvailability=${s.OnlyFullAvailability}&searchModel.customerItsOver25=${s.Age}`,
+        method: 'GET',
         headers: { 'Authorization': `Bearer ${access_token}`}
       }
     return options })
@@ -35,13 +36,10 @@ router.get('/get', cors(), (req, res)=>{
       return
     }
     console.log(`statusCode: ${res.statusCode}`)
-    console.log(body)}
+    resp.send(body)}
     
     ))
 
 })
 
-
-
-
-module.exports = router
+module.exports = router;

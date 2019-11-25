@@ -11,6 +11,6 @@ mongoose
     useFindAndModify: false
   })
   .then(db => console.log("DB is connected"))
-  .catch(er => console.error(err));
+  .catch(err => console.error(err));
 
 module.exports = mongoose;

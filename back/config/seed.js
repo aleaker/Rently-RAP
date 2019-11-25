@@ -199,6 +199,51 @@ var data = [
     ]
   },
   {
+    model: "Commission",
+    documents: [
+      {
+        Company: "LianInc",
+        From: 10.0,
+        To: 30.0,
+        ToDate: 2019 - 09 - 06,
+        FromDate: 2019 - 12 - 06,
+        Type: "5"
+      },
+      {
+        Company: "JuanmaInc",
+        From: 10.0,
+        To: 30.0,
+        ToDate: 2019 - 09 - 06,
+        FromDate: 2019 - 12 - 06,
+        Type: "4"
+      },
+      {
+        Company: "JoacoInc",
+        From: 10.0,
+        To: 30.0,
+        ToDate: 2019 - 09 - 06,
+        FromDate: 2019 - 12 - 06,
+        Type: "3"
+      },
+      {
+        Company: "AleInc",
+        From: 10.0,
+        To: 30.0,
+        ToDate: 2019 - 09 - 06,
+        FromDate: 2019 - 12 - 06,
+        Type: "2"
+      },
+      {
+        Company: "HanoiInc",
+        From: 10.0,
+        To: 30.0,
+        ToDate: 2019 - 09 - 06,
+        FromDate: 2019 - 12 - 06,
+        Type: "1"
+      }
+    ]
+  },
+  {
     model: "CompanyAdmin",
     documents: [
       {

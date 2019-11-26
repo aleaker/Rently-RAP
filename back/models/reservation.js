@@ -1,6 +1,9 @@
-const mongoose = require(mongoose);
-const { Schema } = require(mongoose);
-import { validateEmail } from "./company";
+const mongoose = require("../config/db");
+const { Schema } = require("mongoose");
+const validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
 
 const Reservation = new Schema({
   //api: {id_reserva, precio-reserva, categoria, currentStatus}

@@ -1,7 +1,7 @@
 import React from "react";
 import RentalForm from "./RentalFormComponent";
 import { connect } from "react-redux";
-import addRental from "../store/actions";
+import { registerRental } from "../store/actions/addRental";
 
 class RentalFormContainer extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class RentalFormContainer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    addRental(this.state);
+    registerRental(this.state);
   }
 
   handleChange(event) {

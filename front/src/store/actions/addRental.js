@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export const addRental = () => dispatch =>
+export const registerRental = (rental) => {//dispatch =>{
+  console.log("hola");
   axios
-    .post("http://localhost:3000/api/addRental", {
+    .post("/api/registerRental", 
       rental
-    })
+    )
     .then(res => res.data);
+}

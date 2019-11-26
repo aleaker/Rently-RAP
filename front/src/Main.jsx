@@ -21,7 +21,7 @@ class Main extends React.Component {
         <Switch>
           <Route
             exact
-            path="/addRental"
+            path="/registerRental"
             render={() => <RentalFormContainer />}
           />
         </Switch>

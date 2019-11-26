@@ -1,34 +1,36 @@
 //Imports de Modulos
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import {connect} from 'react-redux'
-import { Provider } from 'react-redux'
-import store from './store/index'
+import { connect } from "react-redux";
+
 
 // Imports de Containers
-import AbmEmpresasContainer from './abmEmpresas/AbmEmpresasContainer'
+import Reservation from "./reservationForm/reservationForm";
+import RentalFormContainer from "./RentalForm/RentalFormContainer";
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
-          
-            <AbmEmpresasContainer/>
-           
+      <div>
+        {/* <Reservation /> */}
+        <Switch>
+          <Route
+            exact
+            path="/registerRental"
+            render={() => <RentalFormContainer />}
+          />
+        </Switch>
+      </div>
     );
   }
 }
-const mapStateToProps = state => ({
+const mapStateToProps = state => ({});
 
-});
-
-const mapDispatchToProps = dispatch => ({
-
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(null, null)(Main);

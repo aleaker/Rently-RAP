@@ -1,7 +1,11 @@
-const mongoose = require(mongoose);
-const { Schema } = require(mongoose);
+const mongoose = require("../config/db");
+const { Schema } = mongoose;
 const bcrypt = require("bcrypt-nodejs");
-import { validateEmail } from "./company";
+
+const validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
 
 const CompanyAdmin = new Schema({
   email: {
@@ -9,14 +13,15 @@ const CompanyAdmin = new Schema({
     unique: true,
     trim: true,
     lowercase: true,
-    required: "Email address is required",
+    required: true,
     validate: [validateEmail, "Please fill a valid email address"],
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address"
     ]
   },
-  password: { type: String, required: true, default: "admin" }
+  Password: { type: String, required: true, default: "admin" },
+  Company: { type: Schema.Types.ObjectId, ref: "Company" }
 });
 
 CompanyAdmin.methods.encryptPassword = password => {

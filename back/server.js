@@ -13,11 +13,10 @@ app.use(morgan("dev"));
 
 require("dotenv").config();
 
-// db.sync(/*{force:true}*/).then(() =>
 app.listen(3000, function() {
-  console.log("Example app listening on port 3000!");
+  console.log("App listening on port 3000");
 });
-// );
+
 app.use("/api", require("./routes"));
 
 app.use(function(req, res, next) {

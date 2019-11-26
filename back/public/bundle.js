@@ -41737,6 +41737,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reservationForm_reservationForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reservationForm/reservationForm */ "./src/reservationForm/reservationForm.jsx");
+/* harmony import */ var _RentalForm_RentalFormContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RentalForm/RentalFormContainer */ "./src/RentalForm/RentalFormContainer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -41762,6 +41763,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Main =
 /*#__PURE__*/
 function (_React$Component) {
@@ -41779,7 +41781,13 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_reservationForm_reservationForm__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/registerRental",
+        render: function render() {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalForm_RentalFormContainer__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+        }
+      })));
     }
   }]);
 
@@ -41795,6 +41803,273 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, null)(Main));
+
+/***/ }),
+
+/***/ "./src/RentalForm/RentalFormComponent.jsx":
+/*!************************************************!*\
+  !*** ./src/RentalForm/RentalFormComponent.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var handleChange = _ref.handleChange,
+      handleSubmit = _ref.handleSubmit;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(event) {
+      return handleSubmit(event);
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Nombre empresa: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "NombreEmpresa",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Logo: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "url",
+    name: "Logo",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "API: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "APIurl",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Usuario: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "usuario",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    name: "password",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Nombre contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "firstName",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Apellido contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "lastName",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    name: "Email",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Esquema de comisiones: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "EsquemaDeComisiones",
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Agregar")));
+}); // Nombre de la rentadora, Logo, Nombre y mail del contacto principal, API, Esquema de comisiones a cobrar
+
+/***/ }),
+
+/***/ "./src/RentalForm/RentalFormContainer.jsx":
+/*!************************************************!*\
+  !*** ./src/RentalForm/RentalFormContainer.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RentalFormComponent */ "./src/RentalForm/RentalFormComponent.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/addRental */ "./src/store/actions/addRental.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var RentalFormContainer =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(RentalFormContainer, _React$Component);
+
+  function RentalFormContainer(props) {
+    var _this;
+
+    _classCallCheck(this, RentalFormContainer);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RentalFormContainer).call(this, props));
+    _this.state = {
+      name: "",
+      logo: "",
+      url: "",
+      usuario: "",
+      password: "",
+      mainContact: {
+        firstName: "",
+        lastName: "",
+        email: ""
+      },
+      commissionScheme: ""
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(RentalFormContainer, [{
+    key: "handleSubmit",
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      Object(_store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__["registerRental"])(this.state);
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      console.log(this.state);
+
+      switch (event.target.name) {
+        case "NombreEmpresa":
+          this.setState({
+            name: event.target.value
+          });
+          break;
+
+        case "Logo":
+          this.setState({
+            name: event.target.value
+          });
+          this.setState({
+            logo: event.target.value
+          });
+          break;
+
+        case "APIurl":
+          this.setState({
+            url: event.target.value
+          });
+          break;
+
+        case "usuario":
+          this.setState({
+            usuario: event.target.value
+          });
+          break;
+
+        case "password":
+          this.setState({
+            password: event.target.value
+          });
+          break;
+
+        case "firstName":
+          var firstName = event.target.value;
+          this.setState(function (prevState) {
+            return {
+              mainContact: _objectSpread({}, prevState.mainContact, {
+                firstName: firstName
+              })
+            };
+          });
+          break;
+
+        case "lastName":
+          var lastName = event.target.value;
+          this.setState(function (prevState) {
+            return {
+              mainContact: _objectSpread({}, prevState.mainContact, {
+                lastName: lastName
+              })
+            };
+          });
+          break;
+
+        case "Email":
+          var email = event.target.value;
+          this.setState(function (prevState) {
+            return {
+              mainContact: _objectSpread({}, prevState.mainContact, {
+                email: email
+              })
+            };
+          });
+          break;
+
+        case "EsquemaDeComisiones":
+          this.setState({
+            commissionScheme: event.target.value
+          });
+          break;
+
+        default:
+          console.log("aca no pasó nada");
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        handleChange: this.handleChange,
+        handleSubmit: this.handleSubmit
+      });
+    }
+  }]);
+
+  return RentalFormContainer;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {// history: state.cart.history
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {// fetchHistory: () => dispatch(fetchHistory())
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(RentalFormContainer));
 
 /***/ }),
 
@@ -42101,6 +42376,29 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./src/store/actions/addRental.js":
+/*!****************************************!*\
+  !*** ./src/store/actions/addRental.js ***!
+  \****************************************/
+/*! exports provided: registerRental */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerRental", function() { return registerRental; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var registerRental = function registerRental(rental) {
+  //dispatch =>{
+  console.log("hola");
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/registerRental", rental).then(function (res) {
+    return res.data;
+  });
+};
+
+/***/ }),
+
 /***/ "./src/store/index.js":
 /*!****************************!*\
   !*** ./src/store/index.js ***!
@@ -42135,7 +42433,15 @@ var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEB
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({}));
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({})); // export default combineReducers({
+//     logged: userReducer,
+//     products: productListReducer,
+//     singleProductData: singleProductDataReducer,
+//     categories: categoriesReducer,
+//     cart: cartReducer,
+//     users: usersReducer,
+//     orders: ordersReducer
+//   });
 
 /***/ })
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from '@material-ui/core/Button';
-import EsquemaComisiones from './comisiones/EsquemaComision'
+import EsquemaComisiones from '../comisiones/EsquemaComision'
 import ContactosPrincipales from './ContactosPrincipales'
 import DatosBancarios from './DatosBanco'
 

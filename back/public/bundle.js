@@ -6059,6 +6059,35 @@ function useForkRef(refA, refB) {
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/AccountBalance.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/icons/AccountBalance.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
+}), 'AccountBalance');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/Done.js":
 /*!*************************************************!*\
   !*** ./node_modules/@material-ui/icons/Done.js ***!
@@ -6112,6 +6141,35 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/crea
 var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
   d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"
 }), 'MonetizationOn');
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/icons/Phone.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@material-ui/icons/Phone.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
+  d: "M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
+}), 'Phone');
 
 exports.default = _default;
 
@@ -56353,6 +56411,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _reservationForm_reservationForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reservationForm/reservationForm */ "./src/reservationForm/reservationForm.jsx");
 /* harmony import */ var _RentalForm_RentalFormContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RentalForm/RentalFormContainer */ "./src/RentalForm/RentalFormContainer.jsx");
+/* harmony import */ var _abmEmpresas_AbmEmpresasContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./abmEmpresas/AbmEmpresasContainer */ "./src/abmEmpresas/AbmEmpresasContainer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -56379,6 +56438,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Main =
 /*#__PURE__*/
 function (_React$Component) {
@@ -56401,6 +56461,12 @@ function (_React$Component) {
         path: "/registerRental",
         render: function render() {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalForm_RentalFormContainer__WEBPACK_IMPORTED_MODULE_4__["default"], null);
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/abmempresas",
+        render: function render() {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_abmEmpresas_AbmEmpresasContainer__WEBPACK_IMPORTED_MODULE_5__["default"], null);
         }
       })));
     }
@@ -56507,7 +56573,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RentalFormComponent */ "./src/RentalForm/RentalFormComponent.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/addRental */ "./src/store/actions/addRental.js");
-/* harmony import */ var _abmEmpresas_comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../abmEmpresas/comisiones/EsquemaComision */ "./src/abmEmpresas/comisiones/EsquemaComision.jsx");
+/* harmony import */ var _abmEmpresas_AbmEmpresasContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../abmEmpresas/AbmEmpresasContainer */ "./src/abmEmpresas/AbmEmpresasContainer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -56730,7 +56796,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleChange: this.handleChange,
         handleSubmit: this.handleSubmit
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_abmEmpresas_comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_abmEmpresas_AbmEmpresasContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
         handleChange: this.handleChange
       }));
     }
@@ -56753,66 +56819,23 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./src/abmEmpresas/comisiones/BuscarEsquema.jsx":
-/*!******************************************************!*\
-  !*** ./src/abmEmpresas/comisiones/BuscarEsquema.jsx ***!
-  \******************************************************/
+/***/ "./src/abmEmpresas/AbmEmpresasContainer.jsx":
+/*!**************************************************!*\
+  !*** ./src/abmEmpresas/AbmEmpresasContainer.jsx ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NuevoEsquema; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
-
-
-
-
-function NuevoEsquema(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    xs: 12,
-    sm: 6
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    placeholder: "Nombre o ID del esquema"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    xs: 6,
-    sm: 6
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"], null, "Buscar")));
-}
-
-/***/ }),
-
-/***/ "./src/abmEmpresas/comisiones/ComisionesContainer.jsx":
-/*!************************************************************!*\
-  !*** ./src/abmEmpresas/comisiones/ComisionesContainer.jsx ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Comisiones; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _BuscarEsquema__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BuscarEsquema */ "./src/abmEmpresas/comisiones/BuscarEsquema.jsx");
-/* harmony import */ var _NuevoEsquema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NuevoEsquema */ "./src/abmEmpresas/comisiones/NuevoEsquema.jsx");
-/* harmony import */ var _FormEsquema__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormEsquema */ "./src/abmEmpresas/comisiones/FormEsquema.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _AbmForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AbmForm */ "./src/abmEmpresas/AbmForm.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -56822,9 +56845,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -56836,76 +56859,155 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var Comisiones =
+var Empresas =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Comisiones, _React$Component);
+  _inherits(Empresas, _React$Component);
 
-  function Comisiones(props) {
+  function Empresas(props) {
     var _this;
 
-    _classCallCheck(this, Comisiones);
+    _classCallCheck(this, Empresas);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Comisiones).call(this, props));
-    _this.state = {
-      comisiones: [],
-      showForm: [],
-      desdeMin: 0
-    };
-    _this.addOne = _this.addOne.bind(_assertThisInitialized(_this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Empresas).call(this, props));
+    _this.state = {}; //Abajo bindeo las propiedades
+
     return _this;
   }
 
-  _createClass(Comisiones, [{
-    key: "handleAddComisions",
-    value: function handleAddComisions(obj) {
-      this.setState({
-        comisiones: [].concat(_toConsumableArray(this.state.comisiones), [obj])
-      });
-      console.log(this.state.comisiones);
-    }
-  }, {
-    key: "addOne",
-    value: function addOne(obj) {
-      if (obj != undefined) {
-        this.setState({
-          desdeMin: obj['desde'] + 1
-        });
-        this.setState({
-          comisiones: [].concat(_toConsumableArray(this.state.comisiones), [obj])
-        });
-      }
-
-      this.setState({
-        showForm: [].concat(_toConsumableArray(this.state.showForm), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormEsquema__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          desdeMin: this.state.desdeMin,
-          tierNum: this.state.showForm.length,
-          addOne: this.addOne,
-          id: Math.random()
-        })])
-      });
-      console.log(this.state);
-    }
+  _createClass(Empresas, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscarEsquema__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NuevoEsquema__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        addOne: this.addOne
-      }), this.state.showForm);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AbmForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        text: 'por props'
+      }));
     }
   }]);
 
-  return Comisiones;
+  return Empresas;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
 
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, null)(Empresas));
 
 /***/ }),
 
-/***/ "./src/abmEmpresas/comisiones/EsquemaComision.jsx":
-/*!********************************************************!*\
-  !*** ./src/abmEmpresas/comisiones/EsquemaComision.jsx ***!
-  \********************************************************/
+/***/ "./src/abmEmpresas/AbmForm.jsx":
+/*!*************************************!*\
+  !*** ./src/abmEmpresas/AbmForm.jsx ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return AbmForm; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+/* harmony import */ var _comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../comisiones/EsquemaComision */ "./src/comisiones/EsquemaComision.jsx");
+/* harmony import */ var _ContactosPrincipales__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ContactosPrincipales */ "./src/abmEmpresas/ContactosPrincipales.jsx");
+/* harmony import */ var _DatosBanco__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DatosBanco */ "./src/abmEmpresas/DatosBanco.jsx");
+
+
+
+
+
+
+
+function AbmForm(_ref) {
+  var text = _ref.text;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 12
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 12
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Datos Empresa"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Nombre o Razon Social",
+    id: "business_Name"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Descripcion",
+    id: "business_Description"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 12
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Direccion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 6
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Pais",
+    id: "business_Country"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 6
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Estado",
+    id: "business_Description"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 6
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Ciudad",
+    id: "business_Description"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 4
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Calle",
+    id: "business_Description"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 2
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    placeholder: "Numero",
+    id: "business_Description"
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 12
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Telefono"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 2
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Codigo Pais",
+    id: "business_Description"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 2
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Codigo de Area",
+    id: "business_Description"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 8
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Telefono",
+    id: "business_Description"
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      display: "inline-flex"
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactosPrincipales__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_DatosBanco__WEBPACK_IMPORTED_MODULE_6__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "submit"
+  }, "Agregar Empresa")));
+}
+
+/***/ }),
+
+/***/ "./src/abmEmpresas/ContactosPrincipales.jsx":
+/*!**************************************************!*\
+  !*** ./src/abmEmpresas/ContactosPrincipales.jsx ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -56916,14 +57018,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
 /* harmony import */ var _material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Modal */ "./node_modules/@material-ui/core/esm/Modal/index.js");
-/* harmony import */ var _material_ui_core_Chip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Chip */ "./node_modules/@material-ui/core/esm/Chip/index.js");
-/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/icons/Done */ "./node_modules/@material-ui/icons/Done.js");
-/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _material_ui_icons_MonetizationOn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/icons/MonetizationOn */ "./node_modules/@material-ui/icons/MonetizationOn.js");
-/* harmony import */ var _material_ui_icons_MonetizationOn__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MonetizationOn__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
-/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _ComisionesContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ComisionesContainer */ "./src/abmEmpresas/comisiones/ComisionesContainer.jsx");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+/* harmony import */ var _material_ui_core_Chip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Chip */ "./node_modules/@material-ui/core/esm/Chip/index.js");
+/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/icons/Done */ "./node_modules/@material-ui/icons/Done.js");
+/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_icons_Phone__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/icons/Phone */ "./node_modules/@material-ui/icons/Phone.js");
+/* harmony import */ var _material_ui_icons_Phone__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Phone__WEBPACK_IMPORTED_MODULE_6__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -56931,7 +57031,6 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -56990,6 +57089,412 @@ function SimpleModal() {
     setOpen(false);
   };
 
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Chip__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Phone__WEBPACK_IMPORTED_MODULE_6___default.a, null),
+    label: "Contactos",
+    clickable: true,
+    color: color,
+    onClick: handleOpen,
+    deleteIcon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5___default.a, null)
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    "aria-labelledby": "simple-modal-title",
+    "aria-describedby": "simple-modal-description",
+    open: open,
+    onClose: handleClose
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: modalStyle,
+    className: classes.paper
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    id: "simple-modal-title"
+  }, "Text in a modal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    id: "simple-modal-description"
+  }, "Duis mollis, est non commodo luctus, nisi erat porttitor ligula."))));
+}
+
+/***/ }),
+
+/***/ "./src/abmEmpresas/DatosBanco.jsx":
+/*!****************************************!*\
+  !*** ./src/abmEmpresas/DatosBanco.jsx ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SimpleModal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Modal */ "./node_modules/@material-ui/core/esm/Modal/index.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+/* harmony import */ var _material_ui_core_Chip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Chip */ "./node_modules/@material-ui/core/esm/Chip/index.js");
+/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/icons/Done */ "./node_modules/@material-ui/icons/Done.js");
+/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_icons_AccountBalance__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/icons/AccountBalance */ "./node_modules/@material-ui/icons/AccountBalance.js");
+/* harmony import */ var _material_ui_icons_AccountBalance__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_AccountBalance__WEBPACK_IMPORTED_MODULE_6__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+function getModalStyle() {
+  var top = 50;
+  var left = 50;
+  return {
+    top: "".concat(top, "%"),
+    left: "".concat(left, "%"),
+    transform: "translate(-".concat(top, "%, -").concat(left, "%)")
+  };
+}
+
+var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(function (theme) {
+  return {
+    paper: {
+      position: 'absolute',
+      width: '80%',
+      height: '80%',
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3)
+    }
+  };
+});
+function SimpleModal() {
+  var classes = useStyles(); // getModalStyle is not a pure function, we roll the style only on the first render
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(getModalStyle),
+      _React$useState2 = _slicedToArray(_React$useState, 1),
+      modalStyle = _React$useState2[0];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      open = _React$useState4[0],
+      setOpen = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState('default'),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      color = _React$useState6[0],
+      setColor = _React$useState6[1];
+
+  var handleOpen = function handleOpen() {
+    setOpen(true);
+    setColor('primary');
+  };
+
+  var handleClose = function handleClose() {
+    setOpen(false);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Chip__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_AccountBalance__WEBPACK_IMPORTED_MODULE_6___default.a, null),
+    label: "Datos Bancarios",
+    clickable: true,
+    color: color,
+    onClick: handleOpen,
+    deleteIcon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_5___default.a, null)
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    "aria-labelledby": "simple-modal-title",
+    "aria-describedby": "simple-modal-description",
+    open: open,
+    onClose: handleClose
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: modalStyle,
+    className: classes.paper
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    id: "simple-modal-title"
+  }, "Text in a modal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    id: "simple-modal-description"
+  }, "Duis mollis, est non commodo luctus, nisi erat porttitor ligula."))));
+}
+
+/***/ }),
+
+/***/ "./src/comisiones/BuscarEsquema.jsx":
+/*!******************************************!*\
+  !*** ./src/comisiones/BuscarEsquema.jsx ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NuevoEsquema; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+
+
+
+
+function NuevoEsquema(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 12,
+    sm: 6
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "Nombre o ID del esquema"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    xs: 6,
+    sm: 6
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"], null, "Buscar")));
+}
+
+/***/ }),
+
+/***/ "./src/comisiones/ComisionesContainer.jsx":
+/*!************************************************!*\
+  !*** ./src/comisiones/ComisionesContainer.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Comisiones; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+/* harmony import */ var _BuscarEsquema__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BuscarEsquema */ "./src/comisiones/BuscarEsquema.jsx");
+/* harmony import */ var _NuevoEsquema__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NuevoEsquema */ "./src/comisiones/NuevoEsquema.jsx");
+/* harmony import */ var _FormEsquema__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FormEsquema */ "./src/comisiones/FormEsquema.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+var Comisiones =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Comisiones, _React$Component);
+
+  function Comisiones(props) {
+    var _this;
+
+    _classCallCheck(this, Comisiones);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Comisiones).call(this, props));
+    _this.state = {
+      comisiones: [],
+      showForm: [],
+      datosEsquema: {}
+    };
+    _this.addOne = _this.addOne.bind(_assertThisInitialized(_this));
+    _this.createSchema = _this.createSchema.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Comisiones, [{
+    key: "handleAddComisions",
+    value: function handleAddComisions(obj) {
+      this.setState({
+        comisiones: [].concat(_toConsumableArray(this.state.comisiones), [obj])
+      });
+    }
+  }, {
+    key: "addOne",
+    value: function addOne(obj) {
+      if (obj != undefined) {
+        this.setState({
+          comisiones: [].concat(_toConsumableArray(this.state.comisiones), [obj])
+        }, console.log(this.state));
+      }
+
+      this.setState({
+        showForm: [].concat(_toConsumableArray(this.state.showForm), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormEsquema__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          datosEsquema: this.state.datosEsquema,
+          desdeMin: this.state.desdeMin,
+          tierNum: this.state.showForm.length,
+          addOne: this.addOne,
+          id: Math.random()
+        })])
+      });
+    }
+  }, {
+    key: "createSchema",
+    value: function createSchema(obj) {
+      var _this2 = this;
+
+      this.setState({
+        datosEsquema: obj
+      }, function () {
+        _this2.setState({
+          showForm: [].concat(_toConsumableArray(_this2.state.showForm), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormEsquema__WEBPACK_IMPORTED_MODULE_5__["default"], {
+            datosEsquema: _this2.state.datosEsquema,
+            desdeMin: _this2.state.desdeMin,
+            tierNum: _this2.state.showForm.length,
+            addOne: _this2.addOne,
+            id: Math.random()
+          })])
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      console.log(this.props);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscarEsquema__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NuevoEsquema__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        addOne: this.createSchema
+      }), this.state.showForm, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        onClick: function onClick(evt) {
+          return _this3.props.handleChange(_this3.state.comisiones);
+        }
+      }, "Submit"));
+    }
+  }]);
+
+  return Comisiones;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./src/comisiones/EsquemaComision.jsx":
+/*!********************************************!*\
+  !*** ./src/comisiones/EsquemaComision.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SimpleModal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
+/* harmony import */ var _material_ui_core_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Modal */ "./node_modules/@material-ui/core/esm/Modal/index.js");
+/* harmony import */ var _material_ui_core_Chip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Chip */ "./node_modules/@material-ui/core/esm/Chip/index.js");
+/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/icons/Done */ "./node_modules/@material-ui/icons/Done.js");
+/* harmony import */ var _material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Done__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_icons_MonetizationOn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/icons/MonetizationOn */ "./node_modules/@material-ui/icons/MonetizationOn.js");
+/* harmony import */ var _material_ui_icons_MonetizationOn__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_MonetizationOn__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _ComisionesContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ComisionesContainer */ "./src/comisiones/ComisionesContainer.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+function getModalStyle() {
+  var top = 50;
+  var left = 50;
+  return {
+    top: "".concat(top, "%"),
+    left: "".concat(left, "%"),
+    transform: "translate(-".concat(top, "%, -").concat(left, "%)")
+  };
+}
+
+var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(function (theme) {
+  return {
+    paper: {
+      position: 'absolute',
+      width: '80%',
+      height: '80%',
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3)
+    }
+  };
+});
+function SimpleModal(_ref) {
+  var handleSchema = _ref.handleSchema;
+  var classes = useStyles(); // getModalStyle is not a pure function, we roll the style only on the first render
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(getModalStyle),
+      _React$useState2 = _slicedToArray(_React$useState, 1),
+      modalStyle = _React$useState2[0];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      open = _React$useState4[0],
+      setOpen = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState('default'),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      color = _React$useState6[0],
+      setColor = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState([]),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      commisionSchema = _React$useState8[0],
+      setCommision = _React$useState8[1];
+
+  var handleOpen = function handleOpen() {
+    setOpen(true);
+    setColor('primary');
+  };
+
+  var handleClose = function handleClose() {
+    setOpen(false);
+  };
+
+  var handleChange = function handleChange(arr) {
+    handleSchema(arr);
+    setOpen(false);
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Chip__WEBPACK_IMPORTED_MODULE_3__["default"], {
     icon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_MonetizationOn__WEBPACK_IMPORTED_MODULE_5___default.a, null),
     label: "Esquema de Comisiones",
@@ -57007,15 +57512,17 @@ function SimpleModal() {
     className: classes.paper
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     id: "simple-modal-title"
-  }, "Esquema de Comisiones"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ComisionesContainer__WEBPACK_IMPORTED_MODULE_7__["default"], null))));
+  }, "Esquema de Comisiones"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ComisionesContainer__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    handleChange: handleChange
+  }))));
 }
 
 /***/ }),
 
-/***/ "./src/abmEmpresas/comisiones/FormEsquema.jsx":
-/*!****************************************************!*\
-  !*** ./src/abmEmpresas/comisiones/FormEsquema.jsx ***!
-  \****************************************************/
+/***/ "./src/comisiones/FormEsquema.jsx":
+/*!****************************************!*\
+  !*** ./src/comisiones/FormEsquema.jsx ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -57042,7 +57549,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function FormEsquma(_ref) {
   var addOne = _ref.addOne,
       tierNum = _ref.tierNum,
-      desdeMin = _ref.desdeMin;
+      datosEsquema = _ref.datosEsquema;
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -57055,15 +57562,16 @@ function FormEsquma(_ref) {
       setClicked = _React$useState4[1];
 
   var tier = {
-    tier: tierNum,
-    desde: desdeMin,
-    hasta: 0,
-    porcentaje: 0
+    Name: datosEsquema.Name,
+    FromDate: datosEsquema.FromDate,
+    ToDate: datosEsquema.ToDate,
+    From: 0,
+    To: 0,
+    CommissionPercentage: 0
   };
 
   var handleInput = function handleInput(obj) {
     tier[obj.origin] = obj.value;
-    console.log(tier);
   };
 
   var add = function add() {
@@ -57082,8 +57590,13 @@ function FormEsquma(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "number",
     placeholder: "Monto Desde",
-    disabled: true,
-    value: desdeMin
+    disabled: editable,
+    onChange: function onChange(evt) {
+      return handleInput({
+        origin: 'From',
+        value: parseInt(evt.target.value)
+      });
+    }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
     xs: 12,
     sm: 4
@@ -57093,7 +57606,7 @@ function FormEsquma(_ref) {
     disabled: editable,
     onChange: function onChange(evt) {
       return handleInput({
-        origin: 'hasta',
+        origin: 'To',
         value: parseInt(evt.target.value)
       });
     }
@@ -57108,7 +57621,7 @@ function FormEsquma(_ref) {
     disabled: editable,
     onChange: function onChange(evt) {
       return handleInput({
-        origin: 'porcentaje',
+        origin: 'CommissionPercentage',
         value: parseInt(evt.target.value)
       });
     }
@@ -57119,10 +57632,10 @@ function FormEsquma(_ref) {
 
 /***/ }),
 
-/***/ "./src/abmEmpresas/comisiones/NuevoEsquema.jsx":
-/*!*****************************************************!*\
-  !*** ./src/abmEmpresas/comisiones/NuevoEsquema.jsx ***!
-  \*****************************************************/
+/***/ "./src/comisiones/NuevoEsquema.jsx":
+/*!*****************************************!*\
+  !*** ./src/comisiones/NuevoEsquema.jsx ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -57155,8 +57668,18 @@ function NuevoEsquema(_ref) {
       setDisabled = _React$useState2[1];
 
   var clicked = function clicked() {
-    addOne();
+    addOne(datosEsquema);
     setDisabled(true);
+  };
+
+  var datosEsquema = {
+    Name: '',
+    FromDate: '',
+    ToDate: ''
+  };
+
+  var handleChange = function handleChange(obj) {
+    datosEsquema[obj.origin] = obj.value;
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -57164,19 +57687,37 @@ function NuevoEsquema(_ref) {
     sm: 3
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
-    placeholder: "Nombre del Esquema"
+    placeholder: "Nombre del Esquema",
+    onChange: function onChange(evt) {
+      return handleChange({
+        origin: 'Name',
+        value: evt.target.value
+      });
+    }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
     xs: 6,
     sm: 3
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "date",
-    placeholder: "Fecha Desde"
+    placeholder: "Fecha Desde",
+    onChange: function onChange(evt) {
+      return handleChange({
+        origin: 'FromDate',
+        value: evt.target.value
+      });
+    }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__["default"], {
     xs: 6,
     sm: 3
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "date",
-    placeholder: "Fecha Hasta"
+    placeholder: "Fecha Hasta",
+    onChange: function onChange(evt) {
+      return handleChange({
+        origin: 'ToDate',
+        value: evt.target.value
+      });
+    }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onClick: clicked,
     disabled: editable

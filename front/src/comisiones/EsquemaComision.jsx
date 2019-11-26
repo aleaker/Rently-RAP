@@ -7,7 +7,7 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import { inherits } from 'util';
 
 
-import Comisiones from './ComisionesContainer';
+import ComisionesContainer from './ComisionesContainer';
 
 function getModalStyle() {
   const top = 50;
@@ -38,9 +38,10 @@ export default function SimpleModal({handleSchema}) {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState('default')
+  const [commisionSchema, setCommision] = React.useState([])
 
 
-
+  
 
   const handleOpen = () => {
     setOpen(true);
@@ -50,9 +51,12 @@ export default function SimpleModal({handleSchema}) {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleChange = (arr) => {
-    handleSchema({target:{name: }})
+    handleSchema(arr)
+    setOpen(false)
   }
+
   return (
     <div>
 
@@ -72,7 +76,7 @@ export default function SimpleModal({handleSchema}) {
         
       ><div style={modalStyle} className={classes.paper}>
         <h2 id="simple-modal-title">Esquema de Comisiones</h2>
-        <Comisiones/>
+        <ComisionesContainer handleChange={handleChange}/>
         </div>
       </Modal>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import RentalForm from "./RentalFormComponent";
 import { connect } from "react-redux";
 import { registerRental } from "../store/actions/addRental";
-import EsquemaComisiones from "../abmEmpresas/comisiones/EsquemaComision";
+import EsquemaComisiones from "../abmEmpresas/AbmEmpresasContainer";
 
 class RentalFormContainer extends React.Component {
   constructor(props) {

@@ -1,0 +1,58 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.5.1",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "lodash": "^4.17.15",
+    "material-table": "^1.54.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "passport-facebook": "^3.0.0",
+    "react": "^16.8.3",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.8.3",
+    "react-facebook-login": "^4.1.1",
+    "react-icons": "^3.8.0",
+    "react-paginate": "^6.3.2",
+    "react-redux": "^5.1.2",
+    "react-route-hook": "^1.2.1",
+    "react-router-dom": "^4.3.1",
+    "react-snackbar-alert": "^2.1.0",
+    "react-youtube": "^7.9.0",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.7.4",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.2.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleaker/Rently-RAP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleaker/Rently-RAP/issues"
+  },
+  "homepage": "https://github.com/aleaker/Rently-RAP#readme"
+}

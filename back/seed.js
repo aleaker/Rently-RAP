@@ -7,7 +7,16 @@ const Salesperson = require("./models/Salesperson");
 const Booking = require("./models/Booking");
 const mongoose = require("mongoose");
 
-Commission.find().then(e => console.log(e));
+// Commission.find().then(e => console.log(e));
+
+Commission.find().then(commissions => {
+  return commissions.map(com => {
+    Company.update(
+      { _id: com.Company },
+      { $push: { CommissionScheme: com._id } }
+    );
+  });
+});
 
 // Promise.all([
 //   RentlyAdmin.create({ Email: "hanoi@hanoi.com", Password: "MongoHanoi" }),

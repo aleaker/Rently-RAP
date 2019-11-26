@@ -8,6 +8,7 @@ const validateEmail = function(email) {
 };
 
 const CarRental = new Schema({
+  Active: { type: Boolean, default: true },
   Name: { type: String, required: true },
   Logo: { type: String, required: true },
   Url: { type: String }, //viene de la api

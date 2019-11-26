@@ -7,6 +7,7 @@ const validateEmail = function(email) {
 };
 
 const Company = new Schema({
+  Active: { type: Boolean, default: true },
   CompanyName: { type: String, required: true },
   Description: { type: String, required: true },
   Address: { type: String, required: true },

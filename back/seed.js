@@ -269,64 +269,64 @@ Commission.find().then(commissions => {
 //           Type: "3"
 //         }
 //       },
-//       {
-//         CompanyName: "JuanmaInc",
-//         Description: "Juanma owns this company",
-//         Adress: "Av. JuanmaInc 123",
-//         Country: "Argentina",
-//         Telephone: "61059032",
-//         MainContact: {
-//           FirstName: "Juanma",
-//           LastName: "Juanma LastName",
-//           IdType: "Cedula",
-//           IdNumber: "61059032",
-//           Email: "Juanma@Juanma.com"
-//         },
-//         BankAccountInfo: {
-//           Bank: "Banco",
-//           AccountType: "Bla",
-//           AccountNumber: "61059032",
-//           Curency: "Pesos ARG",
-//           SwiffCore: "que"
-//         },
-//         Commission: {
-//           Company: "JuanmaInc",
-//           From: 10.0,
-//           To: 30.0,
-//           ToDate: 2019 - 09 - 06,
-//           FromDate: 2019 - 12 - 06,
-//           Type: "4"
-//         }
-//       },
-//       {
-//         CompanyName: "LianInc",
-//         Description: "Lian owns this company",
-//         Adress: "Av. LianInc 123",
-//         Country: "Argentina",
-//         Telephone: "61059032",
-//         MainContact: {
-//           FirstName: "Lian",
-//           LastName: "Lian LastName",
-//           IdType: "Cedula",
-//           IdNumber: "61059032",
-//           Email: "Lian@Lian.com"
-//         },
-//         BankAccountInfo: {
-//           Bank: "Banco",
-//           AccountType: "Bla",
-//           AccountNumber: "61059032",
-//           Curency: "Pesos ARG",
-//           SwiffCore: "que"
-//         },
-//         Commission: {
-//           Company: "LianInc",
-//           From: 10.0,
-//           To: 30.0,
-//           ToDate: 2019 - 09 - 06,
-//           FromDate: 2019 - 12 - 06,
-//           Type: "5"
-//         }
-//       }
+// {
+//   CompanyName: "JuanmaInc",
+//   Description: "Juanma owns this company",
+//   Adress: "Av. JuanmaInc 123",
+//   Country: "Argentina",
+//   Telephone: "61059032",
+//   MainContact: {
+//     FirstName: "Juanma",
+//     LastName: "Juanma LastName",
+//     IdType: "Cedula",
+//     IdNumber: "61059032",
+//     Email: "Juanma@Juanma.com"
+//   },
+//   BankAccountInfo: {
+//     Bank: "Banco",
+//     AccountType: "Bla",
+//     AccountNumber: "61059032",
+//     Curency: "Pesos ARG",
+//     SwiffCore: "que"
+//   },
+//   Commission: {
+//     Company: "JuanmaInc",
+//     From: 10.0,
+//     To: 30.0,
+//     ToDate: 2019 - 09 - 06,
+//     FromDate: 2019 - 12 - 06,
+//     Type: "4"
+//   }
+// },
+// {
+//   CompanyName: "LianInc",
+//   Description: "Lian owns this company",
+//   Adress: "Av. LianInc 123",
+//   Country: "Argentina",
+//   Telephone: "61059032",
+//   MainContact: {
+//     FirstName: "Lian",
+//     LastName: "Lian LastName",
+//     IdType: "Cedula",
+//     IdNumber: "61059032",
+//     Email: "Lian@Lian.com"
+//   },
+//   BankAccountInfo: {
+//     Bank: "Banco",
+//     AccountType: "Bla",
+//     AccountNumber: "61059032",
+//     Curency: "Pesos ARG",
+//     SwiffCore: "que"
+//   },
+//   Commission: {
+//     Company: "LianInc",
+//     From: 10.0,
+//     To: 30.0,
+//     ToDate: 2019 - 09 - 06,
+//     FromDate: 2019 - 12 - 06,
+//     Type: "5"
+//   }
+// }
 //     ]
 //   },
 //   {

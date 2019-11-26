@@ -7,6 +7,7 @@ const validateEmail = function(email) {
 };
 
 const Booking = new Schema({
+  Status: { type: String },
   BookingId: { type: Number },
   CarRental: { type: Schema.Types.ObjectId, ref: "CarRental" },
   CustomerData: {

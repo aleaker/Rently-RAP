@@ -8,23 +8,22 @@ const validateEmail = function(email) {
 
 const Company = new Schema({
   Active: { type: Boolean, default: true },
-  CompanyName: { type: String, required: true },
-  Description: { type: String, required: true },
-  Address: { type: String, required: true },
-  Country: { type: String, required: true },
-  Telephone: { type: String, required: true },
+  CompanyName: { type: String },
+  Description: { type: String },
+  Address: { type: String },
+  Country: { type: String },
+  Telephone: { type: String },
   MainContact: {
-    FirstName: { type: String, required: true },
+    FirstName: { type: String },
     LastName: { type: String },
-    IdType: { type: String, required: true },
-    IdNum: { type: String, required: true },
+    IdType: { type: String },
+    IdNum: { type: String },
     Email: {
       type: String,
       unique: true,
       trim: true,
       lowercase: true,
       unique: true,
-      required: true,
       validate: [validateEmail, "Please fill a valid email address"],
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,

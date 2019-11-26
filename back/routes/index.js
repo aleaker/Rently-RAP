@@ -3,24 +3,45 @@ const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
 const registerRentalRouter = require("./registerRental");
 const Company = require("../models/Company");
+const CarRental = require("../models/CarRental");
+const CompanyAdmin = require("../models/CompanyAdmin");
+const Commission = require("../models/Commission");
+const Salesperson = require("../models/Salesperson");
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/registerRental", registerRentalRouter);
 
 router.post("/rently", (req, res) => {
-  const { Username, Password } = req.body;
-  console.log("req.body", req.body);
-  console.log("Entro a /rently");
-  var rentlyAdmin = new RentlyAdmin({ Username, Password });
-  rentlyAdmin.Username = req.body.Username;
-  rentlyAdmin.Password = rentlyAdmin.encryptPassword(req.body.Password);
-  console.log("Creando el Rently Admmin", rentlyAdmin);
-  rentlyAdmin
-    .save()
-    .then(rentlyAdmin => res.send(rentlyAdmin))
-    .then(console.log("RentlyAdmin guardado, ESTE ES EL REQ.BODY:", req.body));
+  const rentlyAdmin = new RentlyAdmin(req.body);
+  rentlyAdmin.save().then(console.log("RentlyAdmin guardado"));
 });
-router.post("/company", async (req, res) => {
+
+router.post("/company", (req, res) => {
+  const newcompany = new Company(req.body);
+  newcompany.save().then(console.log("Compania guardada"));
+});
+
+router.post("/companyAdmin", (req, res) => {
+  const newcompanyadmin = new CompanyAdmin(req.body);
+  newcompanyadmin.save().then(console.log("CompanyAdmin guardado"));
+});
+
+router.post("/carRental", (req, res) => {
+  const newrentadora = new CarRental(req.body);
+  newrentadora.save().then(console.log("Rentadora guardada"));
+});
+
+router.post("/commission", (req, res) => {
+  const newcommission = new Commission(req.body);
+  newcommission.save().then(console.log("Comision guardada"));
+});
+
+router.post("/salesperson", (req, res) => {
+  const newsalesperson = new Salesperson(req.body);
+  newsalesperson.save().then(console.log("Vendedor guardado"));
+});
+
+/*router.post("/company", async (req, res) => {
   const {
     CompanyName,
     Description,
@@ -51,16 +72,34 @@ router.post("/company", async (req, res) => {
   //envio un json q me dice q se guardo
 });
 
-router.post("/companyAdmin", (req, res) => {});
+router.post("/companyAdmin", async (req, res) => {
+  const { Email, Active, Password, Company } = req.body;
+  //voy a recibir por req.body todas estas cosas
+  const newcompanyadmin = new CompanyAdmin({
+    Email,
+    Active,
+    Password,
+    Company
+  });
+  //con eso voy a crear un nuevo company admin usando el modelo de CompanyAdmin
+  await newcompanyadmin.save();
+  // con .save guardo ese new company admin en la base de datos
+  res.json({ status: "CompanyAdmin Saved" });
+  //envio un json q me dice q se guardo
+});
 
 router.post("/commission", (req, res) => {});
 
-router.post("/carRental", (req, res) => {});
+router.post("/carRental", (req, resp) => {
+  CarRental.create(req.body);
+});
 
 router.post("/salesperson", (req, res) => {});
 
 router.post("/booking", (req, res) => {});
 
 router.use("/token", tokenRouter);
+
+*/
 
 module.exports = router;

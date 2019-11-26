@@ -9,19 +9,18 @@ const validateEmail = function(email) {
 
 const CompanyAdmin = new Schema({
   Active: { type: Boolean, default: true },
-  email: {
+  Email: {
     type: String,
     unique: true,
     trim: true,
     lowercase: true,
-    required: true,
     validate: [validateEmail, "Please fill a valid email address"],
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address"
     ]
   },
-  Password: { type: String, required: true, default: "admin" },
+  Password: { type: String, default: "admin" },
   Company: { type: Schema.Types.ObjectId, ref: "Company" }
 });
 

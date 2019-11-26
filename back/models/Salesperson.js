@@ -14,14 +14,13 @@ const Salesperson = new Schema({
     unique: true,
     trim: true,
     lowercase: true,
-    required: "Email address is required",
     validate: [validateEmail, "Please fill a valid email address"],
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address"
     ]
   },
-  Password: { type: String, required: true, default: "salesperson" },
+  Password: { type: String, default: "salesperson" },
   FirstName: { type: String, required: true },
   LastName: { type: String, required: true },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },

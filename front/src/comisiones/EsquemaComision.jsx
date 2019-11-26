@@ -51,7 +51,7 @@ export default function SimpleModal({handleSchema}) {
   };
 
   const handleChange = (arr) => {
-    handleSchema(arr)
+    handleSchema({target:{name: 'EsquemaDeComisiones', value:arr}})
     setOpen(false)
   }
 

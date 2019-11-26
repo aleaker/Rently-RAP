@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("../config/db");
 const { Schema } = mongoose;
 
 const validateEmail = function(email) {
@@ -7,17 +7,16 @@ const validateEmail = function(email) {
 };
 
 const Booking = new Schema({
-  BookingId: { type: Number, required: true },
+  BookingId: { type: Number },
   CarRental: { type: Schema.Types.ObjectId, ref: "CarRental" },
   CustomerData: {
-    FirstName: { type: String, required: true },
-    LastName: { type: String, required: true },
-    Telephone: { type: String, required: true },
+    FirstName: { type: String },
+    LastName: { type: String },
+    Telephone: { type: String },
     Email: {
       type: String,
       trim: true,
       lowercase: true,
-      required: true,
       validate: [validateEmail, "Please fill a valid email address"],
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -33,11 +32,11 @@ const Booking = new Schema({
   },
   CompanyCommissionAmount: { type: Schema.Types.ObjectId, ref: "Commission" }, //monto a cobrar x la empresa
   RentlyCommissionAmount: { type: Schema.Types.ObjectId, ref: "Commission" }, //monto a comisionar x la plataforma
-  FromDate: { type: Date, required: true },
-  ToDate: { type: Date, required: true },
-  Pickup: { type: String, required: true },
-  Dropoff: { type: String, required: true },
-  Price: { type: Number, required: true }
+  FromDate: { type: Date },
+  ToDate: { type: Date },
+  Pickup: { type: String },
+  Dropoff: { type: String },
+  Price: { type: Number }
 });
 
 module.exports = mongoose.model("Booking", Booking);

@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-import { validateEmail } from "./Company";
 const bcrypt = require("bcrypt-nodejs");
+
+const validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
 
 const CarRental = new Schema({
   Name: { type: String, required: true },

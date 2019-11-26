@@ -2,10 +2,11 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import {connect} from 'react-redux'
+import { Provider } from 'react-redux'
+import store from './store/index'
 
 // Imports de Containers
-import Reservation from './reservationForm/reservationForm'
-
+import AbmEmpresasContainer from './abmEmpresas/AbmEmpresasContainer'
 
 class Main extends React.Component {
   constructor(props) {
@@ -16,9 +17,9 @@ class Main extends React.Component {
 
   render() {
     return (
-          <div>  
-            <Reservation/>
-          </div>
+          
+            <AbmEmpresasContainer/>
+           
     );
   }
 }

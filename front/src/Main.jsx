@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
+import AbmEmpresasContainer from './abmEmpresas/AbmEmpresasContainer'
 
 class Main extends React.Component {
   constructor(props) {
@@ -24,6 +25,9 @@ class Main extends React.Component {
             path="/registerRental"
             render={() => <RentalFormContainer />}
           />
+          <Route
+          exact path='/abmempresas'
+          render={()=> <AbmEmpresasContainer/>}/>
         </Switch>
       </div>
     );

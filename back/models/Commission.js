@@ -1,14 +1,16 @@
 const mongoose = require("../config/db");
 const { Schema } = mongoose;
 
+//Si no funciona fue Hanoi
 const Commission = new Schema({
-  Company: { type: Schema.Types.ObjectId, ref: "Company" },
+  Company: [{ type: Schema.Types.ObjectId, ref: "Company" }],
   From: { type: Number },
   To: { type: Number },
   CommissionPercentage: { type: Number },
   FromDate: { type: Date },
   ToDate: { type: Date },
-  Type: { type: String }
+  Type: { type: String },
+  Name: { type: String}
 });
 
 module.exports = mongoose.model("Commission", Commission);

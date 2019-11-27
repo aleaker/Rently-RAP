@@ -7,171 +7,177 @@ const Salesperson = require("./models/Salesperson");
 const Booking = require("./models/Booking");
 const mongoose = require("mongoose");
 
-Commission.find().then(e => console.log(e));
+Commission.find().then(commissions => {
+  return commissions.map(com => {
+    Company.update(
+      { _id: com.Company },
+      { $push: { CommissionScheme: com._id } }
+    );
+  });
+});
 
-// Promise.all([
-//   RentlyAdmin.create({ Email: "hanoi@hanoi.com", Password: "MongoHanoi" }),
-//   RentlyAdmin.create({ Email: "lian@lian.com", Password: "MongoLian" }),
-//   RentlyAdmin.create({ Email: "alejo@alejo.com", Password: "MongoAlejo" }),
-//   RentlyAdmin.create({ Email: "juanma@juanma.com", Password: "MongoJuanma" }),
-//   RentlyAdmin.create({ Email: "joaco@joaco.com", Password: "MongoJoaco" })
-// ]).then(([hanoi, lian, alejo, juanma, joaco]) =>
-//   console.log(hanoi, lian, alejo, juanma, joaco)
-// );
+Promise.all([
+  RentlyAdmin.create({ Email: "hanoi@hanoi.com", Password: "MongoHanoi" }),
+  RentlyAdmin.create({ Email: "lian@lian.com", Password: "MongoLian" }),
+  RentlyAdmin.create({ Email: "alejo@alejo.com", Password: "MongoAlejo" }),
+  RentlyAdmin.create({ Email: "juanma@juanma.com", Password: "MongoJuanma" }),
+  RentlyAdmin.create({ Email: "joaco@joaco.com", Password: "MongoJoaco" })
+]).then(([hanoi, lian, alejo, juanma, joaco]) =>
+  console.log(hanoi, lian, alejo, juanma, joaco)
+);
 
-// Promise.all([
-//   Company.create({
-//     CompanyName: "HanoiInc",
-//     Description: "Hanoi owns this company",
-//     Address: "Av. HanoiInc 123",
-//     Country: "Argentina",
-//     Telephone: "61059032",
-//     MainContact: {
-//       FirstName: "Hanoi",
-//       LastName: "Hanoi LastName",
-//       IdType: "Cedula",
-//       IdNum: "61059032",
-//       Email: "hanoi@hanoi.com"
-//     },
-//     BankAccountInfo: {
-//       Bank: "Banco",
-//       AccountType: "Bla",
-//       AccountNumber: "61059032",
-//       Curency: "Pesos ARG",
-//       SwiffCore: "que"
-//     }
-//   }),
-//   Company.create({
-//     CompanyName: "AleInc",
-//     Description: "Ale owns this company",
-//     Address: "Av. AleInc 123",
-//     Country: "Argentina",
-//     Telephone: "61059032",
-//     MainContact: {
-//       FirstName: "Ale",
-//       LastName: "Ale LastName",
-//       IdType: "Cedula",
-//       IdNum: "61059032",
-//       Email: "Ale@Ale.com"
-//     },
-//     BankAccountInfo: {
-//       Bank: "Banco",
-//       AccountType: "Bla",
-//       AccountNumber: "61059032",
-//       Curency: "Pesos ARG",
-//       SwiffCore: "que"
-//     }
-//   }),
-//   Company.create({
-//     CompanyName: "JoacoInc",
-//     Description: "Joaco owns this company",
-//     Address: "Av. JoacoInc 123",
-//     Country: "Argentina",
-//     Telephone: "61059032",
-//     MainContact: {
-//       FirstName: "Joaco",
-//       LastName: "Joaco LastName",
-//       IdType: "Cedula",
-//       IdNum: "61059032",
-//       Email: "Joaco@Joaco.com"
-//     },
-//     BankAccountInfo: {
-//       Bank: "Banco",
-//       AccountType: "Bla",
-//       AccountNumber: "61059032",
-//       Curency: "Pesos ARG",
-//       SwiffCore: "que"
-//     }
-//   }),
-//   Company.create({
-//     CompanyName: "JuanmaInc",
-//     Description: "Juanma owns this company",
-//     Address: "Av. JuanmaInc 123",
-//     Country: "Argentina",
-//     Telephone: "61059032",
-//     MainContact: {
-//       FirstName: "Juanma",
-//       LastName: "Juanma LastName",
-//       IdType: "Cedula",
-//       IdNum: "61059032",
-//       Email: "Juanma@Juanma.com"
-//     },
-//     BankAccountInfo: {
-//       Bank: "Banco",
-//       AccountType: "Bla",
-//       AccountNumber: "61059032",
-//       Curency: "Pesos ARG",
-//       SwiffCore: "que"
-//     }
-//   }),
-//   Company.create({
-//     CompanyName: "LianInc",
-//     Description: "Lian owns this company",
-//     Address: "Av. LianInc 123",
-//     Country: "Argentina",
-//     Telephone: "61059032",
-//     MainContact: {
-//       FirstName: "Lian",
-//       LastName: "Lian LastName",
-//       IdType: "Cedula",
-//       IdNum: "61059032",
-//       Email: "Lian@Lian.com"
-//     },
-//     BankAccountInfo: {
-//       Bank: "Banco",
-//       AccountType: "Bla",
-//       AccountNumber: "61059032",
-//       Curency: "Pesos ARG",
-//       SwiffCore: "que"
-//     }
-//   })
-// ]).then(
-//   ([companyHanoi, companyAle, companyJoaco, companyJuanma, companyLian]) => {
-//     console.log(companyHanoi, companyAle);
-//     Commission.create(
-//       {
-//         Company: companyLian._id,
-//         From: 10000,
-//         To: 30000,
-//         ToDate: Date("2019-12-07"),
-//         fromDate: Date("2019-06-07"),
-//         Type: "5"
-//       },
-//       {
-//         Company: companyJuanma._id,
-//         From: 10000,
-//         To: 30000,
-//         ToDate: Date("2019-12-07"),
-//         fromDate: Date("2019-06-07"),
-//         Type: "4"
-//       },
-//       {
-//         Company: companyJoaco._id,
-//         From: 10000,
-//         To: 30000,
-//         ToDate: Date("2019-12-07"),
-//         fromDate: Date("2019-06-07"),
-//         Type: "3"
-//       },
-//       {
-//         Company: companyAle._id,
-//         From: 10000,
-//         To: 30000,
-//         ToDate: Date("2019-12-07"),
-//         fromDate: Date("2019-06-07"),
-//         Type: "2"
-//       },
-//       {
-//         Company: companyHanoi._id,
-//         From: 10000,
-//         To: 30000,
-//         ToDate: Date("2019-12-07"),
-//         fromDate: Date("2019-06-07"),
-//         Type: "1"
-//       }
-//     );
-//   }
-// );
+Promise.all([
+  Company.create({
+    CompanyName: "HanoiInc",
+    Description: "Hanoi owns this company",
+    Address: "Av. HanoiInc 123",
+    Country: "Argentina",
+    Telephone: "61059032",
+    MainContact: {
+      FirstName: "Hanoi",
+      LastName: "Hanoi LastName",
+      IdType: "Cedula",
+      IdNum: "61059032",
+      Email: "hanoi@hanoi.com"
+    },
+    BankAccountInfo: {
+      Bank: "Banco",
+      AccountType: "Bla",
+      AccountNumber: "61059032",
+      Curency: "Pesos ARG",
+      SwiffCore: "que"
+    }
+  }),
+  Company.create({
+    CompanyName: "AleInc",
+    Description: "Ale owns this company",
+    Address: "Av. AleInc 123",
+    Country: "Argentina",
+    Telephone: "61059032",
+    MainContact: {
+      FirstName: "Ale",
+      LastName: "Ale LastName",
+      IdType: "Cedula",
+      IdNum: "61059032",
+      Email: "Ale@Ale.com"
+    },
+    BankAccountInfo: {
+      Bank: "Banco",
+      AccountType: "Bla",
+      AccountNumber: "61059032",
+      Curency: "Pesos ARG",
+      SwiffCore: "que"
+    }
+  }),
+  Company.create({
+    CompanyName: "JoacoInc",
+    Description: "Joaco owns this company",
+    Address: "Av. JoacoInc 123",
+    Country: "Argentina",
+    Telephone: "61059032",
+    MainContact: {
+      FirstName: "Joaco",
+      LastName: "Joaco LastName",
+      IdType: "Cedula",
+      IdNum: "61059032",
+      Email: "Joaco@Joaco.com"
+    },
+    BankAccountInfo: {
+      Bank: "Banco",
+      AccountType: "Bla",
+      AccountNumber: "61059032",
+      Curency: "Pesos ARG",
+      SwiffCore: "que"
+    }
+  }),
+  Company.create({
+    CompanyName: "JuanmaInc",
+    Description: "Juanma owns this company",
+    Address: "Av. JuanmaInc 123",
+    Country: "Argentina",
+    Telephone: "61059032",
+    MainContact: {
+      FirstName: "Juanma",
+      LastName: "Juanma LastName",
+      IdType: "Cedula",
+      IdNum: "61059032",
+      Email: "Juanma@Juanma.com"
+    },
+    BankAccountInfo: {
+      Bank: "Banco",
+      AccountType: "Bla",
+      AccountNumber: "61059032",
+      Curency: "Pesos ARG",
+      SwiffCore: "que"
+    }
+  }),
+  Company.create({
+    CompanyName: "LianInc",
+    Description: "Lian owns this company",
+    Address: "Av. LianInc 123",
+    Country: "Argentina",
+    Telephone: "61059032",
+    MainContact: {
+      FirstName: "Lian",
+      LastName: "Lian LastName",
+      IdType: "Cedula",
+      IdNum: "61059032",
+      Email: "Lian@Lian.com"
+    },
+    BankAccountInfo: {
+      Bank: "Banco",
+      AccountType: "Bla",
+      AccountNumber: "61059032",
+      Curency: "Pesos ARG",
+      SwiffCore: "que"
+    }
+  })
+]).then(
+  ([companyHanoi, companyAle, companyJoaco, companyJuanma, companyLian]) => {
+    Commission.create(
+      {
+        Company: companyLian._id,
+        From: 10000,
+        To: 30000,
+        ToDate: Date("2019-12-07"),
+        fromDate: Date("2019-06-07"),
+        Type: "5"
+      },
+      {
+        Company: companyJuanma._id,
+        From: 10000,
+        To: 30000,
+        ToDate: Date("2019-12-07"),
+        fromDate: Date("2019-06-07"),
+        Type: "4"
+      },
+      {
+        Company: companyJoaco._id,
+        From: 10000,
+        To: 30000,
+        ToDate: Date("2019-12-07"),
+        fromDate: Date("2019-06-07"),
+        Type: "3"
+      },
+      {
+        Company: companyAle._id,
+        From: 10000,
+        To: 30000,
+        ToDate: Date("2019-12-07"),
+        fromDate: Date("2019-06-07"),
+        Type: "2"
+      },
+      {
+        Company: companyHanoi._id,
+        From: 10000,
+        To: 30000,
+        ToDate: Date("2019-12-07"),
+        fromDate: Date("2019-06-07"),
+        Type: "1"
+      }
+    );
+  }
+);
 
 //SEGUIR A PARTIR DE ACAAAAAAA
 
@@ -260,64 +266,64 @@ Commission.find().then(e => console.log(e));
 //           Type: "3"
 //         }
 //       },
-//       {
-//         CompanyName: "JuanmaInc",
-//         Description: "Juanma owns this company",
-//         Adress: "Av. JuanmaInc 123",
-//         Country: "Argentina",
-//         Telephone: "61059032",
-//         MainContact: {
-//           FirstName: "Juanma",
-//           LastName: "Juanma LastName",
-//           IdType: "Cedula",
-//           IdNumber: "61059032",
-//           Email: "Juanma@Juanma.com"
-//         },
-//         BankAccountInfo: {
-//           Bank: "Banco",
-//           AccountType: "Bla",
-//           AccountNumber: "61059032",
-//           Curency: "Pesos ARG",
-//           SwiffCore: "que"
-//         },
-//         Commission: {
-//           Company: "JuanmaInc",
-//           From: 10.0,
-//           To: 30.0,
-//           ToDate: 2019 - 09 - 06,
-//           FromDate: 2019 - 12 - 06,
-//           Type: "4"
-//         }
-//       },
-//       {
-//         CompanyName: "LianInc",
-//         Description: "Lian owns this company",
-//         Adress: "Av. LianInc 123",
-//         Country: "Argentina",
-//         Telephone: "61059032",
-//         MainContact: {
-//           FirstName: "Lian",
-//           LastName: "Lian LastName",
-//           IdType: "Cedula",
-//           IdNumber: "61059032",
-//           Email: "Lian@Lian.com"
-//         },
-//         BankAccountInfo: {
-//           Bank: "Banco",
-//           AccountType: "Bla",
-//           AccountNumber: "61059032",
-//           Curency: "Pesos ARG",
-//           SwiffCore: "que"
-//         },
-//         Commission: {
-//           Company: "LianInc",
-//           From: 10.0,
-//           To: 30.0,
-//           ToDate: 2019 - 09 - 06,
-//           FromDate: 2019 - 12 - 06,
-//           Type: "5"
-//         }
-//       }
+// {
+//   CompanyName: "JuanmaInc",
+//   Description: "Juanma owns this company",
+//   Adress: "Av. JuanmaInc 123",
+//   Country: "Argentina",
+//   Telephone: "61059032",
+//   MainContact: {
+//     FirstName: "Juanma",
+//     LastName: "Juanma LastName",
+//     IdType: "Cedula",
+//     IdNumber: "61059032",
+//     Email: "Juanma@Juanma.com"
+//   },
+//   BankAccountInfo: {
+//     Bank: "Banco",
+//     AccountType: "Bla",
+//     AccountNumber: "61059032",
+//     Curency: "Pesos ARG",
+//     SwiffCore: "que"
+//   },
+//   Commission: {
+//     Company: "JuanmaInc",
+//     From: 10.0,
+//     To: 30.0,
+//     ToDate: 2019 - 09 - 06,
+//     FromDate: 2019 - 12 - 06,
+//     Type: "4"
+//   }
+// },
+// {
+//   CompanyName: "LianInc",
+//   Description: "Lian owns this company",
+//   Adress: "Av. LianInc 123",
+//   Country: "Argentina",
+//   Telephone: "61059032",
+//   MainContact: {
+//     FirstName: "Lian",
+//     LastName: "Lian LastName",
+//     IdType: "Cedula",
+//     IdNumber: "61059032",
+//     Email: "Lian@Lian.com"
+//   },
+//   BankAccountInfo: {
+//     Bank: "Banco",
+//     AccountType: "Bla",
+//     AccountNumber: "61059032",
+//     Curency: "Pesos ARG",
+//     SwiffCore: "que"
+//   },
+//   Commission: {
+//     Company: "LianInc",
+//     From: 10.0,
+//     To: 30.0,
+//     ToDate: 2019 - 09 - 06,
+//     FromDate: 2019 - 12 - 06,
+//     Type: "5"
+//   }
+// }
 //     ]
 //   },
 //   {

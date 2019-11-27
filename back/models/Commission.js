@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const Commission = new Schema({
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
+  Name: {type: String},
   From: { type: Number },
   To: { type: Number },
   CommissionPercentage: { type: Number },

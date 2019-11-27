@@ -1,6 +1,6 @@
 const mongoose = require("../config/db");
 const { Schema } = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt-nodejs")
 const SALT_WORK_FACTOR = 10;
 
 const validateEmail = function(email) {

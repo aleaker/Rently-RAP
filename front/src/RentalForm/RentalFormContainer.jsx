@@ -2,7 +2,7 @@ import React from "react";
 import RentalForm from "./RentalFormComponent";
 import { connect } from "react-redux";
 import { registerRental } from "../store/actions/addRental";
-import EsquemaComisione from "../comisiones/EsquemaComision";
+import EsquemaComisiones from "../comisiones/EsquemaComision";
 
 class RentalFormContainer extends React.Component {
   constructor(props) {
@@ -140,7 +140,7 @@ class RentalFormContainer extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <EsquemaComisione handleSchema={this.handleChange} />
+        <EsquemaComisiones handleSchema={this.handleChange} />
       </div>
     );
   }

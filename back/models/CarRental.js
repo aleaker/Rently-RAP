@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema } = require("mongoose");
-const bcrypt = require("bcrypt-nodejs");
+const { Schema } = mongoose;
 
 const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -31,13 +30,5 @@ const CarRental = new Schema({
   },
   CommissionScheme: { type: Schema.Types.ObjectId, ref: "Commission" }
 });
-
-CarRental.methods.encryptPassword = password => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-};
-
-CarRental.methods.comparePassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
-};
 
 module.exports = mongoose.model("CarRental", CarRental);

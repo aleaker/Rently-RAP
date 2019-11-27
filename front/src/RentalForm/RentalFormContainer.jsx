@@ -3,8 +3,6 @@ import RentalForm from "./RentalFormComponent";
 import { connect } from "react-redux";
 import { registerRental } from "../store/actions/addRental";
 
-import EsquemaComision from '../comisiones/EsquemaComision'
-
 class RentalFormContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -85,13 +83,10 @@ class RentalFormContainer extends React.Component {
 
   render() {
     return (
-      <div>
       <RentalForm
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
       />
-      <EsquemaComision/>
-      </div>
     );
   }
 }

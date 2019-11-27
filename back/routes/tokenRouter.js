@@ -4,7 +4,7 @@ const request = require('request');
  
 const {AUTH_URL, GRANT_TYPE, CLIENT_ID, CLIENT_SECRET} = process.env
 
-router.get('/get', (req, res)=>{
+router.get('/get', cors(), (req, res)=>{
 
 
     return new Promise(resolve=>{request.post(AUTH_URL,{form:{

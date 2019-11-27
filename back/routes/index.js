@@ -35,15 +35,16 @@ router.post("/user", (req, res) => {
   res.redirect("/api/users");
 });
 
-//Actualizar data de un usuario /*ARREGLAR
+//Actualizar data de un usuario
 router.put("/user/:id", async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.params.id, user);
-  res.json(user);
+  const user = req.body;
+  await User.findByIdAndUpdate(req.params.id, user);
+  res.json({ status: "user updated" });
 });
 
 //Borrar un usuario /* ARREGLAR
 router.delete("user/:id", async (req, res) => {
-  const user = await User.findByIdAndRemove(req.params.id);
+  await User.findByIdAndRemove(req.params.id);
   res.json({ status: "user deleted" });
 });
 

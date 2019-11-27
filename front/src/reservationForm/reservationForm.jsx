@@ -20,8 +20,8 @@ class Reservation extends React.Component {
     }
     this.getCars = this.getCars.bind(this)
   }
-  componentDidMount() {
-  }
+  // componentDidMount() {
+  // }
 
   getToken(){
     axios.get('/api/token/get')

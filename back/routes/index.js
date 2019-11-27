@@ -16,26 +16,26 @@ router.use("/registerRental", registerRentalRouter);
 
 //Users
 
-//Ver todos los usuarios
+//VER LOS USUARIOS: GET http://localhost:3000/api/users
 router.get("/users", async (req, res) => {
   const users = await User.find();
   res.json(users);
 });
 
-//Ver un usuario especifico por id
+//VER UN USER POR SU ID: GET http://localhost:3000/api/user/:id
 router.get("/user/:id", async (req, res) => {
   const user = await User.findById(req.params.id);
   res.json(user);
 });
 
-//Crear un nuevo usuario
+//CREAR UN USER : POST http://localhost:3000/api/user
 router.post("/user", (req, res) => {
   User.create(req.body);
   console.log("User creado");
   res.redirect("/api/users");
 });
 
-//Actualizar data de un usuario
+//ACTUALIZAR DATA DE UN USER: PUT http://localhost:3000/api/user/:id
 router.put("/user/:id", async (req, res) => {
   const user = req.body;
   await User.findByIdAndUpdate(req.params.id, user);
@@ -51,6 +51,7 @@ router.delete("user/:id", async (req, res) => {
 //------------------------------------------------
 
 //Company
+//
 router.get("/company", async (req, res) => {
   const company = await Company.find();
   res.json(company);

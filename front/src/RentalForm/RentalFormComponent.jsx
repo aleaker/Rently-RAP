@@ -22,6 +22,7 @@ export default function({handleChange, handleSubmit}){
                 <input type="email" name="Email" onChange={event=>handleChange(event)}/>
                 <label>Esquema de comisiones: </label>
                 <input type="text" name="EsquemaDeComisiones" onChange={event=>handleChange(event)}/>
+            
                 <button type="submit">Agregar</button>
             </form>
             

@@ -29,10 +29,11 @@ const useStyles = makeStyles(theme => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    overflow: 'scroll'
   },
 }));
 
-export default function SimpleModal({handleSchema}) {
+export default function SimpleModal({handleSchema, disabled}) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -65,6 +66,7 @@ export default function SimpleModal({handleSchema}) {
         color={color}
         onClick={handleOpen}
         deleteIcon={<DoneIcon />}
+        disabled={disabled}
       />
       <Modal
         aria-labelledby="simple-modal-title"

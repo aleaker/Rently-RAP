@@ -18,7 +18,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        {/* <Reservation /> */}
+        {/* <Reservation />  */}
         <Switch>
           <Route
             exact

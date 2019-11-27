@@ -6,6 +6,7 @@ import Chip from '@material-ui/core/Chip';
 import DoneIcon from '@material-ui/icons/Done'
 import PhoneIcon from '@material-ui/icons/Phone';
 
+import AltaUsuarios from './AltaUsuarios'
 
 function getModalStyle() {
   const top = 50;
@@ -27,10 +28,11 @@ const useStyles = makeStyles(theme => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    overflow: 'scroll'
   },
 }));
 
-export default function SimpleModal() {
+export default function SimpleModal({disabled, contact, handleMainContact, UsersSchema, mainUser}) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -58,6 +60,7 @@ export default function SimpleModal() {
         color={color}
         onClick={handleOpen}
         deleteIcon={<DoneIcon />}
+        disabled={disabled}
       />
       <Modal
         aria-labelledby="simple-modal-title"
@@ -66,10 +69,8 @@ export default function SimpleModal() {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
+          <h2 id="simple-modal-title">Alta de Usuarios</h2>
+          <AltaUsuarios mainUser={mainUser}UsersSchema={UsersSchema} contact={contact} handleMainContact={handleMainContact}/>
          
         </div>
       </Modal>

@@ -8,6 +8,8 @@ const validateEmail = function(email) {
 };
 
 const CompanyAdmin = new Schema({
+  FirstName: { type: String, required: true },
+  LastName: { type: String, required: true },
   email: {
     type: String,
     unique: true,

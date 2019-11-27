@@ -1,6 +1,16 @@
 {
-  "Email":"soyunadminrently@rently.com",
-  "Password":"rentlyadmin"
+  "Active": "true",
+  "UserType":"AdminRently",
+  "Email":"eladminderently@rently.com",
+  "Password":"defaultpassword",
+  "FirstName":"Lulu",
+  "LastName":"Perez",
+  "Company":"5ddd47172edd344b3422cbe8",
+  "Telephone":"61059032",
+  "Photo":"",
+  "Notes":"Este usuario es un... ",
+  "CommissionScheme":"5ddd47172edd344b3422cbf1"
+
 }
    {
    "CompanyName": "JuanmaInc",
@@ -60,17 +70,6 @@
          "Type": "4"
        }
 
-
-   {"Email":"vendedor@vendedor.com",
-  "Password":"micontraseña",
-"Company":"5ddd8b606621db6fc3d40161",
-"FirstName":"Vendo",
-"LastName":"Cosas",
-"Telephone":"61059032",
-"Photo": "",
-"Notes":"Blablabla sobre el vendedor",
-"Commission":"5ddd923a6b574572c5fae000"
-} 
 
 {
   "Status":"Confirmada",

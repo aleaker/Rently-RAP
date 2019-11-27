@@ -15,16 +15,38 @@ router.use("/searchcars", searchCarsRouter);
 router.use("/registerRental", registerRentalRouter);
 
 //Users
+
+//Ver todos los usuarios
 router.get("/user", async (req, res) => {
   const user = await User.find();
+});
+
+//Ver un usuario especifico por id
+router.get("/user/:id", async (req, res) => {
+  const user = await User.findById(req.params.id);
   res.json(user);
 });
 
+//Crear un nuevo usuario
 router.post("/user", (req, res) => {
   User.create(req.body);
   console.log("User creado");
-  res.redirect("/api/user");
+  res.redirect("/api/users");
 });
+
+//Actualizar data de un usuario /*ARREGLAR
+router.put("/user/:id", async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.params.id, user);
+  res.json(user);
+});
+
+//Borrar un usuario /* ARREGLAR
+router.delete("user/:id", async (req, res) => {
+  const user = await User.findByIdAndRemove(req.params.id);
+  res.json({ status: "user deleted" });
+});
+
+//------------------------------------------------
 
 //Company
 router.get("/company", async (req, res) => {

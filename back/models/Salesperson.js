@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { Schema } = require(mongoose);
+const mongoose = require("../config/db");
+const { Schema } = require("mongoose");
 const bcrypt = require("bcrypt-nodejs");
 
 const validateEmail = function(email) {
@@ -8,19 +8,19 @@ const validateEmail = function(email) {
 };
 
 const Salesperson = new Schema({
+  Active: { type: Boolean, default: true },
   Email: {
     type: String,
     unique: true,
     trim: true,
     lowercase: true,
-    required: "Email address is required",
     validate: [validateEmail, "Please fill a valid email address"],
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address"
     ]
   },
-  Password: { type: String, required: true, default: "salesperson" },
+  Password: { type: String, default: "salesperson" },
   FirstName: { type: String, required: true },
   LastName: { type: String, required: true },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },

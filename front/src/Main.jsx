@@ -1,22 +1,30 @@
 //Imports de Modulos
 import React from "react";
-import { Route, Switch, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {Switch,Route} from "react-router-dom"
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
 import Login from "./login/Login";
+import RentalFormContainer from "./RentalForm/RentalFormContainer";
+// import Comission from "./Comissions/Comission";
 
 class Main extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {}
 
   render() {
     return (
       <div>
-        {/* <Login/> */}
-        <Reservation />
+        <Switch>
+          {/* <Route exact path="/comisiones" component={Comission} /> */}
+          <Route exact path="/" component={Reservation} />
+          <Route
+            exact
+            path="/registerRental"
+            render={() => <RentalFormContainer />}
+          />
+        </Switch>
       </div>
     );
   }
@@ -25,4 +33,7 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(null, null)(Main);
+export default connect(
+  null,
+  null
+)(Main);

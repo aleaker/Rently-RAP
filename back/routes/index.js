@@ -1,35 +1,61 @@
 const router = require("express").Router();
 const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
+const userRouter = require("./user");
+//Requiero los modelos
+const registerRentalRouter = require("./registerRental");
+const RentlyAdmin = require("../models/RentlyAdmin");
+const Company = require("../models/Company");
+const CarRental = require("../models/CarRental");
+const CompanyAdmin = require("../models/CompanyAdmin");
+const Commission = require("../models/Commission");
+const Salesperson = require("../models/Salesperson");
+const Booking = require("../models/Booking");
 
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
-
-router.post("/rently", (req, res) => {
-  const { Username, Password } = req.body;
-  console.log("req.body", req.body);
-  console.log("Entro a /rently");
-  var rentlyAdmin = new RentlyAdmin({ Username, Password });
-  rentlyAdmin.Username = req.body.Username;
-  rentlyAdmin.Password = rentlyAdmin.encryptPassword(req.body.Password);
-  console.log("Creando el Rently Admmin", rentlyAdmin);
-  rentlyAdmin
-    .save()
-    .then(rentlyAdmin => res.send(rentlyAdmin))
-    .then(console.log("RentlyAdmin guardado, ESTE ES EL REQ.BODY:", req.body));
+router.use("/registerRental", registerRentalRouter);
+router.use("/user", userRouter);
+//RentlyAdmin
+router.post("/rently", (req, resp) => {
+  RentlyAdmin.create(req.body);
+  console.log("RentlyAdmin creado");
 });
-router.post("/company", (req, res) => {});
 
-router.post("/companyAdmin", (req, res) => {});
+//Company
+router.post("/company", (req, res) => {
+  Company.create(req.body);
+  console.log("Compania guardada");
+});
 
-router.post("/commission", (req, res) => {});
+//CompanyAdmin
+router.post("/companyAdmin", (req, res) => {
+  CompanyAdmin.create(req.body);
+  console.log("CompanyAdmin guardado");
+});
 
-router.post("/carRental", (req, res) => {});
+//CarRental
+router.post("/carRental", (req, res) => {
+  CarRental.create(req.body);
+  console.log("Rentadora guardada");
+});
 
-router.post("/salesperson", (req, res) => {});
+//Commission
+router.post("/commission", (req, res) => {
+  Commission.create(req.body);
+  console.log("Comision guardada");
+});
 
-router.post("/booking", (req, res) => {});
+//Salesperson
+router.post("/salesperson", (req, res) => {
+  Salesperson.create(req.body);
+  console.log("Vendedor guardado");
+});
 
-router.use("/token", tokenRouter);
+//Booking
+router.post("/booking", (req, res) => {
+  Booking.create(req.body);
+  console.log("Reserva guardado");
+});
 
 module.exports = router;

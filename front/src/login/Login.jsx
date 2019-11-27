@@ -71,7 +71,7 @@ export default function Login() {
   };
   const handleSubmit = e =>{
     e.preventDefault()
-    axios.post("api/user", values)
+    axios.post("api/user/login", values)
   }
   return (
       <div className={classes.container} >

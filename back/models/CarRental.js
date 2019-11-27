@@ -1,24 +1,27 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-import { validateEmail } from "./Company";
 const bcrypt = require("bcrypt-nodejs");
 
+const validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email);
+};
+
 const CarRental = new Schema({
-  Name: { type: String, required: true },
-  Logo: { type: String, required: true },
+  Active: { type: Boolean, default: true },
+  Name: { type: String },
+  Logo: { type: String },
   Url: { type: String }, //viene de la api
   User: { type: String }, //viene de la api
   Password: { type: String }, //viene de la api
   MainContact: {
-    FirstName: { type: String, required: true },
-    LastName: { type: String, required: true },
+    FirstName: { type: String },
+    LastName: { type: String },
     Email: {
       type: String,
-      required: true,
       unique: true,
       trim: true,
       lowercase: true,
-      required: "Email address is required",
       validate: [validateEmail, "Please fill a valid email address"],
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,

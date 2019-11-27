@@ -4,5 +4,4 @@ back/public/bundle.js.map
 back/.env
 back/public/bundle.js.map
 back/node_modules
-front/node_modules.idea/
-.idea/
+front/node_modules

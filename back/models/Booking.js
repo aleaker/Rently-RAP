@@ -25,7 +25,7 @@ const Booking = new Schema({
       ]
     }
   },
-  SalesPerson: { type: Schema.Types.ObjectId, ref: "SalesPerson" },
+  SalesPerson: { type: Schema.Types.ObjectId, ref: "User" },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
   SalespersonCommissionAmount: {
     type: Number

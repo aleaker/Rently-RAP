@@ -1,5 +1,5 @@
 const mongoose = require("../config/db");
-const { Schema } = mongoose;
+const { Schema } = require("mongoose");
 
 const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -37,7 +37,7 @@ const Company = new Schema({
     AccountNumber: { type: String },
     Currency: { type: String },
     Country: { type: String },
-    SwiffCode: { type: String }
+    SwiftCode: { type: String }
   },
   CommissionScheme: [{ type: Schema.Types.ObjectId, ref: "Commission" }]
 });

@@ -56554,7 +56554,9 @@ __webpack_require__.r(__webpack_exports__);
     onChange: function onChange(event) {
       return handleChange(event);
     }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Esquema de comisiones: ")));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Agregar")));
 }); // Nombre de la rentadora, Logo, Nombre y mail del contacto principal, API, Esquema de comisiones a cobrar
 
 /***/ }),
@@ -56573,7 +56575,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RentalFormComponent */ "./src/RentalForm/RentalFormComponent.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/addRental */ "./src/store/actions/addRental.js");
-/* harmony import */ var _abmEmpresas_AbmEmpresasContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../abmEmpresas/AbmEmpresasContainer */ "./src/abmEmpresas/AbmEmpresasContainer.jsx");
+/* harmony import */ var _comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../comisiones/EsquemaComision */ "./src/comisiones/EsquemaComision.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -56716,75 +56718,56 @@ function (_React$Component) {
           });
           break;
 
-        case "Company":
+        case "CommissionScheme":
+          var CommissionScheme = event.target.value;
           this.setState(function (prevState) {
             return {
-              CommissionScheme: _objectSpread({}, prevState.CommissionScheme, {
-                Company: company
-              })
+              CommissionScheme: CommissionScheme
             };
           });
           break;
-
-        case "From":
-          this.setState(function (prevState) {
-            return {
-              CommissionScheme: _objectSpread({}, prevState.CommissionScheme, {
-                From: from
-              })
-            };
-          });
-          break;
-
-        case "To":
-          this.setState(function (prevState) {
-            return {
-              CommissionScheme: _objectSpread({}, prevState.CommissionScheme, {
-                To: to
-              })
-            };
-          });
-          break;
-
-        case "CommissionPercentage":
-          this.setState(function (prevState) {
-            return {
-              CommissionScheme: _objectSpread({}, prevState.CommissionScheme, {
-                CommissionPercentage: commissionpercentage
-              })
-            };
-          });
-          break;
-
-        case "FromDate":
-          this.setState(function (prevState) {
-            return {
-              CommissionScheme: _objectSpread({}, prevState.CommissionScheme, {
-                FromDate: fromdate
-              })
-            };
-          });
-          break;
-
-        case "ToDate":
-          this.setState(function (prevState) {
-            return {
-              CommissionScheme: _objectSpread({}, prevState.CommissionScheme, {
-                ToDate: todate
-              })
-            };
-          });
-          break;
-
-        case "Type":
-          this.setState(function (prevState) {
-            return {
-              CommissionScheme: _objectSpread({}, prevState.CommissionScheme, {
-                Type: type
-              })
-            };
-          });
-          break;
+        // case "From":
+        //   let from = event.target.value;
+        //   this.setState(prevState => ({
+        //     CommissionScheme: { ...prevState.CommissionScheme, From: from }
+        //   }));
+        //   break;
+        // case "To":
+        //   let to = event.target.value;
+        //   this.setState(prevState => ({
+        //     CommissionScheme: { ...prevState.CommissionScheme, To: to }
+        //   }));
+        //   break;
+        // case "CommissionPercentage":
+        //   let commissionpercentage = event.target.value;
+        //   this.setState(prevState => ({
+        //     CommissionScheme: {
+        //       ...prevState.CommissionScheme,
+        //       CommissionPercentage: commissionpercentage
+        //     }
+        //   }));
+        //   break;
+        // case "FromDate":
+        //   let fromdate = event.target.value;
+        //   this.setState(prevState => ({
+        //     CommissionScheme: {
+        //       ...prevState.CommissionScheme,
+        //       FromDate: fromdate
+        //     }
+        //   }));
+        //   break;
+        // case "ToDate":
+        //   let todate = event.target.value;
+        //   this.setState(prevState => ({
+        //     CommissionScheme: { ...prevState.CommissionScheme, ToDate: todate }
+        //   }));
+        //   break;
+        // case "Type":
+        //   let type = event.target.value;
+        //   this.setState(prevState => ({
+        //     CommissionScheme: { ...prevState.CommissionScheme, Type: type }
+        //   }));
+        //   break;
 
         default:
           console.log("aca no pasó nada");
@@ -56796,8 +56779,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleChange: this.handleChange,
         handleSubmit: this.handleSubmit
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_abmEmpresas_AbmEmpresasContainer__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        handleChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        handleSchema: this.handleChange
       }));
     }
   }]);
@@ -57448,11 +57431,11 @@ function getModalStyle() {
 var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(function (theme) {
   return {
     paper: {
-      position: 'absolute',
-      width: '80%',
-      height: '80%',
+      position: "absolute",
+      width: "80%",
+      height: "80%",
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
+      border: "2px solid #000",
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3)
     }
@@ -57471,7 +57454,7 @@ function SimpleModal(_ref) {
       open = _React$useState4[0],
       setOpen = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState('default'),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState("default"),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       color = _React$useState6[0],
       setColor = _React$useState6[1];
@@ -57483,7 +57466,7 @@ function SimpleModal(_ref) {
 
   var handleOpen = function handleOpen() {
     setOpen(true);
-    setColor('primary');
+    setColor("primary");
   };
 
   var handleClose = function handleClose() {
@@ -57491,7 +57474,12 @@ function SimpleModal(_ref) {
   };
 
   var handleChange = function handleChange(arr) {
-    handleSchema(arr);
+    handleSchema({
+      target: {
+        name: "CommissionScheme",
+        value: arr[0]
+      }
+    });
     setOpen(false);
   };
 
@@ -58045,7 +58033,7 @@ var registerRental = function registerRental(rental) {
   //dispatch =>{
   console.log("hola");
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/registerRental", rental).then(function (res) {
-    return res.data;
+    return console.log(res.data);
   });
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import RentalForm from "./RentalFormComponent";
 import { connect } from "react-redux";
 import { registerRental } from "../store/actions/addRental";
-import EsquemaComisiones from "../abmEmpresas/AbmEmpresasContainer";
+import EsquemaComisione from "../comisiones/EsquemaComision";
 
 class RentalFormContainer extends React.Component {
   constructor(props) {
@@ -80,47 +80,54 @@ class RentalFormContainer extends React.Component {
           MainContact: { ...prevState.MainContact, Email: email }
         }));
         break;
-      case "Company":
+      case "CommissionScheme":
+        let CommissionScheme = event.target.value;
         this.setState(prevState => ({
-          CommissionScheme: { ...prevState.CommissionScheme, Company: company }
+          CommissionScheme: CommissionScheme
         }));
         break;
-      case "From":
-        this.setState(prevState => ({
-          CommissionScheme: { ...prevState.CommissionScheme, From: from }
-        }));
-        break;
-      case "To":
-        this.setState(prevState => ({
-          CommissionScheme: { ...prevState.CommissionScheme, To: to }
-        }));
-        break;
-      case "CommissionPercentage":
-        this.setState(prevState => ({
-          CommissionScheme: {
-            ...prevState.CommissionScheme,
-            CommissionPercentage: commissionpercentage
-          }
-        }));
-        break;
-      case "FromDate":
-        this.setState(prevState => ({
-          CommissionScheme: {
-            ...prevState.CommissionScheme,
-            FromDate: fromdate
-          }
-        }));
-        break;
-      case "ToDate":
-        this.setState(prevState => ({
-          CommissionScheme: { ...prevState.CommissionScheme, ToDate: todate }
-        }));
-        break;
-      case "Type":
-        this.setState(prevState => ({
-          CommissionScheme: { ...prevState.CommissionScheme, Type: type }
-        }));
-        break;
+      // case "From":
+      //   let from = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, From: from }
+      //   }));
+      //   break;
+      // case "To":
+      //   let to = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, To: to }
+      //   }));
+      //   break;
+      // case "CommissionPercentage":
+      //   let commissionpercentage = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: {
+      //       ...prevState.CommissionScheme,
+      //       CommissionPercentage: commissionpercentage
+      //     }
+      //   }));
+      //   break;
+      // case "FromDate":
+      //   let fromdate = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: {
+      //       ...prevState.CommissionScheme,
+      //       FromDate: fromdate
+      //     }
+      //   }));
+      //   break;
+      // case "ToDate":
+      //   let todate = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, ToDate: todate }
+      //   }));
+      //   break;
+      // case "Type":
+      //   let type = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, Type: type }
+      //   }));
+      //   break;
       default:
         console.log("aca no pasó nada");
     }
@@ -133,7 +140,7 @@ class RentalFormContainer extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <EsquemaComisiones handleChange={this.handleChange} />
+        <EsquemaComisione handleSchema={this.handleChange} />
       </div>
     );
   }

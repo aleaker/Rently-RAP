@@ -9,6 +9,7 @@ const validateEmail = function(email) {
 };
 
 const RentlyAdmin = new Schema({
+  Active: { type: Boolean, default: true },
   Email: {
     type: String,
     unique: true,

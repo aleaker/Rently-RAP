@@ -1,38 +1,104 @@
 const router = require("express").Router();
-const tokenRouter = require('./tokenRouter')
-const searchCarsRouter = require('./searchCars')
-const registerRentalRouter = require('./registerRental')
+const tokenRouter = require("./tokenRouter");
+const searchCarsRouter = require("./searchCars");
 
-
-router.use('/token', tokenRouter)
-router.use('/searchcars', searchCarsRouter)
-router.use('/registerRental', registerRentalRouter)
-
-router.post("/rently", (req, res) => {
-  const { Username, Password } = req.body;
-  console.log("req.body", req.body);
-  console.log("Entro a /rently");
-  var rentlyAdmin = new RentlyAdmin({ Username, Password });
-  rentlyAdmin.Username = req.body.Username;
-  rentlyAdmin.Password = rentlyAdmin.encryptPassword(req.body.Password);
-  console.log("Creando el Rently Admmin", rentlyAdmin);
-  rentlyAdmin
-    .save()
-    .then(rentlyAdmin => res.send(rentlyAdmin))
-    .then(console.log("RentlyAdmin guardado, ESTE ES EL REQ.BODY:", req.body));
-});
-router.post("/company", (req, res) => {});
-
-router.post("/companyAdmin", (req, res) => {});
-
-router.post("/commission", (req, res) => {});
-
-router.post("/carRental", (req, res) => {});
-
-router.post("/salesperson", (req, res) => {});
-
-router.post("/booking", (req, res) => {});
+//Requiero los modelos
+const registerRentalRouter = require("./registerRental");
+const RentlyAdmin = require("../models/RentlyAdmin");
+const Company = require("../models/Company");
+const CarRental = require("../models/CarRental");
+const CompanyAdmin = require("../models/CompanyAdmin");
+const Commission = require("../models/Commission");
+const Salesperson = require("../models/Salesperson");
+const Booking = require("../models/Booking");
 
 router.use("/token", tokenRouter);
+router.use("/searchcars", searchCarsRouter);
+router.use("/registerRental", registerRentalRouter);
+
+//RentlyAdmin
+router.get("/rently", async (req, res) => {
+  const rentlyAdmin = await RentlyAdmin.find();
+  res.json(rentlyAdmin);
+});
+
+router.post("/rently", (req, res) => {
+  RentlyAdmin.create(req.body);
+  console.log("RentlyAdmin creado");
+  res.redirect("/api/rently");
+});
+
+//Company
+router.get("/company", async (req, res) => {
+  const company = await Company.find();
+  res.json(company);
+});
+
+router.post("/company", (req, res) => {
+  Company.create(req.body);
+  console.log("Compania guardada");
+  res.redirect("/api/company");
+});
+
+//CompanyAdmin
+router.get("/companyAdmin", async (req, res) => {
+  const companyAdmin = await CompanyAdmin.find();
+  res.json(companyAdmin);
+});
+
+router.post("/companyAdmin", (req, res) => {
+  CompanyAdmin.create(req.body);
+  console.log("CompanyAdmin guardado");
+  res.redirect("/api/companyAdmin");
+});
+
+//CarRental
+router.get("/carRental", async (req, res) => {
+  const carRental = await CarRental.find();
+  res.json(carRental);
+  res.redirect("/api/carRental");
+});
+
+router.post("/carRental", (req, res) => {
+  CarRental.create(req.body);
+  console.log("Rentadora guardada");
+  res.redirect("/api/carRental");
+});
+
+//Commission
+router.get("/commission", async (req, res) => {
+  const commission = await Commission.find();
+  res.json(commission);
+});
+
+router.post("/commission", (req, res) => {
+  Commission.create(req.body);
+  console.log("Comision guardada");
+  res.redirect("/api/commission");
+});
+
+//Salesperson
+router.get("/salesperson", async (req, res) => {
+  const salesperson = await Salesperson.find();
+  res.json(salesperson);
+});
+
+router.post("/salesperson", (req, res) => {
+  Salesperson.create(req.body);
+  console.log("Vendedor guardado");
+  res.redirect("/api/salesperson");
+});
+
+//Booking
+router.get("/booking", async (req, res) => {
+  const booking = await Booking.find();
+  res.json(booking);
+});
+
+router.post("/booking", (req, res) => {
+  Booking.create(req.body);
+  console.log("Reserva guardada");
+  res.redirect("/api/booking");
+});
 
 module.exports = router;

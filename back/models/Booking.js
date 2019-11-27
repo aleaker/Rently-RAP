@@ -1,5 +1,5 @@
 const mongoose = require("../config/db");
-const { Schema } = mongoose;
+const { Schema } = require("mongoose");
 
 const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -7,6 +7,7 @@ const validateEmail = function(email) {
 };
 
 const Booking = new Schema({
+  Status: { type: String },
   BookingId: { type: Number },
   CarRental: { type: Schema.Types.ObjectId, ref: "CarRental" },
   CustomerData: {
@@ -26,12 +27,11 @@ const Booking = new Schema({
   },
   SalesPerson: { type: Schema.Types.ObjectId, ref: "SalesPerson" },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
-  SalesPersonCommissionAmount: {
-    type: Schema.Types.ObjectId,
-    ref: "Commission"
+  SalespersonCommissionAmount: {
+    type: Number
   },
-  CompanyCommissionAmount: { type: Schema.Types.ObjectId, ref: "Commission" }, //monto a cobrar x la empresa
-  RentlyCommissionAmount: { type: Schema.Types.ObjectId, ref: "Commission" }, //monto a comisionar x la plataforma
+  CompanyCommissionAmount: { type: Number },
+  RentlyCommissionAmount: { type: Number },
   FromDate: { type: Date },
   ToDate: { type: Date },
   Pickup: { type: String },

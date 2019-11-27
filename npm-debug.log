@@ -1,0 +1,161 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'materialize-css' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 verbose config Skipping project config: /home/hanoi/.npmrc. (matches userconfig)
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 silly fetchPackageMetaData materialize-css
+9 silly fetchNamedPackageData materialize-css
+10 silly mapToRegistry name materialize-css
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry https://registry.npmjs.org/
+13 silly mapToRegistry uri https://registry.npmjs.org/materialize-css
+14 verbose request uri https://registry.npmjs.org/materialize-css
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 4:14:31 PM
+17 verbose request id 14f169fe3c8ae76c
+18 verbose etag W/"80987262d8ac3db612a0ce035d467b98"
+19 verbose lastModified Fri, 04 Jan 2019 18:41:06 GMT
+20 http request GET https://registry.npmjs.org/materialize-css
+21 http 304 https://registry.npmjs.org/materialize-css
+22 verbose headers { date: 'Mon, 25 Nov 2019 19:14:31 GMT',
+22 verbose headers   connection: 'keep-alive',
+22 verbose headers   'set-cookie':
+22 verbose headers    [ '__cfduid=d04effcc2644873dde6c800081b0abbae1574709271; expires=Wed, 25-Dec-19 19:14:31 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+22 verbose headers   'cf-ray': '53b5f231af96d2bc-EZE',
+22 verbose headers   'cf-cache-status': 'HIT',
+22 verbose headers   'cache-control': 'max-age=300',
+22 verbose headers   age: '48',
+22 verbose headers   etag: '"80987262d8ac3db612a0ce035d467b98"',
+22 verbose headers   'last-modified': 'Fri, 04 Jan 2019 18:41:06 GMT',
+22 verbose headers   vary: 'accept-encoding, accept',
+22 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 verbose headers   'x-amz-meta-rev': '55-6bbece883685ea213c502c8b91202aa4',
+22 verbose headers   server: 'cloudflare' }
+23 silly get cb [ 304,
+23 silly get   { date: 'Mon, 25 Nov 2019 19:14:31 GMT',
+23 silly get     connection: 'keep-alive',
+23 silly get     'set-cookie':
+23 silly get      [ '__cfduid=d04effcc2644873dde6c800081b0abbae1574709271; expires=Wed, 25-Dec-19 19:14:31 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+23 silly get     'cf-ray': '53b5f231af96d2bc-EZE',
+23 silly get     'cf-cache-status': 'HIT',
+23 silly get     'cache-control': 'max-age=300',
+23 silly get     age: '48',
+23 silly get     etag: '"80987262d8ac3db612a0ce035d467b98"',
+23 silly get     'last-modified': 'Fri, 04 Jan 2019 18:41:06 GMT',
+23 silly get     vary: 'accept-encoding, accept',
+23 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+23 silly get     'x-amz-meta-rev': '55-6bbece883685ea213c502c8b91202aa4',
+23 silly get     server: 'cloudflare' } ]
+24 verbose etag https://registry.npmjs.org/materialize-css from cache
+25 verbose get saving materialize-css to /home/hanoi/.npm/registry.npmjs.org/materialize-css/.cache.json
+26 silly install normalizeTree
+27 silly loadCurrentTree Finishing
+28 silly loadIdealTree Starting
+29 silly install loadIdealTree
+30 silly cloneCurrentTree Starting
+31 silly install cloneCurrentTreeToIdealTree
+32 silly cloneCurrentTree Finishing
+33 silly loadShrinkwrap Starting
+34 silly install loadShrinkwrap
+35 silly loadShrinkwrap Finishing
+36 silly loadAllDepsIntoIdealTree Starting
+37 silly install loadAllDepsIntoIdealTree
+38 silly resolveWithNewModule materialize-css@1.0.0 checking installable status
+39 silly cache add args [ 'materialize-css', null ]
+40 verbose cache add spec materialize-css
+41 silly cache add parsed spec Result {
+41 silly cache add   raw: 'materialize-css',
+41 silly cache add   scope: null,
+41 silly cache add   name: 'materialize-css',
+41 silly cache add   rawSpec: '',
+41 silly cache add   spec: 'latest',
+41 silly cache add   type: 'tag' }
+42 silly addNamed materialize-css@latest
+43 verbose addNamed "latest" is being treated as a dist-tag for materialize-css
+44 info addNameTag [ 'materialize-css', 'latest' ]
+45 silly mapToRegistry name materialize-css
+46 silly mapToRegistry using default registry
+47 silly mapToRegistry registry https://registry.npmjs.org/
+48 silly mapToRegistry uri https://registry.npmjs.org/materialize-css
+49 verbose addNameTag registry:https://registry.npmjs.org/materialize-css not in flight; fetching
+50 verbose get https://registry.npmjs.org/materialize-css not expired, no request
+51 silly addNameTag next cb for materialize-css with tag latest
+52 silly addNamed materialize-css@1.0.0
+53 verbose addNamed "1.0.0" is a plain semver version for materialize-css
+54 silly cache afterAdd materialize-css@1.0.0
+55 verbose afterAdd /home/hanoi/.npm/materialize-css/1.0.0/package/package.json not in flight; writing
+56 verbose afterAdd /home/hanoi/.npm/materialize-css/1.0.0/package/package.json written
+57 silly loadAllDepsIntoIdealTree Finishing
+58 silly idealTree:prePrune hanoi
+58 silly idealTree:prePrune ├── hoist-non-react-statics@3.3.0
+58 silly idealTree:prePrune ├── materialize-css@1.0.0
+58 silly idealTree:prePrune ├── react-is@16.11.0
+58 silly idealTree:prePrune ├── react-lifecycles-compat@3.0.4
+58 silly idealTree:prePrune ├─┬ react-native-safe-area-view@0.14.8
+58 silly idealTree:prePrune │ └── hoist-non-react-statics@2.5.5
+58 silly idealTree:prePrune ├── react-native-tab-view@2.10.0
+58 silly idealTree:prePrune └── react-navigation-tabs@2.5.6
+59 silly loadIdealTree Finishing
+60 silly currentTree hanoi
+60 silly currentTree ├── hoist-non-react-statics@3.3.0
+60 silly currentTree ├── react-is@16.11.0
+60 silly currentTree ├── react-lifecycles-compat@3.0.4
+60 silly currentTree ├─┬ react-native-safe-area-view@0.14.8
+60 silly currentTree │ └── hoist-non-react-statics@2.5.5
+60 silly currentTree ├── react-native-tab-view@2.10.0
+60 silly currentTree └── react-navigation-tabs@2.5.6
+61 silly idealTree hanoi
+61 silly idealTree ├── hoist-non-react-statics@3.3.0
+61 silly idealTree ├── materialize-css@1.0.0
+61 silly idealTree ├── react-is@16.11.0
+61 silly idealTree ├── react-lifecycles-compat@3.0.4
+61 silly idealTree ├─┬ react-native-safe-area-view@0.14.8
+61 silly idealTree │ └── hoist-non-react-statics@2.5.5
+61 silly idealTree ├── react-native-tab-view@2.10.0
+61 silly idealTree └── react-navigation-tabs@2.5.6
+62 silly generateActionsToTake Starting
+63 silly install generateActionsToTake
+64 warn checkPermissions Missing write access to /home/hanoi/node_modules
+65 silly rollbackFailedOptional Starting
+66 silly rollbackFailedOptional Finishing
+67 silly runTopLevelLifecycles Starting
+68 silly runTopLevelLifecycles Finishing
+69 silly install printInstalled
+70 warn enoent ENOENT: no such file or directory, open '/home/hanoi/package.json'
+71 warn react-native-safe-area-view@0.14.8 requires a peer of react@* but none was installed.
+72 warn react-native-safe-area-view@0.14.8 requires a peer of react-native@* but none was installed.
+73 warn react-native-tab-view@2.10.0 requires a peer of react@* but none was installed.
+74 warn react-native-tab-view@2.10.0 requires a peer of react-native@* but none was installed.
+75 warn react-native-tab-view@2.10.0 requires a peer of react-native-gesture-handler@* but none was installed.
+76 warn react-native-tab-view@2.10.0 requires a peer of react-native-reanimated@* but none was installed.
+77 warn react-navigation-tabs@2.5.6 requires a peer of react@* but none was installed.
+78 warn react-navigation-tabs@2.5.6 requires a peer of react-native@* but none was installed.
+79 warn react-navigation-tabs@2.5.6 requires a peer of react-native-gesture-handler@^1.0.0 but none was installed.
+80 warn react-navigation-tabs@2.5.6 requires a peer of react-native-reanimated@^1.0.0-alpha but none was installed.
+81 warn react-navigation-tabs@2.5.6 requires a peer of react-native-screens@^1.0.0 || ^1.0.0-alpha but none was installed.
+82 warn react-navigation-tabs@2.5.6 requires a peer of react-navigation@^4.0.7 but none was installed.
+83 warn hanoi No description
+84 warn hanoi No repository field.
+85 warn hanoi No README data
+86 warn hanoi No license field.
+87 verbose stack Error: EACCES: permission denied, access '/home/hanoi/node_modules'
+88 verbose cwd /home/hanoi/Bootcamp/Rently/Rently-RAP
+89 error Linux 4.15.0-54-generic
+90 error argv "/usr/bin/node" "/usr/bin/npm" "install" "materialize-css"
+91 error node v8.10.0
+92 error npm  v3.5.2
+93 error path /home/hanoi/node_modules
+94 error code EACCES
+95 error errno -13
+96 error syscall access
+97 error Error: EACCES: permission denied, access '/home/hanoi/node_modules'
+97 error  { Error: EACCES: permission denied, access '/home/hanoi/node_modules'
+97 error   errno: -13,
+97 error   code: 'EACCES',
+97 error   syscall: 'access',
+97 error   path: '/home/hanoi/node_modules' }
+98 error Please try running this command again as root/Administrator.
+99 verbose exit [ -13, true ]

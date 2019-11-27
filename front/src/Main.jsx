@@ -29,15 +29,5 @@ class Main extends React.Component {
           exact path='/abmempresas'
           render={()=> <AbmEmpresasContainer/>}/>
         </Switch>
-      </div>
-    );
-  }
-}
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = dispatch => ({});
-
-export default connect(
-  null,
-  null
-)(Main);
+      </div>)
+  }}

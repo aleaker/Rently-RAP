@@ -6,7 +6,10 @@ import { connect } from "react-redux";
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
+<<<<<<< HEAD
 import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
+=======
+>>>>>>> 7cf4c24f2f3ebd018e59b8b468c468e9516e20a7
 import Comission from "./Comissions/Comission";
 
 class Main extends React.Component {

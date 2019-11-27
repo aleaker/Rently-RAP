@@ -14,10 +14,4 @@ router.post("/", (req, resp) => {
 });
 
 
-
-  //     CommissionScheme: {
-  //       ...prevState.CommissionScheme,
-  //       FromDate: fromdate
-  //     }
-
 module.exports = router;

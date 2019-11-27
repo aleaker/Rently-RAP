@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 //en la terminal inicializo mongo (si ya lo tengo instalado) en linux: sudo service mongod start
 
-const URI = "mongodb://localhost/rentlydb";
+const URI = "mongodb://localhost:27017/rentlydb";
 
 mongoose
   .connect(URI, {

@@ -1,5 +1,5 @@
 const mongoose = require("../config/db");
-const { Schema } = require("mongoose");
+const { Schema } = mongoose;
 
 const Commission = new Schema({
   Company: { type: Schema.Types.ObjectId, ref: "Company" },

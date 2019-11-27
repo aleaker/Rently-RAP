@@ -25,6 +25,7 @@ router.get("/rently", async (req, res) => {
 router.post("/rently", (req, res) => {
   RentlyAdmin.create(req.body);
   console.log("RentlyAdmin creado");
+  res.redirect("/api/rently");
 });
 
 //Company
@@ -36,6 +37,7 @@ router.get("/company", async (req, res) => {
 router.post("/company", (req, res) => {
   Company.create(req.body);
   console.log("Compania guardada");
+  res.redirect("/api/company");
 });
 
 //CompanyAdmin
@@ -47,17 +49,20 @@ router.get("/companyAdmin", async (req, res) => {
 router.post("/companyAdmin", (req, res) => {
   CompanyAdmin.create(req.body);
   console.log("CompanyAdmin guardado");
+  res.redirect("/api/companyAdmin");
 });
 
 //CarRental
 router.get("/carRental", async (req, res) => {
   const carRental = await CarRental.find();
   res.json(carRental);
+  res.redirect("/api/carRental");
 });
 
 router.post("/carRental", (req, res) => {
   CarRental.create(req.body);
   console.log("Rentadora guardada");
+  res.redirect("/api/carRental");
 });
 
 //Commission
@@ -69,6 +74,7 @@ router.get("/commission", async (req, res) => {
 router.post("/commission", (req, res) => {
   Commission.create(req.body);
   console.log("Comision guardada");
+  res.redirect("/api/commission");
 });
 
 //Salesperson
@@ -80,6 +86,7 @@ router.get("/salesperson", async (req, res) => {
 router.post("/salesperson", (req, res) => {
   Salesperson.create(req.body);
   console.log("Vendedor guardado");
+  res.redirect("/api/salesperson");
 });
 
 //Booking
@@ -91,6 +98,7 @@ router.get("/booking", async (req, res) => {
 router.post("/booking", (req, res) => {
   Booking.create(req.body);
   console.log("Reserva guardada");
+  res.redirect("/api/booking");
 });
 
 module.exports = router;

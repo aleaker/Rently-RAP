@@ -1,6 +1,6 @@
 const mongoose = require("../config/db");
 
-const { Schema } = mongoose;
+const { Schema } = require("mongoose");
 const bcrypt = require("bcrypt-nodejs");
 
 const validateEmail = function(email) {

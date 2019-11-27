@@ -6,5 +6,5 @@ export const registerRental = (rental) => {//dispatch =>{
     .post("/api/registerRental", 
       rental
     )
-    .then(res => res.data);
+    .then(res => console.log(res.data));
 }

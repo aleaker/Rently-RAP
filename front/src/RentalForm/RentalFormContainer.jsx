@@ -2,22 +2,31 @@ import React from "react";
 import RentalForm from "./RentalFormComponent";
 import { connect } from "react-redux";
 import { registerRental } from "../store/actions/addRental";
+import EsquemaComisione from "../comisiones/EsquemaComision";
 
 class RentalFormContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      logo: "",
-      url: "",
-      usuario: "",
-      password: "",
-      mainContact: {
-        firstName: "",
-        lastName: "",
-        email: ""
+      Name: "",
+      Logo: "",
+      Url: "",
+      User: "",
+      Password: "",
+      MainContact: {
+        FirstName: "",
+        LastName: "",
+        Email: ""
       },
-      commissionScheme: ""
+      CommissionScheme: {
+        Company: "",
+        From: "",
+        To: "",
+        CommissionPercentage: "",
+        FromDate: "",
+        ToDate: "",
+        Type: ""
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,50 +41,93 @@ class RentalFormContainer extends React.Component {
     console.log(this.state);
     switch (event.target.name) {
       case "NombreEmpresa":
-        this.setState({ name: event.target.value });
+        this.setState({ Name: event.target.value });
         break;
       case "Logo":
-        this.setState({ name: event.target.value });
-        this.setState({ logo: event.target.value });
+        this.setState({ Logo: event.target.value });
         break;
       case "APIurl":
-        this.setState({ url: event.target.value });
+        this.setState({ Url: event.target.value });
         break;
       case "usuario":
-        this.setState({ usuario: event.target.value });
+        this.setState({ User: event.target.value });
         break;
       case "password":
-        this.setState({ password: event.target.value });
+        this.setState({ Password: event.target.value });
         break;
 
       case "firstName":
         let firstName = event.target.value;
         this.setState(prevState => ({
-          mainContact: {
-            ...prevState.mainContact,
-            firstName: firstName
+          MainContact: {
+            ...prevState.MainContact,
+            FirstName: firstName
           }
         }));
         break;
       case "lastName":
         let lastName = event.target.value;
         this.setState(prevState => ({
-          mainContact: {
-            ...prevState.mainContact,
-            lastName: lastName
+          MainContact: {
+            ...prevState.MainContact,
+            LastName: lastName
           }
         }));
         break;
       case "Email":
         let email = event.target.value;
         this.setState(prevState => ({
-          mainContact: { ...prevState.mainContact, email: email }
+          MainContact: { ...prevState.MainContact, Email: email }
         }));
         break;
-
-      case "EsquemaDeComisiones":
-        this.setState({ commissionScheme: event.target.value });
+      case "CommissionScheme":
+        let CommissionScheme = event.target.value;
+        this.setState(prevState => ({
+          CommissionScheme: CommissionScheme
+        }));
         break;
+      // case "From":
+      //   let from = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, From: from }
+      //   }));
+      //   break;
+      // case "To":
+      //   let to = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, To: to }
+      //   }));
+      //   break;
+      // case "CommissionPercentage":
+      //   let commissionpercentage = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: {
+      //       ...prevState.CommissionScheme,
+      //       CommissionPercentage: commissionpercentage
+      //     }
+      //   }));
+      //   break;
+      // case "FromDate":
+      //   let fromdate = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: {
+      //       ...prevState.CommissionScheme,
+      //       FromDate: fromdate
+      //     }
+      //   }));
+      //   break;
+      // case "ToDate":
+      //   let todate = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, ToDate: todate }
+      //   }));
+      //   break;
+      // case "Type":
+      //   let type = event.target.value;
+      //   this.setState(prevState => ({
+      //     CommissionScheme: { ...prevState.CommissionScheme, Type: type }
+      //   }));
+      //   break;
       default:
         console.log("aca no pasó nada");
     }
@@ -83,10 +135,13 @@ class RentalFormContainer extends React.Component {
 
   render() {
     return (
-      <RentalForm
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
+      <div>
+        <RentalForm
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        <EsquemaComisione handleSchema={this.handleChange} />
+      </div>
     );
   }
 }

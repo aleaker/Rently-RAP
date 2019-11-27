@@ -2,7 +2,7 @@ import React from 'react'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from '@material-ui/core/Button';
-
+ 
 export default function NewUser({addOne}){
     const [editable, setDisabled] = React.useState(false); 
     const [clicked, setClicked] = React.useState(false)

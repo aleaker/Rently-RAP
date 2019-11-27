@@ -12,13 +12,12 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {}
 
   render() {
     return (
       <div>
         <Switch>
-          <Route exact path="/comision" component={Comission} />
+          <Route exact path="/comisiones" component={Comission} />
           <Route exact path="/" component={Reservation} />
           <Route
             exact

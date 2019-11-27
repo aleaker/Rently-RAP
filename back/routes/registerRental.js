@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const carRental = require("../models/carRental");
+const CarRental = require("../models/CarRental");
 
 router.post("/", (req, resp) => {
-  carRental.create(req.body);
+  CarRental.create(req.body);
 });
 
 module.exports = router;

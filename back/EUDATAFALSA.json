@@ -1,0 +1,70 @@
+
+   {
+   "CompanyName": "JuanmaInc",
+   "Description": "Juanma owns this company",
+   "Adress": "Av. JuanmaInc 123",
+   "Country": "Argentina",
+   "Telephone": "61059032",
+   "MainContact": {
+     "FirstName": "Juanma",
+     "LastName": "Juanma LastName",
+     "IdType": "Cedula",
+     "IdNumber": "61059032",
+     "Email": "Juanma1@Juanma.com"
+   },
+   "BankAccountInfo": {
+     "Bank": "Banco",
+     "AccountType": "Bla",
+     "AccountNumber": "61059032",
+     "Curency": "Pesos ARG",
+     "SwiffCore": "que"
+   }}
+
+   {
+     "Company": "JuanmaInc",
+     "From": 10.0,
+     "To": 30.0,
+     "ToDate": "2007,08,07",
+     "FromDate": "2007,08,07",
+     "Type": "4"
+   }
+
+ {
+   "Name":"PepitoRentACar",
+   "logo":"https://cdn.tn.com.ar/sites/default/files/styles/embed_image/public/2019/11/24/5ddaebb909414_auto_volador.jpg",
+   "Url":"https://cdn.tn.com.ar/sites/default/files/styles/embed_image/public/2019/11/24/5ddaebb909414_auto_volador.jpg",
+   "User":"Pepito",
+   "Password":"pepito",
+   "MainContact":{
+      "FirstName":"Pepito",
+      "LastName":"Perez",
+      "Email":"pepe@pepe.com"},
+      "CommissionScheme": "5ddd47172edd344b3422cbed"
+   }
+
+   {
+   "Email":"admin@admin.com",
+   "Password":"",
+   "Company":"5ddd8b606621db6fc3d40161"
+   }
+
+
+         { "Company": "5ddd8b606621db6fc3d40161",
+         "From": 10000,
+         "To": 30000,
+         "ToDate": "2007,08,07",
+         "FromDate": "2007,08,07",
+         "Type": "4"
+       }
+
+
+   {"Email":"vendedor@vendedor.com",
+  "Password":"micontraseña",
+"Company":"5ddd8b606621db6fc3d40161",
+"FirstName":"Vendo",
+"LastName":"Cosas",
+"Telephone":"61059032",
+"Photo": "",
+"Notes":"Blablabla sobre el vendedor",
+"Commission":"5ddd923a6b574572c5fae000"
+}

@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 back/public/bundle.js
 back/public/bundle.js.map
 back/.env

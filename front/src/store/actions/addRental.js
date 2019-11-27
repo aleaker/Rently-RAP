@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const registerRental = (rental) => {//dispatch =>{
   console.log("hola");
   axios

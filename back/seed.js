@@ -22,9 +22,7 @@ Promise.all([
   RentlyAdmin.create({ Email: "alejo@alejo.com", Password: "MongoAlejo" }),
   RentlyAdmin.create({ Email: "juanma@juanma.com", Password: "MongoJuanma" }),
   RentlyAdmin.create({ Email: "joaco@joaco.com", Password: "MongoJoaco" })
-]).then(([hanoi, lian, alejo, juanma, joaco]) =>
-  console.log(hanoi, lian, alejo, juanma, joaco)
-);
+]);
 
 Promise.all([
   Company.create({

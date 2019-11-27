@@ -67332,6 +67332,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_19__);
 /* harmony import */ var _material_ui_icons_FilterList__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/icons/FilterList */ "./node_modules/@material-ui/icons/FilterList.js");
 /* harmony import */ var _material_ui_icons_FilterList__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_FilterList__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _material_ui_core_Input__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @material-ui/core/Input */ "./node_modules/@material-ui/core/esm/Input/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -67364,17 +67365,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-function createData(name, calories, fat, carbs, protein) {
+
+function createData(Company, From, To, CommissionPercentage, FromDate, ToDate, Type) {
   return {
-    name: name,
-    calories: calories,
-    fat: fat,
-    carbs: carbs,
-    protein: protein
+    Company: Company,
+    From: From,
+    To: To,
+    CommissionPercentage: CommissionPercentage,
+    FromDate: FromDate,
+    ToDate: ToDate,
+    Type: Type
   };
 }
 
-var rows = [createData("Cupcake", 305, 3.7, 67, 4.3), createData("Donut", 452, 25.0, 51, 4.9), createData("Eclair", 262, 16.0, 24, 6.0), createData("Frozen yoghurt", 159, 6.0, 24, 4.0), createData("Gingerbread", 356, 16.0, 49, 3.9), createData("Honeycomb", 408, 3.2, 87, 6.5), createData("Ice cream sandwich", 237, 9.0, 37, 4.3), createData("Jelly Bean", 375, 0.0, 94, 0.0), createData("KitKat", 518, 26.0, 65, 7.0), createData("Lollipop", 392, 0.2, 98, 0.0), createData("Marshmallow", 318, 0, 81, 2.0), createData("Nougat", 360, 19.0, 9, 37.0), createData("Oreo", 437, 18.0, 63, 4.0)];
+var rows = [createData("EMPRESAaaa A", 10000, 30000, 15, "20 - 02 - 2020", "25 - 02 - 2020", 1), createData("EMPRESAaaa B", 10000, 20000, 15, "24 - 02 - 2020", "25 - 02 - 2020", 1), createData("EMPRESA C", 10000, 50000, 15, "18 - 02 - 2020", "25 - 02 - 2020", 2), createData("EMPRESA D", 10000, 90000, 15, "02 - 02 - 2020", "25 - 02 - 2020", 4), createData("EMPRESA E", 10000, 70000, 15, "15 - 01 - 2020", "25 - 02 - 2020", 5), createData("EMPRESA F", 10000, 60000, 4, "24 - 01 - 2020", "25 - 02 - 2020", 6), createData("EMPRESA G", 10000, 90000, 29, "22 - 01 - 2020", "25 - 02 - 2020", 8), createData("EMPRESA H", 10000, 50000, 19, "21 - 01 - 2020", "25 - 02 - 2020", 2), createData("EMPRESA I", 10000, 50000, 15, "03 - 01 - 2020", "25 - 02 - 2020", 3), createData("EMPRESA J", 10000, 20000, 12, "06 - 01 - 2020", "25 - 02 - 2020", 1)];
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -67411,30 +67415,39 @@ function getSorting(order, orderBy) {
 }
 
 var headCells = [{
-  id: "name",
-  numeric: false,
+  id: "Company",
   disablePadding: true,
-  label: "Dessert (100g serving)"
+  label: "Company"
 }, {
-  id: "calories",
+  id: "From",
   numeric: true,
   disablePadding: false,
-  label: "Calories"
+  label: "Desde"
 }, {
-  id: "fat",
+  id: "To",
   numeric: true,
   disablePadding: false,
-  label: "Fat (g)"
+  label: "Hasta"
 }, {
-  id: "carbs",
+  id: "CommissionPercentage",
   numeric: true,
   disablePadding: false,
-  label: "Carbs (g)"
+  label: "% Comision"
 }, {
-  id: "protein",
+  id: "FromDate",
   numeric: true,
   disablePadding: false,
-  label: "Protein (g)"
+  label: "Desde Fecha"
+}, {
+  id: "ToDate",
+  numeric: true,
+  disablePadding: false,
+  label: "Hasta Fecha"
+}, {
+  id: "Type",
+  numeric: true,
+  disablePadding: false,
+  label: "Tipo"
 }];
 
 function EnhancedTableHead(props) {
@@ -67522,11 +67535,12 @@ var EnhancedTableToolbar = function EnhancedTableToolbar(props) {
     title: "Delete"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
     "aria-label": "delete"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_19___default.a, null))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Tooltip__WEBPACK_IMPORTED_MODULE_16__["default"], {
-    title: "Filter list"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
-    "aria-label": "filter list"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_FilterList__WEBPACK_IMPORTED_MODULE_20___default.a, null))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_19___default.a, null))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Tooltip__WEBPACK_IMPORTED_MODULE_16__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: props.handleSubmitInput
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Input__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    type: "search",
+    onChange: props.handleChangeInput
+  }))));
 };
 
 EnhancedTableToolbar.propTypes = {
@@ -67594,6 +67608,31 @@ function EnhancedTable() {
       rowsPerPage = _React$useState12[0],
       setRowsPerPage = _React$useState12[1];
 
+  var _React$useState13 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(rows),
+      _React$useState14 = _slicedToArray(_React$useState13, 2),
+      valueRows = _React$useState14[0],
+      setValueRows = _React$useState14[1];
+
+  var _React$useState15 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(""),
+      _React$useState16 = _slicedToArray(_React$useState15, 2),
+      valueInput = _React$useState16[0],
+      setValueInput = _React$useState16[1];
+
+  var handleChangeInput = function handleChangeInput(event) {
+    var val = event.target.value;
+    setValueInput(val);
+    setValueRows(rows.filter(function (row) {
+      return valueInput ? row.Company.toLowerCase().includes(val.toLowerCase()) : row;
+    }));
+  };
+
+  var handleSubmitInput = function handleSubmitInput(event) {
+    event.preventDefault();
+    setValueRows(rows.filter(function (row) {
+      return valueInput ? row.Company.toLowerCase().includes(valueInput.toLowerCase()) : row;
+    }));
+  };
+
   var handleRequestSort = function handleRequestSort(event, property) {
     var isDesc = orderBy === property && order === "desc";
     setOrder(isDesc ? "asc" : "desc");
@@ -67638,10 +67677,6 @@ function EnhancedTable() {
     setPage(0);
   };
 
-  var handleChangeDense = function handleChangeDense(event) {
-    setDense(event.target.checked);
-  };
-
   var isSelected = function isSelected(name) {
     return selected.indexOf(name) !== -1;
   };
@@ -67652,7 +67687,9 @@ function EnhancedTable() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_13__["default"], {
     className: classes.paper
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(EnhancedTableToolbar, {
-    numSelected: selected.length
+    numSelected: selected.length,
+    handleChangeInput: handleChangeInput,
+    handleSubmitInput: handleSubmitInput
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.tableWrapper
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -67668,18 +67705,18 @@ function EnhancedTable() {
     onSelectAllClick: handleSelectAllClick,
     onRequestSort: handleRequestSort,
     rowCount: rows.length
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_5__["default"], null, stableSort(rows, getSorting(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(function (row, index) {
-    var isItemSelected = isSelected(row.name);
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_5__["default"], null, stableSort(valueRows, getSorting(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(function (row, index) {
+    var isItemSelected = isSelected(row.Company);
     var labelId = "enhanced-table-checkbox-".concat(index);
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_9__["default"], {
       hover: true,
       onClick: function onClick(event) {
-        return handleClick(event, row.name);
+        return handleClick(event, row.Company);
       },
       role: "checkbox",
       "aria-checked": isItemSelected,
       tabIndex: -1,
-      key: row.name,
+      key: row.company,
       selected: isItemSelected
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
       padding: "checkbox"
@@ -67693,15 +67730,19 @@ function EnhancedTable() {
       id: labelId,
       scope: "row",
       padding: "none"
-    }, row.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, row.Company), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
       align: "right"
-    }, row.calories), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, row.From), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
       align: "right"
-    }, row.fat), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, row.To), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
       align: "right"
-    }, row.carbs), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, row.CommissionPercentage), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
       align: "right"
-    }, row.protein));
+    }, row.FromDate), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      align: "right"
+    }, row.ToDate), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      align: "right"
+    }, row.Type));
   }), emptyRows > 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_9__["default"], {
     style: {
       height: (dense ? 33 : 53) * emptyRows
@@ -67716,13 +67757,7 @@ function EnhancedTable() {
     page: page,
     onChangePage: handleChangePage,
     onChangeRowsPerPage: handleChangeRowsPerPage
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_FormControlLabel__WEBPACK_IMPORTED_MODULE_17__["default"], {
-    control: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Switch__WEBPACK_IMPORTED_MODULE_18__["default"], {
-      checked: dense,
-      onChange: handleChangeDense
-    }),
-    label: "Dense padding"
-  }));
+  })));
 }
 
 /***/ }),

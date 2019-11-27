@@ -1,6 +1,7 @@
 const mongoose = require("../config/db");
 const { Schema } = require("mongoose");
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcrypt");
+const SALT_WORK_FACTOR = 10;
 
 const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -36,12 +37,32 @@ const User = new Schema({
   CommissionScheme: [{ type: Schema.Types.ObjectId, ref: "Commission" }]
 });
 
-User.methods.encryptPassword = password => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-};
+User.pre("save", function(next) {
+  var user = this;
 
-User.methods.comparePassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
+  // only hash the password if it has been modified (or is new)
+  if (!user.isModified("Password")) return next();
+
+  // generate a salt
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    if (err) return next(err);
+
+    // hash the password using our new salt
+    bcrypt.hash(user.Password, salt, function(err, hash) {
+      if (err) return next(err);
+
+      // override the cleartext password with the hashed one
+      user.Password = hash;
+      next();
+    });
+  });
+});
+
+User.methods.comparePassword = function(candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.Password, function(err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
 };
 
 module.exports = mongoose.model("User", User);

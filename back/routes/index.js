@@ -17,8 +17,9 @@ router.use("/registerRental", registerRentalRouter);
 //Users
 
 //Ver todos los usuarios
-router.get("/user", async (req, res) => {
-  const user = await User.find();
+router.get("/users", async (req, res) => {
+  const users = await User.find();
+  res.json(users);
 });
 
 //Ver un usuario especifico por id

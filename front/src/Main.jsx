@@ -8,6 +8,7 @@ import Login from "./login/Login";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
 import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
 import Comission from "./Comissions/Comission";
+import RentalTableContainer from "./RentalForm/RentalTableContainer"
 
 class Main extends React.Component {
   constructor(props) {
@@ -18,8 +19,10 @@ class Main extends React.Component {
     return (
       <div>
          <Switch>
+
+         <Route exact path="/rentalTable" render={()=> <RentalTableContainer/>} />
           <Route exact path="/" component={Reservation} />
-          <Route exact path="/comisiones" component={Comission} /> 
+          {/* <Route exact path="/comisiones" component={Comission} />  */}
           <Route
             exact
             path="/registerRental"

@@ -34,7 +34,7 @@ class RentalFormContainer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("creando")
+    console.log("creando");
     registerRental(this.state);
   }
 

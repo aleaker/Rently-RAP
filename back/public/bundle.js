@@ -13146,7 +13146,7 @@ var defaultTheme = Object(_createMuiTheme__WEBPACK_IMPORTED_MODULE_0__["default"
 /*!************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/styles/index.js ***!
   \************************************************************/
-/*! exports provided: createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, easing, duration, formatMs, isString, isNumber */
+/*! exports provided: hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme, createGenerateClassName, jssPreset, ServerStyleSheets, StylesProvider, MuiThemeProvider, ThemeProvider */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16533,7 +16533,7 @@ var flexbox = Object(_compose__WEBPACK_IMPORTED_MODULE_1__["default"])(flexBasis
 /*!*******************************************************!*\
   !*** ./node_modules/@material-ui/system/esm/index.js ***!
   \*******************************************************/
-/*! exports provided: borders, breakpoints, compose, css, display, flexbox, palette, positions, shadows, sizing, spacing, style, typography, border, borderTop, borderRight, borderBottom, borderLeft, borderColor, borderRadius, flexBasis, flexDirection, flexWrap, justifyContent, alignItems, alignContent, order, flex, flexGrow, flexShrink, alignSelf, justifyItems, justifySelf, color, bgcolor, position, zIndex, top, right, bottom, left, width, maxWidth, minWidth, height, maxHeight, minHeight, sizeWidth, sizeHeight, fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, textAlign */
+/*! exports provided: borders, border, borderTop, borderRight, borderBottom, borderLeft, borderColor, borderRadius, breakpoints, compose, css, display, flexbox, flexBasis, flexDirection, flexWrap, justifyContent, alignItems, alignContent, order, flex, flexGrow, flexShrink, alignSelf, justifyItems, justifySelf, palette, color, bgcolor, positions, position, zIndex, top, right, bottom, left, shadows, sizing, width, maxWidth, minWidth, height, maxHeight, minHeight, sizeWidth, sizeHeight, spacing, style, typography, fontFamily, fontSize, fontStyle, fontWeight, letterSpacing, lineHeight, textAlign */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66125,6 +66125,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _abmEmpresas_AbmEmpresasContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./abmEmpresas/AbmEmpresasContainer */ "./src/abmEmpresas/AbmEmpresasContainer.jsx");
 /* harmony import */ var _Comissions_Comission__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Comissions/Comission */ "./src/Comissions/Comission.jsx");
 /* harmony import */ var _Comissions_Comission__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_Comissions_Comission__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _RentalForm_RentalTableContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./RentalForm/RentalTableContainer */ "./src/RentalForm/RentalTableContainer.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66154,6 +66155,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Main =
 /*#__PURE__*/
 function (_React$Component) {
@@ -66170,12 +66172,14 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "/",
-        component: _reservationForm_reservationForm__WEBPACK_IMPORTED_MODULE_3__["default"]
+        path: "/rentalTable",
+        render: function render() {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalForm_RentalTableContainer__WEBPACK_IMPORTED_MODULE_8__["default"], null);
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "/comisiones",
-        component: _Comissions_Comission__WEBPACK_IMPORTED_MODULE_7___default.a
+        path: "/",
+        component: _reservationForm_reservationForm__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/registerRental",
@@ -66237,48 +66241,56 @@ __webpack_require__.r(__webpack_exports__);
       return handleSubmit(event);
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Nombre empresa: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "text",
     name: "NombreEmpresa",
     onChange: function onChange(event) {
       return handleChange(event);
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Logo: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "url",
     name: "Logo",
     onChange: function onChange(event) {
       return handleChange(event);
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "API: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "text",
     name: "APIurl",
     onChange: function onChange(event) {
       return handleChange(event);
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Usuario: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "text",
     name: "usuario",
     onChange: function onChange(event) {
       return handleChange(event);
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "password",
     name: "password",
     onChange: function onChange(event) {
       return handleChange(event);
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Nombre contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "text",
     name: "firstName",
     onChange: function onChange(event) {
       return handleChange(event);
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Apellido contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "text",
     name: "lastName",
     onChange: function onChange(event) {
       return handleChange(event);
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    required: true,
     type: "email",
     name: "Email",
     onChange: function onChange(event) {
@@ -66491,6 +66503,146 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(RentalFormContainer));
+
+/***/ }),
+
+/***/ "./src/RentalForm/RentalTableComponent.jsx":
+/*!*************************************************!*\
+  !*** ./src/RentalForm/RentalTableComponent.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
+  var carRentals = _ref.carRentals,
+      handleEdit = _ref.handleEdit,
+      handleDelete = _ref.handleDelete;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Car Rental Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Main Contact Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Main Contact Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, carRentals.map(function (carRental) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, carRental.Name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, carRental.MainContact.FirstName, " ", carRental.MainContact.LastName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, carRental.MainContact.Email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "small material-icons"
+    }, "create"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      onClick: function onClick() {
+        return handleDelete(carRental);
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "small material-icons"
+    }, "delete"))));
+  }))));
+});
+
+/***/ }),
+
+/***/ "./src/RentalForm/RentalTableContainer.jsx":
+/*!*************************************************!*\
+  !*** ./src/RentalForm/RentalTableContainer.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _RentalTableComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RentalTableComponent */ "./src/RentalForm/RentalTableComponent.jsx");
+/* harmony import */ var _store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/addRental */ "./src/store/actions/addRental.js");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/index */ "./src/store/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+var RentalTable =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(RentalTable, _React$Component);
+
+  function RentalTable(props) {
+    var _this;
+
+    _classCallCheck(this, RentalTable);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(RentalTable).call(this, props)); // this.state = {
+
+    _this.handleDelete = _this.handleDelete.bind(_assertThisInitialized(_this));
+    _this.handleEdit = _this.handleEdit.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(RentalTable, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchCarRentals();
+    }
+  }, {
+    key: "handleEdit",
+    value: function handleEdit(carRental) {
+      this.props.editCarRental(carRental);
+    }
+  }, {
+    key: "handleDelete",
+    value: function handleDelete(carRental) {
+      this.props.deleteCarRental(carRental).then(this.props.fetchCarRentals());
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalTableComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        carRentals: this.props.carRentals,
+        handleEdit: this.handleEdit,
+        handleDelete: this.handleDelete
+      });
+    }
+  }]);
+
+  return RentalTable;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    carRentals: state.carRental
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchCarRentals: function fetchCarRentals() {
+      return dispatch(Object(_store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__["fetchCarRentals"])());
+    },
+    editCarRental: function editCarRental(carRental) {
+      return dispatch(Object(_store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__["editCarRental"])(carRental));
+    },
+    deleteCarRental: function deleteCarRental(carRental) {
+      return dispatch(Object(_store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__["deleteCarRental"])(carRental));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(RentalTable));
 
 /***/ }),
 
@@ -68512,21 +68664,44 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!****************************************!*\
   !*** ./src/store/actions/addRental.js ***!
   \****************************************/
-/*! exports provided: registerRental */
+/*! exports provided: searchCarRentals, registerRental, fetchCarRentals, deleteCarRental */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchCarRentals", function() { return searchCarRentals; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registerRental", function() { return registerRental; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCarRentals", function() { return fetchCarRentals; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteCarRental", function() { return deleteCarRental; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
+var searchCarRentals = function searchCarRentals(carRentals) {
+  return {
+    type: "SEARCH_CAR_RENTALS",
+    carRentals: carRentals
+  };
+};
 var registerRental = function registerRental(rental) {
   //dispatch =>{
   console.log("hola", rental);
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/registerRental", rental).then(function (res) {
     return console.log(res.data);
   });
+};
+var fetchCarRentals = function fetchCarRentals() {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/carRental").then(function (res) {
+      return res.data;
+    }).then(function (carRentals) {
+      return dispatch(searchCarRentals(carRentals));
+    });
+  };
+};
+var deleteCarRental = function deleteCarRental(carRental) {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"]("/api/carRental/".concat(carRental._id));
+  };
 };
 
 /***/ }),
@@ -68603,6 +68778,30 @@ var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEB
 
 /***/ }),
 
+/***/ "./src/store/reducers/carRentalReducer.js":
+/*!************************************************!*\
+  !*** ./src/store/reducers/carRentalReducer.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case "SEARCH_CAR_RENTALS":
+      return action.carRentals;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./src/store/reducers/index.js":
 /*!*************************************!*\
   !*** ./src/store/reducers/index.js ***!
@@ -68614,10 +68813,13 @@ var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEB
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 /* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./userReducer */ "./src/store/reducers/userReducer.js");
+/* harmony import */ var _carRentalReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./carRentalReducer */ "./src/store/reducers/carRentalReducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  user: _userReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  user: _userReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  carRental: _carRentalReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 })); // export default combineReducers({
 //     logged: userReducer,
 //     products: productListReducer,

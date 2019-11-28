@@ -58,16 +58,15 @@ router.put("/user/:id", async (req, res) => {
   }
 });
 
-//Borrar un usuario /* ARREGLAR
-router.delete("user/:id", async (req, res) => {
+//BORRAR UN USUARIO POR SU ID: DELETE http://localhost:3000/api/user/:id
+router.delete("/user/:id", async (req, res) => {
   try {
     await User.findByIdAndRemove(req.params.id);
-    res.json({ status: "user deleted" });
+    res.json({ status: "User deleted" });
   } catch (err) {
     console.log(err);
   }
 });
-
 //------------------------------------------------
 
 //Company
@@ -109,6 +108,16 @@ router.put("/company/:id", async (req, res) => {
     const company = req.body;
     await Company.findByIdAndUpdate(req.params.id, company);
     res.json({ status: "Company updated" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//BORRAR UNA EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
+router.delete("/company/:id", async (req, res) => {
+  try {
+    await Company.findByIdAndRemove(req.params.id);
+    res.json({ status: "Company deleted" });
   } catch (err) {
     console.log(err);
   }
@@ -161,6 +170,16 @@ router.put("/carRental/:id", async (req, res) => {
   }
 });
 
+//BORRAR UNA RENTADORA POR SU ID: DELETE http://localhost:3000/api/carRental/:id
+router.delete("/carRental/:id", async (req, res) => {
+  try {
+    await CarRental.findByIdAndRemove(req.params.id);
+    res.json({ status: "CarRental deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 //----------------------------------------
 
 //Commission
@@ -207,6 +226,16 @@ router.put("/commission/:id", async (req, res) => {
   }
 });
 
+//BORRAR UNA COMISION POR SU ID: DELETE http://localhost:3000/api/commission/:id
+router.delete("/commission/:id", async (req, res) => {
+  try {
+    await CarRental.findByIdAndRemove(req.params.id);
+    res.json({ status: "Commission deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 //------------------------------------------
 
 //Booking
@@ -248,6 +277,16 @@ router.put("/booking/:id", async (req, res) => {
     const booking = req.body;
     await Booking.findByIdAndUpdate(req.params.id, booking);
     res.json({ status: "Booking updated" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//BORRAR UNA RESERVA POR SU ID: DELETE http://localhost:3000/api/booking/:id
+router.delete("/booking/:id", async (req, res) => {
+  try {
+    await Booking.findByIdAndRemove(req.params.id);
+    res.json({ status: "Booking deleted" });
   } catch (err) {
     console.log(err);
   }

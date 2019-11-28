@@ -25,14 +25,13 @@ const Booking = new Schema({
       ]
     }
   },
-  SalesPerson: { type: Schema.Types.ObjectId, ref: "SalesPerson" },
+  SalesPerson: { type: Schema.Types.ObjectId, ref: "User" },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
-  SalesPersonCommissionAmount: {
-    type: Schema.Types.ObjectId,
-    ref: "Commission"
+  SalespersonCommissionAmount: {
+    type: Number
   },
-  CompanyCommissionAmount: { type: Schema.Types.ObjectId, ref: "Commission" }, //monto a cobrar x la empresa
-  RentlyCommissionAmount: { type: Schema.Types.ObjectId, ref: "Commission" }, //monto a comisionar x la plataforma
+  CompanyCommissionAmount: { type: Number },
+  RentlyCommissionAmount: { type: Number },
   FromDate: { type: Date },
   ToDate: { type: Date },
   Pickup: { type: String },

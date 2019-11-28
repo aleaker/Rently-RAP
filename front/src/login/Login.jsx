@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState } from "react";
@@ -11,6 +11,10 @@ import Link from '@material-ui/core/Link';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import img from "../assets/1.png" 
+import { bindActionCreators } from "redux";
+import axios from "axios"
+import {connect } from "react-redux"
+import * as actions from "../store/actions/userActions"
 const useStyles = makeStyles(theme => ({
   
     paper: {
@@ -57,21 +61,22 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function Login() {
+ function Login(props) {
   const classes = useStyles();
 
-  const [values, setValues] = useState({ email: "", password: ""});
+  const [state, setState] = useState({ email: "", password: ""});
 
   const handleChange = e => {
     e.persist();
-    setValues(values => ({
-      ...values,
+    setState(state => ({
+      ...state,
       [event.target.name]: event.target.value
     }));
   };
   const handleSubmit = e =>{
     e.preventDefault()
-    axios.post("api/user/login", values)
+    console.log(props)
+    props.login(state)
   }
   return (
       <div className={classes.container} >
@@ -93,7 +98,7 @@ export default function Login() {
             label="Email Address"
             name="email"
             autoComplete="email"
-            value={values.email}
+            value={state.email}
             onChange={handleChange}
             autoFocus
           />
@@ -107,7 +112,7 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
-            value={values.password}
+            value={state.password}
             onChange={handleChange}
           />
     
@@ -134,3 +139,12 @@ export default function Login() {
     </div>
   );
 }
+
+function mapStateToProps(state){
+  return state
+}
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(actions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

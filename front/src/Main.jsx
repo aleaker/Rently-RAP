@@ -18,7 +18,7 @@ class Main extends React.Component {
       <div>
         <Switch>
           {/* <Route exact path="/comisiones" component={Comission} /> */}
-          <Route exact path="/" component={Reservation} />
+          <Route exact path="/" component={Login} />
           <Route
             exact
             path="/registerRental"

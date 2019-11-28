@@ -7,20 +7,22 @@ const validateEmail = function(email) {
   return re.test(email);
 };
 
-const Salesperson = new Schema({
+const User = new Schema({
   Active: { type: Boolean, default: true },
+  UserType: { type: String, required: true },
   Email: {
     type: String,
     unique: true,
     trim: true,
     lowercase: true,
+    required: true,
     validate: [validateEmail, "Please fill a valid email address"],
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address"
     ]
   },
-  Password: { type: String, default: "salesperson" },
+  Password: { type: String, required: true },
   FirstName: { type: String, required: true },
   LastName: { type: String, required: true },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
@@ -31,15 +33,26 @@ const Salesperson = new Schema({
       "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png"
   },
   Notes: { type: String },
-  CommissionScheme: { type: Schema.Types.ObjectId, ref: "Commission" }
+  CommissionScheme: [{ type: Schema.Types.ObjectId, ref: "Commission" }]
 });
 
-Salesperson.methods.encryptPassword = password => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-};
+User.pre("save", function(next) {
+  if (!this.isModified("password")) {
+    return next();
+  }
 
-Salesperson.methods.comparePassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
-};
+  this.Password = bcrypt.hashSync(this.Password, bcrypt.genSaltSync(10));
 
-module.exports = mongoose.model("Salesperson", Salesperson);
+  next();
+});
+
+// User.methods.encryptPassword = password => {
+//   return bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
+// };
+
+User.methods.comparePassword = function(password) {
+  return bcrypt.compareSync(password, this.Password);
+};
+// return bcrypt.compareSync(password, this.password);
+
+module.exports = mongoose.model("User", User);

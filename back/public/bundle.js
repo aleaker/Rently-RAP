@@ -64056,7 +64056,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
-        component: _reservationForm_reservationForm__WEBPACK_IMPORTED_MODULE_3__["default"]
+        component: _login_Login__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/registerRental",
@@ -64404,7 +64404,6 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Login; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/esm/TextField/index.js");
@@ -64420,6 +64419,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_Box__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Box */ "./node_modules/@material-ui/core/esm/Box/index.js");
 /* harmony import */ var _assets_1_png__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../assets/1.png */ "./src/assets/1.png");
 /* harmony import */ var _assets_1_png__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_assets_1_png__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_actions_userActions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../store/actions/userActions */ "./src/store/actions/userActions.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -64433,6 +64437,10 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
 
 
 
@@ -64483,7 +64491,8 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_2__["ma
     }
   };
 });
-function Login() {
+
+function Login(props) {
   var classes = useStyles();
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
@@ -64491,19 +64500,20 @@ function Login() {
     password: ""
   }),
       _useState2 = _slicedToArray(_useState, 2),
-      values = _useState2[0],
-      setValues = _useState2[1];
+      state = _useState2[0],
+      setState = _useState2[1];
 
   var handleChange = function handleChange(e) {
     e.persist();
-    setValues(function (values) {
-      return _objectSpread({}, values, _defineProperty({}, event.target.name, event.target.value));
+    setState(function (state) {
+      return _objectSpread({}, state, _defineProperty({}, event.target.name, event.target.value));
     });
   };
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    axios.post("api/user", values);
+    console.log(props);
+    props.login(state);
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -64535,7 +64545,7 @@ function Login() {
     label: "Email Address",
     name: "email",
     autoComplete: "email",
-    value: values.email,
+    value: state.email,
     onChange: handleChange,
     autoFocus: true
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -64548,7 +64558,7 @@ function Login() {
     type: "password",
     id: "password",
     autoComplete: "current-password",
-    value: values.password,
+    value: state.password,
     onChange: handleChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
     type: "submit",
@@ -64566,6 +64576,16 @@ function Login() {
     variant: "body2"
   }, "Forgot password?")))))));
 }
+
+function mapStateToProps(state) {
+  return state;
+}
+
+function mapDispatchToProps(dispatch) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_12__["bindActionCreators"])(_store_actions_userActions__WEBPACK_IMPORTED_MODULE_15__, dispatch);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_14__["connect"])(mapStateToProps, mapDispatchToProps)(Login));
 
 /***/ }),
 
@@ -64852,10 +64872,58 @@ __webpack_require__.r(__webpack_exports__);
 
 var registerRental = function registerRental(rental) {
   //dispatch =>{
-  console.log("hola");
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/api/registerRental", rental).then(function (res) {
     return res.data;
   });
+};
+
+/***/ }),
+
+/***/ "./src/store/actions/userActions.js":
+/*!******************************************!*\
+  !*** ./src/store/actions/userActions.js ***!
+  \******************************************/
+/*! exports provided: logUser, logoutUser, login, logout */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logUser", function() { return logUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutUser", function() { return logoutUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var logUser = function logUser(user) {
+  return {
+    type: "LOG_USER",
+    user: user
+  };
+};
+var logoutUser = function logoutUser() {
+  return {
+    type: "LOG_OUT"
+  };
+};
+var login = function login(userData) {
+  return function (dispatch) {
+    if (!userData.password.length) throw Error("No password");
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/user/login", userData).then(function (_ref) {
+      var data = _ref.data;
+      dispatch(logUser(data));
+    });
+  };
+};
+var logout = function logout(user) {
+  return function (dispatch) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("api/user/logout", {
+      email: user.email,
+      password: user.password
+    }).then(function () {
+      dispatch(logout());
+    });
+  };
 };
 
 /***/ }),
@@ -64893,8 +64961,12 @@ var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEB
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
+/* harmony import */ var _userReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./userReducer */ "./src/store/reducers/userReducer.js");
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({})); // export default combineReducers({
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  user: _userReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+})); // export default combineReducers({
 //     logged: userReducer,
 //     products: productListReducer,
 //     singleProductData: singleProductDataReducer,
@@ -64903,6 +64975,33 @@ __webpack_require__.r(__webpack_exports__);
 //     users: usersReducer,
 //     orders: ordersReducer
 //   });
+
+/***/ }),
+
+/***/ "./src/store/reducers/userReducer.js":
+/*!*******************************************!*\
+  !*** ./src/store/reducers/userReducer.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case "LOG_USER":
+      return Object.assign({}, state, action.user);
+
+    case "LOGOUT_USER":
+      return Object.assign({}, state, {});
+
+    default:
+      return state;
+  }
+});
 
 /***/ })
 

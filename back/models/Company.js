@@ -37,7 +37,7 @@ const Company = new Schema({
     AccountNumber: { type: String },
     Currency: { type: String },
     Country: { type: String },
-    SwiffCode: { type: String }
+    SwiftCode: { type: String }
   },
   CommissionScheme: [{ type: Schema.Types.ObjectId, ref: "Commission" }]
 });

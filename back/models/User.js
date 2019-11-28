@@ -2,6 +2,8 @@ const mongoose = require("../config/db");
 const { Schema } = require("mongoose");
 const bcrypt = require("bcrypt-nodejs");
 
+const SALT_WORK_FACTOR = 10;
+
 const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
@@ -40,19 +42,12 @@ User.pre("save", function(next) {
   if (!this.isModified("password")) {
     return next();
   }
-
   this.Password = bcrypt.hashSync(this.Password, bcrypt.genSaltSync(10));
-
   next();
 });
-
-// User.methods.encryptPassword = password => {
-//   return bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
-// };
 
 User.methods.comparePassword = function(password) {
   return bcrypt.compareSync(password, this.Password);
 };
-// return bcrypt.compareSync(password, this.password);
 
 module.exports = mongoose.model("User", User);

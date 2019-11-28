@@ -6,7 +6,8 @@ import {Switch,Route} from "react-router-dom"
 import Reservation from "./reservationForm/reservationForm";
 import Login from "./login/Login";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
-// import Comission from "./Comissions/Comission";
+import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
+import Comission from "./Comissions/Comission";
 
 class Main extends React.Component {
   constructor(props) {
@@ -16,13 +17,18 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <Switch>
-          {/* <Route exact path="/comisiones" component={Comission} /> */}
-          <Route exact path="/" component={Login} />
+         <Switch>
+          <Route exact path="/comisiones" component={Comission} /> 
+          <Route exact path="/" component={Reservation} />
           <Route
             exact
             path="/registerRental"
             render={() => <RentalFormContainer />}
+          />
+          <Route
+            exact
+            path="/abmempresas"
+            render={() => <AbmEmpresasContainer />}
           />
         </Switch>
       </div>
@@ -33,7 +39,4 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({});
 
-export default connect(
-  null,
-  null
-)(Main);
+export default connect(null, null)(Main);

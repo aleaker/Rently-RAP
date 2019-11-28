@@ -19,25 +19,111 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
+import Input from "@material-ui/core/Input";
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(
+  Company,
+  From,
+  To,
+  CommissionPercentage,
+  FromDate,
+  ToDate,
+  Type
+) {
+  return { Company, From, To, CommissionPercentage, FromDate, ToDate, Type };
 }
 
 const rows = [
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Donut", 452, 25.0, 51, 4.9),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Honeycomb", 408, 3.2, 87, 6.5),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Jelly Bean", 375, 0.0, 94, 0.0),
-  createData("KitKat", 518, 26.0, 65, 7.0),
-  createData("Lollipop", 392, 0.2, 98, 0.0),
-  createData("Marshmallow", 318, 0, 81, 2.0),
-  createData("Nougat", 360, 19.0, 9, 37.0),
-  createData("Oreo", 437, 18.0, 63, 4.0)
+  createData(
+    "EMPRESAaaa A",
+    10000,
+    30000,
+    15,
+    "20 - 02 - 2020",
+    "25 - 02 - 2020",
+    1
+  ),
+  createData(
+    "EMPRESAaaa B",
+    10000,
+    20000,
+    15,
+    "24 - 02 - 2020",
+    "25 - 02 - 2020",
+    1
+  ),
+  createData(
+    "EMPRESA C",
+    10000,
+    50000,
+    15,
+    "18 - 02 - 2020",
+    "25 - 02 - 2020",
+    2
+  ),
+  createData(
+    "EMPRESA D",
+    10000,
+    90000,
+    15,
+    "02 - 02 - 2020",
+    "25 - 02 - 2020",
+    4
+  ),
+  createData(
+    "EMPRESA E",
+    10000,
+    70000,
+    15,
+    "15 - 01 - 2020",
+    "25 - 02 - 2020",
+    5
+  ),
+  createData(
+    "EMPRESA F",
+    10000,
+    60000,
+    4,
+    "24 - 01 - 2020",
+    "25 - 02 - 2020",
+    6
+  ),
+  createData(
+    "EMPRESA G",
+    10000,
+    90000,
+    29,
+    "22 - 01 - 2020",
+    "25 - 02 - 2020",
+    8
+  ),
+  createData(
+    "EMPRESA H",
+    10000,
+    50000,
+    19,
+    "21 - 01 - 2020",
+    "25 - 02 - 2020",
+    2
+  ),
+  createData(
+    "EMPRESA I",
+    10000,
+    50000,
+    15,
+    "03 - 01 - 2020",
+    "25 - 02 - 2020",
+    3
+  ),
+  createData(
+    "EMPRESA J",
+    10000,
+    20000,
+    12,
+    "06 - 01 - 2020",
+    "25 - 02 - 2020",
+    1
+  )
 ];
 
 function desc(a, b, orderBy) {
@@ -68,15 +154,26 @@ function getSorting(order, orderBy) {
 
 const headCells = [
   {
-    id: "name",
-    numeric: false,
+    id: "Company",
     disablePadding: true,
-    label: "Dessert (100g serving)"
+    label: "Company"
   },
-  { id: "calories", numeric: true, disablePadding: false, label: "Calories" },
-  { id: "fat", numeric: true, disablePadding: false, label: "Fat (g)" },
-  { id: "carbs", numeric: true, disablePadding: false, label: "Carbs (g)" },
-  { id: "protein", numeric: true, disablePadding: false, label: "Protein (g)" }
+  { id: "From", numeric: true, disablePadding: false, label: "Desde" },
+  { id: "To", numeric: true, disablePadding: false, label: "Hasta" },
+  {
+    id: "CommissionPercentage",
+    numeric: true,
+    disablePadding: false,
+    label: "% Comision"
+  },
+  {
+    id: "FromDate",
+    numeric: true,
+    disablePadding: false,
+    label: "Desde Fecha"
+  },
+  { id: "ToDate", numeric: true, disablePadding: false, label: "Hasta Fecha" },
+  { id: "Type", numeric: true, disablePadding: false, label: "Tipo" }
 ];
 
 function EnhancedTableHead(props) {
@@ -183,7 +280,6 @@ const EnhancedTableToolbar = props => {
           Nutrition
         </Typography>
       )}
-
       {numSelected > 0 ? (
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
@@ -191,10 +287,10 @@ const EnhancedTableToolbar = props => {
           </IconButton>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter list">
-          <IconButton aria-label="filter list">
-            <FilterListIcon />
-          </IconButton>
+        <Tooltip>
+          <form onSubmit={props.handleSubmitInput}>
+            <Input type="search" onChange={props.handleChangeInput} />
+          </form>
         </Tooltip>
       )}
     </Toolbar>
@@ -241,6 +337,29 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [valueRows, setValueRows] = React.useState(rows);
+  const [valueInput, setValueInput] = React.useState("");
+
+  const handleChangeInput = event => {
+    const val = event.target.value;
+    setValueInput(val);
+    setValueRows(
+      rows.filter(row =>
+        valueInput ? row.Company.toLowerCase().includes(val.toLowerCase()) : row
+      )
+    );
+  };
+
+  const handleSubmitInput = event => {
+    event.preventDefault();
+    setValueRows(
+      rows.filter(row =>
+        valueInput
+          ? row.Company.toLowerCase().includes(valueInput.toLowerCase())
+          : row
+      )
+    );
+  };
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === "desc";
@@ -286,10 +405,6 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
-  const handleChangeDense = event => {
-    setDense(event.target.checked);
-  };
-
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows =
@@ -298,7 +413,11 @@ export default function EnhancedTable() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          handleChangeInput={handleChangeInput}
+          handleSubmitInput={handleSubmitInput}
+        />
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}
@@ -316,20 +435,20 @@ export default function EnhancedTable() {
               rowCount={rows.length}
             />
             <TableBody>
-              {stableSort(rows, getSorting(order, orderBy))
+              {stableSort(valueRows, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row.Company);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={event => handleClick(event, row.name)}
+                      onClick={event => handleClick(event, row.Company)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={row.company}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -344,12 +463,16 @@ export default function EnhancedTable() {
                         scope="row"
                         padding="none"
                       >
-                        {row.name}
+                        {row.Company}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{row.From}</TableCell>
+                      <TableCell align="right">{row.To}</TableCell>
+                      <TableCell align="right">
+                        {row.CommissionPercentage}
+                      </TableCell>
+                      <TableCell align="right">{row.FromDate}</TableCell>
+                      <TableCell align="right">{row.ToDate}</TableCell>
+                      <TableCell align="right">{row.Type}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -371,10 +494,6 @@ export default function EnhancedTable() {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      />
     </div>
   );
 }

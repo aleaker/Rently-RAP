@@ -1,6 +1,6 @@
 import axios from "axios";
-
 export const registerRental = rental => {
   //dispatch =>{
-  axios.post("/api/registerRental", rental).then(res => res.data);
+  console.log("hola", rental);
+  axios.post("/api/registerRental", rental).then(res => console.log(res.data));
 };

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
-
+const userRouter = require("./user");
 //Requiero los modelos
 const registerRentalRouter = require("./registerRental");
 const User = require("../models/User");
@@ -13,7 +13,11 @@ const Booking = require("../models/Booking");
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/registerRental", registerRentalRouter);
-
+router.use("/user", userRouter); //rutas del login and logout
+//RentlyAdmin
+router.post("/rently", (req, resp) => {
+  RentlyAdmin.create(req.body);
+});
 //Users
 
 //VER LOS USUARIOS: GET http://localhost:3000/api/user

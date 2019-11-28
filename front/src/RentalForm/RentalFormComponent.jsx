@@ -1,8 +1,12 @@
 import React from "react";
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import EsquemaComisiones from '../comisiones/EsquemaComision' 
+import Button from '@material-ui/core/Button';
 
 export default function({handleChange, handleSubmit}){
     return(
-        <div>
+        <div className="container">  
             <form onSubmit={(event)=> handleSubmit(event)}>
                 <label>Nombre empresa: </label>
                 <input type="text" name="NombreEmpresa" onChange={event=>handleChange(event)}/>
@@ -20,8 +24,11 @@ export default function({handleChange, handleSubmit}){
                 <input type="text" name="lastName" onChange={event=>handleChange(event)}/>
                 <label>Email contacto principal: </label>
                 <input type="email" name="Email" onChange={event=>handleChange(event)}/>
-                <button type="submit">Agregar</button>
+                <EsquemaComisiones handleSchema={handleChange} 
+
+                />
             </form>
+                <Button type="submit" onClick={(e)=>handleSubmit(e)}>AGREGAR RENTADORA</Button>
             
         </div>
     )

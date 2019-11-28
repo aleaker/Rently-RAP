@@ -75,7 +75,6 @@ const useStyles = makeStyles(theme => ({
   };
   const handleSubmit = e =>{
     e.preventDefault()
-    console.log(props)
     props.login(state)
   }
   return (

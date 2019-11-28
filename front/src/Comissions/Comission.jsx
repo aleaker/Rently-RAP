@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { lighten, makeStyles } from "@material-ui/core/styles";
@@ -21,7 +22,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import Input from "@material-ui/core/Input";
 
-function createData(
+/* function createData(
   Company,
   From,
   To,
@@ -124,7 +125,7 @@ const rows = [
     "25 - 02 - 2020",
     1
   )
-];
+]; */
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -337,14 +338,26 @@ export default function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [valueRows, setValueRows] = React.useState(rows);
+  const [valueRows, setValueRows] = React.useState([]);
   const [valueInput, setValueInput] = React.useState("");
+  const [valueDataFalse, setValueDataFalse] = React.useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/api/comisiones")
+      .then(
+        dataFalsa => (
+          setValueDataFalse(dataFalsa.data), setValueRows(dataFalsa.data)
+        )
+      )
+      .catch(err => console.log(err));
+  }, []);
 
   const handleChangeInput = event => {
     const val = event.target.value;
     setValueInput(val);
     setValueRows(
-      rows.filter(row =>
+      valueDataFalse.filter(row =>
         valueInput ? row.Company.toLowerCase().includes(val.toLowerCase()) : row
       )
     );
@@ -353,7 +366,7 @@ export default function EnhancedTable() {
   const handleSubmitInput = event => {
     event.preventDefault();
     setValueRows(
-      rows.filter(row =>
+      valueDataFalse.filter(row =>
         valueInput
           ? row.Company.toLowerCase().includes(valueInput.toLowerCase())
           : row
@@ -408,7 +421,7 @@ export default function EnhancedTable() {
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    rowsPerPage - Math.min(rowsPerPage, valueRows.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
@@ -432,7 +445,7 @@ export default function EnhancedTable() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={valueRows.length}
             />
             <TableBody>
               {stableSort(valueRows, getSorting(order, orderBy))
@@ -487,7 +500,7 @@ export default function EnhancedTable() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={valueRows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}

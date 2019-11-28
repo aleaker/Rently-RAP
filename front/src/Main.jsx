@@ -27,8 +27,8 @@ const Main = props => {
         <Switch>
           <Route exact path="/login" component={Login} />
 
-          <Route exact path="/comisiones" component={Comission} />
           <Route exact path="/" component={Reservation} />
+          <Route exact path="/comisiones" component={Comission} /> 
           <Route
             exact
             path="/registerRental"

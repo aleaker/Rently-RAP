@@ -66156,12 +66156,12 @@ var Main = function Main(props) {
     component: _login_Login__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
-    path: "/comisiones",
-    component: _Comissions_Comission__WEBPACK_IMPORTED_MODULE_7___default.a
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-    exact: true,
     path: "/",
     component: _reservationForm_reservationForm__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/comisiones",
+    component: _Comissions_Comission__WEBPACK_IMPORTED_MODULE_7___default.a
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/registerRental",
@@ -66200,11 +66200,21 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var _comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../comisiones/EsquemaComision */ "./src/comisiones/EsquemaComision.jsx");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var handleChange = _ref.handleChange,
       handleSubmit = _ref.handleSubmit;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: function onSubmit(event) {
       return handleSubmit(event);
     }
@@ -66256,9 +66266,14 @@ __webpack_require__.r(__webpack_exports__);
     onChange: function onChange(event) {
       return handleChange(event);
     }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit"
-  }, "Agregar")));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    handleSchema: handleChange
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    type: "submit",
+    onClick: function onClick(e) {
+      return handleSubmit(e);
+    }
+  }, "AGREGAR RENTADORA"));
 }); // Nombre de la rentadora, Logo, Nombre y mail del contacto principal, API, Esquema de comisiones a cobrar
 
 /***/ }),
@@ -66349,6 +66364,7 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
+      console.log("creando");
       Object(_store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__["registerRental"])(this.state);
     }
   }, {
@@ -66428,48 +66444,6 @@ function (_React$Component) {
             };
           });
           break;
-        // case "From":
-        //   let from = event.target.value;
-        //   this.setState(prevState => ({
-        //     CommissionScheme: { ...prevState.CommissionScheme, From: from }
-        //   }));
-        //   break;
-        // case "To":
-        //   let to = event.target.value;
-        //   this.setState(prevState => ({
-        //     CommissionScheme: { ...prevState.CommissionScheme, To: to }
-        //   }));
-        //   break;
-        // case "CommissionPercentage":
-        //   let commissionpercentage = event.target.value;
-        //   this.setState(prevState => ({
-        //     CommissionScheme: {
-        //       ...prevState.CommissionScheme,
-        //       CommissionPercentage: commissionpercentage
-        //     }
-        //   }));
-        //   break;
-        // case "FromDate":
-        //   let fromdate = event.target.value;
-        //   this.setState(prevState => ({
-        //     CommissionScheme: {
-        //       ...prevState.CommissionScheme,
-        //       FromDate: fromdate
-        //     }
-        //   }));
-        //   break;
-        // case "ToDate":
-        //   let todate = event.target.value;
-        //   this.setState(prevState => ({
-        //     CommissionScheme: { ...prevState.CommissionScheme, ToDate: todate }
-        //   }));
-        //   break;
-        // case "Type":
-        //   let type = event.target.value;
-        //   this.setState(prevState => ({
-        //     CommissionScheme: { ...prevState.CommissionScheme, Type: type }
-        //   }));
-        //   break;
 
         default:
           console.log("aca no pasó nada");
@@ -66481,8 +66455,6 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
         handleChange: this.handleChange,
         handleSubmit: this.handleSubmit
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        handleSchema: this.handleChange
       }));
     }
   }]);

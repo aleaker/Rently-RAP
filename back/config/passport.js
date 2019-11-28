@@ -29,7 +29,7 @@ passport.serializeUser(function(user, done) {
 });
 // deserialize: how we look for the user
 passport.deserializeUser(function(id, done) {
-  User.findByPk(id).then(user => done(null, user));
+  User.findOne({ _id: id }).then(user => done(null, user));
 });
 
 module.exports = passport;

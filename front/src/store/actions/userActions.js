@@ -31,3 +31,10 @@ export const logout = function(user) {
       });
   };
 };
+export const fetchUser = function() {
+  return function(dispatch) {
+    return axios.get("api/user").then(user => {
+      dispatch(logUser(user.data));
+    });
+  };
+};

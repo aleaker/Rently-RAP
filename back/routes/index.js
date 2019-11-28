@@ -179,6 +179,8 @@ router.post("/carRental", (req, res) => {
   }
 });
 
+// COMISSION SCHEME: 5ddd47172edd344b3422cbed
+//CUANDO BORRAMOS UNA RENTADORA, QUEREMOS BORRAR SU ESQUEMA DE COMISION????
 //MODIFICAR UNA RENTADORA: PUT http://localhost:3000/api/carRental/:id
 router.put("/carRental/:id", async (req, res) => {
   try {

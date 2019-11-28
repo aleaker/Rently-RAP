@@ -1,4 +1,4 @@
-const RentlyAdmin = require("./models/RentlyAdmin");
+/* const RentlyAdmin = require("./models/RentlyAdmin");
 const Company = require("./models/Company");
 const CompanyAdmimn = require("./models/CompanyAdmin");
 const Commission = require("./models/Commission");
@@ -6,15 +6,25 @@ const CarRental = require("./models/CarRental");
 const Salesperson = require("./models/Salesperson");
 const Booking = require("./models/Booking");
 const mongoose = require("mongoose");
+/*  */
+// Commission.find().then(commissions => {
+//   return commissions.map(com => {
+//     Company.update(
+//       { _id: com.Company },
+//       { $push: { CommissionScheme: com._id } }
+//     );
+//   });
+// });
 
-Commission.find().then(commissions => {
-  return commissions.map(com => {
-    Company.update(
-      { _id: com.Company },
-      { $push: { CommissionScheme: com._id } }
-    );
-  });
-});
+// Promise.all([
+//   RentlyAdmin.create({ Email: "hanoi@hanoi.com", Password: "MongoHanoi" }),
+//   RentlyAdmin.create({ Email: "lian@lian.com", Password: "MongoLian" }),
+//   RentlyAdmin.create({ Email: "alejo@alejo.com", Password: "MongoAlejo" }),
+//   RentlyAdmin.create({ Email: "juanma@juanma.com", Password: "MongoJuanma" }),
+//   RentlyAdmin.create({ Email: "joaco@joaco.com", Password: "MongoJoaco" })
+// ]).then(([hanoi, lian, alejo, juanma, joaco]) =>
+//   console.log(hanoi, lian, alejo, juanma, joaco)
+// );
 
 Promise.all([
   RentlyAdmin.create({ Email: "hanoi@hanoi.com", Password: "MongoHanoi" }),
@@ -488,3 +498,16 @@ Promise.all([
 //     ]
 //   }
 // ];
+//  */
+
+const mongoose = require("mongoose");
+const User = require("../back/models/User");
+
+const user = new User({
+  UserType: "rentlyadmin",
+  Email: "admin9@admin.com",
+  Password: "123",
+  FirstName: "rentlyadmin8",
+  LastName: "rentlyadmin8",
+  Telephone: "987654321"
+}).save();

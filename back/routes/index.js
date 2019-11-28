@@ -16,8 +16,8 @@ router.use("/registerRental", registerRentalRouter);
 
 //Users
 
-//VER LOS USUARIOS: GET http://localhost:3000/api/users
-router.get("/users", async (req, res) => {
+//VER LOS USUARIOS: GET http://localhost:3000/api/user
+router.get("/user", async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
@@ -47,7 +47,7 @@ router.post("/user", (req, res) => {
   }
 });
 
-//ACTUALIZAR DATA DE UN USER: PUT http://localhost:3000/api/user/:id
+//MODIFICAR UN USER: PUT http://localhost:3000/api/user/:id
 router.put("/user/:id", async (req, res) => {
   try {
     const user = req.body;
@@ -81,7 +81,7 @@ router.get("/company", async (req, res) => {
   }
 });
 
-//VER UNA EMPRESA POR SU ID: GET http://localhost:3000/api/company/:id
+//VER 1 EMPRESA POR SU ID: GET http://localhost:3000/api/company/:id
 router.get("/company/:id", async (req, res) => {
   try {
     const company = await Company.findById(req.params.id);
@@ -91,7 +91,7 @@ router.get("/company/:id", async (req, res) => {
   }
 });
 
-//CREAR UNA EMPRESA: POST http://localhost:3000/api/company
+//CREAR 1 EMPRESA: POST http://localhost:3000/api/company
 router.post("/company", (req, res) => {
   try {
     Company.create(req.body);
@@ -102,7 +102,7 @@ router.post("/company", (req, res) => {
   }
 });
 
-//ACTUALIZAR DATA DE UNA EMPRESA: PUT http://localhost:3000/api/company/:id
+//MODIFICAR 1 EMPRESA: PUT http://localhost:3000/api/company/:id
 router.put("/company/:id", async (req, res) => {
   try {
     const company = req.body;
@@ -113,7 +113,7 @@ router.put("/company/:id", async (req, res) => {
   }
 });
 
-//BORRAR UNA EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
+//BORRAR 1 EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
 router.delete("/company/:id", async (req, res) => {
   try {
     await Company.findByIdAndRemove(req.params.id);
@@ -138,7 +138,7 @@ router.get("/carRental", async (req, res) => {
   }
 });
 
-//VER UNA RENTADORA POR SU ID: GET http://localhost:3000/api/carRental/:id ARREGLAR *
+//VER UNA RENTADORA POR SU ID: GET http://localhost:3000/api/carRental/:id
 router.get("/carRental/:id", async (req, res) => {
   try {
     const carRental = await CarRental.findById(req.params.id);
@@ -159,7 +159,7 @@ router.post("/carRental", (req, res) => {
   }
 });
 
-//ACTUALIZAR DATA DE UNA RENTADORA: PUT http://localhost:3000/api/carRental/:id
+//MODIFICAR UNA RENTADORA: PUT http://localhost:3000/api/carRental/:id
 router.put("/carRental/:id", async (req, res) => {
   try {
     const carRental = req.body;
@@ -215,7 +215,7 @@ router.post("/commission", (req, res) => {
   }
 });
 
-//ACTUALIZAR DATA DE UNA COMISION: PUT http://localhost:3000/api/commission/:id
+//MODIFICAR UNA COMISION: PUT http://localhost:3000/api/commission/:id
 router.put("/commission/:id", async (req, res) => {
   try {
     const commission = req.body;
@@ -271,7 +271,7 @@ router.post("/booking", (req, res) => {
   }
 });
 
-//ACTUALIZAR DATA DE UNA RESERVA: PUT http://localhost:3000/api/booking/:id
+//MODIFICAR DE UNA RESERVA: PUT http://localhost:3000/api/booking/:id
 router.put("/booking/:id", async (req, res) => {
   try {
     const booking = req.body;

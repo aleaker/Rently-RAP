@@ -14,7 +14,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "mongo": "^0.1.0",
-    "mong.save().save()oose": "^5.7.12",
+    "mongoose": "^5.7.12",
     "mongoose-seed": "^0.6.0",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.1",

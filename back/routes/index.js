@@ -67,6 +67,16 @@ router.delete("/user/:id", async (req, res) => {
     console.log(err);
   }
 });
+
+//BORRAR TODOS LOS USUARIOS DELETE http://localhost:3000/api/deleteallusers
+router.delete("/deleteallusers", async (req, res) => {
+  try {
+    await User.collection.drop();
+    res.json({ status: "All users deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
 //------------------------------------------------
 
 //Company
@@ -118,6 +128,16 @@ router.delete("/company/:id", async (req, res) => {
   try {
     await Company.findByIdAndRemove(req.params.id);
     res.json({ status: "Company deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//BORRAR TODAS LAS EMPRESAS DELETE http://localhost:3000/api/deleteallcompanies
+router.delete("/deleteallcompanies", async (req, res) => {
+  try {
+    await Company.collection.drop();
+    res.json({ status: "All companies deleted" });
   } catch (err) {
     console.log(err);
   }
@@ -180,6 +200,16 @@ router.delete("/carRental/:id", async (req, res) => {
   }
 });
 
+//BORRAR TODAS LAS RENTADORAS DELETE http://localhost:3000/api/deleteallcarrentals
+router.delete("/deleteallcarrentals", async (req, res) => {
+  try {
+    await CarRental.collection.drop();
+    res.json({ status: "All CarRentals deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 //----------------------------------------
 
 //Commission
@@ -197,8 +227,8 @@ router.get("/commission", async (req, res) => {
 //VER UNA COMISION POR SU ID: GET http://localhost:3000/api/commission/:id
 router.get("/commission/:id", async (req, res) => {
   try {
-    const user = await Commission.findById(req.params.id);
-    res.json(user);
+    const commission = await Commission.findById(req.params.id);
+    res.json(commission);
   } catch (err) {
     console.log(err);
   }
@@ -229,13 +259,22 @@ router.put("/commission/:id", async (req, res) => {
 //BORRAR UNA COMISION POR SU ID: DELETE http://localhost:3000/api/commission/:id
 router.delete("/commission/:id", async (req, res) => {
   try {
-    await CarRental.findByIdAndRemove(req.params.id);
+    await Commission.findByIdAndRemove(req.params.id);
     res.json({ status: "Commission deleted" });
   } catch (err) {
     console.log(err);
   }
 });
 
+//BORRAR TODAS LAS COMISIONES DELETE http://localhost:3000/api/deleteallcommissions
+router.delete("/deleteallcommissions", async (req, res) => {
+  try {
+    await Commission.collection.drop();
+    res.json({ status: "All commissions deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
 //------------------------------------------
 
 //Booking
@@ -287,6 +326,16 @@ router.delete("/booking/:id", async (req, res) => {
   try {
     await Booking.findByIdAndRemove(req.params.id);
     res.json({ status: "Booking deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//BORRAR TODAS LAS RESERVAS: DELETE http://localhost:3000/api/deleteallbookings
+router.delete("/deleteallbookings", async (req, res) => {
+  try {
+    await Booking.collection.drop();
+    res.json({ status: "All bookings deleted" });
   } catch (err) {
     console.log(err);
   }

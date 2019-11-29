@@ -1,24 +1,37 @@
 const router = require("express").Router();
 const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
+const createCompanyRouter = require('./createCompany')
 const userRouter = require("./user");
 //Requiero los modelos
 const registerRentalRouter = require("./registerRental");
-const User = require("../models/User");
 const Company = require("../models/Company");
 const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
+const User = require('../models/User')
 
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/registerRental", registerRentalRouter);
+router.use("/createCompany", createCompanyRouter )
 router.use("/user", userRouter); //rutas del login and logout
+
 //RentlyAdmin
 router.post("/rently", (req, resp) => {
   RentlyAdmin.create(req.body);
 });
 //Users
+
+router.get('/users', (req, res)=>{
+  User.find().then(e=>res.json(e))
+})
+
+router.post("/rently", (req, res) => {
+  RentlyAdmin.create(req.body);
+  console.log("RentlyAdmin creado");
+  res.redirect("/api/rently")
+});
 
 //VER LOS USUARIOS: GET http://localhost:3000/api/user
 router.get("/user", async (req, res) => {
@@ -346,4 +359,4 @@ router.delete("/deleteallbookings", async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router

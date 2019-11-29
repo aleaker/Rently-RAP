@@ -12,7 +12,6 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import img from "../assets/1.png" 
 import { bindActionCreators } from "redux";
-import axios from "axios"
 import {connect } from "react-redux"
 import * as actions from "../store/actions/userActions"
 const useStyles = makeStyles(theme => ({

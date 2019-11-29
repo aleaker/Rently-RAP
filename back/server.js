@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const db = require("./config/db");
-const chalk = require('chalk')
-
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+
+// conf de passport
+const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
+const cookieParser = require("cookie-parser"); // req.cookies
+const passport = require("passport");
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,6 +16,12 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 require("dotenv").config();
+
+//conf passport
+app.use(cookieParser());
+app.use(session({ secret: "pepinillo" }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.listen(3000, function() {
   console.log("App listening on port 3000");

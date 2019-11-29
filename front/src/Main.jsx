@@ -1,6 +1,7 @@
 //Imports de Modulos
 import React, { useState } from "react";
 import { connect } from "react-redux";
+
 import { Switch, Route } from "react-router-dom";
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
@@ -23,11 +24,11 @@ const Main = props => {
   }, []);
   return (
     <div>
-      {loading ? (
+      {/* {loading ? (
         ""
       ) : !props.user ? (
         <Login />
-      ) : (
+      ) : ( */}
         <Switch>
           <Route exact path="/" component={Dashboard} />
           <Route
@@ -56,7 +57,7 @@ const Main = props => {
             render={() => <AbmEmpresasContainer />}
           />
         </Switch>
-      )}
+      
     </div>
   );
 };

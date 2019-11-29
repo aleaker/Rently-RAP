@@ -16,9 +16,12 @@ export const logoutUser = function() {
 export const login = function(userData) {
   return function(dispatch) {
     if (!userData.password.length) throw Error("No password");
-    return axios.post("api/user/login", userData).then(({ data }) => {
-      dispatch(logUser(data));
-    });
+    return axios
+      .post("api/user/login", userData)
+      .then(({ data }) => {
+        return dispatch(logUser(data));
+      })
+      .catch(err => err);
   };
 };
 

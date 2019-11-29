@@ -1,9 +1,9 @@
-export default function(state = {}, action) {
+export default function(state = null, action) {
   switch (action.type) {
     case "LOG_USER":
-      return Object.assign({}, state, action.user);
+      return action.user;
     case "LOGOUT_USER":
-      return Object.assign({}, state, {});
+      return null;
 
     default:
       return state;

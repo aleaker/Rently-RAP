@@ -8,12 +8,12 @@ router.post("/", (req, resp) => {
     let obj = req.body;                        //Guardo la data de rentadora en un obj
     obj.CommissionScheme = createdCommission._id; //le agego el id del esquema creado a ese obj
     return CarRental.create(obj)})                
-    //.then(createdCarRental=>console.log("createdCarRental",createdCarRental))
+    .then(createdCarRental=>console.log("createdCarRental",createdCarRental))
     
 
 
 
-  .catch(err => console.log("Error: ",err.code))
+  .catch(err => console.log("Error: ",err))
 });
 
 

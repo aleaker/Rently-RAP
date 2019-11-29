@@ -73341,7 +73341,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (_ref) {
   var handleChange = _ref.handleChange,
-      handleSubmit = _ref.handleSubmit;
+      handleSubmit = _ref.handleSubmit,
+      schemaName = _ref.schemaName,
+      schemaFrom = _ref.schemaFrom,
+      schemaTo = _ref.schemaTo,
+      handleSchemaData = _ref.handleSchemaData,
+      disabled = _ref.disabled,
+      handleSchema = _ref.handleSchema,
+      handleCommissionSchema = _ref.handleCommissionSchema,
+      commission = _ref.commission,
+      addNewForm = _ref.addNewForm,
+      handleMainContact = _ref.handleMainContact,
+      forms = _ref.forms;
+  console.log(forms);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -73353,59 +73365,86 @@ __webpack_require__.r(__webpack_exports__);
     type: "text",
     name: "NombreEmpresa",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleChange({
+        Name: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Logo: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     required: true,
     type: "url",
     name: "Logo",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleChange({
+        Logo: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "API: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     required: true,
     type: "text",
     name: "APIurl",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleChange({
+        Url: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Usuario: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     required: true,
     type: "text",
     name: "usuario",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleChange({
+        User: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     required: true,
     type: "password",
     name: "password",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleChange({
+        Password: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Nombre contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     required: true,
     type: "text",
     name: "firstName",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleMainContact({
+        FirstName: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Apellido contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     required: true,
     type: "text",
     name: "lastName",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleMainContact({
+        LastName: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email contacto principal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     required: true,
     type: "email",
     name: "Email",
     onChange: function onChange(event) {
-      return handleChange(event);
+      return handleMainContact({
+        Email: event.target.value
+      });
     }
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    handleSchema: handleChange
+    schemaName: schemaName,
+    schemaFrom: schemaFrom,
+    schemaTo: schemaTo,
+    handleSchemaData: handleSchemaData,
+    handleCommissionSchema: handleCommissionSchema,
+    handleSchema: handleSchema,
+    forms: forms,
+    addNewForm: addNewForm,
+    commission: commission,
+    onChange: function onChange(event) {
+      return handleChange(event);
+    }
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
     type: "submit",
     onClick: function onClick(e) {
@@ -73430,14 +73469,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RentalFormComponent */ "./src/RentalForm/RentalFormComponent.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/actions/addRental */ "./src/store/actions/addRental.js");
-/* harmony import */ var _comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../comisiones/EsquemaComision */ "./src/comisiones/EsquemaComision.jsx");
+/* harmony import */ var _comisiones_FormEsquema__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../comisiones/FormEsquema */ "./src/comisiones/FormEsquema.jsx");
+/* harmony import */ var _comisiones_EsquemaComision__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../comisiones/EsquemaComision */ "./src/comisiones/EsquemaComision.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -73454,6 +73496,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -73483,22 +73526,100 @@ function (_React$Component) {
         LastName: "",
         Email: ""
       },
-      CommissionScheme: {
-        Company: "",
+      CommissionScheme: [{
+        Name: "",
+        FromDate: "",
+        ToDate: "",
         From: "",
         To: "",
         CommissionPercentage: "",
-        FromDate: "",
-        ToDate: "",
-        Type: ""
-      }
+        Type: "Company"
+      }],
+      showForm: [],
+      schemaName: "",
+      schemaFrom: "",
+      schemaTo: "" //
+
     };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleCommissionSchema = _this.handleCommissionSchema.bind(_assertThisInitialized(_this));
+    _this.addNewForm = _this.addNewForm.bind(_assertThisInitialized(_this));
+    _this.handleSchema = _this.handleSchema.bind(_assertThisInitialized(_this));
+    _this.handleSchemaData = _this.handleSchemaData.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleMainContact = _this.handleMainContact.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(RentalFormContainer, [{
+    key: "handleMainContact",
+    value: function handleMainContact(obj) {
+      var _this2 = this;
+
+      var BankAccountInfoCopy = this.state.MainContact;
+      BankAccountInfoCopy[Object.keys(obj)[0]] = Object.values(obj)[0];
+      this.setState({
+        MainContact: BankAccountInfoCopy
+      }, function () {
+        return console.log(_this2.state);
+      });
+    }
+  }, {
+    key: "handleSchemaData",
+    value: function handleSchemaData(obj) {
+      var _this3 = this;
+
+      this.setState(obj, function () {
+        if (obj.state || obj.street || obj.number || obj.city) {
+          _this3.setState({
+            Address: "".concat(_this3.state.number, " ").concat(_this3.state.street, ", ").concat(_this3.state.city, ", ").concat(_this3.state.state)
+          });
+        } else if (obj.internationalCountryCode || obj.localCountryCode || obj.phoneNumber) {
+          _this3.setState({
+            Telephone: "+".concat(_this3.state.internationalCountryCode, " ").concat(_this3.state.localCountryCode, " ").concat(_this3.state.phoneNumber)
+          });
+        }
+
+        console.log(_this3.state);
+      });
+    }
+  }, {
+    key: "handleCommissionSchema",
+    value: function handleCommissionSchema(obj, order) {
+      var _this4 = this;
+
+      var copySchema = this.state.CommissionScheme;
+      copySchema[order] = obj;
+      this.setState({
+        CommissionScheme: copySchema
+      }, function () {
+        console.log(_this4.state);
+      });
+    }
+  }, {
+    key: "addNewForm",
+    value: function addNewForm() {
+      var datosEsquema = {
+        Name: this.state.schemaName,
+        From: this.state.schemaFrom,
+        To: this.state.schemaTo
+      };
+      var minValue = this.state.CommissionScheme[this.state.CommissionScheme.length - 1]["To"] + 1;
+      this.setState({
+        showForm: [].concat(_toConsumableArray(this.state.showForm), [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_comisiones_FormEsquema__WEBPACK_IMPORTED_MODULE_4__["default"] //Se le pasa el esquema de comision, el largo del array del esquema (permite modificar uno en particular)
+        // y le da su key. La propiedad handleCommission Schema cambia
+        , {
+          commission: this.state.CommissionScheme,
+          order: this.state.showForm.length,
+          key: this.state.showForm.length,
+          handleCommissionSchema: this.handleCommissionSchema,
+          datosEsquema: datosEsquema,
+          addOne: this.addNewForm,
+          minValue: minValue
+        })])
+      });
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(event) {
       event.preventDefault();
@@ -73506,94 +73627,101 @@ function (_React$Component) {
       Object(_store_actions_addRental__WEBPACK_IMPORTED_MODULE_3__["registerRental"])(this.state);
     }
   }, {
-    key: "handleChange",
-    value: function handleChange(event) {
-      console.log(this.state);
+    key: "handleSchema",
+    value: function handleSchema(obj) {
+      var _this5 = this;
 
-      switch (event.target.name) {
-        case "NombreEmpresa":
-          this.setState({
-            Name: event.target.value
-          });
-          break;
-
-        case "Logo":
-          this.setState({
-            Logo: event.target.value
-          });
-          break;
-
-        case "APIurl":
-          this.setState({
-            Url: event.target.value
-          });
-          break;
-
-        case "usuario":
-          this.setState({
-            User: event.target.value
-          });
-          break;
-
-        case "password":
-          this.setState({
-            Password: event.target.value
-          });
-          break;
-
-        case "firstName":
-          var firstName = event.target.value;
-          this.setState(function (prevState) {
-            return {
-              MainContact: _objectSpread({}, prevState.MainContact, {
-                FirstName: firstName
-              })
-            };
-          });
-          break;
-
-        case "lastName":
-          var lastName = event.target.value;
-          this.setState(function (prevState) {
-            return {
-              MainContact: _objectSpread({}, prevState.MainContact, {
-                LastName: lastName
-              })
-            };
-          });
-          break;
-
-        case "Email":
-          var email = event.target.value;
-          this.setState(function (prevState) {
-            return {
-              MainContact: _objectSpread({}, prevState.MainContact, {
-                Email: email
-              })
-            };
-          });
-          break;
-
-        case "CommissionScheme":
-          var CommissionScheme = event.target.value;
-          this.setState(function (prevState) {
-            return {
-              CommissionScheme: CommissionScheme
-            };
-          });
-          break;
-
-        default:
-          console.log("aca no pasó nada");
-      }
+      this.setState({
+        CommissionScheme: obj
+      }, function () {
+        console.log(_this5.state);
+      });
     }
+  }, {
+    key: "handleChange",
+    value: function handleChange(obj) {
+      var _this6 = this;
+
+      this.setState(obj, function () {
+        if (obj.state || obj.street || obj.number || obj.city) {
+          _this6.setState({
+            Address: "".concat(_this6.state.number, " ").concat(_this6.state.street, ", ").concat(_this6.state.city, ", ").concat(_this6.state.state)
+          });
+        } else if (obj.internationalCountryCode || obj.localCountryCode || obj.phoneNumber) {
+          _this6.setState({
+            Telephone: "+".concat(_this6.state.internationalCountryCode, " ").concat(_this6.state.localCountryCode, " ").concat(_this6.state.phoneNumber)
+          });
+        }
+
+        console.log(_this6.state);
+      });
+    } // handleChange(event) {
+    //   console.log(this.state);
+    //   switch (event.target.name) {
+    //     case "NombreEmpresa":
+    //       this.setState({ Name: event.target.value });
+    //       break;
+    //     case "Logo":
+    //       this.setState({ Logo: event.target.value });
+    //       break;
+    //     case "APIurl":
+    //       this.setState({ Url: event.target.value });
+    //       break;
+    //     case "usuario":
+    //       this.setState({ User: event.target.value });
+    //       break;
+    //     case "password":
+    //       this.setState({ Password: event.target.value });
+    //       break;
+    //     case "firstName":
+    //       let firstName = event.target.value;
+    //       this.setState(prevState => ({
+    //         MainContact: {
+    //           ...prevState.MainContact,
+    //           FirstName: firstName
+    //         }
+    //       }));
+    //       break;
+    //     case "lastName":
+    //       let lastName = event.target.value;
+    //       this.setState(prevState => ({
+    //         MainContact: {
+    //           ...prevState.MainContact,
+    //           LastName: lastName
+    //         }
+    //       }));
+    //       break;
+    //     case "Email":
+    //       let email = event.target.value;
+    //       this.setState(prevState => ({
+    //         MainContact: { ...prevState.MainContact, Email: email }
+    //       }));
+    //       break;
+    //     case "CommissionScheme":
+    //       break;
+    //     default:
+    //       console.log("aca no pasó nada");
+    //   }
+    // }
+
   }, {
     key: "render",
     value: function render() {
+      console.log(this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RentalFormComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        handleSchema: this.handleSchema,
         handleChange: this.handleChange,
-        handleSubmit: this.handleSubmit
-      }));
+        handleSubmit: this.handleSubmit,
+        schemaName: this.state.schemaName,
+        schemaFrom: this.state.schemaFrom,
+        schemaTo: this.state.schemaTo,
+        handleSchemaData: this.handleSchemaData,
+        handleCommissionSchema: this.handleCommissionSchema,
+        forms: this.state.showForm,
+        addNewForm: this.addNewForm,
+        commission: this.state.CommissionScheme,
+        handleMainContact: this.handleMainContact
+      }), "/>");
     }
   }]);
 
@@ -73841,17 +73969,17 @@ function (_React$Component) {
         CommissionPercentage: '',
         Type: 'Company'
       }],
-      CompanyName: 'Hola',
-      Description: 'Desc',
-      Address: "ejemplo",
+      CompanyName: 'Garbarino viajes',
+      Description: 'descripcion ejemplo',
+      Address: "castillo 1332",
       Country: 'arg',
-      Telephone: '',
+      Telephone: '1568383838',
       MainContact: {
-        FirstName: 'asd',
-        LastName: 'asd',
+        FirstName: 'Juan',
+        LastName: 'Arce',
         IdType: 'asd',
-        IdNum: 'asd',
-        Email: 'arcejuanma2@gmail.com'
+        IdNum: '123',
+        Email: 'arcejuan2@gmail.com'
       },
       BankAccountInfo: {
         Bank: 'asd',
@@ -75414,6 +75542,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log(this.props.forms);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BuscarEsquema__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NuevoEsquema__WEBPACK_IMPORTED_MODULE_3__["default"], {
         schemaName: this.props.schemaName,
         schemaFrom: this.props.schemaFrom,

@@ -16,8 +16,8 @@ export default function ({carRentals,handleEdit, handleDelete}){
 </thead>
 
 <tbody>
-{carRentals.map(carRental=>
-    <tr>
+{carRentals.map((carRental,index)=>
+    <tr key={index}>
     <td>{carRental.Name}</td>
     <td>{carRental.MainContact.FirstName} {carRental.MainContact.LastName}</td>
     <td>{carRental.MainContact.Email}</td>

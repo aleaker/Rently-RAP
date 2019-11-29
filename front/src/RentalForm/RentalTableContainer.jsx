@@ -1,28 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
 import RentalTableComponent from "./RentalTableComponent";
-import { fetchCarRentals, editCarRental,deleteCarRental } from "../store/actions/addRental";
+import { fetchCarRentals,deleteCarRental } from "../store/actions/addRental";
 import Store from "../store/index"
 
 class RentalTable extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
+     this.state = {}
     this.handleDelete = this.handleDelete.bind(this)
-    this.handleEdit = this.handleEdit.bind(this)
+    // this.handleEdit = this.handleEdit.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchCarRentals();
   }
 
-  handleEdit(carRental){
-    this.props.editCarRental(carRental);
-  }
+  // handleEdit(carRental){
+  //   this.props.editCarRental(carRental);
+  // }
 
   handleDelete(carRental){
-  this.props.deleteCarRental(carRental)
-  .then(this.props.fetchCarRentals())
+  this.props.deleteCarRental(carRental);
   }
   
   render() {

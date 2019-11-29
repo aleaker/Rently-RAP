@@ -20,5 +20,5 @@ export const fetchCarRentals = () => dispatch =>
 
 export const deleteCarRental = (carRental) => dispatch =>{
   axios.delete(`/api/carRental/${carRental._id}`)
-  
+  .then(dispatch(fetchCarRentals())) 
 }

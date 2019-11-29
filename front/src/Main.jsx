@@ -12,7 +12,6 @@ import RentalTableContainer from "./RentalForm/RentalTableContainer"
 import * as actions from "./store/actions/userActions";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
-import RentalTableContainer from "./RentalForm/RentalTableContainer"
 
 const Main = props => {
   useEffect(() => {
@@ -23,18 +22,15 @@ const Main = props => {
     <div>
       {!props.user ? (
         "loading"
-      ) : typeof props.user === "string" ? (
+      ) : 
+      typeof props.user !== "string" ? (  // EL CONDICIONAL ESTA NEGADO POR COMODIDAD
         <Login />
       ) : (
         <Switch>
           <Route exact path="/login" component={Login} />
+          <Route exact path="/rentalTable" render={()=> <RentalTableContainer/>} />
+          
 
-  render() {
-    return (
-      <div>
-         <Switch>
-
-         <Route exact path="/rentalTable" render={()=> <RentalTableContainer/>} />
           <Route exact path="/" component={Reservation} />
           {/* <Route exact path="/comisiones" component={Comission} />  */}
           <Route
@@ -58,3 +54,5 @@ const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
+
+

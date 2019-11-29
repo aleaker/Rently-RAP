@@ -9,7 +9,7 @@ export const logUser = function(user) {
 
 export const logoutUser = function() {
   return {
-    type: "LOG_OUT"
+    type: "LOGOUT_USER"
   };
 };
 
@@ -25,16 +25,19 @@ export const login = function(userData) {
 export const logout = function(user) {
   return function(dispatch) {
     return axios
-      .post("api/user/logout", { email: user.email, password: user.password })
+      .get("api/user/logout", { email: user.Email, password: user.Password })
       .then(() => {
-        dispatch(logout());
+        dispatch(logoutUser());
       });
   };
 };
 export const fetchUser = function() {
   return function(dispatch) {
-    return axios.get("api/user").then(user => {
-      dispatch(logUser(user.data));
-    });
+    return axios
+      .get("api/user")
+      .then(user => {
+        dispatch(logUser(user.data));
+      })
+      .catch(error => dispatch(logoutUser()));
   };
 };

@@ -1,4 +1,4 @@
-/* import React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { lighten, makeStyles } from "@material-ui/core/styles";
@@ -35,7 +35,7 @@ function createData(
 
 const rows = [
   createData(
-    "EMPRESAaaa A",
+    "Garbarino Viajes",
     10000,
     30000,
     15,
@@ -44,7 +44,7 @@ const rows = [
     1
   ),
   createData(
-    "EMPRESAaaa B",
+    "Juan Inc",
     10000,
     20000,
     15,
@@ -53,7 +53,7 @@ const rows = [
     1
   ),
   createData(
-    "EMPRESA C",
+    "Juan Viajes",
     10000,
     50000,
     15,
@@ -277,7 +277,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle">
-          Nutrition
+          Admin Rently
         </Typography>
       )}
       {numSelected > 0 ? (
@@ -497,4 +497,3 @@ export default function EnhancedTable() {
     </div>
   );
 }
- */

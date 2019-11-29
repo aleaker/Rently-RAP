@@ -119,8 +119,7 @@ function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  
- 
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -173,7 +172,7 @@ function Dashboard(props) {
         <List>
           <ListItem>
             <ListItemIcon>
-              <Avatar src={props.user.Photo} className={classes.avatar} />
+              {/* <Avatar src={props.user.Photo} className={classes.avatar} /> */}
             </ListItemIcon>
             <ListItemText primary={props.user.FirstName} />
           </ListItem>
@@ -181,13 +180,13 @@ function Dashboard(props) {
         </List>
         <Divider />
         <List>
-          <ListItem button  >
+          <ListItem button>
             <ListItemIcon>
               <BusinessIcon />
             </ListItemIcon>
             <ListItemText primary={"Companies"} />
           </ListItem>
-          <ListItem button >
+          <ListItem button>
             <ListItemIcon>
               <EmojiTransportationIcon />
             </ListItemIcon>

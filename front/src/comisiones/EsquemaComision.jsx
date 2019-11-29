@@ -25,11 +25,23 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3)
+    padding: theme.spacing(2, 4, 3),
+    overflow: "scroll"
   }
 }));
 
-export default function SimpleModal({  schemaName, schemaFrom, schemaTo, handleSchemaData,disabled, handleSchema, handleCommissionSchema, commission, addNewForm, forms }) {
+export default function SimpleModal({
+  schemaName,
+  schemaFrom,
+  schemaTo,
+  handleSchemaData,
+  disabled,
+  handleSchema,
+  handleCommissionSchema,
+  commission,
+  addNewForm,
+  forms
+}) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
@@ -42,8 +54,9 @@ export default function SimpleModal({  schemaName, schemaFrom, schemaTo, handleS
   const handleClose = () => {
     setOpen(false);
   };
-  
-  return (<div>
+
+  return (
+    <div>
       <Chip
         icon={<MonetizationOnIcon />}
         label="Esquema de Comisiones"
@@ -61,17 +74,18 @@ export default function SimpleModal({  schemaName, schemaFrom, schemaTo, handleS
       >
         <div style={modalStyle} className={classes.paper}>
           <h2 id="simple-modal-title">Esquema de Comisiones</h2>
-          <ComisionesContainer 
-          schemaName = {schemaName}
-          schemaFrom = {schemaFrom}
-          schemaTo = {schemaTo}
-          handleClose={handleClose}
-          handleSchemaData={handleSchemaData}
-          forms = {forms}
-          addNewForm = {addNewForm}
-          commission={commission} 
-          handleCommissionSchema={handleCommissionSchema} 
-          handleChange={handleSchema} />
+          <ComisionesContainer
+            schemaName={schemaName}
+            schemaFrom={schemaFrom}
+            schemaTo={schemaTo}
+            handleClose={handleClose}
+            handleSchemaData={handleSchemaData}
+            forms={forms}
+            addNewForm={addNewForm}
+            commission={commission}
+            handleCommissionSchema={handleCommissionSchema}
+            handleChange={handleSchema}
+          />
         </div>
       </Modal>
     </div>

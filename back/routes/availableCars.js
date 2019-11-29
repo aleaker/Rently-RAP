@@ -27,3 +27,5 @@ router.get('/oauth/token', (req, res) => {
       // redirect the user to the welcome page, along with the access token
     })
   })
+
+  module.exports = router

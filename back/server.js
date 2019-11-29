@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const db = require("./config/db");
+const chalk = require('chalk')
 
 const bodyParser = require("body-parser");
 const morgan = require("morgan");

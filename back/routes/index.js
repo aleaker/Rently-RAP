@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
+const createCompanyRouter = require('./createCompany')
 
 //Requiero los modelos
 const registerRentalRouter = require("./registerRental");
@@ -11,16 +12,22 @@ const CompanyAdmin = require("../models/CompanyAdmin");
 const Commission = require("../models/Commission");
 const Salesperson = require("../models/Salesperson");
 const Booking = require("../models/Booking");
+const User = require('../models/Users')
 
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/registerRental", registerRentalRouter);
+router.use("/createCompany", createCompanyRouter )
 
 //RentlyAdmin
 router.get("/rently", async (req, res) => {
   const rentlyAdmin = await RentlyAdmin.find();
   res.json(rentlyAdmin);
 });
+
+router.get('/users', (req, res)=>{
+  User.find().then(e=>res.json(e))
+})
 
 router.post("/rently", (req, res) => {
   RentlyAdmin.create(req.body);

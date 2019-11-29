@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import userReducer from "./userReducer";
-import carRentalReducer from "./carRentalReducer"
+import carRentalReducer from "./carRentalReducer";
+import companyReducer from "./companyReducer";
 
 export default combineReducers({
   user: userReducer,
-  carRental: carRentalReducer
+  carRental: carRentalReducer,
+  company: companyReducer
 });
 
 // export default combineReducers({

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
-const createCompanyRouter = require('./createCompany')
+const createCompanyRouter = require("./createCompany");
 const userRouter = require("./user");
 //Requiero los modelos
 const registerRentalRouter = require("./registerRental");
@@ -9,12 +9,12 @@ const Company = require("../models/Company");
 const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
-const User = require('../models/User')
+const User = require("../models/User");
 
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/registerRental", registerRentalRouter);
-router.use("/createCompany", createCompanyRouter )
+router.use("/createCompany", createCompanyRouter);
 router.use("/user", userRouter); //rutas del login and logout
 
 //RentlyAdmin
@@ -23,14 +23,14 @@ router.post("/rently", (req, resp) => {
 });
 //Users
 
-router.get('/users', (req, res)=>{
-  User.find().then(e=>res.json(e))
-})
+router.get("/users", (req, res) => {
+  User.find().then(e => res.json(e));
+});
 
 router.post("/rently", (req, res) => {
   RentlyAdmin.create(req.body);
   console.log("RentlyAdmin creado");
-  res.redirect("/api/rently")
+  res.redirect("/api/rently");
 });
 
 //VER LOS USUARIOS: GET http://localhost:3000/api/user
@@ -273,6 +273,114 @@ router.put("/commission/:id", async (req, res) => {
     console.log(err);
   }
 });
+router.get("/comisiones", async (req, res) => {
+  function createData(
+    Company,
+    From,
+    To,
+    CommissionPercentage,
+    FromDate,
+    ToDate,
+    Type
+  ) {
+    return { Company, From, To, CommissionPercentage, FromDate, ToDate, Type };
+  }
+  dataFalsa = [
+    createData(
+      "EMPRESAaaa A",
+      10000,
+      30000,
+      15,
+      "20 - 02 - 2020",
+      "25 - 02 - 2020",
+      1
+    ),
+    createData(
+      "EMPRESAaaa B",
+      10000,
+      20000,
+      15,
+      "24 - 02 - 2020",
+      "25 - 02 - 2020",
+      1
+    ),
+    createData(
+      "EMPRESA C",
+      10000,
+      50000,
+      15,
+      "18 - 02 - 2020",
+      "25 - 02 - 2020",
+      2
+    ),
+    createData(
+      "EMPRESA D",
+      10000,
+      90000,
+      15,
+      "02 - 02 - 2020",
+      "25 - 02 - 2020",
+      4
+    ),
+    createData(
+      "EMPRESA E",
+      10000,
+      70000,
+      15,
+      "15 - 01 - 2020",
+      "25 - 02 - 2020",
+      5
+    ),
+    createData(
+      "EMPRESA F",
+      10000,
+      60000,
+      4,
+      "24 - 01 - 2020",
+      "25 - 02 - 2020",
+      6
+    ),
+    createData(
+      "EMPRESA G",
+      10000,
+      90000,
+      29,
+      "22 - 01 - 2020",
+      "25 - 02 - 2020",
+      8
+    ),
+    createData(
+      "EMPRESA H",
+      10000,
+      50000,
+      19,
+      "21 - 01 - 2020",
+      "25 - 02 - 2020",
+      2
+    ),
+    createData(
+      "EMPRESA I",
+      10000,
+      50000,
+      15,
+      "03 - 01 - 2020",
+      "25 - 02 - 2020",
+      3
+    ),
+    createData(
+      "EMPRESA J",
+      10000,
+      20000,
+      12,
+      "06 - 01 - 2020",
+      "25 - 02 - 2020",
+      1
+    )
+  ];
+  res.send(dataFalsa);
+  /*   const commission = await Commission.find();
+  res.json(commission); */
+});
 
 //BORRAR UNA COMISION POR SU ID: DELETE http://localhost:3000/api/commission/:id
 router.delete("/commission/:id", async (req, res) => {
@@ -359,4 +467,4 @@ router.delete("/deleteallbookings", async (req, res) => {
   }
 });
 
-module.exports = router
+module.exports = router;

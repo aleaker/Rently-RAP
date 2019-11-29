@@ -119,8 +119,7 @@ function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  
- 
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -181,13 +180,13 @@ function Dashboard(props) {
         </List>
         <Divider />
         <List>
-          <ListItem button  >
+          <ListItem button>
             <ListItemIcon>
               <BusinessIcon />
             </ListItemIcon>
             <ListItemText primary={"Companies"} />
           </ListItem>
-          <ListItem button >
+          <ListItem button>
             <ListItemIcon>
               <EmojiTransportationIcon />
             </ListItemIcon>
@@ -233,4 +232,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

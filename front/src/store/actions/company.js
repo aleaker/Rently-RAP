@@ -7,6 +7,13 @@ export const listCompanies = function(companies) {
   };
 };
 
+export const deleteCompany = function(companyId) {
+  return {
+    type: "DELETE_COMPANY",
+    companyId
+  };
+};
+
 export const fetchCompanies = () => dispatch => {
   return axios
     .get("/api/company")
@@ -15,5 +22,7 @@ export const fetchCompanies = () => dispatch => {
 };
 
 export const updateCompany = id => dispatch => {
-  return axios.put(`/api/company/${id}`).then(data => dispatch());
+  return axios
+    .put(`/api/company/${id}`)
+    .then(company => dispatch(deleteCompany(company.data._id)));
 };

@@ -4,8 +4,6 @@ import Modal from "@material-ui/core/Modal";
 import Chip from "@material-ui/core/Chip";
 import DoneIcon from "@material-ui/icons/Done";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import { inherits } from "util";
-
 import ComisionesContainer from "./ComisionesContainer";
 
 function getModalStyle() {
@@ -31,14 +29,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimpleModal({ handleSchema }) {
+export default function SimpleModal({  schemaName, schemaFrom, schemaTo, handleSchemaData,disabled, handleSchema, handleCommissionSchema, commission, addNewForm, forms }) {
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
   const [color, setColor] = React.useState("default");
-  const [commisionSchema, setCommision] = React.useState([]);
-
   const handleOpen = () => {
     setOpen(true);
     setColor("primary");
@@ -47,14 +42,8 @@ export default function SimpleModal({ handleSchema }) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const handleChange = arr => {
-    handleSchema({ target: { name: "CommissionScheme", value: arr[0] } });
-    setOpen(false);
-  };
-
-  return (
-    <div>
+  
+  return (<div>
       <Chip
         icon={<MonetizationOnIcon />}
         label="Esquema de Comisiones"
@@ -62,6 +51,7 @@ export default function SimpleModal({ handleSchema }) {
         color={color}
         onClick={handleOpen}
         deleteIcon={<DoneIcon />}
+        disabled={disabled}
       />
       <Modal
         aria-labelledby="simple-modal-title"
@@ -71,7 +61,17 @@ export default function SimpleModal({ handleSchema }) {
       >
         <div style={modalStyle} className={classes.paper}>
           <h2 id="simple-modal-title">Esquema de Comisiones</h2>
-          <ComisionesContainer handleChange={handleChange} />
+          <ComisionesContainer 
+          schemaName = {schemaName}
+          schemaFrom = {schemaFrom}
+          schemaTo = {schemaTo}
+          handleClose={handleClose}
+          handleSchemaData={handleSchemaData}
+          forms = {forms}
+          addNewForm = {addNewForm}
+          commission={commission} 
+          handleCommissionSchema={handleCommissionSchema} 
+          handleChange={handleSchema} />
         </div>
       </Modal>
     </div>

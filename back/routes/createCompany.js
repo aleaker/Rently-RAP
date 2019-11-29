@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const User = require("../models/Users");
+const User = require("../models/User");
 const Company = require('../models/Company')
 const Commision = require('../models/Commission')
 

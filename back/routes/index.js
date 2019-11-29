@@ -156,7 +156,6 @@ router.get("/carRental", async (req, res) => {
   try {
     const carRental = await CarRental.find();
     res.json(carRental);
-    res.redirect("/api/carRental");
   } catch (err) {
     console.log(err);
   }

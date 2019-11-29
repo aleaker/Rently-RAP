@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
 import userReducer from "./userReducer";
+import carRentalReducer from "./carRentalReducer"
 
 export default combineReducers({
-  user: userReducer
+  user: userReducer,
+  carRental: carRentalReducer
 });
 
 // export default combineReducers({

@@ -1,7 +1,7 @@
 //Imports de Modulos
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Switch, Route, browserHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
 import Login from "./login/Login";
@@ -12,27 +12,32 @@ import RentalTableContainer from "./RentalForm/RentalTableContainer"
 import * as actions from "./store/actions/userActions";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
+import Dashboard from "./dashboard/Dashboard";
 
 const Main = props => {
-  useEffect(() => {
-    props.fetchUser();
-  }, []);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    props.fetchUser().then(()=> setLoading(false) )
+    
+  }, []);
   return (
     <div>
-      {!props.user ? (
-        "loading"
-      ) : 
-      typeof props.user === "string" ? (  // EL CONDICIONAL ESTA NEGADO POR COMODIDAD
+      {loading ? (
+        ""
+      ) : !props.user ? (
         <Login />
       ) : (
         <Switch>
+          <Route exact path="/" component={Dashboard} />
+
           <Route exact path="/login" component={Login} />
           <Route exact path="/rentalTable" render={()=> <RentalTableContainer/>} />
           
 
-          <Route exact path="/" component={Reservation} />
-          {/* <Route exact path="/comisiones" component={Comission} />  */}
+          <Route exact path="/reservation" component={Reservation} />
+
+          <Route exact path="/comisiones" component={Comission} />
           <Route
             exact
             path="/registerRental"

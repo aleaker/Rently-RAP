@@ -22,111 +22,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import Input from "@material-ui/core/Input";
 
-/* function createData(
-  Company,
-  From,
-  To,
-  CommissionPercentage,
-  FromDate,
-  ToDate,
-  Type
-) {
-  return { Company, From, To, CommissionPercentage, FromDate, ToDate, Type };
-}
-
-const rows = [
-  createData(
-    "EMPRESAaaa A",
-    10000,
-    30000,
-    15,
-    "20 - 02 - 2020",
-    "25 - 02 - 2020",
-    1
-  ),
-  createData(
-    "EMPRESAaaa B",
-    10000,
-    20000,
-    15,
-    "24 - 02 - 2020",
-    "25 - 02 - 2020",
-    1
-  ),
-  createData(
-    "EMPRESA C",
-    10000,
-    50000,
-    15,
-    "18 - 02 - 2020",
-    "25 - 02 - 2020",
-    2
-  ),
-  createData(
-    "EMPRESA D",
-    10000,
-    90000,
-    15,
-    "02 - 02 - 2020",
-    "25 - 02 - 2020",
-    4
-  ),
-  createData(
-    "EMPRESA E",
-    10000,
-    70000,
-    15,
-    "15 - 01 - 2020",
-    "25 - 02 - 2020",
-    5
-  ),
-  createData(
-    "EMPRESA F",
-    10000,
-    60000,
-    4,
-    "24 - 01 - 2020",
-    "25 - 02 - 2020",
-    6
-  ),
-  createData(
-    "EMPRESA G",
-    10000,
-    90000,
-    29,
-    "22 - 01 - 2020",
-    "25 - 02 - 2020",
-    8
-  ),
-  createData(
-    "EMPRESA H",
-    10000,
-    50000,
-    19,
-    "21 - 01 - 2020",
-    "25 - 02 - 2020",
-    2
-  ),
-  createData(
-    "EMPRESA I",
-    10000,
-    50000,
-    15,
-    "03 - 01 - 2020",
-    "25 - 02 - 2020",
-    3
-  ),
-  createData(
-    "EMPRESA J",
-    10000,
-    20000,
-    12,
-    "06 - 01 - 2020",
-    "25 - 02 - 2020",
-    1
-  )
-]; */
-
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -278,7 +173,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle">
-          Nutrition
+          Rently Admin
         </Typography>
       )}
       {numSelected > 0 ? (

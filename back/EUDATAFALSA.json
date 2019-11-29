@@ -1,3 +1,5 @@
+
+//ADMIN RENTLY
 {
   "Active": "true",
   "UserType":"AdminRently",
@@ -11,10 +13,12 @@
   "Notes":"Este usuario es un... ",
   "CommissionScheme":"5ddd47172edd344b3422cbf1"
 }
+
+// COMPANY
    {
    "CompanyName": "JuanmaInc",
    "Description": "Juanma owns this company",
-   "Adress": "Av. JuanmaInc 123",
+   "Address": "Av. JuanmaInc 123",
    "Country": "Argentina",
    "Telephone": "61059032",
    "MainContact": {
@@ -30,8 +34,9 @@
      "AccountNumber": "61059032",
      "Curency": "Pesos ARG",
      "SwiffCore": "que"
-   }}
-
+   }
+  }
+  // COMISION
    {
      "Company": "JuanmaInc",
      "From": 10.0,
@@ -40,7 +45,7 @@
      "FromDate": "2007,08,07",
      "Type": "4"
    }
-
+ // RENTACAR
  {
    "Name":"PepitoRentACar",
    "logo":"https://cdn.tn.com.ar/sites/default/files/styles/embed_image/public/2019/11/24/5ddaebb909414_auto_volador.jpg",

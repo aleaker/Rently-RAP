@@ -34,6 +34,7 @@ class RentalFormContainer extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log("creando")
     registerRental(this.state);
   }
 
@@ -86,48 +87,6 @@ class RentalFormContainer extends React.Component {
           CommissionScheme: CommissionScheme
         }));
         break;
-      // case "From":
-      //   let from = event.target.value;
-      //   this.setState(prevState => ({
-      //     CommissionScheme: { ...prevState.CommissionScheme, From: from }
-      //   }));
-      //   break;
-      // case "To":
-      //   let to = event.target.value;
-      //   this.setState(prevState => ({
-      //     CommissionScheme: { ...prevState.CommissionScheme, To: to }
-      //   }));
-      //   break;
-      // case "CommissionPercentage":
-      //   let commissionpercentage = event.target.value;
-      //   this.setState(prevState => ({
-      //     CommissionScheme: {
-      //       ...prevState.CommissionScheme,
-      //       CommissionPercentage: commissionpercentage
-      //     }
-      //   }));
-      //   break;
-      // case "FromDate":
-      //   let fromdate = event.target.value;
-      //   this.setState(prevState => ({
-      //     CommissionScheme: {
-      //       ...prevState.CommissionScheme,
-      //       FromDate: fromdate
-      //     }
-      //   }));
-      //   break;
-      // case "ToDate":
-      //   let todate = event.target.value;
-      //   this.setState(prevState => ({
-      //     CommissionScheme: { ...prevState.CommissionScheme, ToDate: todate }
-      //   }));
-      //   break;
-      // case "Type":
-      //   let type = event.target.value;
-      //   this.setState(prevState => ({
-      //     CommissionScheme: { ...prevState.CommissionScheme, Type: type }
-      //   }));
-      //   break;
       default:
         console.log("aca no pasó nada");
     }
@@ -140,7 +99,7 @@ class RentalFormContainer extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-        <EsquemaComisiones handleSchema={this.handleChange} />
+        
       </div>
     );
   }

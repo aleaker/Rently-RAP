@@ -14,9 +14,9 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
+import BusinessIcon from "@material-ui/icons/Business";
 import MailIcon from "@material-ui/icons/Mail";
-
+import EmojiTransportationIcon from "@material-ui/icons/EmojiTransportation";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -119,6 +119,8 @@ function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
+ 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -179,29 +181,41 @@ function Dashboard(props) {
         </List>
         <Divider />
         <List>
-          {["Profile", "ABM", "Commisions"].map((text, index) => (
+          <ListItem button  >
+            <ListItemIcon>
+              <BusinessIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Companies"} />
+          </ListItem>
+          <ListItem button >
+            <ListItemIcon>
+              <EmojiTransportationIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Car Rentals"} />
+          </ListItem>
+          {/* {["Profile", "ABM", "Commisions"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
-          ))}
+          ))} */}
         </List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Profile */}
+            {/*  */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}></Paper>
             </Grid>
-            {/* ABM */}
+            {/*  */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}></Paper>
             </Grid>
-            {/* Commissions */}
+            {/*  */}
             <Grid item xs={12}>
               <Paper className={classes.paper}></Paper>
             </Grid>

@@ -3,7 +3,7 @@ const CarRental = require("../models/CarRental");
 const Commission = require ("../models/Commission")
 
 router.post("/", (req, resp) => {
-  Commission.create(req.body.CommissionScheme) //creo un esquema de comisiones
+  Commission.create(req.body.CommissionScheme[0]) //creo un esquema de comisiones
   .then(createdCommission => {
     let obj = req.body;                        //Guardo la data de rentadora en un obj
     obj.CommissionScheme = createdCommission._id; //le agego el id del esquema creado a ese obj

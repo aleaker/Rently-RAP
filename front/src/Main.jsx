@@ -23,7 +23,7 @@ const Main = props => {
       {!props.user ? (
         "loading"
       ) : 
-      typeof props.user !== "string" ? (  // EL CONDICIONAL ESTA NEGADO POR COMODIDAD
+      typeof props.user === "string" ? (  // EL CONDICIONAL ESTA NEGADO POR COMODIDAD
         <Login />
       ) : (
         <Switch>

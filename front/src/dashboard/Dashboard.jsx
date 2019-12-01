@@ -172,7 +172,7 @@ function Dashboard(props) {
         <List>
           <ListItem>
             <ListItemIcon>
-              <Avatar src={props.user.Photo} className={classes.avatar} />
+              {/* <Avatar src={props.user.Photo} className={classes.avatar} /> */}
             </ListItemIcon>
             <ListItemText primary={props.user.FirstName} />
           </ListItem>

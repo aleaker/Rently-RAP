@@ -7,13 +7,13 @@ import Reservation from "./reservationForm/reservationForm";
 import Login from "./login/Login";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
 import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
+import Comission from "./comisiones/comisionTable";
 import RentalTableContainer from "./RentalForm/RentalTableContainer";
 import * as actions from "./store/actions/userActions";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
-import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
 
 const Main = props => {
   const [loading, setLoading] = useState(true);
@@ -30,21 +30,18 @@ const Main = props => {
       ) : (
         <Switch>
           <Route exact path="/" component={Dashboard} />
-          <Route
-            exact
-            path="/listadoEmpresas"
-            component={ListaEmpresasContainer}
-          />
+
           <Route exact path="/login" component={Login} />
           <Route
             exact
             path="/rentalTable"
             render={() => <RentalTableContainer />}
           />
+          <Route exact path="/companylist" component={comisionTable} />
 
           <Route exact path="/reservation" component={Reservation} />
 
-          <Route exact path="/comisiones" component={comisionTable} />
+          <Route exact path="/comisiones" component={Comission} />
           <Route
             exact
             path="/registerRental"

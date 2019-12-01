@@ -248,6 +248,8 @@ export default function EnhancedTable() {
       .catch(err => console.log(err));
   }, []);
 
+  const handleDelete = event => {};
+
   const handleChangeInput = event => {
     const val = event.target.value;
     setValueInput(val);

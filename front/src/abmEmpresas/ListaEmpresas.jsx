@@ -181,7 +181,7 @@ const EnhancedTableToolbar = props => {
         <div style={{ width: "25%" }}>
           <Tooltip title="Delete" style={{ float: "right" }}>
             <IconButton aria-label="delete">
-              <DeleteIcon />
+              <DeleteIcon onClick={props.handleRemove} />
             </IconButton>
           </Tooltip>
 
@@ -262,6 +262,10 @@ export default function EnhancedTable({ companies, fetchCompanies }) {
     );
   };
 
+  const handleRemove = event => {
+    console.log(selected);
+  };
+
   const handleSubmitInput = event => {
     event.preventDefault();
     setValueRows(
@@ -330,6 +334,7 @@ export default function EnhancedTable({ companies, fetchCompanies }) {
           handleChangeInput={handleChangeInput}
           handleSubmitInput={handleSubmitInput}
           selected={selected}
+          handleRemove={handleRemove}
         />
         <div className={classes.tableWrapper}>
           <Table

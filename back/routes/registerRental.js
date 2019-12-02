@@ -9,12 +9,17 @@ router.post("/", (req, resp) => {
     obj.CommissionScheme = createdCommission._id; //le agego el id del esquema creado a ese obj
     return CarRental.create(obj)})                
     .then(createdCarRental=>console.log("createdCarRental",createdCarRental))
-    
-
-
-
-  .catch(err => console.log("Error: ",err))
+    .catch(err => console.log("Error: ",err))
 });
+
+router.get("/",  (req, res) => {
+    CarRental.find()
+    .then(carRentals=>res.json(carRentals))
+   .catch (err=>
+    console.log(err))
+  }
+);
 
 
 module.exports = router;
+

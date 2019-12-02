@@ -1,0 +1,170 @@
+[
+    EMPRESA 1
+    {
+        "MainContact": {
+            "FirstName": "Juanma",
+            "LastName": "Juanma LastName",
+            "IdType": "Cedula",
+            "Email": "juanmasss1@juanma.com"
+        },
+        "BankAccountInfo": {
+            "Bank": "Banco",
+            "AccountType": "Bla",
+            "AccountNumber": "61059032"
+        },
+        "Active": true,
+        "CommissionScheme": [],
+        "_id": "5de0316df2ca5657f6746afd",
+        "CompanyName": "JuanmaInc",
+        "Description": "Juanma owns this company",
+        "Address": "Av. JuanmaInc 123",
+        "Country": "Argentina",
+        "Telephone": "61059032",
+        "__v": 0
+    },
+
+EMPRESA 2
+
+    {
+        "MainContact": {
+            "FirstName": "Juanma",
+            "LastName": "Juanma LastName",
+            "IdType": "Cedula",
+            "Email": "ale@juanma.com"
+        },
+        "BankAccountInfo": {
+            "Bank": "Banco",
+            "AccountType": "Bla",
+            "AccountNumber": "61059032"
+        },
+        "Active": true,
+        "CommissionScheme": [],
+        "_id": "5de031f7f2ca5657f6746afe",
+        "CompanyName": "AleInc",
+        "Description": "Ale owns this company",
+        "Address": "Av. Ale 123",
+        "Country": "Argentina",
+        "Telephone": "61059032",
+        "__v": 0
+    },
+
+    EMPRESA 3
+    {
+        "MainContact": {
+            "FirstName": "Juanma",
+            "LastName": "Juanma LastName",
+            "IdType": "Cedula",
+            "Email": "hanoi@juanma.com"
+        },
+        "BankAccountInfo": {
+            "Bank": "Banco",
+            "AccountType": "Bla",
+            "AccountNumber": "61059032"
+        },
+        "Active": true,
+        "CommissionScheme": [],
+        "_id": "5de0320cf2ca5657f6746aff",
+        "CompanyName": "Hanoi Inc",
+        "Description": "Hanoi owns this company",
+        "Address": "Av. Hanoi 123",
+        "Country": "Argentina",
+        "Telephone": "61059032",
+        "__v": 0
+    },
+    
+    EMPRESA 4
+    {
+        "MainContact": {
+            "FirstName": "Juanma",
+            "LastName": "Juanma LastName",
+            "IdType": "Cedula",
+            "Email": "joaco@juanma.com"
+        },
+        "BankAccountInfo": {
+            "Bank": "Banco",
+            "AccountType": "Bla",
+            "AccountNumber": "61059032"
+        },
+        "Active": true,
+        "CommissionScheme": [],
+        "_id": "5de03222f2ca5657f6746b00",
+        "CompanyName": "Joaco Inc",
+        "Description": "Hanoi owns this company",
+        "Address": "Av. Hanoi 123",
+        "Country": "Argentina",
+        "Telephone": "61059032",
+        "__v": 0
+    },
+
+    EMPRESA 5
+    {
+        "MainContact": {
+            "FirstName": "Lian",
+            "LastName": "Juanma LastName",
+            "IdType": "Cedula",
+            "Email": "lian@juanma.com"
+        },
+        "BankAccountInfo": {
+            "Bank": "Banco",
+            "AccountType": "Bla",
+            "AccountNumber": "61059032"
+        },
+        "Active": true,
+        "CommissionScheme": [],
+        "_id": "5de03245f2ca5657f6746b01",
+        "CompanyName": "Lian Inc",
+        "Description": "Lian owns this company",
+        "Address": "Av. Lian 123",
+        "Country": "Argentina",
+        "Telephone": "61059032",
+        "__v": 0
+    },
+
+    EMPRESA 6
+    {
+        "MainContact": {
+            "FirstName": "Lian",
+            "LastName": "Juanma LastName",
+            "IdType": "Cedula",
+            "Email": "ivo@juanma.com"
+        },
+        "BankAccountInfo": {
+            "Bank": "Banco",
+            "AccountType": "Bla",
+            "AccountNumber": "61059032"
+        },
+        "Active": true,
+        "CommissionScheme": [],
+        "_id": "5de03253f2ca5657f6746b02",
+        "CompanyName": "Ivo Inc",
+        "Description": "Ivo owns this company",
+        "Address": "Av. Lian 123",
+        "Country": "Argentina",
+        "Telephone": "61059032",
+        "__v": 0
+    },
+
+    EMPRESA 7
+    {
+        "MainContact": {
+            "FirstName": "Lian",
+            "LastName": "Juanma LastName",
+            "IdType": "Cedula",
+            "Email": "muni@juanma.com"
+        },
+        "BankAccountInfo": {
+            "Bank": "Banco",
+            "AccountType": "Bla",
+            "AccountNumber": "61059032"
+        },
+        "Active": true,
+        "CommissionScheme": [],
+        "_id": "5de03266f2ca5657f6746b03",
+        "CompanyName": "Muni Inc",
+        "Description": "Muni owns this company",
+        "Address": "Av. Muni 123",
+        "Country": "Argentina",
+        "Telephone": "61059032",
+        "__v": 0
+    }
+]

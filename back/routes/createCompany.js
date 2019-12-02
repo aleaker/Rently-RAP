@@ -3,25 +3,6 @@ const User = require("../models/User");
 const Company = require("../models/Company");
 const Commision = require("../models/Commission");
 
-// router.post('/', (req, res)=>{
-//     let newUser = req.body.users
-//     let newCompany = req.body.Company
-
-//     Commision.create(newCompany.CommissionScheme)
-//     .then(created =>{
-//         console.log('soy yo', created)
-//         newCompany.CommissionScheme = created._id;
-//         newUser[0].Company = created._id
-//         return Company.create(newCompany)
-//     })
-//     .then((e)=> {
-//         console.log('este es el usuario a crear', newUser)
-//         return User.create(newUser[0])})
-//     .then((e)=>console.log('Empresa Creada sin Errores', e))
-//     .catch(err=>console.log(err))
-
-// })
-
 router.post("/", (req, res) => {
   let newUser = req.body.users;
   let newCompany = req.body.Company;

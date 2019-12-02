@@ -14,13 +14,14 @@ router.post("/", (req, resp) => {
 });
 
 router.get("/", (req, res) => {
-  CarRental.find()
+  CarRental.find({"Active":true})
     .then(carRentals => res.json(carRentals))
     .catch(err => console.log(err));
 });
 
 router.put("/deactivateRental/:id", (req, res) => {
-  console.log(req.params.id);
+  CarRental.update({_id:req.params.id},{"Active":false})
+  .then(carRental=>carRental.update(carRental))
 });
 
 module.exports = router;

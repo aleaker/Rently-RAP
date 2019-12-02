@@ -19,42 +19,37 @@ import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContai
 const Main = props => {
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   props.fetchUser().then(() => setLoading(false));
-  // }, []);
+  useEffect(() => {
+    props.fetchUser().then(() => setLoading(false));
+  }, []);
   return (
     <div>
-      {/* {loading ? (
+      {loading ? (
         ""
       ) : !props.user ? (
         <Login />
-      ) : ( */}
-        <Switch>
-          <Route exact path="/" component={Dashboard} />
+      ) : (
+      <Switch>
+        <Route exact path="/" component={Dashboard} />
 
-          <Route exact path="/login" component={Login} />
-          <Route
-            exact
-            path="/rentalTable"
-            render={() => <RentalTableContainer />}
-          />
-          <Route exact path="/companylist" component={ListaEmpresasContainer} />
+        <Route exact path="/login" component={Login} />
 
-          <Route exact path="/reservation" component={Reservation} />
+        <Route exact path="/rentalTable" component={RentalTableContainer} />
 
-          <Route exact path="/comisiones" component={comisionTable} />
-          <Route
-            exact
-            path="/registerRental"
-            render={() => <RentalFormContainer />}
-          />
-          <Route
-            exact
-            path="/abmempresas"
-            render={() => <AbmEmpresasContainer />}
-          />
-        </Switch>
-      {/* )} */}
+        <Route exact path="/companylist" component={ListaEmpresasContainer} />
+
+        <Route exact path="/reservation" component={Reservation} />
+
+        <Route exact path="/comisiones" component={comisionTable} />
+
+        <Route exact path="/registerRental" component={RentalFormContainer} />
+        <Route
+          exact
+          path="/abmempresas"
+          render={() => <AbmEmpresasContainer />}
+        />
+      </Switch>
+      )}
     </div>
   );
 };
@@ -63,7 +58,4 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import RentalTableComponent from "./RentalTableComponent";
-import { fetchCarRentals,deleteCarRental } from "../store/actions/addRental";
+import { fetchCarRentals,deleteCarRental } from "../store/actions/rentalActions";
 import Store from "../store/index"
 
 class RentalTable extends React.Component {

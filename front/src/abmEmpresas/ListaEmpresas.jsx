@@ -179,9 +179,13 @@ const EnhancedTableToolbar = props => {
       )}
       {numSelected > 0 ? (
         <div style={{ width: "25%" }}>
-          <Tooltip title="Delete" style={{ float: "right" }}>
+          <Tooltip
+            title="Delete"
+            style={{ float: "right" }}
+            onClick={props.handleRemove}
+          >
             <IconButton aria-label="delete">
-              <DeleteIcon onClick={props.handleRemove} />
+              <DeleteIcon />
             </IconButton>
           </Tooltip>
 
@@ -234,7 +238,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function EnhancedTable({ companies, fetchCompanies }) {
+export default function EnhancedTable({
+  companies,
+  fetchCompanies,
+  deleteCompany
+}) {
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
@@ -248,7 +256,6 @@ export default function EnhancedTable({ companies, fetchCompanies }) {
   useEffect(() => {
     fetchCompanies()
       .then(data => setValueRows(data.companies))
-      .then(() => setLoading(false))
       .catch(err => console.log(err));
   }, []);
 
@@ -263,7 +270,9 @@ export default function EnhancedTable({ companies, fetchCompanies }) {
   };
 
   const handleRemove = event => {
-    console.log(selected);
+    deleteCompany(selected).then(data =>
+      setValueRows(valueRows.filter(company => company._id !== data.companyId))
+    );
   };
 
   const handleSubmitInput = event => {

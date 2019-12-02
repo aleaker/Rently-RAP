@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
+import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
 
 const Main = props => {
   const [loading, setLoading] = useState(true);
@@ -37,11 +38,11 @@ const Main = props => {
             path="/rentalTable"
             render={() => <RentalTableContainer />}
           />
-          <Route exact path="/companylist" component={comisionTable} />
+          <Route exact path="/companylist" component={ListaEmpresasContainer} />
 
           <Route exact path="/reservation" component={Reservation} />
 
-          <Route exact path="/comisiones" component={Comission} />
+          <Route exact path="/comisiones" component={comisionTable} />
           <Route
             exact
             path="/registerRental"

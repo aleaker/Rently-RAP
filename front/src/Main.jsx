@@ -19,16 +19,16 @@ import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContai
 const Main = props => {
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    props.fetchUser().then(() => setLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   props.fetchUser().then(() => setLoading(false));
+  // }, []);
   return (
     <div>
-      {loading ? (
+      {/* {loading ? (
         ""
       ) : !props.user ? (
         <Login />
-      ) : (
+      ) : ( */}
         <Switch>
           <Route exact path="/" component={Dashboard} />
 
@@ -54,7 +54,7 @@ const Main = props => {
             render={() => <AbmEmpresasContainer />}
           />
         </Switch>
-      )}
+      {/* )} */}
     </div>
   );
 };

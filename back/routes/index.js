@@ -108,6 +108,16 @@ router.get("/company", async (req, res) => {
   }
 });
 
+//VER TODAS LAS EMPRESAS ACTIVAS: GET http://localhost:3000/api/company/activeList
+router.get("/company/activeList", async (req, res) => {
+  try {
+    const company = await Company.find({ Active: true });
+    res.json(company);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 //VER 1 EMPRESA POR SU ID: GET http://localhost:3000/api/company/:id
 router.get("/company/:id", async (req, res) => {
   try {
@@ -142,12 +152,10 @@ router.put("/company/:id", async (req, res) => {
 
 //BORRAR 1 EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
 router.delete("/company/:id", async (req, res) => {
-  try {
-    await Company.findByIdAndRemove(req.params.id);
-    res.json({ status: "Company deleted" });
-  } catch (err) {
-    console.log(err);
-  }
+  Company.updateOne({ _id: req.params.id }, { $set: { Active: false } }).then(
+    company => res.json(company)
+  );
+  /* .catch(err => console.log(err), res.send(401)); */
 });
 
 //BORRAR TODAS LAS EMPRESAS DELETE http://localhost:3000/api/deleteallcompanies

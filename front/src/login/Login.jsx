@@ -100,7 +100,6 @@ function Login(props) {
               onChange={handleChange}
               autoFocus
               error={error}
-
             />
             <TextField
               variant="outlined"
@@ -148,4 +147,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

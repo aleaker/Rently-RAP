@@ -8,6 +8,10 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         list: action.companies
       });
+    case "DELETE_COMPANY":
+      return Object.assign({}, state, {
+        list: state.list.filter(company => company._id !== action.companyId)
+      });
     default:
       return state;
   }

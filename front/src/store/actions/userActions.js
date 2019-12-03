@@ -39,7 +39,9 @@ export const fetchUser = function() {
     return axios
       .get("api/user")
       .then(user => {
-        dispatch(logUser(user.data));
+        if (user.data.UserType) {
+          dispatch(logUser(user.data));
+        }
       })
       .catch(error => dispatch(logoutUser()));
   };

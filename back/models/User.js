@@ -11,7 +11,7 @@ const validateEmail = function(email) {
 
 const User = new Schema({
   Active: { type: Boolean, default: true },
-  UserType: { type: String, required: true },
+  UserType: { type: String },
   Email: {
     type: String,
     unique: true,

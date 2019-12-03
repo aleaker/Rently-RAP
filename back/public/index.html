@@ -78,7 +78,7 @@
   <title>Rently</title>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
+        <!--Materialize.css CDN-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!--Let browser know website is optimized for mobile-->
@@ -91,5 +91,13 @@
     <div id="app"></div>
 
     <script type="text/javascript" src="/bundle.js"></script>
+    <!--Materialize JavaScript CDN-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        M.AutoInit(); //Java Script Auto Init
+      });
+    </script>
   </body>
 </html>

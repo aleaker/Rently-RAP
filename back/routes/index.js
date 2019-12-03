@@ -33,6 +33,14 @@ router.post("/rently", (req, res) => {
   res.redirect("/api/rently");
 });
 
+router.get("/quepaso1", (req, res) => {
+  res.json({ "Eu, que anda pasando?": "Salio todo piola wachin" });
+});
+
+router.get("/quepaso2", (req, res) => {
+  res.json({ "Eu, que anda pasando?": "Todo mal, boludo" });
+});
+
 //VER LOS USUARIOS: GET http://localhost:3000/api/user
 router.get("/user", async (req, res) => {
   try {
@@ -54,14 +62,15 @@ router.get("/user/:id", async (req, res) => {
 });
 
 //CREAR UN USER : POST http://localhost:3000/api/user
-router.post("/user", (req, res) => {
-  try {
-    User.create(req.body);
-    console.log("User creado");
-    res.json({ status: "user created" });
-  } catch (err) {
-    console.log(err);
-  }
+router.post("/user", (req, res, next) => {
+  User.create(req.body)
+    .then(user => {
+      res.send(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send("ERROR");
+    });
 });
 
 //MODIFICAR UN USER: PUT http://localhost:3000/api/user/:id
@@ -152,9 +161,10 @@ router.put("/company/:id", async (req, res) => {
 
 //BORRAR 1 EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
 router.delete("/company/:id", async (req, res) => {
-  Company.updateOne({ _id: req.params.id }, { $set: { Active: false } }).then(
-    company => res.json(company)
-  );
+  Company.updateOne(
+    { _id: req.params.id },
+    { $set: { Active: false } }
+  ).then(company => res.json(company));
   /* .catch(err => console.log(err), res.send(401)); */
 });
 

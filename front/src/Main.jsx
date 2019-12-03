@@ -10,11 +10,13 @@ import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
 import Comission from "./comisiones/comisionTable";
 import RentalTableContainer from "./RentalForm/RentalTableContainer";
 import * as actions from "./store/actions/userActions";
+import fetchSalesperson from "./store/actions/addSalesperson";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
 import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
+import AddVendedorFormContainer from "./abmVendedores/addVendoContainer";
 
 const Main = props => {
   const [loading, setLoading] = useState(true);
@@ -43,6 +45,12 @@ const Main = props => {
           <Route exact path="/reservation" component={Reservation} />
 
           <Route exact path="/comisiones" component={comisionTable} />
+
+          <Route
+            exact
+            path="/addSalesperson"
+            render={() => <AddVendedorFormContainer />}
+          />
           <Route
             exact
             path="/registerRental"
@@ -63,7 +71,4 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

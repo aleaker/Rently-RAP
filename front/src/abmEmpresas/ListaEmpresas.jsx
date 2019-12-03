@@ -188,12 +188,13 @@ const EnhancedTableToolbar = props => {
               <DeleteIcon />
             </IconButton>
           </Tooltip>
-
-          <Tooltip title="Edit" style={{ float: "right" }}>
-            <IconButton aria-label="delete">
-              <EditIcon />
-            </IconButton>
-          </Tooltip>
+          <Link to={`abmEmpresas/edit/${props.selected[0]}`}>
+            <Tooltip title="Edit" style={{ float: "right" }}>
+              <IconButton aria-label="delete">
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+          </Link>
         </div>
       ) : (
         <Tooltip>

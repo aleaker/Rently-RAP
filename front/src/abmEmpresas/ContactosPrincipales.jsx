@@ -70,8 +70,12 @@ export default function SimpleModal({disabled, contact, handleMainContact, Users
       >
         <div style={modalStyle} className={classes.paper}>
           <h2 id="simple-modal-title">Alta de Usuarios</h2>
-          <AltaUsuarios mainUser={mainUser}UsersSchema={UsersSchema} contact={contact} handleMainContact={handleMainContact}/>
-         
+      <AltaUsuarios 
+          mainUser={mainUser} 
+          UsersSchema={UsersSchema} 
+          contact={contact} 
+          handleMainContact={handleMainContact}
+          handleClose={handleClose}/>         
         </div>
       </Modal>
     </div>

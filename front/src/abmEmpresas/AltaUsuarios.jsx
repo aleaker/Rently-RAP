@@ -27,6 +27,7 @@ export default class AltaUsuarios extends React.Component {
     }
     addOne(){
       this.setState({showForm: [...this.state.showForm,this.newUser()]})
+      this.props.handleClose()
     }
 
     newUser(){
@@ -58,7 +59,7 @@ export default class AltaUsuarios extends React.Component {
         </Col>
         <Button onClick={this.addOne}>Add</Button>
         </Row>
-        {this.state.showForm.map(el=> el)}
+        {/* {this.state.showForm.map(el=> el)} */}
     </div>)
 }
 }

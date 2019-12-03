@@ -3,6 +3,7 @@ const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
 const createCompanyRouter = require("./createCompany");
 const userRouter = require("./user");
+const adminEmpresasRouter = require("./adminEmpresas");
 //Requiero los modelos
 const rentalRouter = require("./rentalRouter");
 const Company = require("../models/Company");
@@ -16,6 +17,7 @@ router.use("/searchcars", searchCarsRouter);
 router.use("/rentalRouter", rentalRouter);
 router.use("/createCompany", createCompanyRouter);
 router.use("/user", userRouter); //rutas del login and logout
+router.use("/adminEmpresas", adminEmpresasRouter);
 
 //RentlyAdmin
 router.post("/rently", (req, resp) => {

@@ -2,9 +2,8 @@ const mongoose = require("../config/db");
 const { Schema } = require("mongoose");
 
 const Commission = new Schema({
-  Name: {type: String},
+  Name: { type: String },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
-  Name: {type: String},
   From: { type: Number },
   To: { type: Number },
   CommissionPercentage: { type: Number },

@@ -33,12 +33,55 @@ router.post("/rently", (req, res) => {
   res.redirect("/api/rently");
 });
 
-router.get("/quepaso1", (req, res) => {
-  res.json({ "Eu, que anda pasando?": "Salio todo piola wachin" });
+//SALESPEOPLE
+
+//VER TODOS LOS VENDEDORES ACTIVOS
+router.get("/salespeople", async (req, res) => {
+  try {
+    const salespersons = await User.find({
+      UserType: "Vendedor",
+      Active: true
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.get("/quepaso2", (req, res) => {
-  res.json({ "Eu, que anda pasando?": "Todo mal, boludo" });
+//VER TODOS LOS VENDEDORES INACTIVOS
+router.get("/salespeople/deactivated", async (req, res) => {
+  try {
+    const salespersons = await User.find({
+      UserType: "Vendedor",
+      Active: false
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//CAMBIAR UN VENDEDOR A INACTIVO >>> PUT http://localhost:3000/api/salespeople/:id
+router.put("/salespeople/:id", async (req, res) => {
+  try {
+    const change = { Active: false };
+    const deleted = await User.findByIdAndUpdate(req.params.id, change);
+    res.json(deleted);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//REACTIVAR UN VENDEDOR
+router.put("/reactivate/:id", async (req, res) => {
+  console.log("ENTRE A LA RUTA DEL BACK");
+  try {
+    const change = { Active: true };
+    const nowactive = await User.findByIdAndUpdate(req.params.id, change);
+    res.json(nowactive);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //VER LOS USUARIOS: GET http://localhost:3000/api/user

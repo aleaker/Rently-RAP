@@ -10,13 +10,15 @@ import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
 import Comission from "./comisiones/comisionTable";
 import RentalTableContainer from "./RentalForm/RentalTableContainer";
 import * as actions from "./store/actions/userActions";
-import fetchSalesperson from "./store/actions/addSalesperson";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
 import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
-import AddVendedorFormContainer from "./abmVendedores/addVendoContainer";
+import FormContainer from "./AdminEmpresa/Salespeople/FormContainer";
+import AdminEmpresaNav from "./AdminEmpresa/Salespeople/Navigation";
+import ShowThem from "./AdminEmpresa/Salespeople/ShowThem";
+import ShowInactive from "./AdminEmpresa/Salespeople/ShowInactive";
 
 const Main = props => {
   const [loading, setLoading] = useState(true);
@@ -48,8 +50,18 @@ const Main = props => {
 
           <Route
             exact
-            path="/addSalesperson"
-            render={() => <AddVendedorFormContainer />}
+            path="/AdminEmpresaNav/vendedores"
+            component={ShowThem}
+          />
+          <Route
+            exact
+            path="/AdminEmpresaNav/vendedores/inactivos"
+            component={ShowInactive}
+          />
+          <Route
+            exact
+            path="/AdminEmpresaNav/crear/vendedor"
+            render={() => <FormContainer />}
           />
           <Route
             exact

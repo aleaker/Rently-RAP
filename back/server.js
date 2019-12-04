@@ -4,6 +4,7 @@ const path = require("path");
 const db = require("./config/db");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const multer = require("multer");
 
 // conf de passport
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
@@ -14,6 +15,19 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+
+//Config de multer
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/images/uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
+const upload = multer({
+  storage
+});
 
 require("dotenv").config();
 

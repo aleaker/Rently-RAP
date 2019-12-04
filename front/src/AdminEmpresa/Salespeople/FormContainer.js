@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import AddVendedorForm from "./addVendoForm";
-import { addSalesperson } from "../store/actions/addSalesperson";
+import FormComponent from "./FormComponent";
+import { addSalesperson } from "../../store/actions/addSalesperson";
+import AdminEmpresaNav from "./Navigation";
 
-class AddVendedorFormContainer extends Component {
+class FormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,9 +53,8 @@ class AddVendedorFormContainer extends Component {
     } = this.state;
     return (
       <div>
-        {this.state.salesperson ? <div>Usuario Creado</div> : ""}
-
-        <AddVendedorForm
+        <AdminEmpresaNav />
+        <FormComponent
           handleSubmit={this.handleSubmit}
           onInputChange={this.onInputChange}
           handleChangePhoto={this.handleChangePhoto}
@@ -81,7 +81,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddVendedorFormContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(FormContainer);

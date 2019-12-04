@@ -26,15 +26,17 @@ router.put("/deactivateRental/:id", (req, res) => {
 });
 
 router.put("/saveCarRentalHistory/:id", (req, res) => {
-  console.log("AAAAAAAA", req.params.id);
-  let x = req.body;
-  let { ModificationHistory, ...obj } = x;
-  console.log("objeto", obj);
-  // CarRental.findById(req.params.id)
-  // .then(carRental=>carRental.$addToSet())
+  let objConTodo = req.body;
+  let { ModificationHistory, ...objFiltrado } = objConTodo;
   CarRental.findByIdAndUpdate(req.params.id, {
-    $push: { ModificationHistory: obj }
-  }).then(e => console.log("juanma corre", e));
+    $push: { ModificationHistory: objFiltrado } //pusheo al array el obj sin su array ModificationHistory
+  }).then(edited => res.json(edited));
 });
+
+router.put("/editCarRental/:id", (req, res) => {
+  let objConTodo = req.body;
+  let { ModificationHistory, ...objFiltrado } = objConTodo;
+  CarRental.findByIdAndUpdate(req.params.id, objFiltrado)
+  .then(edited => res.json(edited))});
 
 module.exports = router;

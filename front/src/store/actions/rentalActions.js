@@ -28,6 +28,8 @@ export const saveCarRentalHistory = carRental => dispatch => {
 }
 
 export const editCarRental = carRental => dispatch=>{
-  console.log(carRental)
+  console.log("por editaRRR",carRental);
+  axios.put(`/api/rentalRouter/editCarRental/${carRental._id}`, carRental)
+  .then(dispatch(fetchCarRentals()));
 
 }

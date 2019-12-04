@@ -6,9 +6,8 @@ const validateEmail = function(email) {
   return re.test(email);
 };
 
-const CarRental = new Schema({
-  Active: { type: Boolean, default: true },
-  ModificationHistory: { type: Array },
+const CarRentalHistory = new Schema({
+  carRental: {},
   Name: { type: String },
   Logo: { type: String },
   Url: { type: String }, //viene de la api
@@ -32,4 +31,4 @@ const CarRental = new Schema({
   CommissionScheme: { type: Schema.Types.ObjectId, ref: "Commission" }
 });
 
-module.exports = mongoose.model("CarRental", CarRental);
+module.exports = mongoose.model("CarRentalHistory", CarRentalHistory);

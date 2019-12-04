@@ -7,7 +7,7 @@ export const searchCarRentals = carRentals => ({
 
 export const registerRental = rental => {
   //dispatch =>{
-  console.log("hola", rental);
+  console.log("Creando...", rental);
   axios.post("/api/rentalRouter", rental).then(res => console.log(res.data));
 };
 
@@ -22,3 +22,12 @@ export const deleteCarRental = carRental => dispatch => {
     .put(`/api/rentalRouter/deactivateRental/${carRental._id}`)
     .then(dispatch(fetchCarRentals()));
 };
+
+export const saveCarRentalHistory = carRental => dispatch => {
+  axios.put(`/api/rentalRouter/saveCarRentalHistory/${carRental._id}`,carRental)
+}
+
+export const editCarRental = carRental => dispatch=>{
+  console.log(carRental)
+
+}

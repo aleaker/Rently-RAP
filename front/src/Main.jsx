@@ -29,26 +29,23 @@ const Main = props => {
       ) : !props.user ? (
         <Login />
       ) : (
-      <Switch>
-        <Route exact path="/" component={Dashboard} />
+        <Switch>
+          <Route exact path="/" component={Dashboard} />
 
-        <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={Login} />
 
-        <Route exact path="/rentalTable" component={RentalTableContainer} />
+          <Route exact path="/rentalTable" component={RentalTableContainer} />
 
-        <Route exact path="/companylist" component={ListaEmpresasContainer} />
+          <Route exact path="/companylist" component={ListaEmpresasContainer} />
 
-        <Route exact path="/reservation" component={Reservation} />
+          <Route exact path="/reservation" component={Reservation} />
 
-        <Route exact path="/comisiones" component={comisionTable} />
+          <Route exact path="/comisiones" component={comisionTable} />
 
-        <Route exact path="/registerRental" component={RentalFormContainer} />
-        <Route
-          exact
-          path="/abmempresas"
-          render={() => <AbmEmpresasContainer />}
-        />
-      </Switch>
+          <Route exact path="/registerRental" component={RentalFormContainer} />
+
+          <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
+        </Switch>
       )}
     </div>
   );

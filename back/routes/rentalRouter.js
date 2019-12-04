@@ -14,14 +14,27 @@ router.post("/", (req, resp) => {
 });
 
 router.get("/", (req, res) => {
-  CarRental.find({"Active":true})
+  CarRental.find({ Active: true })
     .then(carRentals => res.json(carRentals))
     .catch(err => console.log(err));
 });
 
 router.put("/deactivateRental/:id", (req, res) => {
-  CarRental.update({_id:req.params.id},{"Active":false})
-  .then(carRental=>carRental.update(carRental))
+  CarRental.update({ _id: req.params.id }, { Active: false }).then(carRental =>
+    carRental.update(carRental)
+  );
+});
+
+router.put("/saveCarRentalHistory/:id", (req, res) => {
+  console.log("AAAAAAAA", req.params.id);
+  let x = req.body;
+  let { ModificationHistory, ...obj } = x;
+  console.log("objeto", obj);
+  // CarRental.findById(req.params.id)
+  // .then(carRental=>carRental.$addToSet())
+  CarRental.findByIdAndUpdate(req.params.id, {
+    $push: { ModificationHistory: obj }
+  }).then(e => console.log("juanma corre", e));
 });
 
 module.exports = router;

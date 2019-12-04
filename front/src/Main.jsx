@@ -52,7 +52,10 @@ const Main = props => {
             path="/adminEmpresas/comissions/edit/:id"
             component={editComissionContainer}
           />
+          <Route exact path="/registerRental" component={RentalFormContainer} />
+
           <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
+
           <Route exact path="/abmempresas/edit" component={Reservation} />
         </div>
       )}

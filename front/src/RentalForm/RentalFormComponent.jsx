@@ -5,6 +5,7 @@ import EsquemaComisiones from "../comisiones/EsquemaComision";
 import Button from "@material-ui/core/Button";
 
 export default function({
+  hideCommissionSchema,
   handleChange,
   handleSubmit,
   schemaName,
@@ -83,6 +84,7 @@ export default function({
           name="Email"
           onChange={event => handleMainContact({ Email: event.target.value })}
         />
+        {hideCommissionSchema ? "" :
         <EsquemaComisiones
           schemaName={schemaName}
           schemaFrom={schemaFrom}
@@ -94,7 +96,7 @@ export default function({
           addNewForm={addNewForm}
           commission={commission}
           onChange={event => handleChange(event)}
-        />
+        />}
       </form>
       <Button type="submit" onClick={e => handleSubmit(e)}>
         AGREGAR RENTADORA
@@ -102,5 +104,3 @@ export default function({
     </div>
   );
 }
-
-// Nombre de la rentadora, Logo, Nombre y mail del contacto principal, API, Esquema de comisiones a cobrar

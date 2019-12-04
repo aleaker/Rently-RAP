@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
 import Login from "./login/Login";
@@ -14,6 +15,8 @@ import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
 import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
+import EditarEmpresas from "./abmEmpresas/editarEmpresas/EditarEmpresas";
+
 import addComissionsContainer from "./adminEmpresas/Container/addComissionsContainer";
 import editComissionContainer from "./adminEmpresas/Container/editComissionContainer";
 
@@ -33,6 +36,7 @@ const Main = props => {
         <Login />
       ) : (
         <div>
+          <Switch>
           <Route exact path="/" component={Dashboard} />
 
           <Route exact path="/rentalTable" component={RentalTableContainer} />
@@ -52,11 +56,10 @@ const Main = props => {
             path="/adminEmpresas/comissions/edit/:id"
             component={editComissionContainer}
           />
-          <Route exact path="/registerRental" component={RentalFormContainer} />
-
-          <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
-
-          <Route exact path="/abmempresas/edit" component={Reservation} />
+          <Route 
+            path="/abmempresas/edit"
+            render={()=> <EditarEmpresas props={props}/>}/>
+        </Switch>
         </div>
       )}
     </div>

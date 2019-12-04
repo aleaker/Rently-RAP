@@ -39,7 +39,7 @@ const Company = new Schema({
     Country: { type: String },
     SwiftCode: { type: String }
   },
-  CommissionScheme: [{ type: Schema.Types.ObjectId, ref: "Commission" }]
+  CommissionScheme: {type: Array}
 });
 
 module.exports = mongoose.model("Company", Company);

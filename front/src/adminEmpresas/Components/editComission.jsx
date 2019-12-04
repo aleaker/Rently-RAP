@@ -22,7 +22,6 @@ export default function(props) {
   const [state, setState] = React.useState("");
 
   useEffect(() => {
-    console.log(props.match.params.id);
     axios
       .get(`/api/adminEmpresas/comissions/edit/${props.match.params.id}`)
       .then(comission => setState(comission.data[0]))

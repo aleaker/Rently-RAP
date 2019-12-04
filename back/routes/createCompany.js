@@ -2,25 +2,8 @@ const router = require("express").Router();
 const User = require("../models/User");
 const Company = require("../models/Company");
 const Commission = require("../models/Commission");
+const nodemailer = require("nodemailer");
 
-// router.post('/', (req, res)=>{
-//     let newUser = req.body.users
-//     let newCompany = req.body.Company
-
-//     Commision.create(newCompany.CommissionScheme)
-//     .then(created =>{
-//         console.log('soy yo', created)
-//         newCompany.CommissionScheme = created._id;
-//         newUser[0].Company = created._id
-//         return Company.create(newCompany)
-//     })
-//     .then((e)=> {
-//         console.log('este es el usuario a crear', newUser)
-//         return User.create(newUser[0])})
-//     .then((e)=>console.log('Empresa Creada sin Errores', e))
-//     .catch(err=>console.log(err))
-
-// })
 
 router.post("/", (req, res) => {
   let newUser = req.body.users;
@@ -48,7 +31,38 @@ router.post("/", (req, res) => {
     .then(() => {
       Commision.map(com=>{Company.findByIdAndUpdate(CompanyID, {"$push":{"CommissionScheme": com }}).then(e=>console.log(e))})
       
-      return null;
+      return null;})
+
+    .then(User => {
+      console.log("Acabo de crear un usuario", User);
+
+      let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD
+        }
+      });
+
+      let mailOptions = {
+        from: "raprentlytesting@gmail.com",
+        to: User.Email,
+        subject: "Rently affiliate program",
+        text: `Thanks for joining the Rently affiliate program, you can access the plataform with this info:
+        email: ${User.Email}
+        password: "admin"
+        `
+      };
+
+      transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+
+      Company.findByIdAndUpdate(CompanyID, { CommisionScheme: CompanyID });
     })
     .then(()=> Company.findById(CompanyID))
     .then((e)=> console.log(e))

@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 
 
 export default function({
+  selectedRental,
   handleChange,
   handleSubmit,
 }) {
@@ -15,6 +16,7 @@ export default function({
         <label>Nombre empresa: </label>
         <input
           required
+          value={selectedRental.Name}
           type="text"
           name="NombreEmpresa"
           onChange={event => handleChange( event)}
@@ -22,6 +24,7 @@ export default function({
         <label>Logo: </label>
         <input
           required
+          value={selectedRental.Logo}
           type="url"
           name="Logo"
           onChange={event => handleChange( event)}
@@ -29,6 +32,7 @@ export default function({
         <label>API: </label>
         <input
           required
+          value={selectedRental.Url}
           type="text"
           name="APIurl"
           onChange={event => handleChange( event)}
@@ -36,6 +40,7 @@ export default function({
         <label>Usuario: </label>
         <input
           required
+          value={selectedRental.User}
           type="text"
           name="usuario"
           onChange={event => handleChange( event)}
@@ -43,6 +48,7 @@ export default function({
         <label>Password: </label>
         <input
           required
+          value={selectedRental.Password}
           type="password"
           name="password"
           onChange={event => handleChange( event)}
@@ -51,6 +57,7 @@ export default function({
         <label>Nombre contacto principal: </label>
         <input
           required
+          value={selectedRental.MainContact.FirstName}
           type="text"
           name="firstName"
           onChange={event => handleChange( event)}
@@ -59,6 +66,7 @@ export default function({
         <label>Apellido contacto principal: </label>
         <input
           required
+          value={selectedRental.MainContact.LastName}
           type="text"
           name="lastName"
           onChange={event => handleChange( event)}
@@ -67,6 +75,7 @@ export default function({
         <label>Email contacto principal: </label>
         <input
           required
+          value={selectedRental.MainContact.Email}
           type="email"
           name="Email"
           onChange={event => handleChange( event)}

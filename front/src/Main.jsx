@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
 import Login from "./login/Login";
@@ -15,6 +16,8 @@ import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
 import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
+import EditarEmpresas from "./abmEmpresas/editarEmpresas/EditarEmpresas";
+
 
 const Main = props => {
   const [loading, setLoading] = useState(true);
@@ -53,6 +56,9 @@ const Main = props => {
             path="/abmempresas"
             render={() => <AbmEmpresasContainer />}
           />
+          <Route 
+            path="/abmempresas/edit"
+            render={()=> <EditarEmpresas props={props}/>}/>
         </Switch>
       )}
     </div>

@@ -15,13 +15,15 @@ import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
 import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
 import addComissionsContainer from "./adminEmpresas/Container/addComissionsContainer";
+import editComissionContainer from "./adminEmpresas/Container/editComissionContainer";
 
 const Main = props => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    props.fetchUser().then((user) => {
-      setLoading(false)});
+    props.fetchUser().then(user => {
+      setLoading(false);
+    });
   }, []);
   return (
     <div>
@@ -29,25 +31,17 @@ const Main = props => {
         ""
       ) : !props.user ? (
         <Login />
-      ) : <div>
-          
+      ) : (
+        <div>
           <Route exact path="/" component={Dashboard} />
 
-          <Route
-            exact
-            path="/rentalTable"
-            component={RentalTableContainer}
-          />
+          <Route exact path="/rentalTable" component={RentalTableContainer} />
           <Route exact path="/companylist" component={ListaEmpresasContainer} />
 
           <Route exact path="/reservation" component={Reservation} />
 
           <Route exact path="/comisiones" component={comisionTable} />
-          <Route
-            exact
-            path="/registerRental"
-            component={RentalFormContainer}
-          />
+          <Route exact path="/registerRental" component={RentalFormContainer} />
           <Route
             exact
             path="/adminEmpresas/comissions/add"
@@ -55,16 +49,13 @@ const Main = props => {
           />
           <Route
             exact
-            path="/abmempresas"
-            component={AbmEmpresasContainer}
+            path="/adminEmpresas/comissions/edit/:id"
+            component={editComissionContainer}
           />
-          <Route
-            exact
-            path="/abmempresas/edit"
-            component={Reservation}
-          />
+          <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
+          <Route exact path="/abmempresas/edit" component={Reservation} />
         </div>
-      }
+      )}
     </div>
   );
 };

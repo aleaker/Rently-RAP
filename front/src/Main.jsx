@@ -20,7 +20,9 @@ const Main = props => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    props.fetchUser().then(() => setLoading(false));
+    props.fetchUser().then(user => {
+      setLoading(false);
+    });
   }, []);
   return (
     <div>
@@ -29,10 +31,8 @@ const Main = props => {
       ) : !props.user ? (
         <Login />
       ) : (
-        <Switch>
+        <div>
           <Route exact path="/" component={Dashboard} />
-
-          <Route exact path="/login" component={Login} />
 
           <Route exact path="/rentalTable" component={RentalTableContainer} />
 
@@ -45,7 +45,9 @@ const Main = props => {
           <Route exact path="/registerRental" component={RentalFormContainer} />
 
           <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
-        </Switch>
+          
+          <Route exact path="/abmempresas/edit" component={Reservation} />
+        </div>
       )}
     </div>
   );

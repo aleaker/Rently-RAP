@@ -17,13 +17,12 @@ const rentalTokenfunction = () => {
         rentals.map(rental => {
           return request
             .post(
-              "https://demo.rently.com.ar/auth/token",
+              `${rental.Url.replace("api/", "auth/token")}`,
               {
                 form: {
                   grant_type: "client_credentials",
-                  client_id: "rentlyweb",
-                  client_secret:
-                    "9$3Gx#;6a8K!%AXB:+}rX^Ek%6:/{*_LvDJ6{n{G-&J;]5sA)$aXLP$@j1XaR>31"
+                  client_id: `${rental.User}`,
+                  client_secret: `${rental.Password}`
                 }
               },
               (error, res, body) => {

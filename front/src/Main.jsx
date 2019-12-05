@@ -36,27 +36,33 @@ const Main = props => {
           <Route exact path="/" component={Dashboard} />
 
           <Route exact path="/rentalTable" component={RentalTableContainer} />
+
           <Route exact path="/companylist" component={ListaEmpresasContainer} />
 
           <Route exact path="/reservation" component={Reservation} />
 
           <Route exact path="/comisiones" component={comisionTable} />
+
           <Route exact path="/registerRental" component={RentalFormContainer} />
+
           <Route
             exact
             path="/adminEmpresas/comissions/add"
             component={addComissionsContainer}
           />
+
           <Route
             exact
             path="/adminEmpresas/comissions/edit/:id"
             component={editComissionContainer}
           />
+
           <Route exact path="/registerRental" component={RentalFormContainer} />
 
           <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
 
           <Route exact path="/abmempresas/edit" component={Reservation} />
+          
         </div>
       )}
     </div>
@@ -67,7 +73,4 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

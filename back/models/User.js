@@ -2,8 +2,6 @@ const mongoose = require("../config/db");
 const { Schema } = require("mongoose");
 const bcrypt = require("bcrypt-nodejs");
 
-const SALT_WORK_FACTOR = 10;
-
 const validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email);
@@ -11,7 +9,7 @@ const validateEmail = function(email) {
 
 const User = new Schema({
   Active: { type: Boolean, default: true },
-  UserType: { type: String, required: true },
+  UserType: { type: String },
   Email: {
     type: String,
     unique: true,
@@ -29,11 +27,11 @@ const User = new Schema({
   LastName: { type: String, required: true },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
   Telephone: { type: String, required: true },
-  Photo: {
-    type: String,
-    default:
-      "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png"
-  },
+  // Photo: {
+  //   type: String,
+  //   default:
+  //     "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png"
+  // },
   Notes: { type: String },
   CommissionScheme: [{ type: Schema.Types.ObjectId, ref: "Commission" }]
 });

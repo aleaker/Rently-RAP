@@ -23,16 +23,119 @@ router.use("/adminEmpresas", adminEmpresasRouter);
 router.post("/rently", (req, resp) => {
   RentlyAdmin.create(req.body);
 });
-//Users
 
+//VER TODOS LOS USERS
 router.get("/users", (req, res) => {
   User.find().then(e => res.json(e));
 });
 
+//CREAR UN ADMN RENTLY
 router.post("/rently", (req, res) => {
   RentlyAdmin.create(req.body);
   console.log("RentlyAdmin creado");
   res.redirect("/api/rently");
+});
+
+//VER TODOS LOS ADMINS-EMPRESA ACTIVOS
+router.get("/companyAdmins", async (req, res) => {
+  try {
+    const admins = await User.find({
+      UserType: "AdminEmpresa",
+      Active: true
+    });
+    res.json(admins);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//GET 1 ADMIN-EMPRESA
+router.get("/companyAdmin/:id", async (req, res) => {
+  try {
+    const admin = await User.findById(req.params.id);
+    res.json(admin);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//EDIT 1 ADMIN-EMPRESA
+router.put("/admin/edit/:id", async (req, res) => {
+  try {
+    const edit = await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json(edit);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//VER TODOS LOS VENDEDORES ACTIVOS
+router.get("/salespeople", async (req, res) => {
+  try {
+    const salespersons = await User.find({
+      UserType: "Vendedor",
+      Active: true
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//VER TODOS LOS VENDEDORES INACTIVOS
+router.get("/salespeople/deactivated", async (req, res) => {
+  try {
+    const salespersons = await User.find({
+      UserType: "Vendedor",
+      Active: false
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//CAMBIAR UN VENDEDOR A INACTIVO >>> PUT http://localhost:3000/api/salespeople/:id
+router.put("/salespeople/:id", async (req, res) => {
+  try {
+    const change = { Active: false };
+    const deleted = await User.findByIdAndUpdate(req.params.id, change);
+    res.json(deleted);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//VER A UN VENDEDOR ESPECIFICO >>> GET http://localhost:3000/api/salesperson/:id
+router.get("/salesperson/:id", async (req, res) => {
+  try {
+    const salesperson = await User.findById(req.params.id);
+    res.json(salesperson);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//REACTIVAR UN VENDEDOR
+router.put("/reactivate/:id", async (req, res) => {
+  console.log("ENTRE A LA RUTA DEL BACK");
+  try {
+    const change = { Active: true };
+    const nowactive = await User.findByIdAndUpdate(req.params.id, change);
+    res.json(nowactive);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//EDITAR UN VENDEDOR
+router.put("/salesperson/edit/:id", async (req, res) => {
+  try {
+    const edit = await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json(edit);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //VER LOS USUARIOS: GET http://localhost:3000/api/user
@@ -57,13 +160,14 @@ router.get("/user/:id", async (req, res) => {
 
 //CREAR UN USER : POST http://localhost:3000/api/user
 router.post("/user", (req, res) => {
-  try {
-    User.create(req.body);
-    console.log("User creado");
-    res.json({ status: "user created" });
-  } catch (err) {
-    console.log(err);
-  }
+  User.create(req.body)
+    .then(user => {
+      res.send(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send("ERROR");
+    });
 });
 
 //MODIFICAR UN USER: PUT http://localhost:3000/api/user/:id
@@ -154,9 +258,10 @@ router.put("/company/:id", async (req, res) => {
 
 //BORRAR 1 EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
 router.delete("/company/:id", async (req, res) => {
-  Company.updateOne({ _id: req.params.id }, { $set: { Active: false } }).then(
-    company => res.json(company)
-  );
+  Company.updateOne(
+    { _id: req.params.id },
+    { $set: { Active: false } }
+  ).then(company => res.json(company));
   /* .catch(err => console.log(err), res.send(401)); */
 });
 

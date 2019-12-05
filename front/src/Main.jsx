@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
+//Imports de Containers
 import 'bootstrap/dist/css/bootstrap.min.css';
 // Imports de Containers
 import Reservation from "./reservationForm/reservationForm";
@@ -15,6 +16,12 @@ import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
 import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
+import ShowThem from "./AdminEmpresa/Salespeople/ShowThem";
+import ShowInactive from "./AdminEmpresa/Salespeople/ShowInactive";
+import EditSalesperson from "./AdminEmpresa/Salespeople/EditSalesperson";
+import CreateSalesperson from "./AdminEmpresa/Salespeople/CreateSalesperson";
+import Admins from "./AdminEmpresa/Salespeople/Admins";
+import EditAdmin from "./AdminEmpresa/Salespeople/EditAdmin";
 import EditarEmpresas from "./abmEmpresas/editarEmpresas/EditarEmpresas";
 
 import addComissionsContainer from "./adminEmpresas/Container/addComissionsContainer";
@@ -45,6 +52,25 @@ const Main = props => {
           <Route exact path="/reservation" component={Reservation} />
 
           <Route exact path="/comisiones" component={comisionTable} />
+
+          <Route exact path="/AdminEmpresa/vendedores" component={ShowThem} />
+          <Route
+            exact
+            path="/AdminEmpresa/vendedores/inactivos"
+            component={ShowInactive}
+          />
+          <Route
+            exact
+            path="/AdminEmpresa/crear/vendedor"
+            component={CreateSalesperson}
+          />
+          <Route
+            exact
+            path="/AdminEmpresa/editar/vendedor/:id"
+            component={EditSalesperson}
+          />
+          <Route exact path="/AdminEmpresa/admins" component={Admins} />
+          <Route exact path="/AdminEmpresa/editar/:id" component={EditAdmin} />
           <Route exact path="/registerRental" component={RentalFormContainer} />
           <Route
             exact
@@ -70,7 +96,4 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

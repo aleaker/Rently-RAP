@@ -23,6 +23,7 @@
     "passport-local": "^1.0.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "request": "^2.88.0",
+    "request-promise-native": "^1.0.8",
     "simple-oauth2": "^3.1.0"
   },
   "devDependencies": {},

@@ -35,12 +35,12 @@ class ShowThem extends Component {
             <div className="col-md-4 p-2" key={salesperson._id}>
               <div className="card">
                 <div className="card-header d-flex justify-content-between">
-                  <h5>{salesperson.FirstName + salesperson.LastName}</h5>
+                  <h5>{salesperson.FirstName + " " + salesperson.LastName}</h5>
                   <Link
                     className="btn btn-secondary"
-                    to={"/edit/" + salesperson._id}
+                    to={"/AdminEmpresa/editar/vendedor/" + salesperson._id}
                   >
-                    Modificar
+                    Editar
                   </Link>
                 </div>
                 <div className="card-body">

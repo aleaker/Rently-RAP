@@ -21,19 +21,51 @@ router.use("/user", userRouter); //rutas del login and logout
 router.post("/rently", (req, resp) => {
   RentlyAdmin.create(req.body);
 });
-//Users
 
+//VER TODOS LOS USERS
 router.get("/users", (req, res) => {
   User.find().then(e => res.json(e));
 });
 
+//CREAR UN ADMN RENTLY
 router.post("/rently", (req, res) => {
   RentlyAdmin.create(req.body);
   console.log("RentlyAdmin creado");
   res.redirect("/api/rently");
 });
 
-//SALESPEOPLE
+//VER TODOS LOS ADMINS-EMPRESA ACTIVOS
+router.get("/companyAdmins", async (req, res) => {
+  try {
+    const admins = await User.find({
+      UserType: "AdminEmpresa",
+      Active: true
+    });
+    res.json(admins);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//GET 1 ADMIN-EMPRESA
+router.get("/companyAdmin/:id", async (req, res) => {
+  try {
+    const admin = await User.findById(req.params.id);
+    res.json(admin);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//EDIT 1 ADMIN-EMPRESA
+router.put("/admin/edit/:id", async (req, res) => {
+  try {
+    const edit = await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json(edit);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 //VER TODOS LOS VENDEDORES ACTIVOS
 router.get("/salespeople", async (req, res) => {
@@ -72,6 +104,16 @@ router.put("/salespeople/:id", async (req, res) => {
   }
 });
 
+//VER A UN VENDEDOR ESPECIFICO >>> GET http://localhost:3000/api/salesperson/:id
+router.get("/salesperson/:id", async (req, res) => {
+  try {
+    const salesperson = await User.findById(req.params.id);
+    res.json(salesperson);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 //REACTIVAR UN VENDEDOR
 router.put("/reactivate/:id", async (req, res) => {
   console.log("ENTRE A LA RUTA DEL BACK");
@@ -79,6 +121,16 @@ router.put("/reactivate/:id", async (req, res) => {
     const change = { Active: true };
     const nowactive = await User.findByIdAndUpdate(req.params.id, change);
     res.json(nowactive);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//EDITAR UN VENDEDOR
+router.put("/salesperson/edit/:id", async (req, res) => {
+  try {
+    const edit = await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json(edit);
   } catch (err) {
     console.log(err);
   }
@@ -105,7 +157,7 @@ router.get("/user/:id", async (req, res) => {
 });
 
 //CREAR UN USER : POST http://localhost:3000/api/user
-router.post("/user", (req, res, next) => {
+router.post("/user", (req, res) => {
   User.create(req.body)
     .then(user => {
       res.send(user);

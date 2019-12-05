@@ -15,10 +15,12 @@ import { bindActionCreators } from "redux";
 import Dashboard from "./dashboard/Dashboard";
 import comisionTable from "./comisiones/comisionTable";
 import ListaEmpresasContainer from "./abmEmpresas/Containers/ListaEmpresasContainer";
-import FormContainer from "./AdminEmpresa/Salespeople/FormContainer";
-import AdminEmpresaNav from "./AdminEmpresa/Salespeople/Navigation";
 import ShowThem from "./AdminEmpresa/Salespeople/ShowThem";
 import ShowInactive from "./AdminEmpresa/Salespeople/ShowInactive";
+import EditSalesperson from "./AdminEmpresa/Salespeople/EditSalesperson";
+import CreateSalesperson from "./AdminEmpresa/Salespeople/CreateSalesperson";
+import Admins from "./AdminEmpresa/Salespeople/Admins";
+import EditAdmin from "./AdminEmpresa/Salespeople/EditAdmin";
 
 const Main = props => {
   const [loading, setLoading] = useState(true);
@@ -48,21 +50,24 @@ const Main = props => {
 
           <Route exact path="/comisiones" component={comisionTable} />
 
+          <Route exact path="/AdminEmpresa/vendedores" component={ShowThem} />
           <Route
             exact
-            path="/AdminEmpresaNav/vendedores"
-            component={ShowThem}
-          />
-          <Route
-            exact
-            path="/AdminEmpresaNav/vendedores/inactivos"
+            path="/AdminEmpresa/vendedores/inactivos"
             component={ShowInactive}
           />
           <Route
             exact
-            path="/AdminEmpresaNav/crear/vendedor"
-            render={() => <FormContainer />}
+            path="/AdminEmpresa/crear/vendedor"
+            component={CreateSalesperson}
           />
+          <Route
+            exact
+            path="/AdminEmpresa/editar/vendedor/:id"
+            component={EditSalesperson}
+          />
+          <Route exact path="/AdminEmpresa/admins" component={Admins} />
+          <Route exact path="/AdminEmpresa/editar/:id" component={EditAdmin} />
           <Route
             exact
             path="/registerRental"

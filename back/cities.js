@@ -1,6 +1,6 @@
 const request = require("request");
 const { rentalToken } = require("./ApiRental/RentalAPIs");
-const hola
+
 const fetchCities = () => {
   const Cities = {};
   Promise.all(

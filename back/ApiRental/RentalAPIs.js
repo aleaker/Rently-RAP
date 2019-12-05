@@ -1,8 +1,10 @@
 const CarRental = require("../models/CarRental");
 const request = require("request-promise-native");
 
+
+var rentalToken = []
 var probando = 0;
-var rentalToken;
+
 
 const rentalTokenfunction = () => {
   CarRental.find({ Active: true }, "Name Url User Password")
@@ -47,4 +49,7 @@ const rentalTokenfunction = () => {
     .catch(err => console.log);
 };
 
-module.exports = { rentalTokenfunction, rentalToken };
+function fetchToken(){
+  return rentalToken
+}
+module.exports = { rentalTokenfunction, rentalToken, fetchToken };

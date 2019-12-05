@@ -1,15 +1,16 @@
 const request = require("request");
-const { rentalToken } = require("./ApiRental/RentalAPIs");
+const {  fetchToken } = require("./ApiRental/RentalAPIs");
 
-const fetchCities = () => {
+const fetchCities = async () => {
+  const rentalToken =  fetchToken()
   const Cities = {};
   Promise.all(
-    (rentalToken || []).map(rental => {
+    rentalToken.map(rental => {
       let rentalname = rental.Name;
       const options = {
-        uri: `${rental.Url}/places`,
+        uri: `${rental.Url}places`,
         method: "GET",
-        headers: { Authorization: `Bearer ${rental.Token}` }
+        headers: { Authorization: `${rental.Token}` }
       };
 
       return new Promise(resolve => {

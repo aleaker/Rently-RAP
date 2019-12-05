@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const { rentalTokenfunction } = require("../back/ApiRental/RentalAPIs");
 const multer = require("multer");
+const fetchCities = require("./cities");
 
 // conf de passport
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
@@ -40,6 +41,8 @@ setTimeout(() => {
       next(null);
     }
   });
+
+  console.log("ESTOESFETCHCITIES", fetchCities());
 
   app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));

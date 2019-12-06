@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const { rentalTokenfunction, fetchToken } = require("../back/ApiRental/RentalAPIs");
 const multer = require("multer");
-const fetchCities = require("./cities");
+const {fetchCities} = require("./cities");
 
 var rentalToken
 exports.default = rentalToken
@@ -17,7 +17,7 @@ const passport = require("passport");
 rentalTokenfunction();
 
 setTimeout(() => {
-  console.log('asdasddsa', fetchToken())
+  console.log('fetchiando token', fetchToken())
   app.use(express.static("public"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

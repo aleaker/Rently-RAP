@@ -44,7 +44,7 @@ export default function({
                 </td>
                 <td>
                   <button
-                    class="btn waves-effect waves-light"
+                    className="btn waves-effect waves-light"
                     onClick={() => showEditRentalForm(carRental)}
                   >
                     <i className="small material-icons">create</i>
@@ -52,7 +52,7 @@ export default function({
                 </td>
                 <td>
                   <button
-                    class="btn waves-effect waves-light"
+                    className="btn waves-effect waves-light"
                     onClick={() => handleDelete(carRental)}
                   >
                     <i className="small material-icons">delete</i>

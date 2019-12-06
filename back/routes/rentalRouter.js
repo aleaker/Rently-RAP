@@ -40,7 +40,7 @@ router.post("/getRentalsByName", (req, resp) => {
       console.error(error);
       return;
     }
-    resp.json(body);
+    resp.json(JSON.parse(body));
   });
 });
 

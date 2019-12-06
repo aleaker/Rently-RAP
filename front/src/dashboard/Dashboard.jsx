@@ -25,6 +25,7 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import * as actions from "../store/actions/userActions";
 import { bindActionCreators } from "redux";
+import AbmEmpresasContainer from "../abmEmpresas/AbmEmpresasContainer";
 
 const drawerWidth = 240;
 
@@ -206,7 +207,7 @@ function Dashboard(props) {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/*  */}
+            <AbmEmpresasContainer />
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}></Paper>
             </Grid>
@@ -232,7 +233,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -157,7 +157,9 @@ export default class EditSalesperson extends Component {
                   name="Photo"
                 /> */}
 
-                <button type="submit">Registrar!</button>
+                <button className="btn waves-effect waves-light" type="submit">
+                  Registrar!
+                </button>
               </form>
             </div>
           </div>

@@ -156,7 +156,7 @@ export default class EditAdmin extends Component {
                   name="Photo"
                 /> */}
 
-                <button type="submit">Guardar los cambios</button>
+                <button class="btn waves-effect waves-light" type="submit">Guardar los cambios</button>
               </form>
             </div>
           </div>

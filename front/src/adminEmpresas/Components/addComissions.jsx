@@ -75,95 +75,99 @@ export default function({ user, addComission }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <React.Fragment>
-        <Typography variant="h6" gutterBottom>
-          Agregar Comision
-        </Typography>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <TextField
-              id="Name"
-              name="Nombre Esquema"
-              label="Nombre Esquema"
-              fullWidth
-              type="text"
-              onChange={handleChange}
-              required
-              error={error.Name}
-            />
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <TextField
-              required
-              id="From"
-              name="Desde"
-              label="Desde"
-              placeholder="$"
-              onChange={handleChange}
-              fullWidth
-              error={error.From}
-            />
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <TextField
-              required
-              id="To"
-              name="Hasta"
-              label="Hasta"
-              placeholder="$"
-              onChange={handleChange}
-              error={error.To}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <TextField
-              id="CommissionPercentage"
-              name="% Comision"
-              label="% Comision"
-              onChange={handleChange}
-              error={error.CommissionPercentage}
-              fullWidth
-            />
-          </Grid>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid item xs={12} sm={6}>
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="dd/MM/yyyy"
-                margin="normal"
-                id="FromDate"
-                label="Fecha validez desde"
-                value={selectedDateFrom}
-                fullWidth
-                onChange={handleDateChangeFrom}
-                KeyboardButtonProps={{
-                  "aria-label": "change date"
-                }}
-              />
+    <div className="container">
+      <div className="card card-body">
+        <form onSubmit={handleSubmit}>
+          <React.Fragment>
+            <Typography variant="h6" gutterBottom>
+              Agregar Comision
+            </Typography>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <TextField
+                  id="Name"
+                  name="Nombre Esquema"
+                  label="Nombre Esquema"
+                  fullWidth
+                  type="text"
+                  onChange={handleChange}
+                  required
+                  error={error.Name}
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  required
+                  id="From"
+                  name="Desde"
+                  label="Desde"
+                  placeholder="$"
+                  onChange={handleChange}
+                  fullWidth
+                  error={error.From}
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  required
+                  id="To"
+                  name="Hasta"
+                  label="Hasta"
+                  placeholder="$"
+                  onChange={handleChange}
+                  error={error.To}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  id="CommissionPercentage"
+                  name="% Comision"
+                  label="% Comision"
+                  onChange={handleChange}
+                  error={error.CommissionPercentage}
+                  fullWidth
+                />
+              </Grid>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid item xs={12} sm={6}>
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="dd/MM/yyyy"
+                    margin="normal"
+                    id="FromDate"
+                    label="Fecha validez desde"
+                    value={selectedDateFrom}
+                    fullWidth
+                    onChange={handleDateChangeFrom}
+                    KeyboardButtonProps={{
+                      "aria-label": "change date"
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="dd/MM/yyyy"
+                    margin="normal"
+                    id="ToDate"
+                    fullWidth
+                    label="Fecha validez hasta"
+                    value={selectedDateTo}
+                    onChange={handleDateChangeTo}
+                    KeyboardButtonProps={{
+                      "aria-label": "change date"
+                    }}
+                  />
+                </Grid>
+              </MuiPickersUtilsProvider>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="dd/MM/yyyy"
-                margin="normal"
-                id="ToDate"
-                fullWidth
-                label="Fecha validez hasta"
-                value={selectedDateTo}
-                onChange={handleDateChangeTo}
-                KeyboardButtonProps={{
-                  "aria-label": "change date"
-                }}
-              />
-            </Grid>
-          </MuiPickersUtilsProvider>
-        </Grid>
-        <Input type="submit" />
-      </React.Fragment>
-    </form>
+            <Input className="btn waves-effect waves-light" type="submit" />
+          </React.Fragment>
+        </form>
+      </div>
+    </div>
   );
 }

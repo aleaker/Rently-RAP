@@ -17,7 +17,7 @@ export default function ReservationFormComponent({
   let tomorrowFormated = `${today.getFullYear()}-${today.getMonth() +
     1}-${today.getDate() + 1}`;
 
-  const cities = { "Buenos Aires": 1, Rosario: 2 };
+  const cities = {Rosario: 2,"Buenos Aires": 1 };
 
   return (
     <div>

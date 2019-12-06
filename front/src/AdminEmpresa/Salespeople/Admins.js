@@ -49,7 +49,7 @@ export default class Admins extends Component {
                 </div>
                 <div className="card-footer">
                   <Link
-                    className="btn btn-secondary"
+                    className="btn waves-effect waves-light"
                     to={"/AdminEmpresa/editar/" + admin._id}
                   >
                     Editar

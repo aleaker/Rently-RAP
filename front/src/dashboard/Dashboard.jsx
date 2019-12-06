@@ -124,81 +124,76 @@ function Dashboard(props) {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className="card card-body">
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="absolute"
-          className={clsx(classes.appBar, open && classes.appBarShift)}
-        >
-          <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              className={clsx(
-                classes.menuButton,
-                open && classes.menuButtonHidden
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.title}
-            >
-              Affiliate Portal
-            </Typography>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleLogout}
-            >
-              Log out
-            </Button>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
-          }}
-          open={open}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar
+        position="absolute"
+        className={clsx(classes.appBar, open && classes.appBarShift)}
+      >
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={clsx(
+              classes.menuButton,
+              open && classes.menuButtonHidden
+            )}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}
+          >
+            Affiliate Portal
+          </Typography>
+          <Button variant="contained" color="secondary" onClick={handleLogout}>
+            Log out
+          </Button>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
+        }}
+        open={open}
+      >
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              {/* <Avatar src={props.user.Photo} className={classes.avatar} /> */}
+            </ListItemIcon>
+            <ListItemText primary={props.user.FirstName} />
+          </ListItem>
           <Divider />
-          <List>
-            <ListItem>
-              <ListItemIcon>
-                {/* <Avatar src={props.user.Photo} className={classes.avatar} /> */}
-              </ListItemIcon>
-              <ListItemText primary={props.user.FirstName} />
-            </ListItem>
-            <Divider />
-          </List>
-          <Divider />
-          <List>
-            <ListItem button>
-              <ListItemIcon>
-                <BusinessIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Companies"} />
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <EmojiTransportationIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Car Rentals"} />
-            </ListItem>
-            {/* {["Profile", "ABM", "Commisions"].map((text, index) => (
+        </List>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon>
+              <BusinessIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Companies"} />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <EmojiTransportationIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Car Rentals"} />
+          </ListItem>
+          {/* {["Profile", "ABM", "Commisions"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -206,28 +201,27 @@ function Dashboard(props) {
               <ListItemText primary={text} />
             </ListItem>
           ))} */}
-          </List>
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
-            <Grid container spacing={3}>
-              <AbmEmpresasContainer />
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper className={fixedHeightPaper}></Paper>
-              </Grid>
-              {/*  */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper className={fixedHeightPaper}></Paper>
-              </Grid>
-              {/*  */}
-              <Grid item xs={12}>
-                <Paper className={classes.paper}></Paper>
-              </Grid>
+        </List>
+      </Drawer>
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
+            <AbmEmpresasContainer />
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}></Paper>
             </Grid>
-          </Container>
-        </main>
-      </div>
+            {/*  */}
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}></Paper>
+            </Grid>
+            {/*  */}
+            <Grid item xs={12}>
+              <Paper className={classes.paper}></Paper>
+            </Grid>
+          </Grid>
+        </Container>
+      </main>
     </div>
   );
 }

@@ -86,16 +86,16 @@ const Main = props => {
             />
             <Route
               exact
-              path="/adminEmpresa/comissions/add"
+              path="/adminEmpresa/comisiones/agregar"
               component={addComissionsContainer}
             />
             <Route
               exact
-              path="/adminEmpresa/comissions/edit/:id"
+              path="/adminEmpresa/comisiones/editar/:id"
               component={editComissionContainer}
             />
             <Route
-              path="/abmempresas/edit"
+              path="/abmempresas/editar"
               render={() => <EditarEmpresas props={props} />}
             />
           </Switch>

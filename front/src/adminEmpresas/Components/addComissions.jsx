@@ -3,7 +3,7 @@ import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   KeyboardDatePicker,
@@ -164,7 +164,9 @@ export default function({ user, addComission }) {
                 </Grid>
               </MuiPickersUtilsProvider>
             </Grid>
-            <Input className="btn waves-effect waves-light" type="submit" />
+            <Button className="btn waves-effect waves-light" type="submit">
+              Agregar esquema
+            </Button>
           </React.Fragment>
         </form>
       </div>

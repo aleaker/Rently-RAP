@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 //Imports de Containers
 import 'bootstrap/dist/css/bootstrap.min.css';
 // Imports de Containers
-import Reservation from "./reservationForm/reservationForm";
+import Reservation from "./reservationForm/reservationFormContainer";
 import Login from "./login/Login";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
 import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";

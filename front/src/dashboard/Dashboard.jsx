@@ -25,8 +25,23 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import * as actions from "../store/actions/userActions";
 import { bindActionCreators } from "redux";
-import AbmEmpresasContainer from '../abmEmpresas/AbmEmpresasContainer'
-
+import comisionTable from "../comisiones/comisionTable";
+import ListaEmpresasContainer from "../abmEmpresas/Containers/ListaEmpresasContainer";
+import ShowThem from "../AdminEmpresa/Salespeople/ShowThem";
+import ShowInactive from "../AdminEmpresa/Salespeople/ShowInactive";
+import EditSalesperson from "../AdminEmpresa/Salespeople/EditSalesperson";
+import CreateSalesperson from "../AdminEmpresa/Salespeople/CreateSalesperson";
+import Admins from "../AdminEmpresa/Salespeople/Admins";
+import EditAdmin from "../AdminEmpresa/Salespeople/EditAdmin";
+import EditarEmpresas from "../abmEmpresas/editarEmpresas/EditarEmpresas";
+import RentalFormContainer from "../RentalForm/RentalFormContainer";
+import AbmEmpresasContainer from "../abmEmpresas/AbmEmpresasContainer";
+import RentalTableContainer from "../RentalForm/RentalTableContainer";
+import addComissionsContainer from "../adminEmpresas/Container/addComissionsContainer";
+import editComissionContainer from "../adminEmpresas/Container/editComissionContainer";
+import Reservation from "../reservationForm/reservationFormContainer";
+import Card from "@material-ui/core/Card"
+import { Switch, Route } from "react-router-dom";
 const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
@@ -205,22 +220,59 @@ function Dashboard(props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <AbmEmpresasContainer/>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}></Paper>
-            </Grid>
-            {/*  */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}></Paper>
-            </Grid>
-            {/*  */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}></Paper>
-            </Grid>
-          </Grid>
-        </Container>
+        <Card style={{margin: "1%", padding: "2%"}}>
+        <Switch>
+          
+
+          <Route exact path="/rentalTable" component={RentalTableContainer} />
+
+          <Route exact path="/companylist" component={ListaEmpresasContainer} />
+
+          <Route exact path="/reservation" component={Reservation} />
+
+          <Route exact path="/comisiones" component={comisionTable} />
+
+          <Route exact path="/AdminEmpresa/vendedores" component={ShowThem} />
+          <Route
+            exact
+            path="/AdminEmpresa/vendedores/inactivos"
+            component={ShowInactive}
+          />
+          <Route
+            exact
+            path="/AdminEmpresa/crear/vendedor"
+            component={CreateSalesperson}
+          />
+          <Route
+            exact
+            path="/AdminEmpresa/editar/vendedor/:id"
+            component={EditSalesperson}
+          />
+          <Route exact path="/AdminEmpresa/admins" component={Admins} />
+          <Route exact path="/AdminEmpresa/editar/:id" component={EditAdmin} />
+          <Route exact path="/registerRental" component={RentalFormContainer} />
+
+          <Route
+            exact
+            path="/adminEmpresas/comissions/add"
+            component={addComissionsContainer}
+          />
+
+          <Route
+            exact
+            path="/adminEmpresas/comissions/edit/:id"
+            component={editComissionContainer}
+          />
+
+          <Route exact path="/registerRental" component={RentalFormContainer} />
+
+          <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
+
+          <Route exact path="/abmempresas/edit" component={Reservation} />
+          
+
+        </Switch>
+        </Card>
       </main>
     </div>
   );

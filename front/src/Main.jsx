@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 //Imports de Containers
 import "bootstrap/dist/css/bootstrap.min.css";
 // Imports de Containers
-import Reservation from "./reservationForm/reservationForm";
+import Reservation from "./reservationForm/reservationFormContainer";
 import Login from "./login/Login";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
 import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
@@ -47,6 +47,7 @@ const Main = props => {
             <Route exact path="/" component={Dashboard} />
 
             <Route exact path="/rentalTable" component={RentalTableContainer} />
+
             <Route
               exact
               path="/companylist"
@@ -84,20 +85,28 @@ const Main = props => {
               path="/registerRental"
               component={RentalFormContainer}
             />
+
             <Route
               exact
-              path="/adminEmpresa/comisiones/agregar"
+              path="/adminEmpresas/comisiones/agregar"
               component={addComissionsContainer}
             />
+
             <Route
               exact
               path="/adminEmpresa/comisiones/editar/:id"
               component={editComissionContainer}
             />
+
             <Route
-              path="/abmempresas/editar"
-              render={() => <EditarEmpresas props={props} />}
+              exact
+              path="/registerRental"
+              component={RentalFormContainer}
             />
+
+            <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
+
+            <Route exact path="/abmempresas/edit" component={Reservation} />
           </Switch>
         </div>
       )}

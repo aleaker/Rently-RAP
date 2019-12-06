@@ -40,7 +40,7 @@ export default class ShowThem extends Component {
                     className="btn waves-effect waves-light"
                     to={"/AdminEmpresa/editar/vendedor/" + salesperson._id}
                   >
-                    Editar
+                    EDITAR
                   </Link>
                 </div>
                 <div className="card-body">

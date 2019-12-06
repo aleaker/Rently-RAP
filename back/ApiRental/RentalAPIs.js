@@ -6,7 +6,7 @@ var rentalToken = []
 var probando = 0;
 
 
-const rentalTokenfunction = () => {
+const rentalTokenfunction = () => {console.log("ENTRE PAPI")
   CarRental.find({ Active: true }, "Name Url User Password")
     .lean()
     .exec()
@@ -14,7 +14,7 @@ const rentalTokenfunction = () => {
       rentals.map(rental => (rental.Token = `Bearer `));
       return rentals;
     })
-    .then(async rentals => {
+    .then(async rentals => {console.log("soy rentals papi",rentals)
       await Promise.all(
         rentals.map(rental => {
           return request
@@ -43,7 +43,7 @@ const rentalTokenfunction = () => {
     })
     .then(rentalsToken2 => {
       rentalToken = rentalsToken2;
-      console.log(rentalToken);
+      console.log("AAAAAAAAAAAAAAAAAAAAA",rentalToken);
       return setTimeout(() => rentalTokenfunction(), 3300000);
     })
     .catch(err => console.log);

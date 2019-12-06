@@ -1,5 +1,6 @@
 const request = require("request");
 const {  fetchToken } = require("./ApiRental/RentalAPIs");
+var rentalCities = {};
 
 const fetchCities = async () => {
   const rentalToken =  fetchToken()
@@ -37,8 +38,14 @@ const fetchCities = async () => {
         });
     })
   ).then(() => {
+    
     console.log("ESTASSONLASCITIEEES", Cities);
+    rentalCities = Cities;
   });
 };
 
-module.exports = fetchCities;
+function getCity(){
+  return rentalCities
+}
+
+module.exports = {fetchCities,getCity}

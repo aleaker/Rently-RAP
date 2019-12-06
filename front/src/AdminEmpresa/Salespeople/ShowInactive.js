@@ -37,7 +37,7 @@ export default class ShowThem extends Component {
                 <div className="card-header d-flex justify-content-between">
                   <h5>{salesperson.FirstName + " " + salesperson.LastName}</h5>
                   <Link
-                    className="btn btn-secondary"
+                    className="btn waves-effect waves-light"
                     to={"/AdminEmpresa/editar/vendedor/" + salesperson._id}
                   >
                     Editar

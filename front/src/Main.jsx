@@ -49,7 +49,7 @@ const Main = props => {
 
           <Route exact path="/rentalTable" component={RentalTableContainer} />
 
-          <Route exact path="/companylist" component={ListaEmpresasContainer} />
+          <Route exact path="/companylist" component={ListaEmpresasContainer} /> 
 
           <Route exact path="/reservation" component={Reservation} />
 

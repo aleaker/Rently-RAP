@@ -1,48 +1,69 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
-export default function({ carRentals, handleEdit, handleDelete,showEditRentalForm }) {
+export default function({
+  carRentals,
+  handleEdit,
+  handleDelete,
+  showEditRentalForm
+}) {
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Car Rental Name</th>
-            <th>Main Contact Name</th>
-            <th>Main Contact Email</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {carRentals.map((carRental, index) => (
-            <tr key={index}>
-              <td>{carRental.Name}</td>
-              <td>
-                {carRental.MainContact.FirstName}{" "}
-                {carRental.MainContact.LastName}
-              </td>
-              <td>{carRental.MainContact.Email}</td>
-              <td>
-                <button onClick={() => showEditRentalForm(carRental)}>
-                  <i className="small material-icons">create</i>
-                </button>
-              </td>
-              <td>
-                <button onClick={() => handleDelete(carRental)}>
-                  <i className="small material-icons">delete</i>
-                </button>
-              </td>
+    <div className="container">
+      <div className="card card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <h3>Car Rental Name</h3>
+              </th>
+              <th>
+                <h3>Main Contact Name</h3>
+              </th>
+              <th>
+                <h3>Main Contact Email</h3>
+              </th>
+              <th></th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {carRentals.map((carRental, index) => (
+              <tr key={index}>
+                <td>
+                  <h5>{carRental.Name}</h5>
+                </td>
+                <td>
+                  <h5>
+                    {carRental.MainContact.FirstName}{" "}
+                    {carRental.MainContact.LastName}
+                  </h5>
+                </td>
+                <td>
+                  <h5>{carRental.MainContact.Email}</h5>
+                </td>
+                <td>
+                  <button
+                    className="btn waves-effect waves-light"
+                    onClick={() => showEditRentalForm(carRental)}
+                  >
+                    <i className="small material-icons">create</i>
+                  </button>
+                </td>
+                <td>
+                  <button
+                    className="btn waves-effect waves-light"
+                    onClick={() => handleDelete(carRental)}
+                  >
+                    <i className="small material-icons">delete</i>
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-
-
-
-
   );
 }
 

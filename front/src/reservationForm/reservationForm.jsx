@@ -10,19 +10,14 @@ class Reservation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rentadorasConId: "",
-      startDate: "",
-      startHour: "",
-      endDate: "",
-      endHour: "",
-      location: 1,
       age: true,
+      endDate: "04/02/2020",
+      endHour: "14:01",
+      location: "Buenos Aires",
+      startDate: "03/01/2020",
+      startHour: "13:00",
       unlimitedKm: true,
       cars: [],
-      cities: {
-        "Buenos Aires": { Alamo: [2], Hertz: [1] },
-        Rosario: { Alamo: [1], Hertz: [2] }
-      }
     };
     this.getCars = this.getCars.bind(this);
   }
@@ -80,26 +75,14 @@ class Reservation extends React.Component {
 
   handleLocation(location) {
     //Object.keys(this.state.cities[location])
-    let rentadorasConId = this.state.cities[location];
-    this.setState({ rentadorasConId: rentadorasConId });
+    this.setState({ location: location });
     //console.log("RENTADORA?",Object.keys(this.state.rentadorasConId))
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    var arr = Object.keys(this.state.rentadorasConId)
-    .map(rentadora => ({
-    [rentadora]: this.state.rentadorasConId[rentadora]}))
-    this.setState({rentadorasConId: arr },()=>{axios.post('/api/rentalRouter/getRentalsByName', this.state)
-  })
-    
-          //   From: `${this.state.startDate} ${this.state.startHour}`,
-          //   To: `${this.state.endDate} ${this.state.endHour}`,
-          //   FromPlace: this.state.location,
-          //   ToPlace: this.state.location,
-          //   IllimitedKm: this.state.unlimitedKm,
-          //   Age: this.state.age,
-          //   OnlyFullAvailability: true
+    axios.post('/api/rentalRouter/getRentalsByName', this.state)
+    .then(e=>console.log(e.data))
   }
 
   render() {

@@ -9,7 +9,8 @@ const Commission = new Schema({
   CommissionPercentage: { type: Number },
   FromDate: { type: Date },
   ToDate: { type: Date },
-  Type: { type: String }
+  Type: { type: String },
+  CompanyId: { type: String}
 });
 
 module.exports = mongoose.model("Commission", Commission);

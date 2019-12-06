@@ -27,7 +27,6 @@ export default function({
         <h4>Registrar rentadora</h4>
         <div className="form-group">
           <form onSubmit={event => handleSubmit(event)}>
-            <label>Company name: </label>
             <input
               className="form-control"
               required
@@ -36,7 +35,7 @@ export default function({
               placeholder="Nombre de la rentadora"
               onChange={event => handleChange({ Name: event.target.value })}
             />
-            <label>Logo: </label>
+            <label>Company name: </label>
             <input
               className="form-control"
               required
@@ -45,7 +44,7 @@ export default function({
               placeholder="Logo de la empresa"
               onChange={event => handleChange({ Logo: event.target.value })}
             />
-            <label>API: </label>
+            <label>Logo: </label>
             <input
               className="form-control"
               required
@@ -54,7 +53,7 @@ export default function({
               placeholder="URL de la API"
               onChange={event => handleChange({ Url: event.target.value })}
             />
-            <label>Username: </label>
+            <label>API: </label>
             <input
               className="form-control"
               required
@@ -63,7 +62,7 @@ export default function({
               placeholder="Nombre de usuario"
               onChange={event => handleChange({ User: event.target.value })}
             />
-            <label>Password: </label>
+            <label>Username: </label>
             <input
               className="form-control"
               required
@@ -72,8 +71,8 @@ export default function({
               placeholder="Contraseña"
               onChange={event => handleChange({ Password: event.target.value })}
             />
+            <label>Password: </label>
             <h4>Datos del contacto principal</h4>
-            <label>First name</label>
             <input
               className="form-control"
               required
@@ -84,7 +83,7 @@ export default function({
                 handleMainContact({ FirstName: event.target.value })
               }
             />
-            <label>Last name</label>
+            <label>First name</label>
             <input
               className="form-control"
               required
@@ -95,7 +94,7 @@ export default function({
                 handleMainContact({ LastName: event.target.value })
               }
             />
-            <label>Email</label>
+            <label>Last name</label>
             <input
               className="form-control"
               required
@@ -106,6 +105,7 @@ export default function({
                 handleMainContact({ Email: event.target.value })
               }
             />
+            <label>Email</label>
             {hideCommissionSchema ? (
               ""
             ) : (
@@ -123,7 +123,11 @@ export default function({
               />
             )}
           </form>
-          <Button type="submit" onClick={e => handleSubmit(e)}>
+          <Button
+            className="btn waves-effect waves-light"
+            type="submit"
+            onClick={e => handleSubmit(e)}
+          >
             AGREGAR RENTADORA
           </Button>
         </div>

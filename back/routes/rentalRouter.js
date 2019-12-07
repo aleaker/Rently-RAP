@@ -27,6 +27,7 @@ router.post("/getRentalsByName", (req, resp) => {
   let s = req.body;
   const cities = getCity()[req.body.location];
   const token = fetchToken()[0];
+  console.log(cities)
   const rentals = Object.keys(cities);
   rentals.map(rental => token.rental);
   console.log("soy el token", token);

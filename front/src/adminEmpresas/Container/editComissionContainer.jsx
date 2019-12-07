@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import editComission from "../Components/editComission";
-import { fetchComission } from "../../store/actions/AdminCompany/comissions";
+import { fetchCommission } from "../../store/actions/AdminCompany/comissions";
 
-/* const mapStateToProps = ({ user }) => ({
-  user: user
-}); */
+const mapStateToProps = ({ commission }) => ({
+  commission: commission.commissionEdit
+});
 
-/* const mapDispatchToProps = dispatch => ({
-  fetchComission: id => dispatch(fetchComission(id))
-}); */
+const mapDispatchToProps = dispatch => ({
+  fetchCommission: id => dispatch(fetchCommission(id))
+});
 
 export default connect(
-  null,
-  null
+  mapStateToProps,
+  mapDispatchToProps
 )(editComission);

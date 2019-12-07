@@ -40,8 +40,11 @@ import RentalTableContainer from "../RentalForm/RentalTableContainer";
 import addComissionsContainer from "../adminEmpresas/Container/addComissionsContainer";
 import editComissionContainer from "../adminEmpresas/Container/editComissionContainer";
 import Reservation from "../reservationForm/reservationFormContainer";
+import CompaniesMenu from './menu/CompaniesMenu'
+import RentadorasMenu from './menu/RentadorasMenu'
+
 import Card from "@material-ui/core/Card"
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link, withRouter, BrowserRouter } from "react-router-dom";
 const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
@@ -124,6 +127,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Dashboard(props) {
+  const [loc, setLoc] = React.useState('/')
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleLogout = () => {
@@ -139,6 +143,7 @@ function Dashboard(props) {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
+    <BrowserRouter>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
@@ -186,49 +191,53 @@ function Dashboard(props) {
         </div>
         <Divider />
         <List>
+        <Link to={'/'}>
           <ListItem>
-            <ListItemIcon>
-              {/* <Avatar src={props.user.Photo} className={classes.avatar} /> */}
-            </ListItemIcon>
-            <ListItemText primary={props.user.FirstName} />
-          </ListItem>
-          <Divider />
-        </List>
-        <Divider />
-        <List>
+            
           <ListItem button>
             <ListItemIcon>
               <BusinessIcon />
             </ListItemIcon>
-            <ListItemText primary={"Companies"} />
+            <ListItemText primary={"Rently"} />
           </ListItem>
+            
+          </ListItem>
+          </Link>
+          <Divider />
+        </List>
+        <Divider />
+        <List>
+       <CompaniesMenu/>
+       <RentadorasMenu/>
+       </List>
+        {/* <List>
+          <Link to={'/'}>
+          <ListItem button>
+            <ListItemIcon>
+              <BusinessIcon />
+            </ListItemIcon>
+            <ListItemText primary={"Reservation"} />
+          </ListItem>
+          </Link>
+          <Link to={'/rentalTable'}>
           <ListItem button>
             <ListItemIcon>
               <EmojiTransportationIcon />
             </ListItemIcon>
             <ListItemText primary={"Car Rentals"} />
           </ListItem>
-          {/* {["Profile", "ABM", "Commisions"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))} */}
-        </List>
+          </Link>
+        </List> */}
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Card style={{margin: "1%", padding: "2%"}}>
         <Switch>
-          
-
           <Route exact path="/rentalTable" component={RentalTableContainer} />
 
           <Route exact path="/companylist" component={ListaEmpresasContainer} />
 
-          <Route exact path="/reservation" component={Reservation} />
+          <Route exact path="/" component={Reservation} />
 
           <Route exact path="/comisiones" component={comisionTable} />
 
@@ -264,17 +273,17 @@ function Dashboard(props) {
             component={editComissionContainer}
           />
 
-          <Route exact path="/registerRental" component={RentalFormContainer} />
 
           <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
 
-          <Route exact path="/abmempresas/edit" component={Reservation} />
+          <Route path="/abmempresas/edit" component={EditarEmpresas}/>
           
 
         </Switch>
         </Card>
       </main>
     </div>
+    </BrowserRouter>  
   );
 }
 

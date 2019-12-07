@@ -68,7 +68,8 @@ class EditarEmpresas extends React.Component {
   }
   componentDidMount() {
     let company;
-    let array = this.props.props.location.pathname.split("/");
+
+    let array = this.props.location.pathname.split("/");
     let enterprise = array[array.length - 1];
     axios
       .post("/api/createCompany/get/", { id: enterprise })

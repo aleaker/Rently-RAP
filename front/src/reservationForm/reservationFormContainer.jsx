@@ -97,6 +97,7 @@ class Reservation extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state)
     axios
       .post("/api/rentalRouter/getRentalsByName", this.state)
       .then(e => this.setState({ cars: e.data }));

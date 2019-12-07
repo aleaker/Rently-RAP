@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export const comissionsEdit = function(commission) {
+  return {
+    type: "COMMISSION_EDIT",
+    commission
+  };
+};
+
 export const addComission = state => {
   return axios
     .post(`/api/adminEmpresas/add/comissions`, state)
@@ -12,8 +19,8 @@ export const editComission = (id, state) => {
     .then(data => data);
 };
 
-export const fetchComission = id => {
+export const fetchCommission = id => dispatch => {
   return axios
     .get(`/api/adminEmpresas/comissions/edit/${id}`)
-    .then(data => console.log(data));
+    .then(commission => dispatch(comissionsEdit(commission.data[0])));
 };

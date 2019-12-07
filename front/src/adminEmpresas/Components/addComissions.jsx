@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -28,6 +28,10 @@ export default function({ user, addComission }) {
     ToDate: ""
     // Company: user._id
   });
+
+  useEffect(() => {
+    console.log(state);
+  }, []);
   const handleChange = e => {
     e.persist();
     if (e.target.value) {
@@ -47,16 +51,17 @@ export default function({ user, addComission }) {
     }
   };
   const handleDateChangeFrom = date => {
+    console.log(date);
     setSelectedDateFrom(date);
-    const dateFromString = selectedDateFrom.toISOString().slice(0, 10);
+    let dateFromString = date.toISOString().slice(0, 10);
     setState(state => ({
       ...state,
       FromDate: dateFromString
     }));
   };
-  const handleDateChangeTo = (date, event) => {
+  const handleDateChangeTo = date => {
     setSelectedDateTo(date);
-    const dateToString = selectedDateTo.toISOString().slice(0, 10);
+    let dateToString = date.toISOString().slice(0, 10);
     setState(state => ({
       ...state,
       ToDate: dateToString
@@ -65,13 +70,12 @@ export default function({ user, addComission }) {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    console.log(state);
+
     return axios
       .post(`/api/adminEmpresas/add/comissions`, state)
       .then(() => alert("Se ha creado tu esquema de comisiones"));
-
-    /* console.log(addComission);
-    addComission(state).then(data => console.log(data)); */
-    console.log(state);
   };
 
   return (

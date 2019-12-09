@@ -7,7 +7,9 @@ import EsquemaComision from '../comisiones/EsquemaComision'
 import ContactosPrincipales from './ContactosPrincipales'
 import FormEsquema from '../comisiones/FormEsquema'
 import GeneralForm from './GeneralForm'
-
+import Error from '../messages/error'
+import Success from '../messages/success'
+import Loading from '../messages/loading'
 class Empresas extends React.Component {
     constructor(props){
         super(props)
@@ -57,6 +59,8 @@ class Empresas extends React.Component {
             clicked: false,
             disable: false,
             enteredCom: false,
+            result: [],
+            loading: false
         }
     //Abajo bindeo las propiedades
     this.handleSchema=this.handleSchema.bind(this)
@@ -67,8 +71,11 @@ class Empresas extends React.Component {
     this.handleSchemaData=this.handleSchemaData.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleBankDetails = this.handleBankDetails.bind(this)
+    this.handleResult = this.handleResult.bind(this)
     }
-
+    handleResult(){
+        this.setState({result: []})
+    }
    
     addNewForm(){
         let datosEsquema={
@@ -92,6 +99,8 @@ class Empresas extends React.Component {
     }
 
     createBusiness(){
+        let data = 'waiting'
+        this.setState({loading: true}) 
         const UsersSchema = this.state.UsersSchema
         const notAllowed = ['disableUsuarioPrincipal','disableDatosBancarios','disableContacto','disableUbicacion',
             'disableEmpresa','enteredCom','number','street','state','city','schemaTo','schemaFrom','schemaName',
@@ -104,6 +113,11 @@ class Empresas extends React.Component {
         .forEach(key => delete Company[key]);
         console.log('', {users: UsersSchema, Company})
         axios.post('/api/createCompany/', {users: UsersSchema, Company, Commission: CommissionSchema})
+        .then(msg=>{
+            this.setState({loading: false})
+            data = 'done'
+            return msg.data})
+        .then(data => (data.errmsg || data.errors)? this.setState({result: [<Error error={data.errmsg} error2={data.errors} handleResult={this.handleResult}/>]}): this.setState({result: [<Success/>]}))
     }
 
     handleSchema(obj){
@@ -161,6 +175,7 @@ class Empresas extends React.Component {
         return(
             <div>
                <Col xs={12}>
+        {this.state.loading? <div style={{display: 'flex', justifyContent: 'center'}}><Loading/></div>:(
         <form>
             <GeneralForm handleChange={this.handleChange} values={this.state} handleBankDetails={this.handleBankDetails}/>
            <div>
@@ -200,7 +215,9 @@ class Empresas extends React.Component {
                this.createBusiness()}}>
                    Agregar Empresa</Button>
         </form>
+        )}
         </Col>
+        {this.state.result.map(e=> e)}
             </div>
         )
     }

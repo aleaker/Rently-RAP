@@ -9,7 +9,7 @@ export default function GeneralForm({
 }) {
   return (
     <div>
-      <Col xs={12} md={4}>
+      <Col xs={6} md={4}>
         <label>Datos Empresa</label>
         <input
           type="text"
@@ -28,7 +28,7 @@ export default function GeneralForm({
           value={values.Description}
         />
       </Col>
-      <Col xs={12} md={4}>
+      <Col xs={6} md={4}>
         <label>Direccion</label>
         <Row>
           <Col xs={6} md={4}>
@@ -189,10 +189,10 @@ export default function GeneralForm({
               placeholder="Codigo Swift"
               id="business_Description"
               onChange={evt =>
-                handleBankDetails({ SwiffCode: evt.target.value })
+                handleBankDetails({ SwiftCode: evt.target.value })
               }
               disabled={values.disable}
-              value={values.BankAccountInfo.SwiffCode}
+              value={values.BankAccountInfo.SwiftCode}
             />
           </Col>
         </Row>

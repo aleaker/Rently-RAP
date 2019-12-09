@@ -1,7 +1,7 @@
 import React from "react";
 import RentalForm from "./RentalFormComponent";
 import { connect } from "react-redux";
-import { registerRental } from "../store/actions/addRental";
+import { registerRental } from "../store/actions/rentalActions";
 import FormEsquema from "../comisiones/FormEsquema";
 import EsquemaComisiones from "../comisiones/EsquemaComision";
 

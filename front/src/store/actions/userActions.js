@@ -37,8 +37,9 @@ export const logout = function(user) {
 export const fetchUser = function() {
   return function(dispatch) {
     return axios
-      .get("api/user")
+      .get("http://localhost:3000/api/user")
       .then(user => {
+        console.log("AQUIII USER", user);
         if (user.data.UserType) {
           dispatch(logUser(user.data));
         }

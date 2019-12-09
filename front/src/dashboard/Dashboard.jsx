@@ -174,7 +174,7 @@ function Dashboard(props) {
             <ListItemIcon>
               {/* <Avatar src={props.user.Photo} className={classes.avatar} /> */}
             </ListItemIcon>
-            <ListItemText primary={props.user.FirstName} />
+            <ListItemText /* primary={props.user.FirstName} */ />
           </ListItem>
           <Divider />
         </List>

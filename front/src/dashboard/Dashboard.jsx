@@ -25,7 +25,32 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import * as actions from "../store/actions/userActions";
 import { bindActionCreators } from "redux";
+import comisionTable from "../comisiones/comisionTable";
+import ListaEmpresasContainer from "../abmEmpresas/Containers/ListaEmpresasContainer";
+import ShowThem from "../AdminEmpresa/Salespeople/ShowThem";
+import ShowInactive from "../AdminEmpresa/Salespeople/ShowInactive";
+import EditSalesperson from "../AdminEmpresa/Salespeople/EditSalesperson";
+import CreateSalesperson from "../AdminEmpresa/Salespeople/CreateSalesperson";
+import Admins from "../AdminEmpresa/Salespeople/Admins";
+import EditAdmin from "../AdminEmpresa/Salespeople/EditAdmin";
+import EditarEmpresas from "../abmEmpresas/editarEmpresas/EditarEmpresas";
+import RentalFormContainer from "../RentalForm/RentalFormContainer";
+import AbmEmpresasContainer from "../abmEmpresas/AbmEmpresasContainer";
+import RentalTableContainer from "../RentalForm/RentalTableContainer";
+import addComissionsContainer from "../adminEmpresas/Container/addComissionsContainer";
+import editComissionContainer from "../adminEmpresas/Container/editComissionContainer";
+import Reservation from "../reservationForm/reservationFormContainer";
+import CompaniesMenu from "./menu/CompaniesMenu";
+import RentadorasMenu from "./menu/RentadorasMenu";
 
+import Card from "@material-ui/core/Card";
+import {
+  Switch,
+  Route,
+  Link,
+  withRouter,
+  BrowserRouter
+} from "react-router-dom";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -108,6 +133,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Dashboard(props) {
+  const [loc, setLoc] = React.useState("/");
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleLogout = () => {
@@ -123,105 +149,170 @@ function Dashboard(props) {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        className={clsx(classes.appBar, open && classes.appBarShift)}
-      >
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(
-              classes.menuButton,
-              open && classes.menuButtonHidden
-            )}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            Affiliate Portal
-          </Typography>
-          <Button variant="contained" color="secondary" onClick={handleLogout}>
-            Log out
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <ListItem>
-            <ListItemIcon>
-              {/* <Avatar src={props.user.Photo} className={classes.avatar} /> */}
-            </ListItemIcon>
-            <ListItemText /* primary={props.user.FirstName} */ />
-          </ListItem>
+    <BrowserRouter>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position="absolute"
+          className={clsx(classes.appBar, open && classes.appBarShift)}
+        >
+          <Toolbar className={classes.toolbar}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              className={clsx(
+                classes.menuButton,
+                open && classes.menuButtonHidden
+              )}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.title}
+            >
+              Affiliate Portal
+            </Typography>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleLogout}
+            >
+              Log out
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
           <Divider />
-        </List>
-        <Divider />
-        <List>
+          <List>
+            <Link to={"/"}>
+              <ListItem>
+                <ListItem button>
+                  <ListItemIcon>
+                    <BusinessIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Rently"} />
+                </ListItem>
+              </ListItem>
+            </Link>
+            <Divider />
+          </List>
+          <Divider />
+          <List>
+            <CompaniesMenu />
+            <RentadorasMenu />
+          </List>
+          {/* <List>
+          <Link to={'/'}>
           <ListItem button>
             <ListItemIcon>
               <BusinessIcon />
             </ListItemIcon>
-            <ListItemText primary={"Companies"} />
+            <ListItemText primary={"Reservation"} />
           </ListItem>
+          </Link>
+          <Link to={'/rentalTable'}>
           <ListItem button>
             <ListItemIcon>
               <EmojiTransportationIcon />
             </ListItemIcon>
             <ListItemText primary={"Car Rentals"} />
           </ListItem>
-          {/* {["Profile", "ABM", "Commisions"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))} */}
-        </List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/*  */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}></Paper>
-            </Grid>
-            {/*  */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}></Paper>
-            </Grid>
-            {/*  */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}></Paper>
-            </Grid>
-          </Grid>
-        </Container>
-      </main>
-    </div>
+          </Link>
+        </List> */}
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Card style={{ margin: "1%", padding: "2%" }}>
+            <Switch>
+              <Route
+                exact
+                path="/rentalTable"
+                component={RentalTableContainer}
+              />
+
+              <Route
+                exact
+                path="/companylist"
+                component={ListaEmpresasContainer}
+              />
+
+              <Route exact path="/" component={Reservation} />
+
+              <Route exact path="/comisiones" component={comisionTable} />
+
+              <Route
+                exact
+                path="/AdminEmpresa/vendedores"
+                component={ShowThem}
+              />
+              <Route
+                exact
+                path="/AdminEmpresa/vendedores/inactivos"
+                component={ShowInactive}
+              />
+              <Route
+                exact
+                path="/AdminEmpresa/crear/vendedor"
+                component={CreateSalesperson}
+              />
+              <Route
+                exact
+                path="/AdminEmpresa/editar/vendedor/:id"
+                component={EditSalesperson}
+              />
+              <Route exact path="/AdminEmpresa/admins" component={Admins} />
+              <Route
+                exact
+                path="/AdminEmpresa/editar/:id"
+                component={EditAdmin}
+              />
+              <Route
+                exact
+                path="/registerRental"
+                component={RentalFormContainer}
+              />
+
+              <Route
+                exact
+                path="/adminEmpresas/comissions/add"
+                component={addComissionsContainer}
+              />
+
+              <Route
+                exact
+                path="/adminEmpresas/comissions/edit/:id"
+                component={editComissionContainer}
+              />
+
+              <Route
+                exact
+                path="/abmempresas"
+                component={AbmEmpresasContainer}
+              />
+
+              <Route path="/abmempresas/edit" component={EditarEmpresas} />
+            </Switch>
+          </Card>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 

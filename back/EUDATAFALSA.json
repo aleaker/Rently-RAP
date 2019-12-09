@@ -1,11 +1,29 @@
 {
+  "Active": true,
+  "Photo": "",
+  "CommissionScheme": [
+  "5ddd47172edd344b3422cbf1"
+  ],
+  "_id": "5de556a7ad56a635b60c4ae5",
+  "UserType": "companyAdmin",
+  "Email": "administro@unacompania.com",
+  "Password": "defaultpassword",
+  "FirstName": "Lulu",
+  "LastName": "Perez",
+  "Company": "5ddd47172edd344b3422cbe8",
+  "Telephone": "61059032",
+  "Notes": "Este usuario es un... ",
+  "__v": 0
+  }
+
+{
    "Active": "true",
-   "UserType":"AdminRently",
-   "Email":"eladminderently@rently.com",
+   "UserType":"Vendedor",
+   "Email":"soyun@vendedor.com",
    "Password":"defaultpassword",
    "FirstName":"Lulu",
    "LastName":"Perez",
-   "Company":"5ddd47172edd344b3422cbe8",
+   "Company":"5de573a6679ead454cdb1b1e",
    "Telephone":"61059032",
    "Photo":"",
    "Notes":"Este usuario es un... ",

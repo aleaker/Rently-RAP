@@ -9,7 +9,8 @@ export default function GeneralForm({
 }) {
   return (
     <div>
-      <Col xs={6} md={4}>
+ 
+      <Col xs={6} md={6}>
         <label>Datos Empresa</label>
         <input
           type="text"
@@ -28,6 +29,7 @@ export default function GeneralForm({
           value={values.Description}
         />
       </Col>
+ 
       <Col xs={6} md={4}>
         <label>Direccion</label>
         <Row>

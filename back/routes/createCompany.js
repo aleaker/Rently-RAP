@@ -65,8 +65,11 @@ router.post("/", (req, res) => {
       Company.findByIdAndUpdate(CompanyID, { CommisionScheme: CompanyID });
     })
     .then(()=> Company.findById(CompanyID))
-    .then((e)=> console.log(e))
-    .catch(err => console.log(err));
+    .then((e)=> {console.log(e)
+                  res.send('Ok').status(200)})
+    .catch(err => {console.log(err)
+                  res.send(err).status(500)
+    });
 });
 
 router.post('/get', (req, res)=>{

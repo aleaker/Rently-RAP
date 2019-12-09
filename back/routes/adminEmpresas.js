@@ -11,8 +11,13 @@ router.put("/comissions/edit/:id", (req, res) => {
   );
 });
 
-router.get("/comissions/edit/:id", (req, res) => {
-  Comission.find({ _id: req.params.id }).then(comission => res.send(comission));
+router.get("/comissions/edit/:id", async (req, res) => {
+  try {
+    commisions = await Comission.find({ _id: req.params.id });
+    res.json(commisions);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 module.exports = router;

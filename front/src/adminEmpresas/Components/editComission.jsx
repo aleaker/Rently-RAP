@@ -11,8 +11,8 @@ import {
 } from "@material-ui/pickers";
 
 export default function(props) {
-  const [selectedDateFrom, setSelectedDateFrom] = React.useState(new Date());
-  const [selectedDateTo, setSelectedDateTo] = React.useState(new Date());
+  const [selectedDateFrom, setSelectedDateFrom] = React.useState("");
+  const [selectedDateTo, setSelectedDateTo] = React.useState("");
   const [error, setError] = React.useState({
     Name: false,
     From: false,
@@ -20,12 +20,20 @@ export default function(props) {
     CommissionPercentage: false
   });
   const [state, setState] = React.useState("");
+  const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
-    axios
-      .get(`/api/adminEmpresas/comissions/edit/${props.match.params.id}`)
-      .then(comission => setState(comission.data[0]))
-      .then(() => console.log(state));
+    props
+      .fetchCommission(props.match.params.id)
+      .then(
+        com => (
+          setLoading(false),
+          setState(com.commission),
+          setSelectedDateTo(new Date(com.commission.ToDate)),
+          setSelectedDateFrom(new Date(com.commission.FromDate))
+        )
+      )
+      .then(() => console.log(selectedDateTo));
   }, []);
 
   const handleChange = e => {
@@ -49,15 +57,15 @@ export default function(props) {
   };
   const handleDateChangeFrom = date => {
     setSelectedDateFrom(date);
-    const dateFromString = selectedDateFrom.toISOString().slice(0, 10);
+    let dateFromString = date.toISOString().slice(0, 10);
     setState(state => ({
       ...state,
       FromDate: dateFromString
     }));
   };
-  const handleDateChangeTo = (date, event) => {
+  const handleDateChangeTo = date => {
     setSelectedDateTo(date);
-    const dateToString = selectedDateTo.toISOString().slice(0, 10);
+    let dateToString = date.toISOString().slice(0, 10);
     setState(state => ({
       ...state,
       ToDate: dateToString
@@ -66,6 +74,7 @@ export default function(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log;
     return axios
       .put(`/api/adminEmpresas/comissions/edit/${state._id}`, state)
       .then(data => data)
@@ -73,101 +82,105 @@ export default function(props) {
   };
 
   return (
-    <div className="card card-body">
-      <form onSubmit={handleSubmit}>
-        <React.Fragment>
-          <Typography variant="h6" gutterBottom>
-            Agregar Comision
-          </Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                id="Name"
-                name="Nombre Esquema"
-                label="Nombre Esquema"
-                fullWidth
-                type="text"
-                onChange={handleChange}
-                value={state.Name ? state.Name : ""}
-                required
-                error={error.Name}
-              />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <TextField
-                required
-                id="From"
-                name="Desde"
-                label="Desde"
-                placeholder="$"
-                onChange={handleChange}
-                value={state.From || ""}
-                fullWidth
-                error={error.From}
-              />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <TextField
-                required
-                id="To"
-                name="Hasta"
-                label="Hasta"
-                placeholder="$"
-                onChange={handleChange}
-                value={state.To || ""}
-                error={error.To}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <TextField
-                id="CommissionPercentage"
-                name="% Comision"
-                label="% Comision"
-                onChange={handleChange}
-                value={state.CommissionPercentage || ""}
-                error={error.CommissionPercentage}
-                fullWidth
-              />
-            </Grid>
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <Grid item xs={12} sm={6}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="dd/MM/yyyy"
-                  margin="normal"
-                  id="FromDate"
-                  label="Fecha validez desde"
-                  value={state.FromDate || ""}
+    <div>
+      {loading ? (
+        ""
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <React.Fragment>
+            <Typography variant="h6" gutterBottom>
+              Agregar Comision
+            </Typography>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <TextField
+                  id="Name"
+                  name="Nombre Esquema"
+                  label="Nombre Esquema"
                   fullWidth
-                  onChange={handleDateChangeFrom}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date"
-                  }}
+                  type="text"
+                  onChange={handleChange}
+                  value={state.Name ? state.Name : ""}
+                  required
+                  error={error.Name}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <KeyboardDatePicker
-                  disableToolbar
-                  variant="inline"
-                  format="dd/MM/yyyy"
-                  margin="normal"
-                  id="ToDate"
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  required
+                  id="From"
+                  name="Desde"
+                  label="Desde"
+                  placeholder="$"
+                  onChange={handleChange}
+                  value={state.From || ""}
                   fullWidth
-                  label="Fecha validez hasta"
-                  value={state.ToDate || ""}
-                  onChange={handleDateChangeTo}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date"
-                  }}
+                  error={error.From}
                 />
               </Grid>
-            </MuiPickersUtilsProvider>
-          </Grid>
-          <Button type="submit">Editar comision</Button>>
-        </React.Fragment>
-      </form>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  required
+                  id="To"
+                  name="Hasta"
+                  label="Hasta"
+                  placeholder="$"
+                  onChange={handleChange}
+                  value={state.To || ""}
+                  error={error.To}
+                  fullWidth
+                />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <TextField
+                  id="CommissionPercentage"
+                  name="% Comision"
+                  label="% Comision"
+                  onChange={handleChange}
+                  value={state.CommissionPercentage || ""}
+                  error={error.CommissionPercentage}
+                  fullWidth
+                />
+              </Grid>
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid item xs={12} sm={6}>
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="dd/MM/yyyy"
+                    margin="normal"
+                    id="FromDate"
+                    label="Fecha validez desde"
+                    value={selectedDateFrom || ""}
+                    fullWidth
+                    onChange={handleDateChangeFrom}
+                    KeyboardButtonProps={{
+                      "aria-label": "change date"
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="dd/MM/yyyy"
+                    margin="normal"
+                    id="ToDate"
+                    fullWidth
+                    label="Fecha validez hasta"
+                    value={selectedDateTo || ""}
+                    onChange={handleDateChangeTo}
+                    KeyboardButtonProps={{
+                      "aria-label": "change date"
+                    }}
+                  />
+                </Grid>
+              </MuiPickersUtilsProvider>
+            </Grid>
+            <Input type="submit" />
+          </React.Fragment>
+        </form>
+      )}
     </div>
   );
 }

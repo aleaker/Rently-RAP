@@ -4,12 +4,14 @@ const path = require("path");
 const db = require("./config/db");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const { rentalTokenfunction, fetchToken } = require("../back/ApiRental/RentalAPIs");
-const multer = require("multer");
-const {fetchCities} = require("./cities");
+const {
+  rentalTokenfunction,
+  fetchToken
+} = require("../back/ApiRental/RentalAPIs");
+const { fetchCities } = require("./cities");
 
-var rentalToken
-exports.default = rentalToken
+var rentalToken;
+exports.default = rentalToken;
 // conf de passport
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
 const cookieParser = require("cookie-parser"); // req.cookies
@@ -17,7 +19,7 @@ const passport = require("passport");
 rentalTokenfunction();
 
 setTimeout(() => {
-  console.log('fetchiando token', fetchToken())
+  console.log("fetchiando token", fetchToken());
   app.use(express.static("public"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

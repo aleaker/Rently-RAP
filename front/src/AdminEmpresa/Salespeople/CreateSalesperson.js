@@ -70,6 +70,7 @@ export default class EditSalesperson extends Component {
   }
 
   render() {
+    console.log('me cargue')
     return (
       <div className="container">
         <AdminEmpresaNav />

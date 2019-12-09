@@ -88,12 +88,6 @@ const Main = props => {
 
             <Route
               exact
-              path="/adminEmpresas/comisiones/agregar"
-              component={addComissionsContainer}
-            />
-
-            <Route
-              exact
               path="/adminEmpresa/comisiones/editar/:id"
               component={editComissionContainer}
             />

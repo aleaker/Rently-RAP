@@ -11,8 +11,9 @@ const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
 const User = require("../models/User");
-const { cosoBooking, getCoso, respuesta } = require("../coso");
+const coso = require("../coso");
 
+router.use("/coso", coso);
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/rentalRouter", rentalRouter);
@@ -23,6 +24,34 @@ router.use("/adminEmpresas", adminEmpresasRouter);
 router.get("/coso", (req, res) => {
   return console.log(coso.cosoBooking());
 });
+
+// //COSO
+// router.post("/", (req, res) => {
+//   var newbooking = {
+//     Status: "Pending",
+//     BookingId: req.body.BookingId,
+//     CarRental: req.body.CarRentalId,
+//     CustomerData: {
+//       FirstName: req.body.Name,
+//       Telephone: req.body.CellPhone,
+//       Email: req.body.EmailAddress,
+//       DocumentId: req.body.DocumentId
+//     },
+//     FromDate: req.body.FromDate,
+//     ToDate: req.body.ToDate,
+//     Pickup: req.body.deliveryPlace,
+//     Salesperson: req.body.User._id,
+//     Company: req.body.Company._id,
+//     Notes: req.body.Extra
+//   };
+//   try {
+//     Booking.create(newbooking);
+//     console.log("Reserva guardada");
+//     res.redirect("/api/booking");
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 //RentlyAdmin
 router.post("/rently", (req, resp) => {

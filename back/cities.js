@@ -5,17 +5,14 @@ var rentalCities = {};
 const fetchCities = async () => {
   const rentalToken = fetchToken();
   const Cities = {};
-  console.log("ESTO ES RENTALTOKEN", rentalToken); //RENTALTOKEN ESTA VACIOOO !!!
   Promise.all(
     rentalToken.map(rental => {
-      // console.log("ENTREALPROMISEALLLLLLL", rental) NO ENTRA !!
       let rentalname = rental.Name;
       const options = {
         uri: `${rental.Url}places`,
         method: "GET",
         headers: { Authorization: `${rental.Token}` }
       };
-      // console.log("SALIIIDELPROMISEALLLLLLLL") NO ENTRA !!
       return new Promise(resolve => {
         request(options, (error, res, body) => {
           if (error) {
@@ -41,7 +38,6 @@ const fetchCities = async () => {
     })
   ).then(() => {
     rentalCities = Cities;
-    console.log("ESTASONLASCITIEEES:", Cities);
   });
 };
 

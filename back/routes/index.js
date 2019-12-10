@@ -11,6 +11,7 @@ const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
 const User = require("../models/User");
+const coso = require("../coso");
 
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
@@ -18,6 +19,10 @@ router.use("/rentalRouter", rentalRouter);
 router.use("/createCompany", createCompanyRouter);
 router.use("/user", userRouter); //rutas del login and logout
 router.use("/adminEmpresas", adminEmpresasRouter);
+
+router.get("/coso", (req, res) => {
+  return console.log(coso.cosoBooking());
+});
 
 //RentlyAdmin
 router.post("/rently", (req, resp) => {

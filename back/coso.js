@@ -1,36 +1,37 @@
 const request = require("request-promise-native");
 const { fetchToken } = require("./ApiRental/RentalAPIs");
 
-// //ESTE ES MI INPUT
-// input = {
-//    FromDate: 02/01/2020 10:00,
-//    ToDate: 02/02/2020 10:00,
-//    deliveryPlace.id: 1,
-//    returnPlace.id: 1,
-//    Car.model.Id: 46,
-//    illimitedKm: true,
-//    Customer:
-//       {
-//       Customer.Name: ‘Pepito Martinez’,
-//       Customer.EmailAdress: ‘hola@ejemplo.com’,
-//       Customer.DocumentId: ‘38267336’,
-//       Customer.CellPhone: ‘1144374925’,
-//    }
-//    Extra: "El cliente llega en el vuelo AA234 a las 23:50"
-//    }
+//al input hay que pasarle la data que llega del formulario de la reserva y eso es lo que va en el form, debajo de headers
 
-//ESTE ES MI OUTPUT ??? kee
+var input = {};
 
-const postBooking = async () => {
-  const bookingToken = fetchToken();
+const cosoBooking = async () => {
+  const bookingToken = await fetchToken();
   Promise.all(
     bookingToken.map(booking => {
       const options = {
         uri: `${booking.Url}booking/book`,
         method: "POST",
-        headers: { Authorization: `${rental.Token}` }
+        headers: {
+          Authorization: `${booking.Token}`
+        },
+        form: {
+          CarRentalId: "5dee8cb2bcf87f18ee12c2bf",
+          FromDate: new Date(2020, 02, 01, 10, 00),
+          ToDate: new Date(2020, 02, 02, 10, 00),
+          deliveryPlace: { id: 1 },
+          returnPlace: { id: 1 },
+          Car: { model: { id: 46 } },
+          illimitedKm: true,
+          Customer: {
+            Name: "Pepito Martinez",
+            EmailAddress: "hola@ejemplo.com",
+            DocumentId: "38267336",
+            CellPhone: "1144374925"
+          },
+          Extra: "El cliente llega en el vuelo AA234 a las 23:50"
+        }
       };
-
       return new Promise(resolve => {
         request(options, (error, res, body) => {
           if (error) {
@@ -40,11 +41,20 @@ const postBooking = async () => {
         });
       });
     })
-  ).then(body => {
-    console.log("ESTOESBOOOODY:", body); //NO ENTRA ACA TAMPOCO !!!
-  });
+  )
+    .then(res => {
+      var respuesta = res;
+      return respuesta;
+    })
+    .catch(err => console.log(err));
 };
 
-postBooking();
+cosoBooking();
 
-module.exports = postBooking;
+function getCoso() {
+  return cosoBooking;
+}
+
+module.exports = { cosoBooking, getCoso, respuesta };
+
+//Un ejemplo de como es la respuesta: [ '{"BookingId":768,"CustomerId":"6461c650-e9c3-4eca-8f6f-3ada1015bdba"}' ]

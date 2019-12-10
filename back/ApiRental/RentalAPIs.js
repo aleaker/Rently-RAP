@@ -1,12 +1,10 @@
 const CarRental = require("../models/CarRental");
 const request = require("request-promise-native");
 
-
-var rentalToken = []
+var rentalToken = [];
 var probando = 0;
 
-
-const rentalTokenfunction = () => {console.log("ENTRE PAPI")
+const rentalTokenfunction = () => {
   CarRental.find({ Active: true }, "Name Url User Password")
     .lean()
     .exec()
@@ -14,7 +12,7 @@ const rentalTokenfunction = () => {console.log("ENTRE PAPI")
       rentals.map(rental => (rental.Token = `Bearer `));
       return rentals;
     })
-    .then(async rentals => {console.log("soy rentals papi",rentals)
+    .then(async rentals => {
       await Promise.all(
         rentals.map(rental => {
           return request
@@ -43,13 +41,12 @@ const rentalTokenfunction = () => {console.log("ENTRE PAPI")
     })
     .then(rentalsToken2 => {
       rentalToken = rentalsToken2;
-      console.log("AAAAAAAAAAAAAAAAAAAAA",rentalToken);
       return setTimeout(() => rentalTokenfunction(), 3300000);
     })
     .catch(err => console.log);
 };
 
-function fetchToken(){
-  return rentalToken
+function fetchToken() {
+  return rentalToken;
 }
 module.exports = { rentalTokenfunction, rentalToken, fetchToken };

@@ -9,16 +9,15 @@ export default function ReservationFormComponent({
   handleLocation,
   handleAge,
   handleKm,
-  handleSubmit
+  handleSubmit,
+  cities
 }) {
   let today = new Date();
   let todayFormated = `${today.getFullYear()}-${today.getMonth() +
     1}-${today.getDate()}`;
   let tomorrowFormated = `${today.getFullYear()}-${today.getMonth() +
     1}-${today.getDate() + 1}`;
-
-  const cities = {Rosario: 2,"Buenos Aires": 1 };
-
+    
   return (
     <div>
       <form>
@@ -52,8 +51,8 @@ export default function ReservationFormComponent({
             onChange={evt => handleLocation(evt.target.value)}
           >
             {_.keys(cities).map(city => (
-              <option key={city} value={city}>
-                {city}
+              <option key={city} value={cities[city]}>
+                {cities[city]}
               </option>
             ))}
           </select>

@@ -11,7 +11,7 @@ const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
 const User = require("../models/User");
-const coso = require("../coso");
+const { cosoBooking, getCoso, respuesta } = require("../coso");
 
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);

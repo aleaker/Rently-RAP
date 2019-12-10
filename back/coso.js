@@ -55,6 +55,40 @@ function getCoso() {
   return cosoBooking;
 }
 
-module.exports = { cosoBooking, getCoso, respuesta };
-
 //Un ejemplo de como es la respuesta: [ '{"BookingId":768,"CustomerId":"6461c650-e9c3-4eca-8f6f-3ada1015bdba"}' ]
+
+//Despues la respuesta la usas como req.body en la ruta post para nuestra DB, de la situiente manera:
+
+//CREAR UNA RESERVA: POST http://localhost:3000/api/booking
+
+router.post("/booking", (req, res) => {
+  let newbooking = {
+    Status: "Pending",
+    BookingId: req.body.BookingId,
+    CarRental: req.body.CarRentalId,
+    CustomerData: {
+      FirstName: req.body.Name,
+      Telephone: req.body.CellPhone,
+      Email: req.body.EmailAddress,
+      DocumentId: req.body.DocumentId
+    },
+    FromDate: req.body.FromDate,
+    ToDate: req.body.ToDate,
+    Pickup: req.body.deliveryPlace,
+    Dropoff: req.body.returnPlace,
+    Car: req.body.Car.model.id,
+    illimitedKm: req.body.illimitedKm,
+    Salesperson: req.body.User._id,
+    Company: req.body.Company._id,
+    Notes: req.body.Extra
+  };
+  try {
+    Booking.create(newbooking);
+    console.log("Reserva guardada");
+    res.redirect("/api/booking");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+module.exports = { cosoBooking, getCoso, respuesta };

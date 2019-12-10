@@ -27,9 +27,10 @@ router.post("/getRentalsByName", (req, resp) => {
   let s = req.body;
   const cities = getCity()[req.body.location];
   const token = fetchToken()[0];
-  console.log(cities)
   const rentals = Object.keys(cities);
-  rentals.map(rental => token.rental);
+  rentals.map(rental => {
+    token.rental;
+  });
   console.log("soy el token", token);
   const options = {
     uri: `${token.Url}/search?searchModel.from=${s.startDate} ${s.startHour}&searchModel.to=${s.endDate} ${s.endHour}&searchModel.fromPlace=${s.FromPlace}&searchModel.toPlace=${s.ToPlace}&searchModel.promotion&searchModel.ilimitedKm=${s.IllimitedKm}&searchModel.onlyFullAvailability=${s.OnlyFullAvailability}&searchModel.customerItsOver25=${s.Age}`,

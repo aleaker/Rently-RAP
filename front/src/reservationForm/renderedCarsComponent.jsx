@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
 export default function RenderedCars({ cars }) {
+  console.log("CARS",cars)
   return (
     <div>
       {cars.map(car => (

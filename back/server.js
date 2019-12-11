@@ -18,6 +18,7 @@ const session = require("express-session"); // req.session || https://www.tutori
 const cookieParser = require("cookie-parser"); // req.cookies
 const passport = require("passport");
 rentalTokenfunction();
+require("dotenv").config();
 
 setTimeout(() => {
   console.log("fetchiando token", fetchToken());
@@ -25,8 +26,6 @@ setTimeout(() => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(morgan("dev"));
-
-  require("dotenv").config();
 
   //conf passport
   app.use(cookieParser());

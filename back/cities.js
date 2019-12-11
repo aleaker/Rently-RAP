@@ -1,9 +1,9 @@
 const request = require("request");
-const {  fetchToken } = require("./ApiRental/RentalAPIs");
+const { fetchToken } = require("./ApiRental/RentalAPIs");
 var rentalCities = {};
 
 const fetchCities = async () => {
-  const rentalToken =  fetchToken()
+  const rentalToken = fetchToken();
   const Cities = {};
   Promise.all(
     rentalToken.map(rental => {
@@ -13,7 +13,6 @@ const fetchCities = async () => {
         method: "GET",
         headers: { Authorization: `${rental.Token}` }
       };
-
       return new Promise(resolve => {
         request(options, (error, res, body) => {
           if (error) {
@@ -38,14 +37,12 @@ const fetchCities = async () => {
         });
     })
   ).then(() => {
-    
-    console.log("ESTASSONLASCITIEEES", Cities);
     rentalCities = Cities;
   });
 };
 
-function getCity(){
-  return rentalCities
+function getCity() {
+  return rentalCities;
 }
 
-module.exports = {fetchCities,getCity}
+module.exports = { fetchCities, getCity };

@@ -83,20 +83,17 @@ export default class EditSalesperson extends Component {
                 method="POST"
                 encType="multipart/form-data"
               >
-                {/* <select name="UserType" className="form-control">
+                <select
+                  name="UserType"
+                  className="form-control"
+                  onChange={this.onInputChange}
+                >
                   <option value="" disabled selected>
                     Tipo de usuario
                   </option>
-                  <option value={this.state.UserType = "Vendedor"}>Vendedor</option>
-                  <option value={this.state.UserType ="AdminEmpresa"}>Admin Empresa</option>
-                </select> */}
-                <input
-                  className="form-control"
-                  onChange={this.onInputChange}
-                  placeholder="Vendedor o AdminEmpresa"
-                  value={this.state.UserType}
-                  name="UserType"
-                />
+                  <option value="Vendedor">Vendedor</option>
+                  <option value="AdminEmpresa">Admin Empresa</option>
+                </select>
                 <input
                   className="form-control"
                   onChange={this.onInputChange}
@@ -157,7 +154,6 @@ export default class EditSalesperson extends Component {
                   value={this.state.Photo}
                   name="Photo"
                 /> */}
-
                 <button className="btn waves-effect waves-light" type="submit">
                   Registrar!
                 </button>

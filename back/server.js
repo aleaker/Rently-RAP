@@ -8,8 +8,8 @@ const {
   rentalTokenfunction,
   fetchToken
 } = require("../back/ApiRental/RentalAPIs");
-const multer = require("multer");
 const { fetchCities } = require("./cities");
+const { bookingData } = require("./coso");
 
 var rentalToken;
 exports.default = rentalToken;
@@ -47,7 +47,7 @@ setTimeout(() => {
     }
   });
 
-  console.log("ESTOESFETCHCITIES", fetchCities());
+  fetchCities();
 
   app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));

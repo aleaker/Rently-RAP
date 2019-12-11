@@ -14,6 +14,9 @@ export default function RenderedCars({ cars }) {
           <Col md={4}>
           <p>{car.Car.Model.Brand.Name} {car.Car.Model.Name}</p>
           </Col>
+          <Col md={4}>
+          <p>{car.RentalData.Name} {car.RentalData.id}</p>
+          </Col>
         </Card>
       ))}
     </div>

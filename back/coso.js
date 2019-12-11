@@ -2,9 +2,9 @@ const request = require("request-promise-native");
 const { fetchToken } = require("./ApiRental/RentalAPIs");
 const Booking = require("../back/models/Booking");
 
-// al input hay que pasarle la data que llega del formulario de la reserva y eso es lo que va en el form, debajo de headers
+// al "input" (que es un objeto vacio) hay que pasarle la data que llega del formulario de la reserva y eso es lo que va en el form, debajo de headers.
 
-//EJ DE INPUT
+//EJEMPLO DE INPUT
 // input = {
 //   CarRentalId: "5dee8cb2bcf87f18ee12c2bf",
 //   FromDate: new Date(2023, 02, 01, 10, 00),

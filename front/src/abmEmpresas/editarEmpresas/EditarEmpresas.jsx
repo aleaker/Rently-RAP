@@ -105,7 +105,7 @@ class EditarEmpresas extends React.Component {
       .then(() => console.log(this.state));
   }
   updateBusiness() {
-    let array = this.props.props.location.pathname.split("/");
+    let array = this.props.location.pathname.split("/");
     let enterprise = array[array.length - 1];
 
     const UsersSchema = this.state.MainContact;

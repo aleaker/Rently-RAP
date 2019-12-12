@@ -168,3 +168,58 @@ EMPRESA 2
         "__v": 0
     }
 ]
+
+
+const Booking = new Schema({
+  Status: { type: String },
+  BookingId: { type: Number },
+  CarRental: { type: Schema.Types.ObjectId, ref: "CarRental" },
+  CustomerData: {
+    FirstName: { type: String },
+    LastName: { type: String },
+    Telephone: { type: String },
+    Email: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      validate: [validateEmail, "Please fill a valid email address"],
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        "Please fill a valid email address"
+      ]
+    }
+  },
+  SalesPerson: { type: Schema.Types.ObjectId, ref: "User" },
+  Company: { type: Schema.Types.ObjectId, ref: "Company" },
+  SalespersonCommissionAmount: {
+    type: Number
+  },
+  CompanyCommissionAmount: { type: Number },
+  RentlyCommissionAmount: { type: Number },
+  FromDate: { type: Date },
+  ToDate: { type: Date },
+  Pickup: { type: String },
+  Dropoff: { type: String },
+  Price: { type: Number }
+});
+
+ Status: "Confirmada",
+  BookingId: 61059032,
+  CarRental: "5ddd8d7e3a318d70b9a82b2c",
+  CustomerData: {
+    FirstName: "Lucas",
+    LastName: "QuiereUnAuto",
+    Telephone: "61059032",
+    Email: "lucas@lucas.com"
+  },
+  Salesperson: "5ddd996af8219a0d253307d1",
+  Company: "5ddd47172edd344b3422cbe8",
+  SalespersonCommissionAmount: 5000,
+  CompanyCommissionAmount: 10000,
+  RentlyCommissionAmount: 100000,
+    FromDate: 25/01/2020,
+  ToDate: 01/02/2020,
+  Pickup: "Aeropuerto Ezeiza"
+  Dropoff: "Aeropuerto Ezeiza",
+  Price: 15000
+  }

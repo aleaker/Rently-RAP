@@ -9,7 +9,6 @@ const {
   fetchToken
 } = require("../back/ApiRental/RentalAPIs");
 const { fetchCities } = require("./cities");
-const { bookingData } = require("./coso");
 
 var rentalToken;
 exports.default = rentalToken;

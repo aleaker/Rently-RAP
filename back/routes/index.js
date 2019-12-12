@@ -11,47 +11,15 @@ const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
 const User = require("../models/User");
-const coso = require("../coso");
+const bookingRouter = require("./bookingRouter");
 
-router.use("/coso", coso);
+router.use("/booking", bookingRouter);
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/rentalRouter", rentalRouter);
 router.use("/createCompany", createCompanyRouter);
 router.use("/user", userRouter); //rutas del login and logout
 router.use("/adminEmpresas", adminEmpresasRouter);
-
-router.get("/coso", (req, res) => {
-  return console.log(coso.cosoBooking());
-});
-
-// //COSO
-// router.post("/", (req, res) => {
-//   var newbooking = {
-//     Status: "Pending",
-//     BookingId: req.body.BookingId,
-//     CarRental: req.body.CarRentalId,
-//     CustomerData: {
-//       FirstName: req.body.Name,
-//       Telephone: req.body.CellPhone,
-//       Email: req.body.EmailAddress,
-//       DocumentId: req.body.DocumentId
-//     },
-//     FromDate: req.body.FromDate,
-//     ToDate: req.body.ToDate,
-//     Pickup: req.body.deliveryPlace,
-//     Salesperson: req.body.User._id,
-//     Company: req.body.Company._id,
-//     Notes: req.body.Extra
-//   };
-//   try {
-//     Booking.create(newbooking);
-//     console.log("Reserva guardada");
-//     res.redirect("/api/booking");
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
 
 //RentlyAdmin
 router.post("/rently", (req, resp) => {
@@ -292,10 +260,9 @@ router.put("/company/:id", async (req, res) => {
 
 //BORRAR 1 EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
 router.delete("/company/:id", async (req, res) => {
-  Company.updateOne(
-    { _id: req.params.id },
-    { $set: { Active: false } }
-  ).then(company => res.json(company));
+  Company.updateOne({ _id: req.params.id }, { $set: { Active: false } }).then(
+    company => res.json(company)
+  );
   /* .catch(err => console.log(err), res.send(401)); */
 });
 

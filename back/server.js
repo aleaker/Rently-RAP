@@ -9,7 +9,7 @@ const {
   fetchToken
 } = require("../back/ApiRental/RentalAPIs");
 const { fetchCities } = require("./cities");
-const { bookingData } = require("./coso");
+const cosoBooking = require("./coso");
 
 var rentalToken;
 exports.default = rentalToken;
@@ -19,6 +19,24 @@ const cookieParser = require("cookie-parser"); // req.cookies
 const passport = require("passport");
 rentalTokenfunction();
 
+let input = {
+  body: {
+    RentalData: { id: "5df15a0e7c464d3203332f3b", Name: "Shishitan" },
+    FromDate: new Date(2020, 03, 01, 10, 00),
+    ToDate: new Date(2020, 07, 02, 10, 00),
+    deliveryPlace: { id: 4 },
+    returnPlace: { id: 4 },
+    Car: { Model: { id: 29 } },
+    illimitedKm: true,
+    Customer: {
+      Name: "Pepito Martinez",
+      EmailAddress: "hola@ejemplo.com",
+      DocumentId: "38267336",
+      CellPhone: "1144374925"
+    },
+    Extra: "El cliente llega en el vuelo AA234 a las 23:50"
+  }
+};
 setTimeout(() => {
   console.log("fetchiando token", fetchToken());
   app.use(express.static("public"));
@@ -47,6 +65,8 @@ setTimeout(() => {
       next(null);
     }
   });
+
+  cosoBooking(input);
 
   fetchCities();
 

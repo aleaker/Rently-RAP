@@ -14,7 +14,7 @@ const Booking = new Schema({
     FirstName: { type: String },
     LastName: { type: String },
     Telephone: { type: String },
-    DocumentId:{type:String},
+    DocumentId: { type: String },
     Email: {
       type: String,
       trim: true,
@@ -26,7 +26,7 @@ const Booking = new Schema({
       ]
     }
   },
-  SalesPerson: { type: Schema.Types.ObjectId, ref: "User" },
+  Salesperson: { type: Schema.Types.ObjectId, ref: "User" },
   Company: { type: Schema.Types.ObjectId, ref: "Company" },
   // SalespersonCommissionAmount: {
   //   type: Number
@@ -36,7 +36,7 @@ const Booking = new Schema({
   FromDate: { type: Date },
   ToDate: { type: Date },
   Pickup: { type: String },
-  Dropoff: { type: String },
+  Notes: { type: String },
   Price: { type: Number }
 });
 

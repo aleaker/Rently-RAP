@@ -25,34 +25,6 @@ router.get("/coso", (req, res) => {
   return console.log(coso.cosoBooking());
 });
 
-// //COSO
-// router.post("/", (req, res) => {
-//   var newbooking = {
-//     Status: "Pending",
-//     BookingId: req.body.BookingId,
-//     CarRental: req.body.CarRentalId,
-//     CustomerData: {
-//       FirstName: req.body.Name,
-//       Telephone: req.body.CellPhone,
-//       Email: req.body.EmailAddress,
-//       DocumentId: req.body.DocumentId
-//     },
-//     FromDate: req.body.FromDate,
-//     ToDate: req.body.ToDate,
-//     Pickup: req.body.deliveryPlace,
-//     Salesperson: req.body.User._id,
-//     Company: req.body.Company._id,
-//     Notes: req.body.Extra
-//   };
-//   try {
-//     Booking.create(newbooking);
-//     console.log("Reserva guardada");
-//     res.redirect("/api/booking");
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
 //RentlyAdmin
 router.post("/rently", (req, resp) => {
   RentlyAdmin.create(req.body);
@@ -106,11 +78,11 @@ router.put("/admin/edit/:id", async (req, res) => {
 //VER TODOS LOS VENDEDORES ACTIVOS
 router.get("/salespeople", async (req, res) => {
   try {
-    const salespersons = await User.find({
+    const salespeople = await User.find({
       UserType: "Vendedor",
       Active: true
-    });
-    res.json(salespersons);
+    }).populate("Company");
+    res.json(salespeople);
   } catch (err) {
     console.log(err);
   }
@@ -152,7 +124,6 @@ router.get("/salesperson/:id", async (req, res) => {
 
 //REACTIVAR UN VENDEDOR
 router.put("/reactivate/:id", async (req, res) => {
-  console.log("ENTRE A LA RUTA DEL BACK");
   try {
     const change = { Active: true };
     const nowactive = await User.findByIdAndUpdate(req.params.id, change);
@@ -422,6 +393,8 @@ router.put("/commission/:id", async (req, res) => {
     console.log(err);
   }
 });
+
+//
 router.get("/comisiones", async (req, res) => {
   function createData(
     Company,
@@ -557,7 +530,11 @@ router.delete("/deleteallcommissions", async (req, res) => {
 //VER TODAS LAS RESERVAS: GET http://localhost:3000/api/booking
 router.get("/booking", async (req, res) => {
   try {
-    const booking = await Booking.find();
+    const booking = await Booking.find()
+      .populate("Company")
+      .populate("CarRental")
+      .populate("Salesperson");
+    // .populate({ path: "Salesperson", model: "User" });
     res.json(booking);
   } catch (err) {
     console.log(err);
@@ -601,6 +578,17 @@ router.delete("/booking/:id", async (req, res) => {
   try {
     await Booking.findByIdAndRemove(req.params.id);
     res.json({ status: "Booking deleted" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//CAMBIAR UN VENDEDOR A INACTIVO >>> PUT http://localhost:3000/api/reserva/cancelar/:id
+router.put("/booking/cancel/:id", async (req, res) => {
+  try {
+    const change = { Status: "Cancelled" };
+    const cancelled = await Booking.findByIdAndUpdate(req.params.id, change);
+    res.json(cancelled);
   } catch (err) {
     console.log(err);
   }

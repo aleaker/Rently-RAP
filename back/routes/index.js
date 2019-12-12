@@ -558,7 +558,7 @@ router.post("/booking", (req, res) => {
     console.log("Reserva guardada");
     res.redirect("/api/booking");
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 });
 

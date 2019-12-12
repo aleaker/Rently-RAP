@@ -43,7 +43,7 @@ class Reservation extends React.Component {
   }
 
   getToken() {
-    axios.get("/api/token/get").then(resp => console.log("EEEEEEEEEEEE", resp));
+    axios.get("/api/token/get")
   }
 
   // getCars() {
@@ -82,7 +82,7 @@ class Reservation extends React.Component {
   }
 
   handleAge(age) {
-    asdasad;
+   
     const boolAge = !!parseInt(age);
     this.setState({ age: boolAge });
   }
@@ -95,16 +95,15 @@ class Reservation extends React.Component {
   handleLocation(location) {
     //Object.keys(this.state.cities[location])
     this.setState({ location: location });
-    console.log("a", this.state.location);
+  
     //console.log("RENTADORA?",Object.keys(this.state.rentadorasConId))
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     axios
       .post("/api/rentalRouter/getRentalsByName", this.state)
-      .then(e => {console.log(e.data),this.setState({ cars: e.data })});
+      .then(e => {this.setState({ cars: e.data })});
   }
 
   render() {
@@ -128,7 +127,7 @@ class Reservation extends React.Component {
           cities={this.state.cities}
         />
 
-        <RenderedCars cars={this.state.cars} />
+       {this.state.cars.map((car, i)=><RenderedCars key={i}car={car} />)} 
       </div>
     );
   }

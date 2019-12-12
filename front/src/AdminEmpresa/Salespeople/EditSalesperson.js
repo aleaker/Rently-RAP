@@ -26,6 +26,9 @@ export default class EditSalesperson extends Component {
   }
 
   getSalesperson(id) {
+    console.log(this.props.match.path.split('/')[2])
+    const route = this.props.match.path.split('/')[2]
+    
     axios.get("http://localhost:3000/api/salesperson/" + id).then(res => {
       this.setState({
         FirstName: res.data.FirstName,
@@ -76,7 +79,6 @@ export default class EditSalesperson extends Component {
   render() {
     return (
       <div className="container">
-        <AdminEmpresaNav />
         <div className="col-md-6 offset-md-3">
           <div className="card card-body">
             <h4>Modificar usuario</h4>
@@ -85,6 +87,7 @@ export default class EditSalesperson extends Component {
                 onSubmit={this.onSubmit}
                 method="POST"
                 encType="multipart/form-data"
+                autoComplete={'off'}
               >
                 {/* <select name="UserType" className="form-control">
                   <option value="" disabled selected>
@@ -93,13 +96,13 @@ export default class EditSalesperson extends Component {
                   <option value={this.state.UserType = "Vendedor"}>Vendedor</option>
                   <option value={this.state.UserType ="AdminEmpresa"}>Admin Empresa</option>
                 </select> */}
-                <input
+                {/* <input
                   className="form-control"
                   onChange={this.onInputChange}
                   placeholder="Vendedor o AdminEmpresa"
                   value={this.state.UserType}
-                  name="UserType"
-                />
+                  name="UserType"/> */}
+                
                 <input
                   className="form-control"
                   onChange={this.onInputChange}
@@ -114,13 +117,6 @@ export default class EditSalesperson extends Component {
                   value={this.state.LastName}
                   name="LastName"
                 />
-                <input
-                  className="form-control"
-                  onChange={this.onInputChange}
-                  placeholder="Id de la Empresa"
-                  value={this.state.Company}
-                  name="Company"
-                />
 
                 <input
                   className="form-control"
@@ -129,21 +125,16 @@ export default class EditSalesperson extends Component {
                   value={this.state.Email}
                   name="Email"
                   type="email"
+                  autoComplete='off'
                 />
                 <input
                   className="form-control"
                   onChange={this.onInputChange}
-                  placeholder="Contraseña"
-                  value={this.state.Password}
+                  placeholder="Nueva Contraseña"
+                  // value={this.state.Password}
                   name="Password"
                   type="password"
-                />
-                <input
-                  className="form-control"
-                  onChange={this.onInputChange}
-                  placeholder="Id de la Comision"
-                  value={this.state.ComissionScheme}
-                  name="ComissionScheme"
+                  autoComplete='off'
                 />
                 <input
                   className="form-control"

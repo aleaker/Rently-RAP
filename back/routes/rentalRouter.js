@@ -22,31 +22,68 @@ router.get("/", (req, res) => {
     .catch(err => console.log(err));
 });
 
-router.post("/getRentalsByName", (req, resp) => {
-  console.log("RQBODI", req.body);
-  let s = req.body;
-  const cities = getCity()[req.body.location];
-  const token = fetchToken()[0];
-  const rentals = Object.keys(cities);
-  rentals.map(rental => {
-    token.rental;
-  });
-  console.log("soy el token", token);
-  const options = {
-    uri: `${token.Url}/search?searchModel.from=${s.startDate} ${s.startHour}&searchModel.to=${s.endDate} ${s.endHour}&searchModel.fromPlace=${s.FromPlace}&searchModel.toPlace=${s.ToPlace}&searchModel.promotion&searchModel.ilimitedKm=${s.IllimitedKm}&searchModel.onlyFullAvailability=${s.OnlyFullAvailability}&searchModel.customerItsOver25=${s.Age}`,
-    method: "GET",
-    headers: { Authorization: `${token.Token}` }
-  };
-  request(options, (error, res, body) => {
-    if (error) {
-      console.error(error);
-      return;
-    }
-    resp.json(JSON.parse(body));
-  });
+router.get("/getCities", (req, res) => {
+  const cities = Object.keys(getCity());
+  res.send(cities);
 });
 
-// Promise.all(req.body.rentadorasConId.map((rentadoraObj)=> CarRental.find({Name:Object.keys(rentadoraObj)[0]}).then(rentadora=>console.log("rentadoras",rentadora)))
+router.post("/getRentalsByName", (req, resp) => {
+  let s = req.body;
+  const ciudades = getCity()[req.body.location];
+  const tokens = fetchToken();
+  console.log(
+    "CIUDADES:",
+    ciudades,
+    "-------------------------------------------------------------------------------------------------------------------------------------------",
+    "TOKENS",
+    tokens
+  );
+  const promesas = tokens.map(async token => {
+    let place = ciudades[token.Name][0];
+    return request(
+      {
+        uri: `${token.Url}/search?searchModel.from=${s.startDate} ${s.startHour}&searchModel.to=${s.endDate} ${s.endHour}&searchModel.fromPlace=${place}&searchModel.toPlace=${place}&searchModel.promotion&searchModel.ilimitedKm=${s.IllimitedKm}&searchModel.onlyFullAvailability=${s.OnlyFullAvailability}&searchModel.customerItsOver25=${s.Age}`,
+        method: "GET",
+        headers: { Authorization: `${token.Token}` }
+      },
+      (error, res, body) => {
+        if (error) {
+          console.log("este es el error", error);
+          return;
+        }
+      }
+    );
+  });
+
+  Promise.all(promesas).then(carArrays => {
+    let arr = [];
+    carArrays.map((carArray, index) => {
+      let obj = JSON.parse(carArray);
+      obj.map(elem => {
+        elem.RentalData = { id: tokens[index]._id, Name: tokens[index].Name };
+      });
+      console.log(obj);
+      arr.push(obj);
+    });
+    resp.json([].concat.apply([], arr));
+  });
+
+  //resp.json(arr))
+
+  //token.rental));
+  // const options = {
+  //   uri: `${token.Url}/search?searchModel.from=${s.startDate} ${s.startHour}&searchModel.to=${s.endDate} ${s.endHour}&searchModel.fromPlace=${s.FromPlace}&searchModel.toPlace=${s.ToPlace}&searchModel.promotion&searchModel.ilimitedKm=${s.IllimitedKm}&searchModel.onlyFullAvailability=${s.OnlyFullAvailability}&searchModel.customerItsOver25=${s.Age}`,
+  //   method: "GET",
+  //   headers: { Authorization: `${token.Token}` }
+  // };
+  // request(options, (error, res, body) => {
+  //   if (error) {
+  //     console.error(error);
+  //     return;
+  //   }
+  //   resp.json(JSON.parse(body));
+  // });
+});
 
 //)
 

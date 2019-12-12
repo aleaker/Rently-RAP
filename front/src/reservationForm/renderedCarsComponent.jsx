@@ -1,22 +1,32 @@
 import React from "react";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import { withRouter } from "react-router-dom";
 
-export default function RenderedCars({ cars }) {
-  console.log("CARS",cars)
+ function RenderedCars(props) {
+  const handleClick = (e)=>{
+  props.history.push("/checkout",props.car)
+  }
+
   return (
     <div>
-      {cars.map(car => (
-        <Card>
-        {console.log(car)}
+      
+        
+       <Card onClick={handleClick}>
           <Col md={4}>
-            <img src={car.Car.Model.ImagePath} style={{ width: "100%" }} />
+            <img src={props.car.Car.Model.ImagePath} style={{ width: "100%" }} />
           </Col>
           <Col md={4}>
-          <p>{car.Car.Model.Brand.Name} {car.Car.Model.Name}</p>
+          <p>{props.car.Car.Model.Brand.Name} {props.car.Car.Model.Name}</p>
           </Col>
-        </Card>
-      ))}
+          <Col md={4}>
+          <p>{props.car.RentalData.Name} {props.car.RentalData.id}</p>
+          </Col>
+        </Card> 
+      
+  
     </div>
   );
 }
+
+export default withRouter(RenderedCars)

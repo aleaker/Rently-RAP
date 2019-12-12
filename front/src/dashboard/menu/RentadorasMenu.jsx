@@ -13,9 +13,9 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
 import {Link } from 'react-router-dom'
-import BusinessIcon from "@material-ui/icons/Business";
-
-
+import DnsOutlinedIcon from '@material-ui/icons/DnsOutlined';
+import DirectionsCarSharpIcon from '@material-ui/icons/DirectionsCarSharp';
+import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -40,27 +40,25 @@ export default function NestedList() {
     <div>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
-          <InboxIcon />
+          <DirectionsCarSharpIcon style={{color:'black'}} />
         </ListItemIcon>
         <ListItemText primary="Rentadoras" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
+      <List component="div" disablePadding style={{paddingLeft: '3%'}}>
         <Link to={'/registerRental'}>
           <ListItem button>
             <ListItemIcon>
-              <BusinessIcon />
+              <AddOutlinedIcon  />
             </ListItemIcon>
             <ListItemText primary={"Alta de Rentadora"} />
           </ListItem>
           </Link>
-        </List>
-        <List component="div" disablePadding>
         <Link to={'/rentalTable'}>
           <ListItem button>
             <ListItemIcon>
-              <BusinessIcon />
+              <DnsOutlinedIcon  />
             </ListItemIcon>
             <ListItemText primary={"Rentadoras Activas"} />
           </ListItem>

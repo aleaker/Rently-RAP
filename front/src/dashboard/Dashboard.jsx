@@ -207,7 +207,7 @@ function Dashboard(props) {
         </List>
         <Divider />
         <List>
-       <CompaniesMenu/>
+       <CompaniesMenu drawerState={open}/>
        <RentadorasMenu/>
        </List>
         {/* <List>

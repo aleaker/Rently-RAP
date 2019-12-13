@@ -9,7 +9,6 @@ const {
   fetchToken
 } = require("../back/ApiRental/RentalAPIs");
 const { fetchCities } = require("./cities");
-const cosoBooking = require("./routes/bookingRouter");
 
 var rentalToken;
 exports.default = rentalToken;
@@ -20,7 +19,7 @@ const passport = require("passport");
 rentalTokenfunction();
 require("dotenv").config();
 
-let input = {
+/* let input = {
   body: {
     Customer: {
       DocumentId: "38267336",
@@ -99,8 +98,9 @@ let input = {
     __v: 0,
     _id: "5de6ae9be07a5c70caf563ba"
   }
-};
+}; */
 setTimeout(() => {
+  console.log("AAAAAA", rentalTokenfunction());
   console.log("fetchiando token", rentalTokenfunction());
   app.use(express.static("public"));
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -126,8 +126,6 @@ setTimeout(() => {
       next(null);
     }
   });
-
-  cosoBooking(input);
 
   fetchCities();
 

@@ -6,23 +6,23 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { EMAIL, PASSWORD } = process.env;
 
-const cosoBooking = async (req, res) => {
+router.post("/", async (req, res) => {
   var book = {
-    FromDate: req.body.FromDate,
-    ToDate: req.body.ToDate,
-    DeliveryPlace: { Id: req.body.DeliveryPlace.Id },
-    ReturnPlace: { Id: req.body.ReturnPlace.Id },
-    Car: { Model: { id: req.body.Car.Model.Id } },
-    IlimitedKm: req.body.IlimitedKm,
+    FromDate: req.body.reservation.FromDate,
+    ToDate: req.body.reservation.ToDate,
+    DeliveryPlace: { Id: req.body.reservation.DeliveryPlace.Id },
+    ReturnPlace: { Id: req.body.reservation.ReturnPlace.Id },
+    Car: { Model: { Id: req.body.reservation.Car.Model.Id } },
+    IlimitedKm: req.body.reservation.IlimitedKm,
     Customer: {
-      Name: `${req.body.Customer.FirstName} ${req.body.Customer.LastName}`,
-      EmailAddress: req.body.Customer.EmailAddress,
-      DocumentId: req.body.Customer.DocumentId,
-      CellPhone: req.body.Customer.Telephone
+      Name: `${req.body.customer.FirstName} ${req.body.customer.LastName}`,
+      EmailAddress: req.body.customer.Email,
+      DocumentId: req.body.customer.DocumentId,
+      CellPhone: req.body.customer.Telephone
     }
   };
   const rentalToken = await fetchToken();
-  var rentadora = req.body.RentalData.id;
+  var rentadora = req.body.reservation.RentalData.id;
   rentalToken.map(token => {
     if (token._id == rentadora) {
       const options = {
@@ -44,26 +44,29 @@ const cosoBooking = async (req, res) => {
         .then(respuesta => JSON.parse(respuesta))
         .then(respuesta => {
           if (respuesta.BookingId) {
+            console.log("entreeee", respuesta);
             return Booking.create({
               Status: "Pending",
               BookingId: respuesta.BookingId,
-              CarRental: req.body.RentalData.id,
+              CarRental: req.body.reservation.RentalData.id,
               CustomerData: {
                 CustomerId: respuesta.CustomerId,
-                FirstName: req.body.Customer.FirstName,
-                LastName: req.body.Customer.LastName,
-                Email: req.body.Customer.Email,
-                DocumentId: req.body.Customer.DocumentId,
-                CellPhone: req.body.Customer.CellPhone,
-                DocumentType: req.body.Customer.DocumentType
+                FirstName: req.body.customer.FirstName,
+                LastName: req.body.customer.LastName,
+                Email: req.body.customer.Email,
+                DocumentId: req.body.customer.DocumentId,
+                CellPhone: req.body.customer.CellPhone,
+                DocumentType: req.body.customer.DocumentType
               },
               Notes: "",
-              Dropoff: req.body.ReturnPlace.Id,
-              Pickup: req.body.DeliveryPlace.Id,
-              FromDate: req.body.FromDate,
-              ToDate: req.body.ToDate,
-              Price: req.body.Price
+              Dropoff: req.body.reservation.ReturnPlace.Id,
+              Pickup: req.body.reservation.DeliveryPlace.Id,
+              FromDate: req.body.reservation.FromDate,
+              ToDate: req.body.reservation.ToDate,
+              Price: req.body.reservation.Price
             }).catch(err => console.log(err));
+          } else if (respuesta.ErrorMessage) {
+            res.send(respuesta.ErrorMessage);
           }
         })
         .then(booking => {
@@ -84,12 +87,12 @@ const cosoBooking = async (req, res) => {
 
             let mailOptions = {
               from: `${EMAIL}`,
-              to: `joacolarral@gmail.com`,
+              to: `${req.body.customer.Email}`,
               subject: "Booking Confirmation",
               html: ` <head><style>table {font-family: arial, sans-serif;border-collapse: collapse;width: 50%;}td, th {border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even) {background-color: #dddddd;}</style></head>
             <div> <p> Hola ${
               booking.CustomerData.FirstName
-            }, en este e-mail te adjuntamos todos los datos de tu reserva: </p> </div>
+            }, en este e-mail te adjuntamos los datos de tu reserva: </p> </div>
           
             <table>
             <tr>
@@ -104,27 +107,27 @@ const cosoBooking = async (req, res) => {
             </tr>
             <tr>
               <td>Auto: </td>
-              <td>${req.body.Car.Model.Brand.Name}</td>
+              <td>${req.body.reservation.Car.Model.Brand.Name}</td>
             </tr>
             <tr>
               <td>Modelo: </td>
-              <td>${req.body.Car.Model.Name}</td>
+              <td>${req.body.reservation.Car.Model.Name}</td>
             </tr>
             <tr>
               <td>Desde la fecha: </td>
-              <td>${dateHour(req.body.FromDate)}</td>
+              <td>${dateHour(req.body.reservation.FromDate)}</td>
             </tr>
             <tr>
               <td>Hasta la fecha: </td>
-              <td>${dateHour(req.body.ToDate)}</td>
+              <td>${dateHour(req.body.reservation.ToDate)}</td>
             </tr>
             <tr>
               <td>Lugar de retiro: </td>
-              <td>${req.body.DeliveryPlace.Address}</td>
+              <td>${req.body.reservation.DeliveryPlace.Address}</td>
             </tr>
             <tr>
               <td>Lugar de devolución: </td>
-              <td>${req.body.ReturnPlace.Address}</td>
+              <td>${req.body.reservation.ReturnPlace.Address}</td>
             </tr>
             <tr>
               <td>Precio: </td>
@@ -132,7 +135,7 @@ const cosoBooking = async (req, res) => {
             </tr>
             <tr>
               <td>Rentadora: </td>
-              <td>${req.body.RentalData.Name}</td>
+              <td>${req.body.reservation.RentalData.Name}</td>
             </tr>
           </table>`
             };
@@ -146,14 +149,15 @@ const cosoBooking = async (req, res) => {
             });
           }
         })
+        .then(() => res.sendStatus(201))
         .catch(err => console.log(err));
     }
   });
-};
+});
 
 //Un ejemplo de como es la respuesta: [ '{"BookingId":768, "CustomerId":"6461c650-e9c3-4eca-8f6f-3ada1015bdba"}' ]
 
-module.exports = cosoBooking;
+module.exports = router;
 
 /* module.exports = router; */
 

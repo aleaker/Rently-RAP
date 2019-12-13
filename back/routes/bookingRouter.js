@@ -2,18 +2,21 @@ const router = require("express").Router();
 const request = require("request-promise-native");
 const { fetchToken } = require("../ApiRental/RentalAPIs");
 const Booking = require("../models/Booking");
+const nodemailer = require("nodemailer");
+require("dotenv").config();
+const { EMAIL, PASSWORD } = process.env;
 
-// al input hay que pasarle la data que llega del formulario de la reserva y eso es lo que va en el form, debajo de headers
+// al "input" (que es un objeto vacio) hay que pasarle la data que llega del formulario de la reserva y eso es lo que va en el form, debajo de headers.
 
-//EJ DE INPUT
-let req = {
+//EJEMPLO DE INPUT
+/* let input = {
   body: {
-    CarRentalId: "5dee8cb2bcf87f18ee12c2bf",
-    FromDate: new Date(2023, 02, 01, 10, 00),
-    ToDate: new Date(2024, 02, 02, 10, 00),
-    deliveryPlace: { id: 1 },
-    returnPlace: { id: 1 },
-    Car: { model: { id: 46 } },
+    RentalData: { id: "5dee88d3e5dfd80716d59ee8", Name: "Shishitan" },
+    FromDate: new Date(2020, 08, 01, 10, 00),
+    ToDate: new Date(2020, 12, 02, 10, 00),
+    deliveryPlace: { id: 4 },
+    returnPlace: { id: 4 },
+    Car: { Model: { id: 29 } },
     illimitedKm: true,
     Customer: {
       Name: "Pepito Martinez",
@@ -23,178 +26,166 @@ let req = {
     },
     Extra: "El cliente llega en el vuelo AA234 a las 23:50"
   }
-};
+}; */
 
-/* router.post("/booking",) */
-let hola = async () => {
-  const bookingToken = await fetchToken();
-  console.log(bookingToken, "soy booking");
-};
-console.log(hola(), "asjknakjsndaks");
-/*
-
-const hola = async (req, res) => {
-  const bookingToken = await fetchToken();
-  Promise.all(
-    bookingToken.map(booking => {
+const cosoBooking = async (req, res) => {
+  var book = {
+    FromDate: req.body.FromDate,
+    ToDate: req.body.ToDate,
+    DeliveryPlace: { Id: req.body.DeliveryPlace.Id },
+    ReturnPlace: { Id: req.body.ReturnPlace.Id },
+    Car: { Model: { id: req.body.Car.Model.Id } },
+    IlimitedKm: req.body.IlimitedKm,
+    Customer: {
+      Name: `${req.body.Customer.FirstName} ${req.body.Customer.LastName}`,
+      EmailAddress: req.body.Customer.EmailAddress,
+      DocumentId: req.body.Customer.DocumentId,
+      CellPhone: req.body.Customer.Telephone
+    }
+  };
+  const rentalToken = await fetchToken();
+  var rentadora = req.body.RentalData.id;
+  console.log(rentadora, "SOOY RENTADORA");
+  rentalToken.map(token => {
+    console.log(token._id, "SOOY TOKEEEN");
+    if (token._id == rentadora) {
       const options = {
-        uri: `${booking.Url}booking/book`,
+        uri: `${token.Url}booking/book`,
         method: "POST",
         headers: {
-          Authorization: `${booking.Token}`
+          Authorization: `${token.Token}`
         },
-        form: input
+        form: book
       };
       return new Promise(resolve => {
         request(options, (error, res, body) => {
           if (error) {
-            console.error(error);
+            console.log(error);
             return;
           } else resolve(body);
         });
-      });
-    })
-  )
-    .then(res => {
-      console.log(res.CarRental);
-      var respuesta = res;
-      return respuesta;
-    })
-    .then(() => {
-      input = req.body;
-      Booking.create({
-        Status: "Pending",
-        BookingId: req.body.BookingId,
-        CarRental: req.body.CarRentalId,
-        CustomerData: {
-          FirstName: req.body.Name,
-          Telephone: req.body.CellPhone,
-          Email: req.body.EmailAddress,
-          DocumentId: req.body.DocumentId
-        },
-        FromDate: req.body.FromDate,
-        ToDate: req.body.ToDate,
-        Pickup: req.body.deliveryPlace,
-        Salesperson: req.body.User._id,
-        Company: req.body.Company._id,
-        Notes: req.body.Extra
-      });
-    })
-    .then(booking => {
-      console.log(booking);
-    });
-}; */
+      })
+        .then(
+          respuesta => (
+            console.log("resssssssspuesta", respuesta, "kjanksdjnflajknsdf"),
+            JSON.parse(respuesta)
+          )
+        )
+        .then(respuesta => {
+          console.log("holaaa");
+          if (respuesta.BookingId) {
+            return Booking.create({
+              Status: "Pending",
+              BookingId: respuesta.BookingId,
+              CarRental: req.body.RentalData.id,
+              CustomerData: {
+                CustomerId: respuesta.CustomerId,
+                FirstName: req.body.Customer.FirstName,
+                LastName: req.body.Customer.LastName,
+                Email: req.body.Customer.Email,
+                DocumentId: req.body.Customer.DocumentId,
+                CellPhone: req.body.Customer.CellPhone,
+                DocumentType: req.body.Customer.DocumentType
+              },
+              Notes: "",
+              Dropoff: req.body.ReturnPlace.Id,
+              Pickup: req.body.DeliveryPlace.Id,
+              FromDate: req.body.FromDate,
+              ToDate: req.body.ToDate,
+              Price: req.body.Price
+            }).catch(err => console.log(err));
+          }
+        })
+        .then(booking => {
+          var dateHour = str => {
+            var date = str.split("T")[0];
+            var hour = str.split("T")[1].slice(0, -1);
+            console.log(hour);
+            return `${date}, ${hour} hs.`;
+          };
 
-/* const hola = async (req, res) => {
-  let booking = [
-    { BookingId: 800, CustomerId: "6461c650-e9c3-4eca-8f6f-3ada1015bdba" }
-  ];
-  Booking.create({
-    Status: "Pending",
-    BookingId: booking[0].BookingId,
-    CarRental: req.body.RentalData.id,
-    CustomerData: {
-      FirstName: req.body.Name,
-      Telephone: req.body.CellPhone,
-      Email: req.body.EmailAddress,
-      DocumentId: req.body.DocumentId
-    },
-    FromDate: req.body.FromDate,
-    ToDate: req.body.ToDate,
-    // Pickup: req.body.deliveryPlace,
-    Notes: req.body.Extra
-  }).then(booking => {
-    console.log(booking);
+          if (booking) {
+            let transporter = nodemailer.createTransport({
+              service: "gmail",
+              auth: {
+                user: `${EMAIL}`,
+                pass: `${PASSWORD}`
+              }
+            });
+
+            let mailOptions = {
+              from: `${EMAIL}`,
+              to: `joacolarral@gmail.com`,
+              subject: "Booking Confirmation",
+              html: ` <head><style>table {font-family: arial, sans-serif;border-collapse: collapse;width: 50%;}td, th {border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even) {background-color: #dddddd;}</style></head>
+            <div> <p> Hola ${
+              booking.CustomerData.FirstName
+            }, en este e-mail te adjuntamos todos los datos de tu reserva: </p> </div>
+          
+            <table>
+            <tr>
+              <th>Numero Reserva: </th>
+              <th>${booking.BookingId}</th>
+            </tr>
+            <tr>
+              <td>Nombre y Apellido: </td>
+              <td>${booking.CustomerData.FirstName} ${
+                booking.CustomerData.LastName
+              }</td>
+            </tr>
+            <tr>
+              <td>Auto: </td>
+              <td>${req.body.Car.Model.Brand.Name}</td>
+            </tr>
+            <tr>
+              <td>Modelo: </td>
+              <td>${req.body.Car.Model.Name}</td>
+            </tr>
+            <tr>
+              <td>Desde la fecha: </td>
+              <td>${dateHour(req.body.FromDate)}</td>
+            </tr>
+            <tr>
+              <td>Hasta la fecha: </td>
+              <td>${dateHour(req.body.ToDate)}</td>
+            </tr>
+            <tr>
+              <td>Lugar de retiro: </td>
+              <td>${req.body.DeliveryPlace.Address}</td>
+            </tr>
+            <tr>
+              <td>Lugar de devolución: </td>
+              <td>${req.body.ReturnPlace.Address}</td>
+            </tr>
+            <tr>
+              <td>Precio: </td>
+              <td>$ ${booking.Price}</td>
+            </tr>
+            <tr>
+              <td>Rentadora: </td>
+              <td>${req.body.RentalData.Name}</td>
+            </tr>
+          </table>`
+            };
+
+            transporter.sendMail(mailOptions, function(error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                console.log("Email sent: " + info.response);
+              }
+            });
+          }
+        })
+        .catch(err => console.log(err));
+    }
   });
 };
 
-(function hola2() {
-  return hola(req);
-})(); */
+//Un ejemplo de como es la respuesta: [ '{"BookingId":768, "CustomerId":"6461c650-e9c3-4eca-8f6f-3ada1015bdba"}' ]
 
-//Un ejemplo de como es la respuesta: [ '{"BookingId":768,"CustomerId":"6461c650-e9c3-4eca-8f6f-3ada1015bdba"}' ]
+module.exports = cosoBooking;
 
-module.exports = router;
+/* module.exports = router; */
 
-/* var a = {
-    customer: {
-    DocumentId: "",
-    DocumentType: "",
-    Email: "",
-    FirstName: "",
-    LastName: "",
-    Telephone: ""
-  },
-  reservation: {
-    Additionals: [],
-    AverageDayPrice: 830,
-    Car: {
-      Id: "123",
-      Model: {
-        AirConditioner: "Si",
-        BigLuggage: 2,
-        Brand: { Name: "Ford" },
-        Category: { Id: 25, Name: "Chicos" },
-        DailyPrice: 0,
-        Description:
-          "sdpufh asidfpasfs fusp fiusf sjknf saiuhfp sufñsadn fpisud pfiusdf",
-        Doors: 5,
-        Franchise: 20000,
-        Gearbox: "Manual",
-        Id: 29,
-        ImagePath:
-          "https://rently.blob.core.windows.net/demo/CarModel/76d79b6f-643c-42ed-bfed-c3c268a0d4b6.jpg",
-        Multimedia: "MP3",
-        Name: "Fiesta",
-        Passengers: 4,
-        SIPP: null,
-        SmallLuggage: 2,
-        Steering: "Hidraulica"
-      }
-    },
-    Category: { Id: 25, Name: "Chicos" },
-    Currency: null,
-    DeliveryPlace: {
-      Address: "Aeropuerto Internacional Ezeiza, Buenos Aires",
-      Category: "Terminales",
-      City: "Buenos Aires",
-      Country: null,
-      Id: 2,
-      Name: "Aeropuerto de Ezeiza",
-      Price: 400
-    },
-    Franchise: 20000,
-    FromDate: "2020-03-01T13:00:00Z",
-    HasFranchiseModifiers: false,
-    IlimitedKm: false,
-    Price: 27775,
-    RentalData: { id: "5dee898d0139d61193143c77", Name: "rentadora lolo" },
-    ReturnPlace: {
-      Address: "Aeropuerto Internacional Ezeiza, Buenos Aires",
-      Category: "Terminales",
-      City: "Buenos Aires",
-      Country: null,
-      Id: 2,
-      Name: "Aeropuerto de Ezeiza",
-      Price: 400
-    },
-    ToDate: "2020-04-02T14:01:00Z",
-    TotalDays: 32.5,
-    TotalDaysString: "32 1/2",
-    WillLeaveCountry: null
-  },
-  user: {
-    Active: true,
-    CommissionScheme: [],
-    Email: "adminis@rently.com",
-    FirstName: "rently",
-    LastName: "admin",
-    Password: "$2a$10$PXNzTznLd8XBwinCXUg8dO3mJeWTfC5zGQPmTpidVPyFc2zGjfZ5q",
-    Photo:
-      "https://www.netclipart.com/pp/m/232-2329525_person-svg-shadow-default-profile-picture-png.png(42 kB)",
-    Telephone: "1136363636",
-    UserType: "rentlyadmin",
-    __v: 0,
-    _id: "5de6ae9be07a5c70caf563ba"
-  }
-}; */
+/* var a =  ; */

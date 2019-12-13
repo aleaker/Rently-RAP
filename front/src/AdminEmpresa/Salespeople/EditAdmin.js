@@ -17,7 +17,6 @@ export default class EditAdmin extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-    // this.handleChangePhoto = this.handleChangePhoto.bind(this);
   }
 
   componentDidMount() {

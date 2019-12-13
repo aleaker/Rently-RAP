@@ -23,7 +23,6 @@ const fetchCities = async () => {
       })
         .then(res => JSON.parse(res))
         .then(places => {
-          console.log(places);
           places.map(place => {
             if (!Cities[place.City]) {
               Cities[place.City] = { [rentalname]: [place.Id] };

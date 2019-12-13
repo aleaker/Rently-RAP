@@ -42,6 +42,7 @@ import editComissionContainer from "../AdminEmpresa/Container/editComissionConta
 import Reservation from "../reservationForm/reservationFormContainer";
 import CompaniesMenu from "./menu/CompaniesMenu";
 import RentadorasMenu from "./menu/RentadorasMenu";
+import ShowBookings from "../RentlyVe/showBookings"
 
 import Card from "@material-ui/core/Card";
 import {
@@ -305,6 +306,11 @@ function Dashboard(props) {
                 exact
                 path="/abmempresas"
                 component={AbmEmpresasContainer}
+              />
+
+              <Route
+              exact path="/reservas"
+              component={ShowBookings}
               />
 
               <Route path="/abmempresas/edit" component={EditarEmpresas} />

@@ -17,41 +17,13 @@ export default class EditSalesperson extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-    // this.handleChangePhoto = this.handleChangePhoto.bind(this);
   }
-
-  //   componentDidMount() {
-  //     console.log("ENTRO AL COMPONENT DID MOUNT");
-  //     this.getSalesperson(this.props.match.params.id);
-  //   }
-
-  //   getSalesperson(id) {
-  //     axios.get("http://localhost:3000/api/salesperson/" + id).then(res => {
-  //       this.setState({
-  //         FirstName: res.data.FirstName,
-  //         LastName: res.data.LastName,
-  //         Company: res.data.Company,
-  //         Email: res.data.Email,
-  //         Password: res.data.Password,
-  //         Telephone: res.data.Telephone,
-  //         UserType: res.data.Usertype
-  //       });
-  //       console.log(
-  //         "SALGO DE A getSalesperson y esto es salespeople",
-  //         this.state.salesperson
-  //       );
-  //     });
-  //   }
 
   onInputChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
-
-  // handleChangePhoto(e) {
-  //   this.setState({ Photo: e.target.value });
-  // }
 
   onSubmit(e) {
     e.preventDefault();
@@ -70,7 +42,6 @@ export default class EditSalesperson extends Component {
   }
 
   render() {
-    console.log('me cargue')
     return (
       <div className="container">
         <AdminEmpresaNav />

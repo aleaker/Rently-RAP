@@ -21,7 +21,7 @@ class Reservation extends React.Component {
       startHour: "13:00",
       unlimitedKm: true,
       cars: [],
-      cities:{}
+      cities: {}
     };
     // this.getCars = this.getCars.bind(this);
     this.handleAge = this.handleAge.bind(this);
@@ -33,13 +33,17 @@ class Reservation extends React.Component {
     this.handleLocation = this.handleLocation.bind(this);
   }
   componentDidMount() {
-  
-  // const test = fetchCities()
+    this.getCities();
+  }
 
+  getCities() {
+    axios
+      .get("/api/rentalRouter/getCities")
+      .then(resp => this.setState({ cities: resp.data }));
   }
 
   getToken() {
-    axios.get("/api/token/get").then(resp => console.log("EEEEEEEEEEEE",resp));
+    axios.get("/api/token/get").then(resp => console.log("EEEEEEEEEEEE", resp));
   }
 
   // getCars() {
@@ -91,16 +95,16 @@ class Reservation extends React.Component {
   handleLocation(location) {
     //Object.keys(this.state.cities[location])
     this.setState({ location: location });
-    console.log("a",this.state.location)
+    console.log("a", this.state.location);
     //console.log("RENTADORA?",Object.keys(this.state.rentadorasConId))
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
+    console.log(this.state);
     axios
       .post("/api/rentalRouter/getRentalsByName", this.state)
-      .then(e => this.setState({ cars: e.data }));
+      .then(e => {console.log(e.data),this.setState({ cars: e.data })});
   }
 
   render() {
@@ -111,19 +115,21 @@ class Reservation extends React.Component {
       1}-${today.getDate() + 1}`;
 
     return (
-    <div>
-      <ReservationFormComponent
-        handleAge={this.handleAge}
-        handleEndDate={this.handleEndDate}
-        handleEndTime={this.handleEndTime}
-        handleStartDate={this.handleStartDate}
-        handleStartTime={this.handleStartTime}
-        handleKm={this.handleSubmit}
-        handleLocation={this.handleLocation}
-        handleSubmit={this.handleSubmit}
-      />
-      <RenderedCars cars={this.state.cars} />
-    </div>
+      <div>
+        <ReservationFormComponent
+          handleAge={this.handleAge}
+          handleEndDate={this.handleEndDate}
+          handleEndTime={this.handleEndTime}
+          handleStartDate={this.handleStartDate}
+          handleStartTime={this.handleStartTime}
+          handleKm={this.handleSubmit}
+          handleLocation={this.handleLocation}
+          handleSubmit={this.handleSubmit}
+          cities={this.state.cities}
+        />
+
+        <RenderedCars cars={this.state.cars} />
+      </div>
     );
   }
 }

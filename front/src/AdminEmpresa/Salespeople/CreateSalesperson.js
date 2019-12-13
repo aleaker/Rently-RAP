@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import AdminEmpresaNav from "./Navigation";
+import { connect } from "react-redux";
 
-export default class EditSalesperson extends Component {
+class CreateSalesPerson extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,26 +55,25 @@ export default class EditSalesperson extends Component {
   // }
 
   onSubmit(e) {
+    let usertype = (this.props.match.path.split('/')[3] == "vendedor"? 'Vendedor': 'adminEmpresa')
     e.preventDefault();
     const newuser = {
       Active: true,
       FirstName: this.state.FirstName,
       LastName: this.state.LastName,
-      Company: this.state.Company,
+      Company: this.props.user.Company,
       Email: this.state.Email,
       Password: this.state.Password,
       Telephone: this.state.Telephone,
-      UserType: this.state.UserType
+      UserType: usertype
     };
 
     axios.post("http://localhost:3000/api/user/", newuser);
   }
 
   render() {
-    console.log('me cargue')
     return (
       <div className="container">
-        <AdminEmpresaNav />
         <div className="col-md-6 offset-md-3">
           <div className="card card-body">
             <h4>Registrar usuario</h4>
@@ -93,13 +93,6 @@ export default class EditSalesperson extends Component {
                 <input
                   className="form-control"
                   onChange={this.onInputChange}
-                  placeholder="Vendedor o AdminEmpresa"
-                  value={this.state.UserType}
-                  name="UserType"
-                />
-                <input
-                  className="form-control"
-                  onChange={this.onInputChange}
                   placeholder="Nombre"
                   value={this.state.FirstName}
                   name="FirstName"
@@ -110,13 +103,6 @@ export default class EditSalesperson extends Component {
                   placeholder="Apellido"
                   value={this.state.LastName}
                   name="LastName"
-                />
-                <input
-                  className="form-control"
-                  onChange={this.onInputChange}
-                  placeholder="Id de la Empresa"
-                  value={this.state.Company}
-                  name="Company"
                 />
 
                 <input
@@ -134,13 +120,6 @@ export default class EditSalesperson extends Component {
                   value={this.state.Password}
                   name="Password"
                   type="password"
-                />
-                <input
-                  className="form-control"
-                  onChange={this.onInputChange}
-                  placeholder="Id de la Comision"
-                  value={this.state.ComissionScheme}
-                  name="ComissionScheme"
                 />
                 <input
                   className="form-control"
@@ -169,3 +148,9 @@ export default class EditSalesperson extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ user }) => ({
+  user: user
+});
+
+export default connect(mapStateToProps, null)(CreateSalesPerson);

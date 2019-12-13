@@ -42,26 +42,34 @@ export default function NestedList() {
         <ListItemIcon>
           <DirectionsCarSharpIcon style={{color:'black'}} />
         </ListItemIcon>
-        <ListItemText primary="Rentadoras" />
+        <ListItemText primary="Administradores" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
       <List component="div" disablePadding style={{paddingLeft: '3%'}}>
-        <Link to={'/registerRental'}>
+        <Link to={'/AdminEmpresa/crear/admins'}>
           <ListItem button>
             <ListItemIcon>
               <AddOutlinedIcon  />
             </ListItemIcon>
-            <ListItemText primary={"Alta de Rentadora"} />
+            <ListItemText primary={"Crear"} />
           </ListItem>
           </Link>
-        <Link to={'/rentalTable'}>
+        <Link to={'/AdminEmpresa/admins'}>
           <ListItem button>
             <ListItemIcon>
               <DnsOutlinedIcon  />
             </ListItemIcon>
-            <ListItemText primary={"Rentadoras Activas"} />
+            <ListItemText primary={"Activos"} />
           </ListItem>
+          </Link>
+        <Link to={'/AdminEmpresa/admins/inactivos'}>
+        <ListItem button>
+          <ListItemIcon>
+            <DnsOutlinedIcon  />
+          </ListItemIcon>
+          <ListItemText primary={"Inactivos"} />
+        </ListItem>
           </Link>
         </List>
       </Collapse>

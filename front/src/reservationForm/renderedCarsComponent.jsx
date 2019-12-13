@@ -22,6 +22,7 @@ function RenderedCars(props) {
   };
   //#3f51b5
   return (
+
     <Card>
       <ListGroup className="list-group-flush">
         <ListGroupItem >
@@ -109,27 +110,7 @@ function RenderedCars(props) {
         </ListGroupItem>
         {/* <ListGroupItem>Vestibulum at eros</ListGroupItem> */}
       </ListGroup>
-      {/* <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body> */}
-      {/* </Card>
-      <Card onClick={handleClick}>
-            {" "}
-            <Card.Title>
-              {props.car.Car.Model.Brand.Name} {props.car.Car.Model.Name} o
-              similar.
-            </Card.Title>
-  
-          <Card.Body>
-            
-          </Card.Body>
-          <ListGroupItem>
-            {" "}
-            <p>{props.car.RentalData.Name} </p>
-          </ListGroupItem>
-        </ListGroup>
-      </Card> */}
+
     </Card>
   );
 }

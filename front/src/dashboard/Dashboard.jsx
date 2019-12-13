@@ -40,6 +40,7 @@ import RentalTableContainer from "../RentalForm/RentalTableContainer";
 import addComissionsContainer from "../AdminEmpresa/Container/addComissionsContainer";
 import editComissionContainer from "../AdminEmpresa/Container/editComissionContainer";
 import Reservation from "../reservationForm/reservationFormContainer";
+import ShowBookings from "../RentlyVe/showBookings";
 import CompaniesMenu from "./menu/CompaniesMenu";
 import RentadorasMenu from "./menu/RentadorasMenu";
 import Checkout from "../reservationForm/Checkout";
@@ -248,6 +249,11 @@ function Dashboard(props) {
                 component={RentalTableContainer}
               />
 
+              <Route
+                exact
+                path="/companylist"
+                component={ListaEmpresasContainer}
+              />
               <Route exact path="/" component={Reservation} />
               <Route exact path="/checkout" component={Checkout} />
 

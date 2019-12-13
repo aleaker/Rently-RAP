@@ -27,7 +27,10 @@ class CreateSalesPerson extends Component {
   }
 
   onSubmit(e) {
-    let usertype = (this.props.match.path.split('/')[3] == "vendedor"? 'Vendedor': 'adminEmpresa')
+    let usertype =
+      this.props.match.path.split("/")[3] == "vendedor"
+        ? "Vendedor"
+        : "adminEmpresa";
     e.preventDefault();
     const newuser = {
       Active: true,
@@ -63,15 +66,14 @@ class CreateSalesPerson extends Component {
                   <option value="" disabled selected>
                     Tipo de usuario
                   </option>
-<<<<<<< HEAD
-                  <option value="Vendedor">Vendedor</option>
-                  <option value="AdminEmpresa">Admin Empresa</option>
-                </select>
-=======
-                  <option value={this.state.UserType = "Vendedor"}>Vendedor</option>
-                  <option value={this.state.UserType ="AdminEmpresa"}>Admin Empresa</option>
-                </select> */}
->>>>>>> 0bc3bd706a56032df6525fa9773f09180f2b2db6
+                  <option value={(this.state.UserType = "Vendedor")}>
+                    Vendedor
+                  </option>
+                  <option value={(this.state.UserType = "AdminEmpresa")}>
+                    Admin Empresa
+                  </option>
+                </select>{" "}
+                */}
                 <input
                   className="form-control"
                   onChange={this.onInputChange}
@@ -86,7 +88,6 @@ class CreateSalesPerson extends Component {
                   value={this.state.LastName}
                   name="LastName"
                 />
-
                 <input
                   className="form-control"
                   onChange={this.onInputChange}
@@ -134,4 +135,7 @@ const mapStateToProps = ({ user }) => ({
   user: user
 });
 
-export default connect(mapStateToProps, null)(CreateSalesPerson);
+export default connect(
+  mapStateToProps,
+  null
+)(CreateSalesPerson);

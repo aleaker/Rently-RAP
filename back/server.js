@@ -4,39 +4,52 @@ const path = require("path");
 const db = require("./config/db");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const {
+  rentalTokenfunction,
+  fetchToken
+} = require("../back/ApiRental/RentalAPIs");
+const { fetchCities } = require("./cities");
 
+var rentalToken;
+exports.default = rentalToken;
 // conf de passport
 const session = require("express-session"); // req.session || https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
 const cookieParser = require("cookie-parser"); // req.cookies
 const passport = require("passport");
-
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(morgan("dev"));
-
+rentalTokenfunction();
 require("dotenv").config();
 
-//conf passport
-app.use(cookieParser());
-app.use(session({ secret: "pepinillo" }));
-app.use(passport.initialize());
-app.use(passport.session());
+setTimeout(() => {
+  console.log("AAAAAA", rentalTokenfunction());
+  console.log("fetchiando token", rentalTokenfunction());
+  app.use(express.static("public"));
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+  app.use(morgan("dev"));
 
-app.listen(3000, function() {
-  console.log("App listening on port 3000");
-});
+  //conf passport
+  app.use(cookieParser());
+  app.use(session({ secret: "pepinillo" }));
+  app.use(passport.initialize());
+  app.use(passport.session());
 
-app.use("/api", require("./routes"));
+  app.listen(3000, function() {
+    console.log("App listening on port 3000");
+  });
 
-app.use(function(req, res, next) {
-  if (path.extname(req.path).length > 0) {
-    res.status(404).end();
-  } else {
-    next(null);
-  }
-});
+  app.use("/api", require("./routes"));
 
-app.get("/*", function(req, res) {
-  res.sendFile(path.join(__dirname, "public/index.html"));
-});
+  app.use(function(req, res, next) {
+    if (path.extname(req.path).length > 0) {
+      res.status(404).end();
+    } else {
+      next(null);
+    }
+  });
+
+  fetchCities();
+
+  app.get("/*", function(req, res) {
+    res.sendFile(path.join(__dirname, "public/index.html"));
+  });
+}, 3000);

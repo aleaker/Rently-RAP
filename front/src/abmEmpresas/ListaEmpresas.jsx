@@ -188,12 +188,13 @@ const EnhancedTableToolbar = props => {
               <DeleteIcon />
             </IconButton>
           </Tooltip>
-
-          <Tooltip title="Edit" style={{ float: "right" }}>
-            <IconButton aria-label="delete">
-              <EditIcon />
-            </IconButton>
-          </Tooltip>
+          <Link to={`abmEmpresas/edit/${props.selected[0]}`}>
+            <Tooltip title="Edit" style={{ float: "right" }}>
+              <IconButton aria-label="delete">
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+          </Link>
         </div>
       ) : (
         <Tooltip>
@@ -304,7 +305,6 @@ export default function EnhancedTable({
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
-
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, name);
     } else if (selectedIndex === 0) {
@@ -419,7 +419,6 @@ export default function EnhancedTable({
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      )
     </div>
   );
 }

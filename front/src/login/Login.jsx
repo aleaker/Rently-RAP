@@ -10,7 +10,6 @@ import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
-import img from "../assets/1.png";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../store/actions/userActions";
@@ -58,7 +57,7 @@ function Login(props) {
     e.persist();
     setState(state => ({
       ...state,
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     }));
   };
   const handleSubmit = e => {
@@ -75,7 +74,6 @@ function Login(props) {
       <Container component="main" maxWidth="xs">
         <Box boxShadow={3} className={classes.paper} p={5} borderRadius={16}>
           <Avatar className={classes.avatar}>
-            {" "}
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">

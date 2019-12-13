@@ -3,34 +3,170 @@ const tokenRouter = require("./tokenRouter");
 const searchCarsRouter = require("./searchCars");
 const createCompanyRouter = require("./createCompany");
 const userRouter = require("./user");
+const adminEmpresasRouter = require("./adminEmpresas");
 //Requiero los modelos
-const registerRentalRouter = require("./registerRental");
+const rentalRouter = require("./rentalRouter");
 const Company = require("../models/Company");
 const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
 const User = require("../models/User");
+const bookingRouter = require("./bookingRouter");
 
+router.use("/booking", bookingRouter);
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
-router.use("/registerRental", registerRentalRouter);
+router.use("/rentalRouter", rentalRouter);
 router.use("/createCompany", createCompanyRouter);
 router.use("/user", userRouter); //rutas del login and logout
+router.use("/adminEmpresas", adminEmpresasRouter);
 
 //RentlyAdmin
 router.post("/rently", (req, resp) => {
   RentlyAdmin.create(req.body);
 });
-//Users
 
+//VER TODOS LOS USERS
 router.get("/users", (req, res) => {
   User.find().then(e => res.json(e));
 });
 
+//CREAR UN ADMN RENTLY
 router.post("/rently", (req, res) => {
   RentlyAdmin.create(req.body);
   console.log("RentlyAdmin creado");
   res.redirect("/api/rently");
+});
+
+//VER TODOS LOS ADMINS-EMPRESA ACTIVOS
+router.get("/companyAdmins", async (req, res) => {
+  try {
+    const admins = await User.find({
+      UserType: "AdminEmpresa",
+      Active: true
+    });
+    res.json(admins);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//GET 1 ADMIN-EMPRESA
+router.get("/companyAdmin/:id", async (req, res) => {
+  try {
+    const admin = await User.findById(req.params.id);
+    res.json(admin);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//EDIT 1 ADMIN-EMPRESA
+router.put("/admin/edit/:id", async (req, res) => {
+  try {
+    const edit = await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json(edit);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//VER TODOS LOS VENDEDORES ACTIVOS
+router.get("/salespeople/:companyId", async (req, res) => {
+  try {
+    console.log(req.params.companyId, "entre");
+    const salespersons = await User.find({
+      Company: req.params.companyId,
+      UserType: "Vendedor",
+      Active: true
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/admins/:companyId", async (req, res) => {
+  try {
+    console.log(req.params.companyId, "entre");
+    const salespersons = await User.find({
+      Company: req.params.companyId,
+      UserType: "adminEmpresa",
+      Active: true
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+//VER TODOS LOS VENDEDORES INACTIVOS
+router.get("/salespeople/deactivated/:companyid", async (req, res) => {
+  try {
+    const salespersons = await User.find({
+      UserType: "Vendedor",
+      Active: false,
+      Company: req.params.companyid
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/admin/deactivated/:companyid", async (req, res) => {
+  try {
+    const salespersons = await User.find({
+      UserType: "adminEmpresa",
+      Active: false,
+      Company: req.params.companyid
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//CAMBIAR UN VENDEDOR A INACTIVO >>> PUT http://localhost:3000/api/salespeople/:id
+router.put("/salespeople/:id", async (req, res) => {
+  try {
+    const change = { Active: false };
+    const deleted = await User.findByIdAndUpdate(req.params.id, change);
+    res.json(deleted);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//VER A UN VENDEDOR ESPECIFICO >>> GET http://localhost:3000/api/salesperson/:id
+router.get("/salesperson/:id", async (req, res) => {
+  try {
+    const salesperson = await User.findById(req.params.id);
+    res.json(salesperson);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//REACTIVAR UN VENDEDOR
+router.put("/reactivate/:id", async (req, res) => {
+  console.log("ENTRE A LA RUTA DEL BACK");
+  try {
+    const change = { Active: true };
+    const nowactive = await User.findByIdAndUpdate(req.params.id, change);
+    res.json(nowactive);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+//EDITAR UN VENDEDOR
+router.put("/salesperson/edit/:id", async (req, res) => {
+  try {
+    const edit = await User.findByIdAndUpdate(req.params.id, req.body);
+    res.json(edit);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //VER LOS USUARIOS: GET http://localhost:3000/api/user
@@ -55,13 +191,14 @@ router.get("/user/:id", async (req, res) => {
 
 //CREAR UN USER : POST http://localhost:3000/api/user
 router.post("/user", (req, res) => {
-  try {
-    User.create(req.body);
-    console.log("User creado");
-    res.json({ status: "user created" });
-  } catch (err) {
-    console.log(err);
-  }
+  User.create(req.body)
+    .then(user => {
+      res.send(user);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send("ERROR");
+    });
 });
 
 //MODIFICAR UN USER: PUT http://localhost:3000/api/user/:id
@@ -435,13 +572,16 @@ router.get("/booking/:id", async (req, res) => {
 
 //CREAR UNA RESERVA: POST http://localhost:3000/api/booking
 router.post("/booking", (req, res) => {
-  try {
-    Booking.create(req.body);
-    console.log("Reserva guardada");
-    res.redirect("/api/booking");
-  } catch (err) {
-    console.log(err);
-  }
+  Booking.create(req.body)
+    .then(e => {
+      console.log(e);
+      res.send("Ok").status(201);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send(err).status(500);
+    });
+  res.redirect("/api/booking");
 });
 
 //MODIFICAR DE UNA RESERVA: PUT http://localhost:3000/api/booking/:id

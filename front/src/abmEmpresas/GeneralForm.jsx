@@ -1,15 +1,26 @@
 import React from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import FormCreator from '../formCreator'
+import formCreator from "../formCreator";
+
 
 export default function GeneralForm({
   handleChange,
   values,
   handleBankDetails
 }) {
+  // const [form, setForm] = React.useState({})
+  // const handleChange2 = (object)=>{
+  //   setForm(object)
+  //   console.log(form)
+  // }
+
+
   return (
     <div>
-      <Col xs={12} md={4}>
+ 
+      <Col xs={6} md={6}>
         <label>Datos Empresa</label>
         <input
           type="text"
@@ -28,7 +39,8 @@ export default function GeneralForm({
           value={values.Description}
         />
       </Col>
-      <Col xs={12} md={4}>
+ 
+      <Col xs={6} md={4}>
         <label>Direccion</label>
         <Row>
           <Col xs={6} md={4}>
@@ -189,14 +201,52 @@ export default function GeneralForm({
               placeholder="Codigo Swift"
               id="business_Description"
               onChange={evt =>
-                handleBankDetails({ SwiffCode: evt.target.value })
+                handleBankDetails({ SwiftCode: evt.target.value })
               }
               disabled={values.disable}
-              value={values.BankAccountInfo.SwiffCode}
+              value={values.BankAccountInfo.SwiftCode}
             />
           </Col>
         </Row>
       </Col>
+      {/* {formCreator([{row: 2, placeHolder: 'ajdskahs', name: 'Ejemplo1', type: 'date', required: true}, 
+                    {row: 1, placeHolder: 'asds', name:'Ejemplo2', type:'password', value:'hola'},
+                    {row: 2, placeHolder: 'asds', name:'Ejemplo3', type:'password'},
+                    {row: 4, placeHolder: 'asds', name:'Ejemplo4', type:'select', options:['Hola', 'Como', 'Estas']}, 
+                    {row: 2, placeHolder: 'ajdskahs', name: 'Ejemplo5', type: 'text'},
+                    {row: 3, placeHolder: 'ajdskahs', name: 'Ejemplo6', type: 'text'},
+                    {row: 2, placeHolder: 'ajdskahs', name: 'Ejemplo8', type: 'text'},
+                    {row: 3, placeHolder: 'Hola', name: 'Ejemplo7', type: 'date'},
+                    {row: 5, placeHolder: 'Hola', name: 'Ejemplo10', type: 'date'},
+                    {row: 5, placeHolder: 'Hola', name: 'Ejemplo9', type: 'date'}
+
+                  ], 
+                    {
+                    name: 'Ejemplo', 
+                    handler: handleChange2,
+                    submit:{
+                      text: 'Agregar',
+                      alertFrontError: 'Por favor rellenar todos los campos',
+                      http:{
+                        enforce: 'all',
+                        provider: 'axios',
+                        route: '/api/example',
+                      }
+                    },
+                    clear:{
+                      text: 'Borrar',
+                    },
+                    restore:{
+                      text: 'Restaurar'
+                    },
+                    headers: {
+                      formHeader: ['Un Ejemplo de Formulario', 'h5'],
+                      rowHeadersVariant: 'h5',
+                      '1':'Mi primer Row',
+                      '3': 'Mi Tercer Row' 
+                      
+                    }
+                      })} */}
     </div>
   );
 }

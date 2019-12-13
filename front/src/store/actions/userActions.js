@@ -17,7 +17,7 @@ export const login = function(userData) {
   return function(dispatch) {
     if (!userData.password.length) throw Error("No password");
     return axios
-      .post("api/user/login", userData)
+      .post("/api/user/login", userData)
       .then(({ data }) => {
         return dispatch(logUser(data));
       })
@@ -37,9 +37,12 @@ export const logout = function(user) {
 export const fetchUser = function() {
   return function(dispatch) {
     return axios
-      .get("api/user")
+      .get("http://localhost:3000/api/user")
       .then(user => {
-        dispatch(logUser(user.data));
+        console.log("AQUIII USER", user);
+        if (user.data.UserType) {
+          dispatch(logUser(user.data));
+        }
       })
       .catch(error => dispatch(logoutUser()));
   };

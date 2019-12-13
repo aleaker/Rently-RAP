@@ -31,13 +31,6 @@ router.post("/getRentalsByName", (req, resp) => {
   let s = req.body;
   const ciudades = getCity()[req.body.location];
   const tokens = fetchToken();
-  console.log(
-    "CIUDADES:",
-    ciudades,
-    "-------------------------------------------------------------------------------------------------------------------------------------------",
-    "TOKENS",
-    tokens
-  );
   const promesas = tokens.map(async token => {
     let place = ciudades[token.Name][0];
     return request(

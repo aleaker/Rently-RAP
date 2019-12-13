@@ -42,13 +42,10 @@ import editComissionContainer from "../adminEmpresas/Container/editComissionCont
 import Reservation from "../reservationForm/reservationFormContainer";
 import CompaniesMenu from './menu/CompaniesMenu'
 import RentadorasMenu from './menu/RentadorasMenu'
-<<<<<<< HEAD
 import VendedoresMenu from './menu/Vendedores'
 import AdminEmpresasMenu from './menu/AdminEmpresasMenu'
 
-=======
 import Checkout from "../reservationForm/Checkout"
->>>>>>> 04a17fbb5dcc4f2d0e7b030fe3f3dad3c14b210c
 import Card from "@material-ui/core/Card"
 import { Switch, Route, Link, withRouter, BrowserRouter } from "react-router-dom";
 import { Checkbox } from "@material-ui/core";
@@ -230,9 +227,6 @@ function Dashboard(props) {
           <Route path="/abmempresas/edit" component={EditarEmpresas}/>
           <Route exact path="/rentalTable" component={RentalTableContainer} />
           <Route exact path="/companylist" component={ListaEmpresasContainer} />
-<<<<<<< HEAD
-          <Route exact path="/comisiones" component={comisionTable} />
-=======
 
           <Route exact path="/" component={Reservation} />
           <Route exact path="/checkout"component={Checkout}/>
@@ -257,7 +251,6 @@ function Dashboard(props) {
           />
           <Route exact path="/AdminEmpresa/admins" component={Admins} />
           <Route exact path="/AdminEmpresa/editar/:id" component={EditAdmin} />
->>>>>>> 04a17fbb5dcc4f2d0e7b030fe3f3dad3c14b210c
           <Route exact path="/registerRental" component={RentalFormContainer} />
           </Switch>:
           <Switch>

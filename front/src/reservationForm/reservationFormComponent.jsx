@@ -10,7 +10,8 @@ export default function ReservationFormComponent({
   handleAge,
   handleKm,
   handleSubmit,
-  cities
+  cities,
+  selectedStartDate
 }) {
   let today = new Date();
   let todayFormated = `${today.getFullYear()}-${today.getMonth() +
@@ -18,8 +19,8 @@ export default function ReservationFormComponent({
   let tomorrowFormated = `${today.getFullYear()}-${today.getMonth() +
     1}-${today.getDate() + 1}`;
     
-  return (
-    <div>
+    return (
+      <div>
       <form>
         <label htmlFor="start">Start date:</label>
         <input
@@ -39,7 +40,7 @@ export default function ReservationFormComponent({
           type="date"
           id="end"
           name="trip-ends"
-          min={todayFormated}
+          min={ selectedStartDate || todayFormated}
           max="2020-12-31"
           onChange={evt => handleEndDate(evt.target.value)}
         />
@@ -49,6 +50,8 @@ export default function ReservationFormComponent({
           <select
             className="browser-default"
             onChange={evt => handleLocation(evt.target.value)}
+  
+          
           >
             {_.keys(cities).map(city => (
               <option key={city} value={cities[city]}>
@@ -73,8 +76,8 @@ export default function ReservationFormComponent({
             className="browser-default"
             onChange={evt => handleKm(evt.target.value)}
           >
-            <option value="1">Km Ilimitados</option>
-            <option value="0">200 Km diarios</option>
+            <option value={1}>Km Ilimitados</option>
+            <option value={0}>200 Km diarios</option>
           </select>
         </div>
       </form>

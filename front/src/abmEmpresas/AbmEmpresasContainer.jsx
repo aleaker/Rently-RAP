@@ -114,6 +114,7 @@ class Empresas extends React.Component {
         console.log('', {users: UsersSchema, Company})
         axios.post('/api/createCompany/', {users: UsersSchema, Company, Commission: CommissionSchema})
         .then(msg=>{
+            console.log("AAAAALALALALLA",msg)
             this.setState({loading: false})
             data = 'done'
             return msg.data})
@@ -122,7 +123,7 @@ class Empresas extends React.Component {
 
     handleSchema(obj){
         this.setState({CommissionScheme: obj}, ()=>{
-                       console.log(this.state)})
+                       })
     }
     
     handleCommissionSchema(obj, order){

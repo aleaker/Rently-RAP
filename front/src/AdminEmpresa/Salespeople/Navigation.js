@@ -31,11 +31,6 @@ export default class AdminEmpresaNav extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/comisiones">
-                  Comisiones
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link className="nav-link" to="/AdminEmpresa/vendedores">
                   Mis vendedores
                 </Link>

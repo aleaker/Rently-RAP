@@ -11,7 +11,9 @@ const CarRental = require("../models/CarRental");
 const Commission = require("../models/Commission");
 const Booking = require("../models/Booking");
 const User = require("../models/User");
+const bookingRouter = require("./bookingRouter");
 
+router.use("/booking", bookingRouter);
 router.use("/token", tokenRouter);
 router.use("/searchcars", searchCarsRouter);
 router.use("/rentalRouter", rentalRouter);
@@ -287,10 +289,9 @@ router.put("/company/:id", async (req, res) => {
 
 //BORRAR 1 EMPRESA POR SU ID: DELETE http://localhost:3000/api/company/:id
 router.delete("/company/:id", async (req, res) => {
-  Company.updateOne(
-    { _id: req.params.id },
-    { $set: { Active: false } }
-  ).then(company => res.json(company));
+  Company.updateOne({ _id: req.params.id }, { $set: { Active: false } }).then(
+    company => res.json(company)
+  );
   /* .catch(err => console.log(err), res.send(401)); */
 });
 

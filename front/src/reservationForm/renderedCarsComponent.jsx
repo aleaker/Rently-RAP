@@ -13,27 +13,26 @@ import {
   FaRegSnowflake
 } from "react-icons/fa";
 import { GiGears } from "react-icons/gi";
-
 import { withRouter } from "react-router-dom";
 
 function RenderedCars(props) {
   const handleClick = e => {
+    console.log(props.car, "ACAAAAA PAPI");
     props.history.push("/checkout", props.car);
   };
   //#3f51b5
   return (
-
     <Card>
       <ListGroup className="list-group-flush">
-        <ListGroupItem >
+        <ListGroupItem>
           {" "}
-          <Card.Title >
+          <Card.Title>
             {" "}
             {props.car.Car.Model.Brand.Name} {props.car.Car.Model.Name} o
             similar.
           </Card.Title>
         </ListGroupItem>
-        <ListGroupItem >
+        <ListGroupItem>
           <h6>Lugar de recogida:</h6> {props.car.DeliveryPlace.Address}
         </ListGroupItem>
         <ListGroupItem>
@@ -108,9 +107,7 @@ function RenderedCars(props) {
             </Card>
           </Row>
         </ListGroupItem>
-        {/* <ListGroupItem>Vestibulum at eros</ListGroupItem> */}
       </ListGroup>
-
     </Card>
   );
 }

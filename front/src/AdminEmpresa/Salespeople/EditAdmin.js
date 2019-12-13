@@ -17,7 +17,6 @@ export default class EditAdmin extends Component {
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-    // this.handleChangePhoto = this.handleChangePhoto.bind(this);
   }
 
   componentDidMount() {
@@ -88,13 +87,17 @@ export default class EditAdmin extends Component {
                   <option value={this.state.UserType = "Vendedor"}>Vendedor</option>
                   <option value={this.state.UserType ="AdminEmpresa"}>Admin Empresa</option>
                 </select> */}
-                <input
+                <select
+                  name="UserType"
                   className="form-control"
                   onChange={this.onInputChange}
-                  placeholder="Vendedor o AdminEmpresa"
-                  value={this.state.UserType}
-                  name="UserType"
-                />
+                >
+                  <option value="" disabled selected>
+                    Tipo de usuario
+                  </option>
+                  <option value="Vendedor">Vendedor</option>
+                  <option value="AdminEmpresa">Admin Empresa</option>
+                </select>
                 <input
                   className="form-control"
                   onChange={this.onInputChange}
@@ -156,7 +159,9 @@ export default class EditAdmin extends Component {
                   name="Photo"
                 /> */}
 
-                <button class="btn waves-effect waves-light" type="submit">Guardar los cambios</button>
+                <button class="btn waves-effect waves-light" type="submit">
+                  Guardar los cambios
+                </button>
               </form>
             </div>
           </div>

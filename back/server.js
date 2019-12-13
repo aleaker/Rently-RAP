@@ -8,7 +8,6 @@ const {
   rentalTokenfunction,
   fetchToken
 } = require("../back/ApiRental/RentalAPIs");
-const multer = require("multer");
 const { fetchCities } = require("./cities");
 
 var rentalToken;
@@ -18,15 +17,15 @@ const session = require("express-session"); // req.session || https://www.tutori
 const cookieParser = require("cookie-parser"); // req.cookies
 const passport = require("passport");
 rentalTokenfunction();
+require("dotenv").config();
 
 setTimeout(() => {
+  console.log("AAAAAA", rentalTokenfunction());
   console.log("fetchiando token", rentalTokenfunction());
   app.use(express.static("public"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(morgan("dev"));
-
-  require("dotenv").config();
 
   //conf passport
   app.use(cookieParser());
@@ -48,7 +47,7 @@ setTimeout(() => {
     }
   });
 
-  console.log("ESTOESFETCHCITIES", fetchCities());
+  fetchCities();
 
   app.get("/*", function(req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));

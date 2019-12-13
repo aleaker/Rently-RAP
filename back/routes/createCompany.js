@@ -4,41 +4,44 @@ const Company = require("../models/Company");
 const Commission = require("../models/Commission");
 const nodemailer = require("nodemailer");
 
-
 router.post("/", (req, res) => {
   let newUser = req.body.users;
   let newCompany = req.body.Company;
   let newCommision = req.body.Commission;
-  let CompanyID
-  console.log(newUser)
-  let Commision = []
-  console.log('hola', newCommision);
+  let CompanyID;
+  console.log(newUser);
+  let Commision = [];
+  console.log("hola", newCommision);
   Company.create(newCompany)
-    .then(created => {  
+    .then(created => {
       console.log("Acabo de crear una compania");
-      newCommision.map(el=>el['Company'] = created._id);
+      newCommision.map(el => (el["Company"] = created._id));
       newUser[0].Company = created._id;
-      console.log('Chauuu', newCommision);
+      console.log("Chauuu", newCommision);
       CompanyID = created._id;
-      console.log(newUser[0], 'Soy el usuario que voy a crear')
+      console.log(newUser[0], "Soy el usuario que voy a crear");
       return Commission.create(newCommision);
     })
     .then(e => {
       console.log("esta es la compania creada ", e);
-      e.map(el=> {Commision.push(el._id)
-      console.log('Este es el array de comisiones', Commision)
-      })
+      e.map(el => {
+        Commision.push(el._id);
+        console.log("Este es el array de comisiones", Commision);
+      });
       return User.create(newUser[0]);
     })
-    .then((user) => {
+    .then(user => {
       console.log("Acabo de crear un usuario", user);
-      Commision.map(com=>{Company.findByIdAndUpdate(CompanyID, {"$push":{"CommissionScheme": com }}).then(e=>console.log(e))})
-      
-      return user;})
+      Commision.map(com => {
+        Company.findByIdAndUpdate(CompanyID, {
+          $push: { CommissionScheme: com }
+        }).then(e => console.log(e));
+      });
+
+      return user;
+    })
 
     .then(User => {
-      
-
       let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -67,40 +70,44 @@ router.post("/", (req, res) => {
 
       Company.findByIdAndUpdate(CompanyID, { CommisionScheme: CompanyID });
     })
-    .then(()=> Company.findById(CompanyID))
-    .then((e)=> {console.log(e)
-                  res.send('Ok').status(200)})
-    .catch(err => {console.log(err)
-                  res.send(err).status(500)
+    .then(() => Company.findById(CompanyID))
+    .then(e => {
+      console.log(e);
+      res.send("Ok").status(200);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send(err).status(500);
     });
 });
 
-router.post('/get', (req, res)=>{
-  let company = {}
-  console.log(req.body)
+router.post("/get", (req, res) => {
+  let company = {};
+  console.log(req.body);
   Company.findById(req.body.id)
-  .then(e=> company['Company'] = e)
-  .then(()=>Commission.find({'Company':req.body.id}))
-  .then((e=>company['Commission'] = e))
-  .then(()=> User.find({'Company': req.body.id}))
-  .then(e=> company['User'] = e)
-  .then(()=>res.send(company))
-})
+    .then(e => (company["Company"] = e))
+    .then(() => Commission.find({ Company: req.body.id }))
+    .then(e => (company["Commission"] = e))
+    .then(() => User.find({ Company: req.body.id }))
+    .then(e => (company["User"] = e))
+    .then(() => res.send(company));
+});
 
-router.post('/update', (req, res)=>{
+router.post("/update", (req, res) => {
   let newUser = req.body.users;
   let newCompany = req.body.Company;
   let newCommision = req.body.Commission;
-  let CompanyID = req.body.id
-  let UserID = req.body.userId
-  console.log(req.body)
+  let CompanyID = req.body.id;
+  let UserID = req.body.userId;
+  console.log(req.body);
 
   Company.findByIdAndUpdate(CompanyID, newCompany)
-  // .then(()=>User.findByIdAndUpdate(UserID, newUser))
-  .then(()=> res.send('Ok').status(201))
-  .catch(e=> {
-    console.log(e)
-    res.send('Ha habido un error').status(500)})
-})
+    // .then(()=>User.findByIdAndUpdate(UserID, newUser))
+    .then(() => res.send("Ok").status(201))
+    .catch(e => {
+      console.log(e);
+      res.send("Ha habido un error").status(500);
+    });
+});
 
 module.exports = router;

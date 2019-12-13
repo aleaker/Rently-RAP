@@ -37,19 +37,26 @@ import EditarEmpresas from "../abmEmpresas/editarEmpresas/EditarEmpresas";
 import RentalFormContainer from "../RentalForm/RentalFormContainer";
 import AbmEmpresasContainer from "../abmEmpresas/AbmEmpresasContainer";
 import RentalTableContainer from "../RentalForm/RentalTableContainer";
-import addComissionsContainer from "../adminEmpresas/Container/addComissionsContainer";
-import editComissionContainer from "../adminEmpresas/Container/editComissionContainer";
+import addComissionsContainer from "../AdminEmpresa/Container/addComissionsContainer";
+import editComissionContainer from "../AdminEmpresa/Container/editComissionContainer";
 import Reservation from "../reservationForm/reservationFormContainer";
-import CompaniesMenu from './menu/CompaniesMenu'
-import RentadorasMenu from './menu/RentadorasMenu'
-import VendedoresMenu from './menu/Vendedores'
-import AdminEmpresasMenu from './menu/AdminEmpresasMenu'
+import ShowBookings from "../RentlyVe/showBookings";
+import CompaniesMenu from "./menu/CompaniesMenu";
+import RentadorasMenu from "./menu/RentadorasMenu";
+import VendedoresMenu from "./menu/Vendedores";
+import AdminEmpresasMenu from "./menu/AdminEmpresasMenu";
+import Checkout from "../reservationForm/Checkout";
 
-import Checkout from "../reservationForm/Checkout"
-import Card from "@material-ui/core/Card"
-import { Switch, Route, Link, withRouter, BrowserRouter } from "react-router-dom";
+import Card from "@material-ui/core/Card";
+import {
+  Switch,
+  Route,
+  Link,
+  withRouter,
+  BrowserRouter
+} from "react-router-dom";
 import { Checkbox } from "@material-ui/core";
-const drawerWidth = 240
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -131,7 +138,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Dashboard(props) {
-  const [loc, setLoc] = React.useState('/')
+  const [loc, setLoc] = React.useState("/");
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleLogout = () => {
@@ -148,129 +155,209 @@ function Dashboard(props) {
 
   return (
     <BrowserRouter>
-    <div className={classes.root}>
-      {console.log(props.user.UserType)}
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        className={clsx(classes.appBar, open && classes.appBarShift)}
-      >
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(
-              classes.menuButton,
-              open && classes.menuButtonHidden
-            )}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            Affiliate Portal
-          </Typography>
-          <Button variant="contained" color="secondary" onClick={handleLogout}>
-            Log out
-          </Button>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-        <Link to={'/'}>
-          <ListItem>
-            
-          <ListItem button>
-            <ListItemIcon>
-              <BusinessIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Rently"} />
-          </ListItem>
-            
-          </ListItem>
-          </Link>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position="absolute"
+          className={clsx(classes.appBar, open && classes.appBarShift)}
+        >
+          <Toolbar className={classes.toolbar}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              className={clsx(
+                classes.menuButton,
+                open && classes.menuButtonHidden
+              )}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              className={classes.title}
+            >
+              Affiliate Portal
+            </Typography>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleLogout}
+            >
+              Log out
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
           <Divider />
-        </List> 
-        <Divider />
-        <List>
-        {props.user.UserType=="rentlyadmin"?<div>
-       <CompaniesMenu drawerState={open}/>
-       <RentadorasMenu/>
-       </div>:''}
-       {props.user.UserType=="adminEmpresa"?<div><VendedoresMenu /><AdminEmpresasMenu/></div>:''}
-       </List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Card style={{margin: "1%", padding: "2%"}}>
-          {props.user.UserType=="rentlyadmin"?<Switch>
-          <Route exact path="/abmempresas" component={AbmEmpresasContainer} />
-          <Route path="/abmempresas/edit" component={EditarEmpresas}/>
-          <Route exact path="/rentalTable" component={RentalTableContainer} />
-          <Route exact path="/companylist" component={ListaEmpresasContainer} />
+          <List>
+            <Link to={"/"}>
+              <ListItem>
+                <ListItem button>
+                  <ListItemIcon>
+                    <BusinessIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={"Rently"} />
+                </ListItem>
+              </ListItem>
+            </Link>
+            <Divider />
+          </List>
+          <Divider />
+          <List>
+            <CompaniesMenu />
+            <RentadorasMenu />
+          </List>
+          <Divider />
+          <List>
+            {props.user.UserType == "rentlyadmin" ? (
+              <div>
+                <CompaniesMenu drawerState={open} />
+                <RentadorasMenu />
+              </div>
+            ) : (
+              ""
+            )}
+            {props.user.UserType == "adminEmpresa" ? (
+              <div>
+                <VendedoresMenu />
+                <AdminEmpresasMenu />
+              </div>
+            ) : (
+              ""
+            )}
+          </List>
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Card style={{ margin: "1%", padding: "2%" }}>
+            {props.user.UserType == "rentlyadmin" ? (
+              <Switch>
+                <Route
+                  exact
+                  path="/abmempresas"
+                  component={AbmEmpresasContainer}
+                />
+                <Route path="/abmempresas/edit" component={EditarEmpresas} />
+                <Route
+                  exact
+                  path="/rentalTable"
+                  component={RentalTableContainer}
+                />
+                <Route
+                  exact
+                  path="/companylist"
+                  component={ListaEmpresasContainer}
+                />
 
-          <Route exact path="/" component={Reservation} />
-          <Route exact path="/checkout"component={Checkout}/>
+                <Route exact path="/reservas" component={ShowBookings} />
 
-          <Route exact path="/comisiones" component={comisionTable} />
-          
-          <Route exact path="/AdminEmpresa/vendedores" component={ShowThem} />
-          <Route
-            exact
-            path="/AdminEmpresa/vendedores/inactivos"
-            component={ShowInactive}
-          />
-          <Route
-            exact
-            path="/AdminEmpresa/crear/vendedor"
-            component={CreateSalesperson}
-          />
-          <Route
-            exact
-            path="/AdminEmpresa/editar/vendedor/:id"
-            component={EditSalesperson}
-          />
-          <Route exact path="/AdminEmpresa/admins" component={Admins} />
-          <Route exact path="/AdminEmpresa/editar/:id" component={EditAdmin} />
-          <Route exact path="/registerRental" component={RentalFormContainer} />
-          </Switch>:
-          <Switch>
-          <Route exact path="/AdminEmpresa/vendedores" component={ShowThem} company={props.user.Company} />
-          <Route exact path="/AdminEmpresa/vendedores/inactivos" component={ShowInactive}/>
-          <Route exact path="/AdminEmpresa/crear/vendedor" component={CreateSalesperson}/>
-          <Route exact path="/AdminEmpresa/crear/admins" component={CreateSalesperson}/>
-          <Route exact path="/AdminEmpresa/editar/vendedor/:id" component={EditSalesperson}/>
-          <Route exact path="/AdminEmpresa/admins" component={ShowThem} />
-          <Route exact path="/AdminEmpresa/admins/inactivos" component={ShowInactive} />
-          <Route exact path="/AdminEmpresa/editar/admins/:id" component={EditSalesperson} />
-          <Route exact path="/adminEmpresas/comissions/add" component={addComissionsContainer}/>
-          <Route exact path="/adminEmpresas/comissions/edit/:id" component={editComissionContainer}/>
-          <Route exact path="/" component={Reservation} />
-        </Switch>
-        }
-        </Card>
-      </main>
-    </div>
-    </BrowserRouter>  
+                <Route exact path="/comisiones" component={comisionTable} />
+
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores"
+                  component={ShowThem}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores/inactivos"
+                  component={ShowInactive}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/crear/vendedor"
+                  component={CreateSalesperson}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/vendedor/:id"
+                  component={EditSalesperson}
+                />
+                <Route exact path="/AdminEmpresa/admins" component={Admins} />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/:id"
+                  component={EditAdmin}
+                />
+                <Route
+                  exact
+                  path="/registerRental"
+                  component={RentalFormContainer}
+                />
+              </Switch>
+            ) : (
+              <Switch>
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores"
+                  component={ShowThem}
+                  company={props.user.Company}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores/inactivos"
+                  component={ShowInactive}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/crear/vendedor"
+                  component={CreateSalesperson}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/crear/admins"
+                  component={CreateSalesperson}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/vendedor/:id"
+                  component={EditSalesperson}
+                />
+                <Route exact path="/AdminEmpresa/admins" component={ShowThem} />
+                <Route
+                  exact
+                  path="/AdminEmpresa/admins/inactivos"
+                  component={ShowInactive}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/admins/:id"
+                  component={EditSalesperson}
+                />
+                <Route
+                  exact
+                  path="/adminEmpresas/comissions/add"
+                  component={addComissionsContainer}
+                />
+                <Route
+                  exact
+                  path="/adminEmpresas/comissions/edit/:id"
+                  component={editComissionContainer}
+                />
+                <Route exact path="/" component={Reservation} />
+                <Route exact path="/checkout" component={Checkout} />
+              </Switch>
+            )}
+          </Card>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
@@ -281,4 +368,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

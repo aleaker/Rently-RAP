@@ -54,8 +54,7 @@ class ShowThem extends Component {
                   </Link>
                 </div>
                 <div className="card-body">
-                  <p>{salesperson.Email}</p>
-                  <p>Inserte esquema de comision aca</p>
+                  <p>Email:{salesperson.Email}</p>
                   <p>Inserte foto aca</p>
                 </div>
                 <div className="card-footer">

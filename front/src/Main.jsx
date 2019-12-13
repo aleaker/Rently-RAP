@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 //Imports de Containers
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 // Imports de Containers
 import Login from "./login/Login";
 
@@ -22,8 +22,8 @@ import EditarEmpresas from "./abmEmpresas/editarEmpresas/EditarEmpresas";
 import RentalFormContainer from "./RentalForm/RentalFormContainer";
 import AbmEmpresasContainer from "./abmEmpresas/AbmEmpresasContainer";
 import RentalTableContainer from "./RentalForm/RentalTableContainer";
-import addComissionsContainer from "./adminEmpresas/Container/addComissionsContainer";
-import editComissionContainer from "./adminEmpresas/Container/editComissionContainer";
+import addComissionsContainer from "./AdminEmpresa/Container/addComissionsContainer";
+import editComissionContainer from "./AdminEmpresa/Container/editComissionContainer";
 import Reservation from "./reservationForm/reservationFormContainer";
 import { Switch, Route } from "react-router-dom";
 
@@ -105,4 +105,7 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Main);

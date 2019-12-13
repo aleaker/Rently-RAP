@@ -43,7 +43,7 @@ const Main = props => {
         <Login />
       ) : (
         <div>
-          <Dashboard></Dashboard>
+          <Dashboard user={props.user}></Dashboard>
           {/* <Switch>
           
 

@@ -72,9 +72,11 @@ router.put("/admin/edit/:id", async (req, res) => {
 });
 
 //VER TODOS LOS VENDEDORES ACTIVOS
-router.get("/salespeople", async (req, res) => {
+router.get("/salespeople/:companyId", async (req, res) => {
   try {
+    console.log(req.params.companyId, 'entre')
     const salespersons = await User.find({
+      Company: req.params.companyId,
       UserType: "Vendedor",
       Active: true
     });
@@ -84,12 +86,39 @@ router.get("/salespeople", async (req, res) => {
   }
 });
 
+router.get("/admins/:companyId", async (req, res) => {
+  try {
+    console.log(req.params.companyId, 'entre')
+    const salespersons = await User.find({
+      Company: req.params.companyId,
+      UserType: "adminEmpresa",
+      Active: true
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
 //VER TODOS LOS VENDEDORES INACTIVOS
-router.get("/salespeople/deactivated", async (req, res) => {
+router.get("/salespeople/deactivated/:companyid", async (req, res) => {
   try {
     const salespersons = await User.find({
       UserType: "Vendedor",
-      Active: false
+      Active: false,
+      Company: req.params.companyid
+    });
+    res.json(salespersons);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/admin/deactivated/:companyid", async (req, res) => {
+  try {
+    const salespersons = await User.find({
+      UserType: "adminEmpresa",
+      Active: false,
+      Company: req.params.companyid
     });
     res.json(salespersons);
   } catch (err) {

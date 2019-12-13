@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AdminEmpresaNav from "./Navigation";
+import { connect } from "react-redux";
 
-export default class ShowThem extends Component {
+class ShowInactive extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,11 +13,16 @@ export default class ShowThem extends Component {
   }
   componentDidMount() {
     this.getInactiveSalespeople();
+
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if(this.props.match != prevProps.match){
+    this.getInactiveSalespeople()}
+  }
   getInactiveSalespeople() {
     axios
-      .get("http://localhost:3000/api/salespeople/deactivated")
+      .get(`http://localhost:3000/api/${this.props.match.path.split('/')[2] == 'admins'?'admin':'salespeople'}/deactivated/${this.props.user.Company}`)
       .then(res => this.setState({ salespeople: res.data }));
   }
 
@@ -29,7 +35,6 @@ export default class ShowThem extends Component {
   render() {
     return (
       <div className="container">
-        <AdminEmpresaNav />
         <div className="row">
           {this.state.salespeople.map(salesperson => (
             <div className="col-md-4 p-2" key={salesperson._id}>
@@ -64,3 +69,9 @@ export default class ShowThem extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ user }) => ({
+  user: user
+});
+
+export default connect(mapStateToProps, null)(ShowInactive);

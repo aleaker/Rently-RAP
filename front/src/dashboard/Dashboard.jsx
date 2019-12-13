@@ -248,15 +248,42 @@ function Dashboard(props) {
                 component={RentalTableContainer}
               />
 
-              <Route
-                exact
-                path="/companylist"
-                component={ListaEmpresasContainer}
-              />
-
               <Route exact path="/" component={Reservation} />
+              <Route exact path="/checkout" component={Checkout} />
 
               <Route exact path="/comisiones" component={comisionTable} />
+
+              <Route
+                exact
+                path="/AdminEmpresa/vendedores"
+                component={ShowThem}
+              />
+              <Route
+                exact
+                path="/AdminEmpresa/vendedores/inactivos"
+                component={ShowInactive}
+              />
+              <Route
+                exact
+                path="/AdminEmpresa/crear/vendedor"
+                component={CreateSalesperson}
+              />
+              <Route
+                exact
+                path="/AdminEmpresa/editar/vendedor/:id"
+                component={EditSalesperson}
+              />
+              <Route exact path="/AdminEmpresa/admins" component={Admins} />
+              <Route
+                exact
+                path="/AdminEmpresa/editar/:id"
+                component={EditAdmin}
+              />
+              <Route
+                exact
+                path="/registerRental"
+                component={RentalFormContainer}
+              />
 
               <Route
                 exact

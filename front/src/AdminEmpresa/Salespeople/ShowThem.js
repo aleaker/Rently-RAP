@@ -15,10 +15,21 @@ class ShowThem extends Component {
     this.getActiveSalespeople();
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if(this.props.match != prevProps.match){
+    this.getActiveSalespeople()}
+  }
   getActiveSalespeople() {
-    axios
-      .get("http://localhost:3000/api/salespeople")
+    const route = this.props.match.path.split('/')[2]
+    if(route == 'admins'){
+      axios
+      .get(`http://localhost:3000/api/admins/${this.props.user.Company}`)
       .then(res => this.setState({ salespeople: res.data }));
+    }
+    else{
+    axios
+      .get(`http://localhost:3000/api/salespeople/${this.props.user.Company}`)
+      .then(res => this.setState({ salespeople: res.data }));}
   }
 
   deactivate(id) {
@@ -29,7 +40,6 @@ class ShowThem extends Component {
   render() {
     return (
       <div className="container">
-        <AdminEmpresaNav />
         <div className="row">
           {this.state.salespeople.map(salesperson => (
             <div className="col-md-4 p-2" key={salesperson._id}>
@@ -38,7 +48,7 @@ class ShowThem extends Component {
                   <h5>{salesperson.FirstName + " " + salesperson.LastName}</h5>
                   <Link
                     className="btn waves-effect waves-light"
-                    to={"/AdminEmpresa/editar/vendedor/" + salesperson._id}
+                    to={`/AdminEmpresa/editar/${this.props.match.path.split('/')[2] == 'admins'?'admins':'vendedor'}/` + salesperson._id}
                   >
                     Editar
                   </Link>
@@ -63,7 +73,9 @@ class ShowThem extends Component {
     );
   }
 }
-const mapStateToProps = state => ({});
+const mapStateToProps = ({ user }) => ({
+  user: user
+});
 
 const mapDispatchToProps = dispatch => ({});
 

@@ -8,9 +8,16 @@ router.post("/", (req, res) => {
   let newUser = req.body.users;
   let newCompany = req.body.Company;
   let newCommision = req.body.Commission;
+<<<<<<< HEAD
   let CompanyID;
   let Commision = [];
   console.log("hola", newCommision);
+=======
+  let CompanyID
+  console.log(newUser)
+  let Commision = []
+  console.log('hola', newCommision);
+>>>>>>> 0bc3bd706a56032df6525fa9773f09180f2b2db6
   Company.create(newCompany)
     .then(created => {
       console.log("Acabo de crear una compania");
@@ -18,6 +25,7 @@ router.post("/", (req, res) => {
       newUser[0].Company = created._id;
       console.log("Chauuu", newCommision);
       CompanyID = created._id;
+      console.log(newUser[0], 'Soy el usuario que voy a crear')
       return Commission.create(newCommision);
     })
     .then(e => {
@@ -28,6 +36,7 @@ router.post("/", (req, res) => {
       });
       return User.create(newUser[0]);
     })
+<<<<<<< HEAD
     .then(() => {
       Commision.map(com => {
         Company.findByIdAndUpdate(CompanyID, {
@@ -37,9 +46,16 @@ router.post("/", (req, res) => {
 
       return null;
     })
+=======
+    .then((user) => {
+      console.log("Acabo de crear un usuario", user);
+      Commision.map(com=>{Company.findByIdAndUpdate(CompanyID, {"$push":{"CommissionScheme": com }}).then(e=>console.log(e))})
+      
+      return user;})
+>>>>>>> 0bc3bd706a56032df6525fa9773f09180f2b2db6
 
     .then(User => {
-      console.log("Acabo de crear un usuario", User);
+      
 
       let transporter = nodemailer.createTransport({
         service: "gmail",

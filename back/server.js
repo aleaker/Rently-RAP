@@ -101,7 +101,7 @@ let input = {
   }
 };
 setTimeout(() => {
-  console.log("fetchiando token", fetchToken());
+  console.log("fetchiando token", rentalTokenfunction());
   app.use(express.static("public"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());

@@ -6,28 +6,6 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 const { EMAIL, PASSWORD } = process.env;
 
-// al "input" (que es un objeto vacio) hay que pasarle la data que llega del formulario de la reserva y eso es lo que va en el form, debajo de headers.
-
-//EJEMPLO DE INPUT
-/* let input = {
-  body: {
-    RentalData: { id: "5dee88d3e5dfd80716d59ee8", Name: "Shishitan" },
-    FromDate: new Date(2020, 08, 01, 10, 00),
-    ToDate: new Date(2020, 12, 02, 10, 00),
-    deliveryPlace: { id: 4 },
-    returnPlace: { id: 4 },
-    Car: { Model: { id: 29 } },
-    illimitedKm: true,
-    Customer: {
-      Name: "Pepito Martinez",
-      EmailAddress: "hola@ejemplo.com",
-      DocumentId: "38267336",
-      CellPhone: "1144374925"
-    },
-    Extra: "El cliente llega en el vuelo AA234 a las 23:50"
-  }
-}; */
-
 const cosoBooking = async (req, res) => {
   var book = {
     FromDate: req.body.FromDate,
@@ -45,9 +23,7 @@ const cosoBooking = async (req, res) => {
   };
   const rentalToken = await fetchToken();
   var rentadora = req.body.RentalData.id;
-  console.log(rentadora, "SOOY RENTADORA");
   rentalToken.map(token => {
-    console.log(token._id, "SOOY TOKEEEN");
     if (token._id == rentadora) {
       const options = {
         uri: `${token.Url}booking/book`,
@@ -65,14 +41,8 @@ const cosoBooking = async (req, res) => {
           } else resolve(body);
         });
       })
-        .then(
-          respuesta => (
-            console.log("resssssssspuesta", respuesta, "kjanksdjnflajknsdf"),
-            JSON.parse(respuesta)
-          )
-        )
+        .then(respuesta => JSON.parse(respuesta))
         .then(respuesta => {
-          console.log("holaaa");
           if (respuesta.BookingId) {
             return Booking.create({
               Status: "Pending",
@@ -100,7 +70,6 @@ const cosoBooking = async (req, res) => {
           var dateHour = str => {
             var date = str.split("T")[0];
             var hour = str.split("T")[1].slice(0, -1);
-            console.log(hour);
             return `${date}, ${hour} hs.`;
           };
 

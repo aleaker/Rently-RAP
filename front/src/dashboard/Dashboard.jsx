@@ -42,8 +42,7 @@ import editComissionContainer from "../AdminEmpresa/Container/editComissionConta
 import Reservation from "../reservationForm/reservationFormContainer";
 import CompaniesMenu from "./menu/CompaniesMenu";
 import RentadorasMenu from "./menu/RentadorasMenu";
-import ShowBookings from "../RentlyVe/showBookings"
-
+import Checkout from "../reservationForm/Checkout";
 import Card from "@material-ui/core/Card";
 import {
   Switch,
@@ -52,6 +51,7 @@ import {
   withRouter,
   BrowserRouter
 } from "react-router-dom";
+import { Checkbox } from "@material-ui/core";
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -308,10 +308,7 @@ function Dashboard(props) {
                 component={AbmEmpresasContainer}
               />
 
-              <Route
-              exact path="/reservas"
-              component={ShowBookings}
-              />
+              <Route exact path="/reservas" component={ShowBookings} />
 
               <Route path="/abmempresas/edit" component={EditarEmpresas} />
             </Switch>

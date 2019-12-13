@@ -57,7 +57,7 @@ function Login(props) {
     e.persist();
     setState(state => ({
       ...state,
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     }));
   };
   const handleSubmit = e => {

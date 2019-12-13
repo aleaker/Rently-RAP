@@ -31,9 +31,15 @@ router.post("/getRentalsByName", (req, resp) => {
   let s = req.body;
   const ciudades = getCity()[req.body.location];
   const tokens = fetchToken();
-console.log("CIUDADES:",ciudades,"-------------------------------------------------------------------------------------------------------------------------------------------","TOKENS",tokens)
+  console.log(
+    "CIUDADES:",
+    ciudades,
+    "-------------------------------------------------------------------------------------------------------------------------------------------",
+    "TOKENS",
+    tokens
+  );
   const promesas = tokens.map(async token => {
-    let place = ciudades[token.Name][0]; 
+    let place = ciudades[token.Name][0];
     return request(
       {
         uri: `${token.Url}/search?searchModel.from=${s.startDate} ${s.startHour}&searchModel.to=${s.endDate} ${s.endHour}&searchModel.fromPlace=${place}&searchModel.toPlace=${place}&searchModel.promotion&searchModel.ilimitedKm=${s.IllimitedKm}&searchModel.onlyFullAvailability=${s.OnlyFullAvailability}&searchModel.customerItsOver25=${s.Age}`,
@@ -42,7 +48,7 @@ console.log("CIUDADES:",ciudades,"----------------------------------------------
       },
       (error, res, body) => {
         if (error) {
-          console.log(error);
+          console.log("este es el error", error);
           return;
         }
       }
@@ -51,12 +57,12 @@ console.log("CIUDADES:",ciudades,"----------------------------------------------
 
   Promise.all(promesas).then(carArrays => {
     let arr = [];
-    carArrays.map((carArray,index)=> {
+    carArrays.map((carArray, index) => {
       let obj = JSON.parse(carArray);
-      obj.map(elem=>{elem.RentalData={id:tokens[index]._id,Name:tokens[index].Name}});
-      console.log(
-        obj
-      )
+      obj.map(elem => {
+        elem.RentalData = { id: tokens[index]._id, Name: tokens[index].Name };
+      });
+      console.log(obj);
       arr.push(obj);
     });
     resp.json([].concat.apply([], arr));

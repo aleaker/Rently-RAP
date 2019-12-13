@@ -43,7 +43,10 @@ import Reservation from "../reservationForm/reservationFormContainer";
 import ShowBookings from "../RentlyVe/showBookings";
 import CompaniesMenu from "./menu/CompaniesMenu";
 import RentadorasMenu from "./menu/RentadorasMenu";
+import VendedoresMenu from "./menu/Vendedores";
+import AdminEmpresasMenu from "./menu/AdminEmpresasMenu";
 import Checkout from "../reservationForm/Checkout";
+
 import Card from "@material-ui/core/Card";
 import {
   Switch,
@@ -220,131 +223,137 @@ function Dashboard(props) {
             <CompaniesMenu />
             <RentadorasMenu />
           </List>
-          {/* <List>
-          <Link to={'/'}>
-          <ListItem button>
-            <ListItemIcon>
-              <BusinessIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Reservation"} />
-          </ListItem>
-          </Link>
-          <Link to={'/rentalTable'}>
-          <ListItem button>
-            <ListItemIcon>
-              <EmojiTransportationIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Car Rentals"} />
-          </ListItem>
-          </Link>
-        </List> */}
+          <Divider />
+          <List>
+            {props.user.UserType == "rentlyadmin" ? (
+              <div>
+                <CompaniesMenu drawerState={open} />
+                <RentadorasMenu />
+              </div>
+            ) : (
+              ""
+            )}
+            {props.user.UserType == "adminEmpresa" ? (
+              <div>
+                <VendedoresMenu />
+                <AdminEmpresasMenu />
+              </div>
+            ) : (
+              ""
+            )}
+          </List>
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Card style={{ margin: "1%", padding: "2%" }}>
-            <Switch>
-              <Route
-                exact
-                path="/rentalTable"
-                component={RentalTableContainer}
-              />
+            {props.user.UserType == "rentlyadmin" ? (
+              <Switch>
+                <Route
+                  exact
+                  path="/abmempresas"
+                  component={AbmEmpresasContainer}
+                />
+                <Route path="/abmempresas/edit" component={EditarEmpresas} />
+                <Route
+                  exact
+                  path="/rentalTable"
+                  component={RentalTableContainer}
+                />
+                <Route
+                  exact
+                  path="/companylist"
+                  component={ListaEmpresasContainer}
+                />
 
-              <Route
-                exact
-                path="/companylist"
-                component={ListaEmpresasContainer}
-              />
-              <Route exact path="/" component={Reservation} />
-              <Route exact path="/checkout" component={Checkout} />
+                <Route exact path="/reservas" component={ShowBookings} />
 
-              <Route exact path="/comisiones" component={comisionTable} />
+                <Route exact path="/comisiones" component={comisionTable} />
 
-              <Route
-                exact
-                path="/AdminEmpresa/vendedores"
-                component={ShowThem}
-              />
-              <Route
-                exact
-                path="/AdminEmpresa/vendedores/inactivos"
-                component={ShowInactive}
-              />
-              <Route
-                exact
-                path="/AdminEmpresa/crear/vendedor"
-                component={CreateSalesperson}
-              />
-              <Route
-                exact
-                path="/AdminEmpresa/editar/vendedor/:id"
-                component={EditSalesperson}
-              />
-              <Route exact path="/AdminEmpresa/admins" component={Admins} />
-              <Route
-                exact
-                path="/AdminEmpresa/editar/:id"
-                component={EditAdmin}
-              />
-              <Route
-                exact
-                path="/registerRental"
-                component={RentalFormContainer}
-              />
-
-              <Route
-                exact
-                path="/AdminEmpresa/vendedores"
-                component={ShowThem}
-              />
-              <Route
-                exact
-                path="/AdminEmpresa/vendedores/inactivos"
-                component={ShowInactive}
-              />
-              <Route
-                exact
-                path="/AdminEmpresa/crear/vendedor"
-                component={CreateSalesperson}
-              />
-              <Route
-                exact
-                path="/AdminEmpresa/editar/vendedor/:id"
-                component={EditSalesperson}
-              />
-              <Route exact path="/AdminEmpresa/admins" component={Admins} />
-              <Route
-                exact
-                path="/AdminEmpresa/editar/:id"
-                component={EditAdmin}
-              />
-              <Route
-                exact
-                path="/registerRental"
-                component={RentalFormContainer}
-              />
-
-              <Route
-                exact
-                path="/adminEmpresas/comissions/add"
-                component={addComissionsContainer}
-              />
-
-              <Route
-                exact
-                path="/adminEmpresas/comissions/edit/:id"
-                component={editComissionContainer}
-              />
-
-              <Route
-                exact
-                path="/abmempresas"
-                component={AbmEmpresasContainer}
-              />
-
-              <Route exact path="/reservas" component={ShowBookings} />
-
-              <Route path="/abmempresas/edit" component={EditarEmpresas} />
-            </Switch>
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores"
+                  component={ShowThem}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores/inactivos"
+                  component={ShowInactive}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/crear/vendedor"
+                  component={CreateSalesperson}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/vendedor/:id"
+                  component={EditSalesperson}
+                />
+                <Route exact path="/AdminEmpresa/admins" component={Admins} />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/:id"
+                  component={EditAdmin}
+                />
+                <Route
+                  exact
+                  path="/registerRental"
+                  component={RentalFormContainer}
+                />
+              </Switch>
+            ) : (
+              <Switch>
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores"
+                  component={ShowThem}
+                  company={props.user.Company}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/vendedores/inactivos"
+                  component={ShowInactive}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/crear/vendedor"
+                  component={CreateSalesperson}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/crear/admins"
+                  component={CreateSalesperson}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/vendedor/:id"
+                  component={EditSalesperson}
+                />
+                <Route exact path="/AdminEmpresa/admins" component={ShowThem} />
+                <Route
+                  exact
+                  path="/AdminEmpresa/admins/inactivos"
+                  component={ShowInactive}
+                />
+                <Route
+                  exact
+                  path="/AdminEmpresa/editar/admins/:id"
+                  component={EditSalesperson}
+                />
+                <Route
+                  exact
+                  path="/adminEmpresas/comissions/add"
+                  component={addComissionsContainer}
+                />
+                <Route
+                  exact
+                  path="/adminEmpresas/comissions/edit/:id"
+                  component={editComissionContainer}
+                />
+                <Route exact path="/" component={Reservation} />
+                <Route exact path="/checkout" component={Checkout} />
+              </Switch>
+            )}
           </Card>
         </main>
       </div>

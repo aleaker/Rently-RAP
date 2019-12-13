@@ -74,7 +74,7 @@ router.put("/admin/edit/:id", async (req, res) => {
 //VER TODOS LOS VENDEDORES ACTIVOS
 router.get("/salespeople/:companyId", async (req, res) => {
   try {
-    console.log(req.params.companyId, 'entre')
+    console.log(req.params.companyId, "entre");
     const salespersons = await User.find({
       Company: req.params.companyId,
       UserType: "Vendedor",
@@ -88,7 +88,7 @@ router.get("/salespeople/:companyId", async (req, res) => {
 
 router.get("/admins/:companyId", async (req, res) => {
   try {
-    console.log(req.params.companyId, 'entre')
+    console.log(req.params.companyId, "entre");
     const salespersons = await User.find({
       Company: req.params.companyId,
       UserType: "adminEmpresa",
@@ -572,13 +572,16 @@ router.get("/booking/:id", async (req, res) => {
 
 //CREAR UNA RESERVA: POST http://localhost:3000/api/booking
 router.post("/booking", (req, res) => {
-  try {
-    Booking.create(req.body);
-    console.log("Reserva guardada");
-    res.redirect("/api/booking");
-  } catch (err) {
-    console.log(err);
-  }
+  Booking.create(req.body)
+    .then(e => {
+      console.log(e);
+      res.send("Ok").status(201);
+    })
+    .catch(err => {
+      console.log(err);
+      res.send(err).status(500);
+    });
+  res.redirect("/api/booking");
 });
 
 //MODIFICAR DE UNA RESERVA: PUT http://localhost:3000/api/booking/:id
